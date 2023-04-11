@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service'
-import {LoginService} from '../login.service'
+import {LoginService} from '../service/login.service'
 
 @Component({
   selector: 'app-login',
