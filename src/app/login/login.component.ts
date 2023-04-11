@@ -8,12 +8,21 @@ import {LoginService} from '../login.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  
+   user = {name: "", password: ""};
+   
+
   constructor(private cookies: CookieService, private loginService: LoginService) { 
   }
 
-  click() {
-    this.cookies.set("isLogin", "true");
-    this.loginService.isLogin = true;
+  login() {
+    // this.apiService.postApi("/login", this.user).subscribe
+    // ((data) => {
+
+    // });
+    // alert(this.user.name);
+
+     this.cookies.set("isLogin", "true");
+     this.loginService.isLogin = true;
+
   };
 }
