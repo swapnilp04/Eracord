@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {StudentService} from './../service/student.service';
 import {Student} from './../interface/student';
 
@@ -8,13 +8,19 @@ import {Student} from './../interface/student';
   styleUrls: ['./student.component.css']
 })
 
-export class StudentComponent {
+export class StudentComponent  implements OnInit {
 
+  public students: Student[] = [];
   constructor(private studentService: StudentService){}
+  
+
+  ngOnInit(): void {
+    this.loadStudents();
+  }
 
   loadStudents(): void {
     this.studentService.getStudents().subscribe (
-      (response: any) => console.log(response),
+      (response: any) => this.assignStudents(response),
       (error: any) => console.log(error),
       () => console.log('Done getting Students......')
     );
@@ -36,5 +42,7 @@ export class StudentComponent {
     );
   }
 
-
+    assignStudents(response: any) {
+      this.students = response
+    }
 }

@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import {CookieService} from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentComponent } from './student/student.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    StudentComponent
+    StudentComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

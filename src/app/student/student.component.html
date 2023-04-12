@@ -1,1 +1,24 @@
-<p>student works!</p>
+<div class="row">
+	<p>student works!</p>
+	<div class="row">
+		<table class="table table-hover col-md-8">
+			<tr *ngFor="let student of students; index as i">
+	    <td>{{i+1}} {{student.first_name}}</td>
+	  	</tr>
+		</table>	
+	</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-9">
+    Level 1: .col-sm-9
+    <div class="row">
+      <div class="col-xs-8 col-sm-6">
+        Level 2: .col-xs-8 .col-sm-6
+      </div>
+      <div class="col-xs-4 col-sm-6">
+        Level 2: .col-xs-4 .col-sm-6
+      </div>
+    </div>
+  </div>
+</div>
