@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StudentService} from './../service/student.service';
 import {Student} from './../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class StudentComponent  implements OnInit {
   public student = {} as Student;
   public id: any;
   
-  constructor(private studentService: StudentService, private route: ActivatedRoute){}
+  constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location){}
 
 
   ngOnInit(): void {
@@ -37,5 +37,9 @@ export class StudentComponent  implements OnInit {
 
    assignStudent(response: any) {
     this.student = response;
+  }
+
+  back(): void {
+    this.location.back();
   }
 }

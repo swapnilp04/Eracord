@@ -6,7 +6,7 @@ export interface Student {
 	last_name: string;
 	age: string;
 	parent_name: string;
-	parent_ocupation: string;
+	parent_occupation: string;
 	contact_number: number;
 	wh_number: number;
 	status?: string;

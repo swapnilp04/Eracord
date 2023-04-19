@@ -21,7 +21,6 @@ export class StudentService {
       'Access-Control-Allow-Headers': 'X-Requested-With',
       'token': token,
     });
-    console.log(myHeaders);
     return this.http.get<Student[]>(`${this.URL}/students`, {headers: myHeaders});
   }
 
@@ -36,6 +35,12 @@ export class StudentService {
   }
 
   createStudent(student: Student): Observable<Student> {
-    return this.http.post<Student>(`${this.URL}/students`, student);
+    const token = this.loginService.getToken();
+    const myHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+    return this.http.post<Student>(`${this.URL}/students`, student, {headers: myHeaders});
   }
 }

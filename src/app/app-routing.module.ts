@@ -11,8 +11,8 @@ const routes: Routes = [
   {path: 'login' , component: LoginComponent},
   {path: 'dashboard' , component: DashboardComponent},
   {path: 'students' , component: StudentsComponent},
-  {path: 'students/:id' , component: StudentComponent},
   {path: 'students/new' , component: StudentAddEditComponent},
+  {path: 'students/:id' , component: StudentComponent},
   ];
 
 

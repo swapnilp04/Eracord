@@ -18,7 +18,7 @@ export class StudentAddEditComponent {
 
   createStudent(student: Student): void {
     this.studentService.createStudent(student).subscribe (
-      (response: any) => console.log(response),
+      (response: any) => this.getSuccess(response),
       (error: any) => console.log(error),
       () => console.log('Done getting Student......')
     );
@@ -27,5 +27,13 @@ export class StudentAddEditComponent {
   back(): void {
     //this.
     this.location.back();
+  }
+
+  getSuccess(response: any): void {
+     window.location.href = `/students/${response['student']['id']}`;
+  }
+
+  getError(error: any): void {
+
   }
 }
