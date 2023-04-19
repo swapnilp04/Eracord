@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {StudentService} from './../service/student.service';
 import {Student} from './../interface/student';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-student',
@@ -10,39 +13,29 @@ import {Student} from './../interface/student';
 
 export class StudentComponent  implements OnInit {
 
-  public students: Student[] = [];
-  constructor(private studentService: StudentService){}
+  public student = {} as Student;
+  public id: any;
   
+  constructor(private studentService: StudentService, private route: ActivatedRoute){}
+
 
   ngOnInit(): void {
-    this.loadStudents();
-  }
 
-  loadStudents(): void {
-    this.studentService.getStudents().subscribe (
-      (response: any) => this.assignStudents(response),
-      (error: any) => console.log(error),
-      () => console.log('Done getting Students......')
-    );
+    this.route.paramMap.subscribe((param) => {
+      var id = Number(param.get('id'));
+      this.loadStudent(id);
+    });
   }
 
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
-      (response: any) => console.log(response),
+      (response: any) => this.assignStudent(response),
       (error: any) => console.log(error),
       () => console.log('Done getting Student......')
     );
   }
 
-  createStudent(student: Student): void {
-    this.studentService.createStudent(student).subscribe (
-      (response: any) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done getting Student......')
-    );
+   assignStudent(response: any) {
+    this.student = response;
   }
-
-    assignStudents(response: any) {
-      this.students = response
-    }
 }

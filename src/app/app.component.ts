@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {LoginService} from './service/login.service';
 import { Observable } from 'rxjs';
+import { setTheme } from 'ngx-bootstrap/utils';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -40,7 +44,7 @@ export class AppComponent {
     //     console.log('Done .......');
     //   }
     // });
-
+    setTheme('bs5');
   }
 
   public get isLogin() {

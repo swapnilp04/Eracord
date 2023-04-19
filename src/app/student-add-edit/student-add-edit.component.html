@@ -1,0 +1,38 @@
+<form>
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">First Name</label>
+    <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="student.first_name" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">Middle Name</label>
+    <input type="text" class="form-control" placeholder="Middle Name" [(ngModel)]="student.middle_name" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Last Name</label>
+    <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="student.last_name" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Age</label>
+    <input type="number" class="form-control" placeholder="Age" [(ngModel)]="student.age" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">parent Name</label>
+    <input type="text" class="form-control" placeholder="parent Name" [(ngModel)]="student.parent_name" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Parent Occupation</label>
+    <input type="text" class="form-control" placeholder="Parent Occupation" [(ngModel)]="student.parent_ocupation" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Contact Number</label>
+    <input type="text" class="form-control" placeholder="Contact Number" [(ngModel)]="student.contact_number" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">What's app Number</label>
+    <input type="text" class="form-control" placeholder="What's app number" [(ngModel)]="student.wh_number" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+  <button type="submit" class="btn btn-primary" (click)=createStudent(student)>Submit</button>
+  <button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
+</div>
+</form>

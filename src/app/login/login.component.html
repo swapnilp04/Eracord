@@ -1,15 +1,17 @@
 <form>
-	<div>
-		<label>Username</label>
-		<input type="text" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}"/>
-
-	</div>
-	<div>
-		<label>Password</label>
-		<input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"/>
-		
-	</div>
-	<div>
-		<button type="button" (click)=login()>Login</button>
-	</div>
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="text" class="form-control" placeholder="Username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)=login()>Submit</button>
 </form>
+

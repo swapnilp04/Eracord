@@ -26,7 +26,13 @@ export class StudentService {
   }
 
   getStudent(userID: number): Observable<Student> {
-    return this.http.get<Student>(`${this.URL}/studnets/${userID}`);
+    const token = this.loginService.getToken();
+    const myHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+    return this.http.get<Student>(`${this.URL}/students/${userID}`, {headers: myHeaders});
   }
 
   createStudent(student: Student): Observable<Student> {
