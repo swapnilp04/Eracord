@@ -32,7 +32,8 @@
     <input type="text" class="form-control" placeholder="What's app number" [(ngModel)]="student.wh_number" [ngModelOptions]="{standalone: true}"/>
   </div>
   <div class="form-group mb-3">
-  <button type="submit" class="btn btn-primary" (click)=createStudent(student)>Submit</button>
+  <button type="submit" *ngIf=isNew class="btn btn-primary" (click)=createStudent(student)>Submit</button>
+  <button type="submit" *ngIf=!isNew class="btn btn-primary" (click)=updateStudent(student)>Submit</button>
   <button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
 </div>
 </form>

@@ -26,6 +26,14 @@ export class StudentAddEditComponent implements OnInit {
     );
   }
 
+  updateStudent(student: Student): void {
+    this.studentService.updateStudent(student).subscribe (
+      (response: any) => this.getSuccess(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Student......')
+    );
+  }
+
   ngOnInit(): void {
     if(this.router.url.includes('/edit')) {
       this.isNew = false;

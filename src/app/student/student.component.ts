@@ -28,6 +28,7 @@ export class StudentComponent  implements OnInit {
   ];
 
   public alerts: Alert[] = [];
+  public isLoading = true;
 
   value?: string;
   
@@ -46,7 +47,6 @@ export class StudentComponent  implements OnInit {
       var id = Number(param.get('id'));
       
       this.loadStudent(id);
-      this.loadStudentHostel(id);
     });
   }
 
@@ -66,7 +66,7 @@ export class StudentComponent  implements OnInit {
     );
   }
 
-  loadStudentHostel(studentID: number): void {
+  loadStudentHostel(studentID: any): void {
     this.studentService.getStudentHostel(studentID).subscribe (
       (response: any) => console.log(response),
       (error: any) => console.log(error),
@@ -76,6 +76,8 @@ export class StudentComponent  implements OnInit {
 
   assignStudent(response: any) {
     this.student = response;
+    this.isLoading = false;
+    this.loadStudentHostel(this.student['id']);
   }
 
   back(): void {
