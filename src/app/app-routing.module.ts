@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'students' , component: StudentsComponent},
   {path: 'students/new' , component: StudentAddEditComponent},
   {path: 'students/:id' , component: StudentComponent},
+  {path: 'students/:id/edit' , component: StudentAddEditComponent},
   ];
 
 

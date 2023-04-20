@@ -74,7 +74,7 @@ export class StudentComponent  implements OnInit {
     );
   }
 
-   assignStudent(response: any) {
+  assignStudent(response: any) {
     this.student = response;
   }
 

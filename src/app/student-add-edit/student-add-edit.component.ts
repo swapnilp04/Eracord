@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {StudentService} from './../service/student.service';
 import {Student} from './../interface/student';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -10,11 +10,12 @@ import { Router} from '@angular/router';
   templateUrl: './student-add-edit.component.html',
   styleUrls: ['./student-add-edit.component.css']
 })
-export class StudentAddEditComponent {
+export class StudentAddEditComponent implements OnInit {
 
   public student = {} as Student;
+  public isNew = true;
   
-  constructor(private studentService: StudentService, private location: Location, private router: Router){}
+  constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute){}
 
 
   createStudent(student: Student): void {
@@ -25,15 +26,44 @@ export class StudentAddEditComponent {
     );
   }
 
+  ngOnInit(): void {
+    if(this.router.url.includes('/edit')) {
+      this.isNew = false;
+    }
+
+    this.route.paramMap.subscribe((param) => {
+      var id = Number(param.get('id'));
+      if(!this.isNew) {
+        this.loadStudent(id);
+      }
+    });
+  }
+
+  loadStudent(studentID: number): void {
+    this.studentService.getStudent(studentID).subscribe (
+      (response: any) => this.assignStudent(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Student......')
+    );
+  }
+
   back(): void {
     this.router.navigate(['/students']);
   }
 
   getSuccess(response: any): void {
-     window.location.href = `/students/${response['student']['id']}?success=true`;
+    if(this.isNew) {
+      window.location.href = `/students/${response['student']['id']}?success=true`;
+    } else {
+      window.location.href = `/students/${response['student']['id']}?isUpdate=true`;
+    }
   }
 
   getError(error: any): void {
     
+  }
+
+  assignStudent(response: any) {
+    this.student = response;
   }
 }
