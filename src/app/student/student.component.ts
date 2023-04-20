@@ -4,6 +4,8 @@ import {Student} from './../interface/student';
 import { Alert } from './../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { TabDirective } from 'ngx-bootstrap/tabs';
+
 
 
 @Component({
@@ -26,7 +28,8 @@ export class StudentComponent  implements OnInit {
   ];
 
   public alerts: Alert[] = [];
-  
+
+  value?: string;
   
   constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, private router: Router){}
 
@@ -43,6 +46,7 @@ export class StudentComponent  implements OnInit {
       var id = Number(param.get('id'));
       
       this.loadStudent(id);
+      this.loadStudentHostel(id);
     });
   }
 
@@ -50,9 +54,21 @@ export class StudentComponent  implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
+  onSelect(data: TabDirective): void {
+    this.value = data.heading;
+  }
+
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Student......')
+    );
+  }
+
+  loadStudentHostel(studentID: number): void {
+    this.studentService.getStudentHostel(studentID).subscribe (
+      (response: any) => console.log(response),
       (error: any) => console.log(error),
       () => console.log('Done getting Student......')
     );

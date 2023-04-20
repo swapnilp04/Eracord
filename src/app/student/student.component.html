@@ -3,7 +3,7 @@
 </div>
 
 
-<div>
+<div class="mb-3">
 	<h2>{{name()}}</h2>
 	<h5>Age - {{student.age}}</h5>
 	<h5>Parent Name - {{student.parent_name}}</h5>
@@ -12,4 +12,23 @@
 	<button (click)=back() class="btn btn-primary">
 		Back
 	</button>
+</div>
+<div>	
+	<tabset>
+	  <tab heading="Hostel" class="mt-2" (selectTab)="onSelect($event)">
+	    <h4>Hostel</h4>
+	    <p>Hostel Name - </p>
+	    <p>Room Number - </p>
+	    <p>Rector Number - </p>
+	    <p>Number of students in rooms - </p>
+	    <p>Monthly Charges - </p>
+
+	  </tab>
+	  <tab heading="Transactions" class="mt-2" (selectTab)="onSelect($event)">
+	    <h4>Transactions</h4>
+	    <p>It has survived not only five centuries, but also the leap into electronic typesetting,
+	      remaining essentially unchanged. It was popularised in the 1960s with the release of
+	      Letraset sheets containing Lorem Ipsum passages</p>
+	  </tab>
+	</tabset>
 </div>

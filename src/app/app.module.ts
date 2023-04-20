@@ -14,6 +14,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { StudentAddEditComponent } from './student-add-edit/student-add-edit.component';
 import { StudentsComponent } from './students/students.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 
 
 
@@ -34,7 +36,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     FormsModule,
     BrowserAnimationsModule,
     TooltipModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -43,4 +43,14 @@ export class StudentService {
     });
     return this.http.post<Student>(`${this.URL}/students`, student, {headers: myHeaders});
   }
+
+  getStudentHostel(userID: number): Observable<Student> {
+    const token = this.loginService.getToken();
+    const myHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+    return this.http.get<Student>(`${this.URL}/students/${userID}/hostel`, {headers: myHeaders});
+  }  
 }
