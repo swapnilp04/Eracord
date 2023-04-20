@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Location} from '@angular/common';
 import {StudentService} from './../service/student.service';
 import {Student} from './../interface/student';
+import { Router} from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class StudentAddEditComponent {
 
   public student = {} as Student;
   
-  constructor(private studentService: StudentService, private location: Location){}
+  constructor(private studentService: StudentService, private location: Location, private router: Router){}
 
 
   createStudent(student: Student): void {
@@ -25,15 +26,14 @@ export class StudentAddEditComponent {
   }
 
   back(): void {
-    //this.
-    this.location.back();
+    this.router.navigate(['/students']);
   }
 
   getSuccess(response: any): void {
-     window.location.href = `/students/${response['student']['id']}`;
+     window.location.href = `/students/${response['student']['id']}?success=true`;
   }
 
   getError(error: any): void {
-
+    
   }
 }

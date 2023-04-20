@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StudentService} from './../service/student.service';
 import {Student} from './../interface/student';
+import { Alert } from './../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -15,16 +16,38 @@ export class StudentComponent  implements OnInit {
 
   public student = {} as Student;
   public id: any;
+  dismissible = true;
+
+  defaultAlerts: any[] = [
+    {
+      type: 'success',
+      msg: `Sutdent Created successfully. `
+    }
+  ];
+
+  public alerts: Alert[] = [];
   
-  constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location){}
+  
+  constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, private router: Router){}
 
 
   ngOnInit(): void {
+    
+    this.route.queryParams.subscribe((param) => {
+      if (param['success'] == 'true') {
+        this.alerts = this.defaultAlerts;
+      }
+    });
 
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
+      
       this.loadStudent(id);
     });
+  }
+
+  onClosed(dismissedAlert: any): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
   loadStudent(studentID: number): void {
@@ -40,6 +63,10 @@ export class StudentComponent  implements OnInit {
   }
 
   back(): void {
-    this.location.back();
+    this.router.navigate(['/students']);
+  }
+
+  name(): string {
+    return `${this.student.first_name} ${this.student.middle_name} ${this.student.last_name}`
   }
 }

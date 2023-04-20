@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { StudentAddEditComponent } from './student-add-edit/student-add-edit.component';
 import { StudentsComponent } from './students/students.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { StudentsComponent } from './students/students.component';
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    AlertModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
