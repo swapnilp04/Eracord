@@ -15,6 +15,9 @@ import { StudentAddEditComponent } from './student-add-edit/student-add-edit.com
 import { StudentsComponent } from './students/students.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { StandardsComponent } from './standards/standards/standards.component';
+import { StandardComponent } from './standards/standard/standard.component';
+import { StandardAddEditComponent } from './standards/standard-add-edit/standard-add-edit.component';
 
 
 
@@ -26,7 +29,10 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     StudentComponent,
     DashboardComponent,
     StudentAddEditComponent,
-    StudentsComponent
+    StudentsComponent,
+    StandardsComponent,
+    StandardComponent,
+    StandardAddEditComponent
   ],
   imports: [
     BrowserModule,

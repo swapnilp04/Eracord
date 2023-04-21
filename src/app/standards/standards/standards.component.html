@@ -1,0 +1,26 @@
+<div class="row">
+  <p class="clearfix">
+      
+      <a href="/standards/new" class="btn btn-primary"><span>New Standard</span></a>
+    </p>
+	<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+	      <th class="col-md-1"> Sr No
+	      </th>
+	      <th>Name</th>
+	      <th>Standard</th>
+	    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let standard of standards; index as i">
+	      <td>{{i+1}}</td> 
+	      <td>{{standard.name}}</td>
+	      <td>
+	        <a href='/standards/{{standard.id}}'>Show</a>
+	        <a href='/standards/{{standard.id}}/edit'>Edit</a>
+	      </td>
+    	</tr>
+    </tbody>
+	</table>	
+</div>
