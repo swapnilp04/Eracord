@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./hostel.component.css']
 })
 
-export class HostelComponent {
+export class HostelComponent implements OnInit {
   public hostel = {} as Hostel;
   public id: any;
   dismissible = true;
@@ -25,6 +25,7 @@ export class HostelComponent {
 
   public alerts: Alert[] = [];
   public isLoading = true;
+  public hostelId: number;
   
   constructor(private hostelService: HostelService, private route: ActivatedRoute, private location: Location, private router: Router){}
 
@@ -38,9 +39,8 @@ export class HostelComponent {
     });
 
     this.route.paramMap.subscribe((param) => {
-      var id = Number(param.get('id'));
-      
-      this.loadHostel(id);
+      this.hostelId = Number(param.get('id'));
+      this.loadHostel(this.hostelId);
     });
   }
 

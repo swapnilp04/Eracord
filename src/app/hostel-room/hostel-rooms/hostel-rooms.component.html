@@ -1,0 +1,23 @@
+<p class="clearfix">  
+  <a href="/hostels/{{hostelId}}/hostel-rooms/new" class="btn btn-primary"><span>New Hostel Room</span></a>
+</p>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="col-md-1"> Sr No
+      </th>
+      <th>Name</th>
+      <th>No of Students</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr *ngFor="let hostelRoom of hostelRooms; index as i">
+      <td>{{i+1}}</td> 
+      <td>{{hostelRoom.name}}</td>
+      <td>
+        <a href='/hostels/{{hostelRoom.id}}'>Show</a>
+        <a href='/hostels/{{hostelRoom.id}}/edit'>Edit</a>
+      </td>
+  	</tr>
+  </tbody>
+</table>	

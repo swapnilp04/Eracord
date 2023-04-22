@@ -2,13 +2,14 @@
   <alert [type]="alert.type" [dismissible]="dismissible" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
 </div>
 
-
 <div *ngIf=!isLoading>
 	<div class="mb-3">
-		<h2>{{name()}}</h2>
+		<h2>{{name()}} Hostel</h2>
 		<h5>Rooms - {{hostel.rooms}}</h5>
 		<button (click)=back() class="btn btn-primary">
 			Back
 		</button>
 	</div>
+	<h3>Rooms</h3>
+	<app-hostel-rooms [hostelId]="hostelId"></app-hostel-rooms>
 </div>

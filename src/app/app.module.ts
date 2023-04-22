@@ -24,6 +24,9 @@ import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.co
 import { HostelsComponent } from './hostels/hostels/hostels.component';
 import { HostelComponent } from './hostels/hostel/hostel.component';
 import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edit.component';
+import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/hostel-room-add-edit.component';
+import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
+import { HostelRoomsComponent } from './hostel-room/hostel-rooms/hostel-rooms.component';
 
 
 
@@ -44,7 +47,10 @@ import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edi
     BatchAddEditComponent,
     HostelsComponent,
     HostelComponent,
-    HostelAddEditComponent
+    HostelAddEditComponent,
+    HostelRoomAddEditComponent,
+    HostelRoomComponent,
+    HostelRoomsComponent
   ],
   imports: [
     BrowserModule,

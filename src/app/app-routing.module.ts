@@ -15,7 +15,8 @@ import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.co
 import { HostelsComponent } from './hostels/hostels/hostels.component';
 import { HostelComponent } from './hostels/hostel/hostel.component';
 import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edit.component';
-
+import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/hostel-room-add-edit.component';
+import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -40,6 +41,9 @@ const routes: Routes = [
   {path: 'hostels/:id' , component: HostelComponent},
   {path: 'hostels/:id/edit' , component: HostelAddEditComponent},
 
+  {path: 'hostels/:hostel_id/hostel-rooms/new' , component: HostelRoomAddEditComponent},
+  {path: 'hostels/:hostel_id/hostel-rooms/:id' , component: HostelRoomComponent},
+  {path: 'hostels/:hostel_id/hostel-rooms/:id/edit' , component: HostelRoomAddEditComponent},
   ];
 
 
