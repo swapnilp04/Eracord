@@ -3,9 +3,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {LoginService} from './service/login.service';
 import { Observable } from 'rxjs';
 import { setTheme } from 'ngx-bootstrap/utils';
-
-
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +13,7 @@ import { setTheme } from 'ngx-bootstrap/utils';
 export class AppComponent {
   title = 'Eracord';
   
-  constructor(private cookies: CookieService, private loginService: LoginService) {
+  constructor(private cookies: CookieService, private loginService: LoginService, private router: Router) {
     this.loginService.isLogin = this.cookies.get("isLogin") == "true";
 
     type HttpRespone = {code: number, data: string};
@@ -45,6 +43,11 @@ export class AppComponent {
     //   }
     // });
     setTheme('bs5');
+  }
+
+  public activeLink(str: string) {
+    return this.router.url == str;
+    
   }
 
   public get isLogin() {
