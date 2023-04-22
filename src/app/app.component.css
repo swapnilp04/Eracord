@@ -16,3 +16,7 @@
 .ml-md-auto, .mx-md-auto {
     margin-left: auto!important;
 }
+
+.marginLeft15 {
+    margin-left: 15px;
+}

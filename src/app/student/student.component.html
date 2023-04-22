@@ -10,7 +10,9 @@
 		<h5>Parent Name - {{student.parent_name}}</h5>
 		<h5>Contact Number - {{student.contact_number}}</h5>
 		<h5>What's app Number - {{student.wh_number}}</h5>
-		<button (click)=back() class="btn btn-primary">
+		
+		<a class="btn btn-secondary" href='/students/{{student.id}}/edit'>Edit</a>
+		<button (click)=back() class="btn btn-primary marginLeft15">
 			Back
 		</button>
 	</div>
