@@ -1,0 +1,26 @@
+<div class="row">
+  <p class="clearfix">
+      
+      <a href="/batchs/new" class="btn btn-primary"><span>New Batch</span></a>
+    </p>
+	<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+	      <th class="col-md-1"> Sr No
+	      </th>
+	      <th>Name</th>
+	      <th>Year</th>
+	    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let batch of batchs; index as i">
+	      <td>{{i+1}}</td> 
+	      <td>{{batch.name}}</td>
+	      <td>
+	        <a href='/batchs/{{batch.id}}'>Show</a>
+	        <a href='/batchs/{{batch.id}}/edit'>Edit</a>
+	      </td>
+    	</tr>
+    </tbody>
+	</table>	
+</div>

@@ -8,6 +8,9 @@ import { StudentAddEditComponent } from './student-add-edit/student-add-edit.com
 import { StandardsComponent } from './standards/standards/standards.component';
 import { StandardComponent } from './standards/standard/standard.component';
 import { StandardAddEditComponent } from './standards/standard-add-edit/standard-add-edit.component';
+import { BatchsComponent } from './batchs/batchs/batchs.component';
+import { BatchComponent } from './batchs/batch/batch.component';
+import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.component';
 
 
 const routes: Routes = [
@@ -22,6 +25,11 @@ const routes: Routes = [
   {path: 'standards/new' , component: StandardAddEditComponent},
   {path: 'standards/:id' , component: StandardComponent},
   {path: 'standards/:id/edit' , component: StandardAddEditComponent},
+
+  {path: 'batchs' , component: BatchsComponent},
+  {path: 'batchs/new' , component: BatchAddEditComponent},
+  {path: 'batchs/:id' , component: BatchComponent},
+  {path: 'batchs/:id/edit' , component: BatchAddEditComponent},
 
   ];
 

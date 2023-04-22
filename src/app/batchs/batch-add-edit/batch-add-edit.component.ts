@@ -1,0 +1,77 @@
+import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
+import {BatchService} from './../../service/batch.service';
+import {Batch} from './../../interface/batch';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
+@Component({
+  selector: 'app-batch-add-edit',
+  templateUrl: './batch-add-edit.component.html',
+  styleUrls: ['./batch-add-edit.component.css']
+})
+export class BatchAddEditComponent {
+
+  public batch = {} as Batch;
+  public isNew = true;
+  
+  constructor(private batchService: BatchService, private location: Location, private router: Router, private route: ActivatedRoute){}
+
+
+  createBatch(batch: Batch): void {
+    this.batchService.createBatch(batch).subscribe (
+      (response: any) => this.getSuccess(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Batch......')
+    );
+  }
+
+  updateBatch(batch: Batch): void {
+    this.batchService.updateBatch(batch).subscribe (
+      (response: any) => this.getSuccess(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Batch......')
+    );
+  }
+
+  ngOnInit(): void {
+    if(this.router.url.includes('/edit')) {
+      this.isNew = false;
+    }
+
+    this.route.paramMap.subscribe((param) => {
+      var id = Number(param.get('id'));
+      if(!this.isNew) {
+        this.loadBatch(id);
+      }
+    });
+  }
+
+  loadBatch(batchID: number): void {
+    this.batchService.getBatch(batchID).subscribe (
+      (response: any) => this.assignBatch(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Batch......')
+    );
+  }
+
+  back(): void {
+    this.router.navigate(['/batchs']);
+  }
+
+  getSuccess(response: any): void {
+    if(this.isNew) {
+      window.location.href = `/batchs/${response['batch']['id']}?success=true`;
+    } else {
+      window.location.href = `/batchs/${response['batch']['id']}?isUpdate=true`;
+    }
+  }
+
+  getError(error: any): void {
+    
+  }
+
+  assignBatch(response: any) {
+    this.batch = response;
+  }
+
+}

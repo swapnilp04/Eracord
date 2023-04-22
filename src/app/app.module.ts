@@ -18,6 +18,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { StandardsComponent } from './standards/standards/standards.component';
 import { StandardComponent } from './standards/standard/standard.component';
 import { StandardAddEditComponent } from './standards/standard-add-edit/standard-add-edit.component';
+import { BatchsComponent } from './batchs/batchs/batchs.component';
+import { BatchComponent } from './batchs/batch/batch.component';
+import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.component';
 
 
 
@@ -32,7 +35,10 @@ import { StandardAddEditComponent } from './standards/standard-add-edit/standard
     StudentsComponent,
     StandardsComponent,
     StandardComponent,
-    StandardAddEditComponent
+    StandardAddEditComponent,
+    BatchsComponent,
+    BatchComponent,
+    BatchAddEditComponent
   ],
   imports: [
     BrowserModule,
