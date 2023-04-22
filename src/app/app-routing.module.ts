@@ -12,6 +12,10 @@ import { BatchsComponent } from './batchs/batchs/batchs.component';
 import { BatchComponent } from './batchs/batch/batch.component';
 import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.component';
 
+import { HostelsComponent } from './hostels/hostels/hostels.component';
+import { HostelComponent } from './hostels/hostel/hostel.component';
+import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edit.component';
+
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -30,6 +34,11 @@ const routes: Routes = [
   {path: 'batchs/new' , component: BatchAddEditComponent},
   {path: 'batchs/:id' , component: BatchComponent},
   {path: 'batchs/:id/edit' , component: BatchAddEditComponent},
+
+  {path: 'hostels' , component: HostelsComponent},
+  {path: 'hostels/new' , component: HostelAddEditComponent},
+  {path: 'hostels/:id' , component: HostelComponent},
+  {path: 'hostels/:id/edit' , component: HostelAddEditComponent},
 
   ];
 

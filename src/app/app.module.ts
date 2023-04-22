@@ -21,6 +21,9 @@ import { StandardAddEditComponent } from './standards/standard-add-edit/standard
 import { BatchsComponent } from './batchs/batchs/batchs.component';
 import { BatchComponent } from './batchs/batch/batch.component';
 import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.component';
+import { HostelsComponent } from './hostels/hostels/hostels.component';
+import { HostelComponent } from './hostels/hostel/hostel.component';
+import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edit.component';
 
 
 
@@ -38,7 +41,10 @@ import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.co
     StandardAddEditComponent,
     BatchsComponent,
     BatchComponent,
-    BatchAddEditComponent
+    BatchAddEditComponent,
+    HostelsComponent,
+    HostelComponent,
+    HostelAddEditComponent
   ],
   imports: [
     BrowserModule,
