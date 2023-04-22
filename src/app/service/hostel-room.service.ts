@@ -25,14 +25,14 @@ export class HostelRoomService {
     return this.http.get<HostelRoom[]>(`${this.URL}/hostels/${hostelId}/hostel_rooms`, {headers: myHeaders});
   }
 
-  getHostelRoom(hostelRoomID: number): Observable<HostelRoom> {
+  getHostelRoom(hostelId: number, hostelRoomID: number): Observable<HostelRoom> {
     const token = this.loginService.getToken();
     const myHeaders = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'X-Requested-With',
       'token': token,
     });
-    return this.http.get<HostelRoom>(`${this.URL}/hostel_rooms/${hostelRoomID}`, {headers: myHeaders});
+    return this.http.get<HostelRoom>(`${this.URL}/hostels/${hostelId}/hostel_rooms/${hostelRoomID}`, {headers: myHeaders});
   }
 
   createHostelRoom(hostelId: number, hostelRoom: HostelRoom): Observable<HostelRoom> {
