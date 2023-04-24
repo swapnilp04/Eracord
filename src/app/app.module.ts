@@ -27,6 +27,7 @@ import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edi
 import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/hostel-room-add-edit.component';
 import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
 import { HostelRoomsComponent } from './hostel-room/hostel-rooms/hostel-rooms.component';
+import { HostelStudentsComponent } from './hostel-room/hostel-students/hostel-students.component';
 
 
 
@@ -50,7 +51,8 @@ import { HostelRoomsComponent } from './hostel-room/hostel-rooms/hostel-rooms.co
     HostelAddEditComponent,
     HostelRoomAddEditComponent,
     HostelRoomComponent,
-    HostelRoomsComponent
+    HostelRoomsComponent,
+    HostelStudentsComponent
   ],
   imports: [
     BrowserModule,

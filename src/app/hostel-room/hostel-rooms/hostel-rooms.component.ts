@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {HostelRoomService} from './../../service/hostel-room.service';
-import {HostelRoom} from './../../interface/hostel-room';
+import { HostelRoomService } from './../../service/hostel-room.service';
+import { HostelRoom } from './../../interface/hostel-room';
 
 @Component({
   selector: 'app-hostel-rooms',
@@ -10,7 +10,6 @@ import {HostelRoom} from './../../interface/hostel-room';
 export class HostelRoomsComponent implements OnInit{
   @Input() hostelId: number;
   ngOnInit(): void {
-    console.log(this.hostelId);
     this.loadHostelRooms();
   }
   public hostelRooms: HostelRoom[] = [];
