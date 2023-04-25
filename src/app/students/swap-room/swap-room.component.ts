@@ -10,14 +10,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
 
-
 @Component({
-  selector: 'app-assign-hostel',
-  templateUrl: './assign-hostel.component.html',
-  styleUrls: ['./assign-hostel.component.css']
+  selector: 'app-swap-room',
+  templateUrl: './swap-room.component.html',
+  styleUrls: ['./swap-room.component.css']
 })
+export class SwapRoomComponent {
 
-export class AssignHostelComponent implements OnInit {
   public student = {} as Student;
   public id: any;
 
@@ -77,9 +76,9 @@ export class AssignHostelComponent implements OnInit {
     this.router.navigate(['/students', this.id]);
   }
 
-  assignHostelRoom(): void {
+  changeHostelRoom(): void {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
-      this.studentService.assignStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom).subscribe (
+      this.studentService.changeStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom).subscribe (
         (response: any) => this.back(),
         (error: any) => console.log(error),
         () => console.log('Done getting Hostels......')

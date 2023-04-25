@@ -6,6 +6,7 @@ import { StudentsComponent } from './students/students/students.component';
 import { StudentComponent } from './students/student/student.component';
 import { StudentAddEditComponent } from './students/student-add-edit/student-add-edit.component';
 import { AssignHostelComponent } from './students/assign-hostel/assign-hostel.component';
+import { SwapRoomComponent } from './students/swap-room/swap-room.component';
 import { StandardsComponent } from './standards/standards/standards.component';
 import { StandardComponent } from './standards/standard/standard.component';
 import { StandardAddEditComponent } from './standards/standard-add-edit/standard-add-edit.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'students/:id' , component: StudentComponent},
   {path: 'students/:id/edit' , component: StudentAddEditComponent},
   {path: 'students/:id/assign-hostel' , component: AssignHostelComponent},
+  {path: 'students/:id/change-room' , component: SwapRoomComponent},
 
   {path: 'standards' , component: StandardsComponent},
   {path: 'standards/new' , component: StandardAddEditComponent},

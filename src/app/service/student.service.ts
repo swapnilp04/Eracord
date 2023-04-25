@@ -75,4 +75,15 @@ export class StudentService {
     return this.http.post<HostelStudent>(`${this.URL}/students/${userID}/assign_hostel`, 
       {hostel_id: hostelId, hostel_room_id: hostelRoomID}, {headers: myHeaders});
   }
+
+  changeStudentHostel(userID: number, hostelId: number, hostelRoomID: number): Observable<HostelStudent>{
+    const token = this.loginService.getToken();
+    const myHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+    return this.http.put<HostelStudent>(`${this.URL}/students/${userID}/change_hostel`, 
+      {hostel_id: hostelId, hostel_room_id: hostelRoomID}, {headers: myHeaders});
+  }
 }

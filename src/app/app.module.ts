@@ -29,6 +29,7 @@ import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.compo
 import { HostelRoomsComponent } from './hostel-room/hostel-rooms/hostel-rooms.component';
 import { HostelStudentsComponent } from './hostel-room/hostel-students/hostel-students.component';
 import { AssignHostelComponent } from './students/assign-hostel/assign-hostel.component';
+import { SwapRoomComponent } from './students/swap-room/swap-room.component';
 
 
 
@@ -54,7 +55,8 @@ import { AssignHostelComponent } from './students/assign-hostel/assign-hostel.co
     HostelRoomComponent,
     HostelRoomsComponent,
     HostelStudentsComponent,
-    AssignHostelComponent
+    AssignHostelComponent,
+    SwapRoomComponent
   ],
   imports: [
     BrowserModule,

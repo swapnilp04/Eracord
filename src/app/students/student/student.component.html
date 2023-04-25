@@ -20,7 +20,7 @@
 		<tabset>
 		  <tab heading="Hostel" class="mt-2" (selectTab)="onSelect($event)">
 		    <span *ngIf=hasHostel>
-		    	<h4>Hostel</h4>
+		    	<h4>Hostel  <a class="changeRoom" href="/students/{{student.id}}/change-room">Change Hostel / Room</a></h4>
 			    <p>Hostel Name - {{hostelStudent.Hostel.name}} </p>
 			    <p>Room Number - {{hostelStudent.HostelRoom.name}}</p>
 			    <p>Rector Number - {{hostelStudent.Hostel.rector}}</p>
