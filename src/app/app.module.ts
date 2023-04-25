@@ -7,12 +7,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
-import { StudentComponent } from './student/student.component';
+import { StudentComponent } from './students/student/student.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { StudentAddEditComponent } from './student-add-edit/student-add-edit.component';
-import { StudentsComponent } from './students/students.component';
+import { StudentAddEditComponent } from './students/student-add-edit/student-add-edit.component';
+import { StudentsComponent } from './students/students/students.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { StandardsComponent } from './standards/standards/standards.component';
@@ -28,7 +28,7 @@ import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/h
 import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
 import { HostelRoomsComponent } from './hostel-room/hostel-rooms/hostel-rooms.component';
 import { HostelStudentsComponent } from './hostel-room/hostel-students/hostel-students.component';
-import { AssignHostelComponent } from './assign-hostel/assign-hostel.component';
+import { AssignHostelComponent } from './students/assign-hostel/assign-hostel.component';
 
 
 

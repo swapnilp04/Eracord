@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StudentService} from './../service/student.service';
-import {Student} from './../interface/student';
+import {StudentService} from './../../service/student.service';
+import {Student} from './../../interface/student';
 
 
 

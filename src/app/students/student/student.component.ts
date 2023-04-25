@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from './../service/student.service';
-import { Student } from './../interface/student';
-import { HostelStudent } from './../interface/hostel-student';
-import { Alert } from './../interface/alert';
+import { StudentService } from './../../service/student.service';
+import { Student } from './../../interface/student';
+import { HostelStudent } from './../../interface/hostel-student';
+import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { TabDirective } from 'ngx-bootstrap/tabs';

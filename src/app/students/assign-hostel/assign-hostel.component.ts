@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from './../service/student.service';
-import { HostelService } from './../service/hostel.service';
-import { HostelRoomService } from './../service/hostel-room.service';
-import { Student } from './../interface/student';
-import { Hostel } from './../interface/hostel';
-import { HostelRoom } from './../interface/hostel-room';
-import { Alert } from './../interface/alert';
+import { StudentService } from './../../service/student.service';
+import { HostelService } from './../../service/hostel.service';
+import { HostelRoomService } from './../../service/hostel-room.service';
+import { Student } from './../../interface/student';
+import { Hostel } from './../../interface/hostel';
+import { HostelRoom } from './../../interface/hostel-room';
+import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
