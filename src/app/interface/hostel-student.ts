@@ -6,7 +6,7 @@ export interface HostelStudent {
 	student_id: number;
 	hostel_id: number;
 	hostel_room_id: number;
-	student: Student;
+	Student: Student;
 	hostel: Hostel;
 	contact_number: string;
 	name: string;

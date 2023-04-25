@@ -1,0 +1,27 @@
+<div *ngIf=!isLoading>
+	<div class="mb-3">
+		<h2>{{name()}}</h2>
+		<h5>Age - {{student.age}}</h5>
+		<h5>Parent Name - {{student.parent_name}}</h5>
+		<h5>Contact Number - {{student.contact_number}}</h5>
+		<h5>What's app Number - {{student.wh_number}}</h5>
+		
+		<h3>Select Hostel</h3>
+		<select class="form-select" [ngModel]="selectedHosteId" (ngModelChange)="onChangeHostel($event)" aria-label="Default select example">
+			<option value="0">----</option>
+  		<option *ngFor="let hostel of hostels" [ngValue]="hostel.id">{{hostel.name}}</option>
+		</select>
+		<div class="row row-cols-2">
+			<div *ngFor="let hostelRoom of hostelRooms" class="marginTop15 borderBox" [ngClass]="{selected: selectedHostelRoom ==  hostelRoom.id}"    (click)="selectRoom(hostelRoom.id)" >
+				<app-hostel-students [hostelId]="selectedHosteId" [hostelRoomId]="hostelRoom.id" [hostelRoom]="hostelRoom"></app-hostel-students>
+			</div>
+		</div>
+	</div>
+
+	<button (click)=assignHostelRoom() class="btn btn-secondary">
+		Assign Hostel Room
+	</button>
+	<button (click)=back() class="btn btn-primary marginLeft15">
+		Back
+	</button>
+</div>

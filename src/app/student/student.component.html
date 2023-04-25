@@ -19,13 +19,16 @@
 	<div>	
 		<tabset>
 		  <tab heading="Hostel" class="mt-2" (selectTab)="onSelect($event)">
-		    <h4>Hostel</h4>
-		    <p>Hostel Name - </p>
-		    <p>Room Number - </p>
-		    <p>Rector Number - </p>
-		    <p>Number of students in rooms - </p>
-		    <p>Monthly Charges - </p>
-
+		    <span *ngIf=hasHostel>
+		    	<h4>Hostel</h4>
+			    <p>Hostel Name - </p>
+			    <p>Room Number - </p>
+			    <p>Rector Number - </p>
+			    <p>Number of students in rooms - </p>
+			    <p>Monthly Charges - </p>
+		  	</span>
+		  	<h3 *ngIf=!hasHostel>No hostel Assigned</h3>
+		  	<a *ngIf=!hasHostel href="/students/{{student.id}}/assign-hostel"><span>Assign Hostel</span></a>
 		  </tab>
 		  <tab heading="Transactions" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Transactions</h4>

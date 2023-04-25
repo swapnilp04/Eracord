@@ -31,6 +31,7 @@ export class StudentComponent  implements OnInit {
   public isLoading = true;
 
   value?: string;
+  public hasHostel: boolean = false;
   
   constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, private router: Router){}
 
@@ -68,9 +69,9 @@ export class StudentComponent  implements OnInit {
 
   loadStudentHostel(studentID: any): void {
     this.studentService.getStudentHostel(studentID).subscribe (
-      (response: any) => console.log(response),
+      (response: any) => this.assignHostel(response),
       (error: any) => console.log(error),
-      () => console.log('Done getting Student......')
+      () => console.log('Done getting Hostel......')
     );
   }
 
@@ -78,6 +79,10 @@ export class StudentComponent  implements OnInit {
     this.student = response;
     this.isLoading = false;
     this.loadStudentHostel(this.student['id']);
+  }
+
+  assignHostel(response: any): void {
+    this.hasHostel = true;
   }
 
   back(): void {

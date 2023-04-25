@@ -4,6 +4,7 @@ import { LoginService } from '../service/login.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Student } from '../interface/student'
+import { HostelStudent } from '../interface/hostel-student'
 
 
 @Injectable({
@@ -62,5 +63,16 @@ export class StudentService {
       'token': token,
     });
     return this.http.get<Student>(`${this.URL}/students/${userID}/hostel`, {headers: myHeaders});
-  }  
+  }
+
+  assignStudentHostel(userID: number, hostelId: number, hostelRoomID: number): Observable<HostelStudent>{
+    const token = this.loginService.getToken();
+    const myHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+    return this.http.post<HostelStudent>(`${this.URL}/students/${userID}/assign_hostel`, 
+      {hostel_id: hostelId, hostel_room_id: hostelRoomID}, {headers: myHeaders});
+  }
 }

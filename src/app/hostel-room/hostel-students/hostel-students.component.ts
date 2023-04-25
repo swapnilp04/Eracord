@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HostelRoomService } from './../../service/hostel-room.service';
 import { HostelStudent } from './../../interface/hostel-student';
+import { HostelRoom } from './../../interface/hostel-room';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { HostelStudent } from './../../interface/hostel-student';
 export class HostelStudentsComponent implements OnInit{
 
   @Input() hostelId: number;
-  @Input() hostelRoomId: number;
+  @Input() hostelRoomId: any;
+  @Input() hostelRoom: HostelRoom;
   public hostelStudents: HostelStudent[] = [];
 
   constructor(private hostelRoomService: HostelRoomService){}
@@ -30,5 +32,6 @@ export class HostelStudentsComponent implements OnInit{
 
   assignHostelStudent(response: any) {
     this.hostelStudents = response
+    console.log(this.hostelStudents);
   }
 }
