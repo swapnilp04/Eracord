@@ -4,13 +4,11 @@
       <th class="col-md-1"> Sr No
       </th>
       <th>Name</th>
-      <th>No of Students</th>
     </tr>
   </thead>
   <tbody>
   	<tr *ngFor="let hostelStudent of hostelStudents; index as i">
       <td>{{i+1}}</td> 
-      <td>{{hostelStudent.id}}</td>
       <td>
      		{{hostelStudent.Student.first_name}} {{hostelStudent.Student.last_name}}
       </td>

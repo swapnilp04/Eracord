@@ -21,11 +21,11 @@
 		  <tab heading="Hostel" class="mt-2" (selectTab)="onSelect($event)">
 		    <span *ngIf=hasHostel>
 		    	<h4>Hostel</h4>
-			    <p>Hostel Name - </p>
-			    <p>Room Number - </p>
-			    <p>Rector Number - </p>
-			    <p>Number of students in rooms - </p>
-			    <p>Monthly Charges - </p>
+			    <p>Hostel Name - {{hostelStudent.Hostel.name}} </p>
+			    <p>Room Number - {{hostelStudent.HostelRoom.name}}</p>
+			    <p>Rector Number - {{hostelStudent.Hostel.rector}}</p>
+			    <p>Number of students in rooms - {{hostelStudent.HostelRoom.no_of_students}}</p>
+			    <p>Monthly Charges - {{hostelStudent.Hostel.rate}}</p>
 		  	</span>
 		  	<h3 *ngIf=!hasHostel>No hostel Assigned</h3>
 		  	<a *ngIf=!hasHostel href="/students/{{student.id}}/assign-hostel"><span>Assign Hostel</span></a>

@@ -31,7 +31,6 @@ export class HostelStudentsComponent implements OnInit{
   }
 
   assignHostelStudent(response: any) {
-    this.hostelStudents = response
-    console.log(this.hostelStudents);
+    this.hostelStudents = response;
   }
 }

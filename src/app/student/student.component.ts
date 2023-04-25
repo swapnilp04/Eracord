@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {StudentService} from './../service/student.service';
-import {Student} from './../interface/student';
+import { StudentService } from './../service/student.service';
+import { Student } from './../interface/student';
+import { HostelStudent } from './../interface/hostel-student';
 import { Alert } from './../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
@@ -17,6 +18,7 @@ import { TabDirective } from 'ngx-bootstrap/tabs';
 export class StudentComponent  implements OnInit {
 
   public student = {} as Student;
+  public hostelStudent = {} as HostelStudent;
   public id: any;
   dismissible = true;
 
@@ -83,6 +85,7 @@ export class StudentComponent  implements OnInit {
 
   assignHostel(response: any): void {
     this.hasHostel = true;
+    this.hostelStudent = response;
   }
 
   back(): void {

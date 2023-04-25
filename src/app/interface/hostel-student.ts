@@ -1,4 +1,5 @@
 import { Hostel } from './hostel';
+import { HostelRoom } from './hostel-room';
 import { Student } from './student';
 
 export interface HostelStudent {
@@ -7,7 +8,8 @@ export interface HostelStudent {
 	hostel_id: number;
 	hostel_room_id: number;
 	Student: Student;
-	hostel: Hostel;
+	Hostel: Hostel;
+	HostelRoom: HostelRoom;
 	contact_number: string;
 	name: string;
 }
