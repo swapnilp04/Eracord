@@ -26,6 +26,8 @@
 			    <p>Rector Number - {{hostelStudent.Hostel.rector}}</p>
 			    <p>Number of students in rooms - {{hostelStudent.HostelRoom.no_of_students}}</p>
 			    <p>Monthly Charges - {{hostelStudent.Hostel.rate}}</p>
+			    <h4>Room Students</h4>
+			    <app-hostel-students [hostelId]="hostelStudent.hostel_id" [hostelRoomId]="hostelStudent.hostel_room_id" [hostelRoom]="hostelStudent.HostelRoom"></app-hostel-students>
 		  	</span>
 		  	<h3 *ngIf=!hasHostel>No hostel Assigned</h3>
 		  	<a *ngIf=!hasHostel href="/students/{{student.id}}/assign-hostel"><span>Assign Hostel</span></a>
