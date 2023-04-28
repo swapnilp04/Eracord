@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BatchService } from './../../service/batch.service';
+import { StandardService } from './../../service/standard.service';
 import { BatchStandardService } from './../../service/batch-standard.service';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
@@ -15,7 +16,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./batch-standard-add-edit.component.css']
 })
 
-export class BatchStandardAddEditComponent implements OnInit{
+export class BatchStandardAddEditComponent implements OnInit {
   public batch = {} as Batch;
   public batchStandard = {} as BatchStandard;
   public standards: Standard[] = [];
@@ -33,7 +34,8 @@ export class BatchStandardAddEditComponent implements OnInit{
   public isLoading = true;
   
 
-  constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, private route: ActivatedRoute, private location: Location, private router: Router){}
+  constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, 
+    private route: ActivatedRoute, private location: Location, private router: Router, private standardService: StandardService){}
 
 
   ngOnInit(): void {
@@ -52,6 +54,9 @@ export class BatchStandardAddEditComponent implements OnInit{
       this.batchStandard.batch_id = Number(param.get('batch_id'));
       this.loadBatch(this.batchStandard.batch_id);
       this.loadStandards(this.batchStandard.batch_id);
+      if(!this.isNew) { 
+        this.loadBatchStandard(this.batchStandard.batch_id, Number(param.get('id')));
+      }
     });
   }
 
@@ -69,11 +74,29 @@ export class BatchStandardAddEditComponent implements OnInit{
 
   
   loadStandards(batchID: number): void {
-    this.batchService.getStandards(batchID).subscribe (
+    var service: any;
+    if(this.isNew){
+      service = this.batchService;
+    } else {
+      service = this.standardService;
+    }
+    service.getStandards(batchID).subscribe (
       (response: any) => this.assignStandards(response),
       (error: any) => console.log(error),
       () => console.log('Done getting Batch......')
     );
+  }
+
+  loadBatchStandard(batchID: number, batchStandardId: number): void {
+    this.batchStandardService.getBatchStandard(batchID, batchStandardId).subscribe (
+      (response: any) => this.assignbatchStandard(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Batch......')
+    );
+  }
+
+  assignbatchStandard(response: any) {
+    this.batchStandard = response;
   }
   
   assignStandards(response: any) {
@@ -94,7 +117,9 @@ export class BatchStandardAddEditComponent implements OnInit{
   }
 
   selectStandard(id: any): void {
-    this.batchStandard.standard_id = id;
+    if(this.isNew) {
+      this.batchStandard.standard_id = id;
+    }
   }
   
   createBatchStandard(): void {
@@ -105,7 +130,19 @@ export class BatchStandardAddEditComponent implements OnInit{
     );
   }
 
+  updateBatchStandard(): void {
+    this.batchStandardService.updateBatchStandard(this.batch.id, this.batchStandard).subscribe (
+      (response: any) => this.getSuccess(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Batch......')
+    );
+  }
+
   getSuccess(response: any): void {
-    window.location.href = `/batchs/${response['batch_standard']['batch_id']}?success=true`;
+    if(this.isNew) {
+      window.location.href = `/batchs/${response['batch_standard']['batch_id']}?success=true`;
+    } else {
+      window.location.href = `/batchs/${response['batch_standard']['batch_id']}?isUpdate=true`;
+    }
   }
 }

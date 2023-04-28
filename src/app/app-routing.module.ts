@@ -42,6 +42,7 @@ const routes: Routes = [
   {path: 'batchs/:id' , component: BatchComponent},
   {path: 'batchs/:id/edit' , component: BatchAddEditComponent},
   {path: 'batchs/:batch_id/standards/new' , component: BatchStandardAddEditComponent},
+  {path: 'batchs/:batch_id/standards/:id/edit' , component: BatchStandardAddEditComponent},
 
   {path: 'hostels' , component: HostelsComponent},
   {path: 'hostels/new' , component: HostelAddEditComponent},

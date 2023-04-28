@@ -13,6 +13,16 @@ URL = "http://localhost:8080"
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
+  getBatchStandard(batchID: number, batchStandardId: number): Observable<BatchStandard> {
+    const token = this.loginService.getToken();
+    const myHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+    return this.http.get<BatchStandard>(`${this.URL}/batchs/${batchID}/batch-standards/${batchStandardId}`, {headers: myHeaders});
+  }
+
   getBatchStandards(batchID: number): Observable<BatchStandard> {
     const token = this.loginService.getToken();
     const myHeaders = new HttpHeaders({
@@ -24,7 +34,6 @@ URL = "http://localhost:8080"
   }
 
   createBatchStandard(batchId: any, batchStandard: BatchStandard): Observable<BatchStandard> {
-
     const token = this.loginService.getToken();
     const myHeaders = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -32,6 +41,16 @@ URL = "http://localhost:8080"
       'token': token,
     });
     return this.http.post<BatchStandard>(`${this.URL}/batchs/${batchId}/batch-standards`, batchStandard, {headers: myHeaders});
+  }
+
+  updateBatchStandard(batchId: any, batchStandard: BatchStandard): Observable<BatchStandard> {
+    const token = this.loginService.getToken();
+    const myHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+    return this.http.put<BatchStandard>(`${this.URL}/batchs/${batchId}/batch-standards/${batchStandard.id}`, batchStandard, {headers: myHeaders});
   }
 
   updateBatch(batchID: number, batchStandard: BatchStandard): Observable<BatchStandard> {
