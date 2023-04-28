@@ -30,6 +30,9 @@ import { HostelRoomsComponent } from './hostel-room/hostel-rooms/hostel-rooms.co
 import { HostelStudentsComponent } from './hostel-room/hostel-students/hostel-students.component';
 import { AssignHostelComponent } from './students/assign-hostel/assign-hostel.component';
 import { SwapRoomComponent } from './students/swap-room/swap-room.component';
+import { AssignStandardComponent } from './batchs/assign-standard/assign-standard.component';
+import { BatchStandardsComponent } from './batchs/batch-standards/batch-standards.component';
+import { BatchStandardAddEditComponent } from './batch-standards/batch-standard-add-edit/batch-standard-add-edit.component';
 
 
 
@@ -56,7 +59,10 @@ import { SwapRoomComponent } from './students/swap-room/swap-room.component';
     HostelRoomsComponent,
     HostelStudentsComponent,
     AssignHostelComponent,
-    SwapRoomComponent
+    SwapRoomComponent,
+    AssignStandardComponent,
+    BatchStandardsComponent,
+    BatchStandardAddEditComponent,
   ],
   imports: [
     BrowserModule,

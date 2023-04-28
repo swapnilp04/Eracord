@@ -7,8 +7,11 @@
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
 		<h5>Year - {{batch.year}}</h5>
-		<button (click)=back() class="btn btn-primary">
+		<a class="btn btn-secondary" href="batchs/{{batch.id}}/standards/new">Assign Standard</a>
+		<button (click)=back() class="btn btn-primary marginLeft15">
 			Back
 		</button>
 	</div>
+	<h4>Standards</h4>
+	<app-batch-standards [batchId]="batch.id"></app-batch-standards>
 </div>
