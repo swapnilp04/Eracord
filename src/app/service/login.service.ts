@@ -26,4 +26,18 @@ export class LoginService {
   getToken() {
     return this.cookies.get('token');
   }
+
+  getUrl() {
+    return "http://localhost:8080"
+  }
+
+  getHeaders(): any {
+    const token = this.getToken();
+    return new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Requested-With',
+      'token': token,
+    });
+
+  }
 }

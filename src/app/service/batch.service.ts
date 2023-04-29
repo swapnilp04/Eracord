@@ -17,52 +17,27 @@ export class BatchService {
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getBatchs(): Observable<Batch[]> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<Batch[]>(`${this.URL}/batchs`, {headers: myHeaders});
   }
 
   getBatch(batchID: number): Observable<Batch> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<Batch>(`${this.URL}/batchs/${batchID}`, {headers: myHeaders});
   }
 
   createBatch(batch: Batch): Observable<Batch> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.post<Batch>(`${this.URL}/batchs`, batch, {headers: myHeaders});
   }
 
   updateBatch(batch: Batch): Observable<Batch> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.put<Batch>(`${this.URL}/batchs/${batch.id}`, batch, {headers: myHeaders});
   }  
 
   getStandards(batchID: number): Observable<Standard[]> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<Standard[]>(`${this.URL}/batchs/${batchID}/unassigned_standards`, {headers: myHeaders});
   }
 }

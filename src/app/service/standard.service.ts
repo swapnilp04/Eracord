@@ -15,42 +15,22 @@ export class StandardService {
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getStandards(): Observable<Standard[]> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<Standard[]>(`${this.URL}/standards`, {headers: myHeaders});
   }
 
   getStandard(standardID: number): Observable<Standard> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<Standard>(`${this.URL}/standards/${standardID}`, {headers: myHeaders});
   }
 
   createStandard(standard: Standard): Observable<Standard> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.post<Standard>(`${this.URL}/standards`, standard, {headers: myHeaders});
   }
 
   updateStandard(standard: Standard): Observable<Standard> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.put<Standard>(`${this.URL}/standards/${standard.id}`, standard, {headers: myHeaders});
   }  
 }

@@ -17,53 +17,27 @@ export class HostelRoomService {
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getHostelRooms(hostelId: number): Observable<HostelRoom[]> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<HostelRoom[]>(`${this.URL}/hostels/${hostelId}/hostel_rooms`, {headers: myHeaders});
   }
 
   getHostelRoom(hostelId: number, hostelRoomID: number): Observable<HostelRoom> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<HostelRoom>(`${this.URL}/hostels/${hostelId}/hostel_rooms/${hostelRoomID}`, {headers: myHeaders});
   }
 
   createHostelRoom(hostelId: number, hostelRoom: HostelRoom): Observable<HostelRoom> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.post<HostelRoom>(`${this.URL}/hostels/${hostelId}/hostel_rooms`, hostelRoom, {headers: myHeaders});
   }
 
   updateHostelRoom(hostelId: number, hostelRoom: HostelRoom): Observable<HostelRoom> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
+    const myHeaders = this.loginService.getHeaders();
     return this.http.put<HostelRoom>(`${this.URL}/hostels/${hostelRoom.id}/hostel_rooms/${hostelRoom.id}`, hostelRoom, {headers: myHeaders});
   }
 
   getHostelRoomStudents(hostelId: number, hostelRoomId: number): Observable<HostelStudent> {
-    const token = this.loginService.getToken();
-    const myHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'token': token,
-    });
-
+    const myHeaders = this.loginService.getHeaders();
     return this.http.get<HostelStudent>(`${this.URL}/hostels/${hostelId}/hostel_rooms/${hostelRoomId}/students`, {headers: myHeaders});
   }
 }
