@@ -73,7 +73,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
 
   createBatchStandardStudent(): void {
     this.studentService.assignStudentBatchStandard(this.studentId, this.batchStandardStudent).subscribe (
-      (response: any) => this.assignStudent(response),
+      (response: any) => this.batchStandardStudentCreated(),
       (error: any) => console.log(error),
       () => console.log('Done getting Student......')
     );   
@@ -94,6 +94,10 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   }
 
   back(): void {
+    this.router.navigate(['/students', this.studentId]);
+  }
+
+  batchStandardStudentCreated(): void {
     this.router.navigate(['/students', this.studentId]);
   }
 
