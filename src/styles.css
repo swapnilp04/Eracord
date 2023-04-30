@@ -10,6 +10,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .marginBottom15 {
 	margin-bottom:15px;	
 }
+.marginTop15 {
+	margin-top:15px;		
+}
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';

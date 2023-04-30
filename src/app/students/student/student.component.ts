@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from './../../service/student.service';
 import { Student } from './../../interface/student';
+import { BatchStandardStudent } from './../../interface/batch-standard-student';
 import { HostelStudent } from './../../interface/hostel-student';
 import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -19,7 +20,9 @@ export class StudentComponent  implements OnInit {
 
   public student = {} as Student;
   public hostelStudent = {} as HostelStudent;
+  public batchStandardStudents: BatchStandardStudent[] = [];
   public id: any;
+  public classLoaded: boolean = false;
   dismissible = true;
 
   defaultAlerts: any[] = [
@@ -39,17 +42,14 @@ export class StudentComponent  implements OnInit {
 
 
   ngOnInit(): void {
-    
     this.route.queryParams.subscribe((param) => {
       if (param['success'] == 'true') {
         this.alerts = this.defaultAlerts;
       }
     });
-
     this.route.paramMap.subscribe((param) => {
-      var id = Number(param.get('id'));
-      
-      this.loadStudent(id);
+      this.id = Number(param.get('id'));      
+      this.loadStudent(this.id);
     });
   }
 
@@ -59,6 +59,18 @@ export class StudentComponent  implements OnInit {
 
   onSelect(data: TabDirective): void {
     this.value = data.heading;
+    if(this.value == 'Class' && !this.classLoaded)  {
+      this.classLoaded = true;
+      this.loadStudentBatchStandards(this.id);
+    }
+  }
+
+  loadStudentBatchStandards(studentID: number): void {
+    this.studentService.getStudentBatchStandards(studentID).subscribe (
+      (response: any) => this.assignStudentBatchStandard(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Student......')
+    );
   }
 
   loadStudent(studentID: number): void {
@@ -86,6 +98,10 @@ export class StudentComponent  implements OnInit {
   assignHostel(response: any): void {
     this.hasHostel = true;
     this.hostelStudent = response;
+  }
+
+  assignStudentBatchStandard(response: any): void {
+    this.batchStandardStudents = response;
   }
 
   back(): void {

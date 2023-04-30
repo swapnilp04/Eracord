@@ -39,11 +39,6 @@ export class AssignHostelComponent implements OnInit {
   
   ngOnInit(): void {
     
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-      }
-    });
-
     this.route.paramMap.subscribe((param) => {
       this.id = Number(param.get('id'));
       

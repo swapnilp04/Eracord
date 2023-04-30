@@ -33,6 +33,8 @@ import { SwapRoomComponent } from './students/swap-room/swap-room.component';
 import { AssignStandardComponent } from './batchs/assign-standard/assign-standard.component';
 import { BatchStandardsComponent } from './batchs/batch-standards/batch-standards.component';
 import { BatchStandardAddEditComponent } from './batch-standards/batch-standard-add-edit/batch-standard-add-edit.component';
+import { BatchStandardStudentsComponent } from './batch-standard-students/batch-standard-students/batch-standard-students.component';
+import { BatchStandardStudentAddEditComponent } from './batch-standard-students/batch-standard-student-add-edit/batch-standard-student-add-edit.component';
 
 
 
@@ -63,6 +65,8 @@ import { BatchStandardAddEditComponent } from './batch-standards/batch-standard-
     AssignStandardComponent,
     BatchStandardsComponent,
     BatchStandardAddEditComponent,
+    BatchStandardStudentsComponent,
+    BatchStandardStudentAddEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@
 		<h5>Parent Name - {{student.parent_name}}</h5>
 		<h5>Contact Number - {{student.contact_number}}</h5>
 		<h5>What's app Number - {{student.wh_number}}</h5>
+		<h5>Address - {{student.town}}</h5>
 		
 		<a class="btn btn-secondary" href='/students/{{student.id}}/edit'>Edit</a>
 		<button (click)=back() class="btn btn-primary marginLeft15">
@@ -31,6 +32,10 @@
 		  	</span>
 		  	<h3 *ngIf=!hasHostel>No hostel Assigned</h3>
 		  	<a *ngIf=!hasHostel href="/students/{{student.id}}/assign-hostel"><span>Assign Hostel</span></a>
+		  </tab>
+		  <tab heading="Class" class="mt-2" (selectTab)="onSelect($event)">
+		  	<h4>Class</h4>
+		  	<p><app-batch-standard-students [batchStandardStudents]="batchStandardStudents" [student]="student"></app-batch-standard-students></p>
 		  </tab>
 		  <tab heading="Transactions" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Transactions</h4>

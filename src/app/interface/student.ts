@@ -10,4 +10,6 @@ export interface Student {
 	contact_number: number;
 	wh_number: number;
 	status?: string;
+	town: string;
+	has_hostel: boolean;
 }

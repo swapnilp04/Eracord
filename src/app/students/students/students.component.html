@@ -10,6 +10,8 @@
       <th class="col-md-1"> Sr No
       </th>
       <th>Name</th>
+      <th>Address</th>
+      <th>HasHostel</th>
       <th>Action</th>
     </tr>
     </thead>
@@ -17,6 +19,8 @@
     	<tr *ngFor="let student of students; index as i">
       <td>{{i+1}}</td> 
       <td>{{student.first_name}}</td>
+      <td>{{student.town}}</td>
+      <td>{{student.has_hostel}}</td>
       <td>
         <a href='/students/{{student.id}}'>Show</a>
         <a href='/students/{{student.id}}/edit'>Edit</a>
