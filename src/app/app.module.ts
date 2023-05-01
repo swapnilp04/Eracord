@@ -35,6 +35,7 @@ import { BatchStandardsComponent } from './batchs/batch-standards/batch-standard
 import { BatchStandardAddEditComponent } from './batch-standards/batch-standard-add-edit/batch-standard-add-edit.component';
 import { BatchStandardStudentsComponent } from './batch-standard-students/batch-standard-students/batch-standard-students.component';
 import { BatchStandardStudentAddEditComponent } from './batch-standard-students/batch-standard-student-add-edit/batch-standard-student-add-edit.component';
+import { TransactionsComponent } from './transactions/transactions/transactions.component';
 
 
 
@@ -67,6 +68,7 @@ import { BatchStandardStudentAddEditComponent } from './batch-standard-students/
     BatchStandardAddEditComponent,
     BatchStandardStudentsComponent,
     BatchStandardStudentAddEditComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,
