@@ -6,7 +6,8 @@
 	<div class="mb-3">
 		<h2>{{name()}} Hostel</h2>
 		<h5>Rooms - {{hostel.rooms}}</h5>
-		<button (click)=back() class="btn btn-primary">
+		<a class="btn btn-secondary" href="/hostels/{{hostel.id}}/edit">Edit</a>
+		<button (click)=back() class="btn btn-primary marginLeft15">
 			Back
 		</button>
 	</div>
