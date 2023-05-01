@@ -3,6 +3,7 @@
 		<div class="row row-cols-2">
 			<div *ngFor="let batchStandard of batchStandards" class="marginTop15 borderBox border" [ngClass]="{selected: selectedBatchStandard ==  batchStandard.id}"  (click)="selectBatchStandard(batchStandard.id)" >
 				<p>Name - {{batchStandard.Standard.name}}</p>
+				<p>Student Count - {{batchStandard.students_count}}</p>
 				<p>Fee - {{batchStandard.fee}}</p>
 				<a class="btn btn-secondary marginBottom15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}/edit">Edit</a>
 			</div>

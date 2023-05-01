@@ -4,4 +4,5 @@ export interface HostelRoom {
 	no_of_students: number;
 	hostel_id: number;
 	rate: number;
+	hostel_students_count: number
 }

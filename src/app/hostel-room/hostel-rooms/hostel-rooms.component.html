@@ -8,16 +8,18 @@
       </th>
       <th>Name</th>
       <th>No of Students</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
   	<tr *ngFor="let hostelRoom of hostelRooms; index as i">
       <td>{{i+1}}</td> 
       <td>{{hostelRoom.name}}</td>
+      <td>{{hostelRoom.hostel_students_count}}</td>
       <td>
         <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}'>Show</a>
         <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}/edit'>Edit</a>
       </td>
   	</tr>
   </tbody>
-</table>	
+</table>

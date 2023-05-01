@@ -8,4 +8,5 @@ export interface BatchStandard {
 	Batch: Batch;
 	Standard: Standard;
 	fee: number;
+	students_count: number;
 }

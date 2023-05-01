@@ -5,4 +5,6 @@ export interface Hostel {
 	rector: string;
 	contact_number: number;
 	rate: number;
+	hostel_rooms_count: number;
+	hostel_students_count: number
 }
