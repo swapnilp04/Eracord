@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
-import {StudentService} from './../../service/student.service';
-import {Student} from './../../interface/student';
+import { Location } from '@angular/common';
+import { StudentService } from './../../service/student.service';
+import { Student } from './../../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
