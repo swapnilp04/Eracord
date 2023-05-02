@@ -1,3 +1,5 @@
+import { Cheque } from './cheque';
+
 export interface Transaction {
 	id?: number;
 	name: string;
@@ -11,4 +13,5 @@ export interface Transaction {
 	is_checked: boolean;
 	transaction_type: string;
 	amount: number;
+	Cheque: Cheque;
 }

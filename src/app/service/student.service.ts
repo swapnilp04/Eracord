@@ -75,4 +75,9 @@ export class StudentService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Transaction[]>(`${this.URL}/students/${studentId}/transactions`, {headers: myHeaders});
   }
+
+  createStudentTransactions(studentId: number, transaction: Transaction): Observable<Transaction> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Transaction>(`${this.URL}/students/${studentId}/transactions`, transaction, {headers: myHeaders});
+  }
 }

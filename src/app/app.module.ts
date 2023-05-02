@@ -15,6 +15,7 @@ import { StudentAddEditComponent } from './students/student-add-edit/student-add
 import { StudentsComponent } from './students/students/students.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { StandardsComponent } from './standards/standards/standards.component';
 import { StandardComponent } from './standards/standard/standard.component';
 import { StandardAddEditComponent } from './standards/standard-add-edit/standard-add-edit.component';
@@ -36,6 +37,7 @@ import { BatchStandardAddEditComponent } from './batch-standards/batch-standard-
 import { BatchStandardStudentsComponent } from './batch-standard-students/batch-standard-students/batch-standard-students.component';
 import { BatchStandardStudentAddEditComponent } from './batch-standard-students/batch-standard-student-add-edit/batch-standard-student-add-edit.component';
 import { TransactionsComponent } from './transactions/transactions/transactions.component';
+import { TransactionsAddEditComponent } from './transactions/transactions-add-edit/transactions-add-edit.component';
 
 
 
@@ -69,6 +71,7 @@ import { TransactionsComponent } from './transactions/transactions/transactions.
     BatchStandardStudentsComponent,
     BatchStandardStudentAddEditComponent,
     TransactionsComponent,
+    TransactionsAddEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,8 @@ import { TransactionsComponent } from './transactions/transactions/transactions.
     BrowserAnimationsModule,
     TooltipModule.forRoot(),
     AlertModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
