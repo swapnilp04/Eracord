@@ -8,6 +8,7 @@ import { HostelStudent } from '../interface/hostel-student'
 import { BatchStandard } from '../interface/batch-standard'
 import { BatchStandardStudent } from '../interface/batch-standard-student'
 import { Transaction } from '../interface/transaction'
+import { Balance } from '../interface/balance'
 
 
 @Injectable({
@@ -79,5 +80,10 @@ export class StudentService {
   createStudentTransactions(studentId: number, transaction: Transaction): Observable<Transaction> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<Transaction>(`${this.URL}/students/${studentId}/transactions`, transaction, {headers: myHeaders});
+  }
+
+  getStudentBalance(studentId: number): Observable<Balance> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Balance>(`${this.URL}/students/${studentId}/transactions/balance`, {headers: myHeaders});
   }
 }

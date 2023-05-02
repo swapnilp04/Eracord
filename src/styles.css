@@ -582,6 +582,14 @@ bs-datepicker-container,bs-daterangepicker-container {
     z-index: 1080
 }
 
+.colorRed {
+    color: red !important;
+}
+
+.colorGreen {
+    color: green!important;
+}
+
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
-import {StudentService} from './../../service/student.service';
-import {Student} from './../../interface/student';
+import { Location } from '@angular/common';
+import { StudentService } from './../../service/student.service';
+import { Student } from './../../interface/student';
 import { Transaction } from './../../interface/transaction';
 import { Cheque } from './../../interface/cheque';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -40,7 +40,7 @@ export class TransactionsAddEditComponent implements OnInit {
       this.transaction.Cheque = this.cheque;
     }
     this.studentService.createStudentTransactions(this.studentId, this.transaction).subscribe (
-      (response: any) => console.log(response),
+      (response: any) => this.back(),
       (error: any) => console.log(error),
       () => console.log('Done getting Transaction......')
     );
@@ -58,6 +58,7 @@ export class TransactionsAddEditComponent implements OnInit {
     this.student = response;
     this.transaction.student_id = this.studentId;
   }
+
 
   name(): string {
     return `${this.student.first_name} ${this.student.middle_name} ${this.student.last_name}`

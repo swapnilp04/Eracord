@@ -1,5 +1,10 @@
 <a class="btn btn-primary" href="/students/{{studentId}}/transactions/new"> Pay</a>
 <div class="row marginTop15 container">
+  <div>
+    <h4 class="colorRed">Total Debits -  {{balance.debits}}</h4>
+    <h4 class="colorGreen">Total Credits - {{balance.credits}}</h4>
+    <h4 class="">Total Balance - {{balance.credits - balance.debits}}</h4>
+  </div>
 	<table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
@@ -15,7 +20,7 @@
       <td>{{i+1}}</td> 
       <td>{{transaction.name}}</td>
       <td>{{transaction.transaction_type}}</td>
-      <td>{{transaction.amount}}</td>
+      <td [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</td>
     	</tr>
     </tbody>
 	</table>	
