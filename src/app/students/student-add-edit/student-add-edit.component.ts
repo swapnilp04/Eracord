@@ -14,6 +14,7 @@ export class StudentAddEditComponent implements OnInit {
 
   public student = {} as Student;
   public isNew = true;
+  public formErr: any;
   
   constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute){}
 
@@ -21,7 +22,7 @@ export class StudentAddEditComponent implements OnInit {
   createStudent(student: Student): void {
     this.studentService.createStudent(student).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.assignErrors(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -63,6 +64,12 @@ export class StudentAddEditComponent implements OnInit {
     }
   }
 
+  assignErrors(error: any): void {
+    this.formErr = error.error.error
+    console.log(this.formErr);
+    console.log(typeof(this.formErr));
+  }
+
   getSuccess(response: any): void {
     if(this.isNew) {
       window.location.href = `/students/${response['student']['id']}?success=true`;
@@ -71,8 +78,18 @@ export class StudentAddEditComponent implements OnInit {
     }
   }
 
-  getError(error: any): void {
-    
+  hasError(field: string): any {
+    if(this.formErr == undefined) {
+      return false
+    }
+    return (this.formErr[field] || []).length > 0
+  }
+
+  getErrorValue(field: string): any {
+   if(this.formErr == undefined) {
+      return []
+    }
+    return this.formErr[field] || []
   }
 
   assignStudent(response: any) {
