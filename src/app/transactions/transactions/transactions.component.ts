@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StudentService } from './../../service/student.service';
+import { LoginService } from './../../service/login.service';
 import { Transaction } from './../../interface/transaction';
 import { Balance } from './../../interface/balance';
 
@@ -15,7 +16,7 @@ export class TransactionsComponent  implements OnInit {
   public transactions: Transaction[] = [];
   public balance = {} as Balance;
 
-  constructor(private studentService: StudentService){}
+  constructor(private studentService: StudentService, private loginService: LoginService){}
 
 
   ngOnInit(): void {
@@ -23,10 +24,16 @@ export class TransactionsComponent  implements OnInit {
     this.loadBalance(this.studentId);
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadTransactions(): void {
     this.studentService.getStudentTransactions(this.studentId).subscribe (
       (response: any) => this.assignTransactions(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Standards......')
     );
   }
@@ -34,7 +41,7 @@ export class TransactionsComponent  implements OnInit {
   loadBalance(studentID: number): void { 
     this.studentService.getStudentBalance(studentID).subscribe (
       (response: any) => this.assignStudentBalance(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }

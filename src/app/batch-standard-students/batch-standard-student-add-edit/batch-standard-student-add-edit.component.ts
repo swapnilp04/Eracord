@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from './../../service/student.service';
 import { BatchService } from './../../service/batch.service';
+import { LoginService } from './../../service/login.service';
 import { BatchStandardService } from './../../service/batch-standard.service';
 import { Student } from './../../interface/student';
 import { BatchStandardStudent } from './../../interface/batch-standard-student';
@@ -33,7 +34,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   ];
 
   constructor(private studentService: StudentService, private batchService: BatchService, private batchStandardService: BatchStandardService,
-    private route: ActivatedRoute, private location: Location, private router: Router){}
+    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
@@ -50,7 +51,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -58,7 +59,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   loadBatchs(): void {
     this.batchService.getBatchs().subscribe (
       (response: any) => this.assignBatchs(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -66,7 +67,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   loadBatchStandards(batchId: number): void {
     this.batchStandardService.getBatchStandards(batchId).subscribe (
       (response: any) => this.assignBatchStandards(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     ); 
   }
@@ -74,7 +75,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   createBatchStandardStudent(): void {
     this.studentService.assignStudentBatchStandard(this.studentId, this.batchStandardStudent).subscribe (
       (response: any) => this.batchStandardStudentCreated(),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );   
   }
@@ -111,5 +112,11 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
 
   selectBatchStandard(batchStandardId: any) {
     this.batchStandardStudent.batch_standard_id = batchStandardId;
+  }
+
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
   }
 }

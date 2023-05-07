@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {HostelRoomService} from './../../service/hostel-room.service';
+import { LoginService } from './../../service/login.service';
 import {HostelRoom} from './../../interface/hostel-room';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -14,13 +15,14 @@ export class HostelRoomAddEditComponent {
   public isNew = true;
   public hostelId: number ;
   
-  constructor(private hostelRoomService: HostelRoomService, private location: Location, private router: Router, private route: ActivatedRoute){}
+  constructor(private hostelRoomService: HostelRoomService, private location: Location, private router: Router, private route: ActivatedRoute, 
+    private loginService: LoginService){}
 
 
   createHostelRoom(hostelRoom: HostelRoom): void {
     this.hostelRoomService.createHostelRoom(this.hostelId, hostelRoom).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting HostelRoom......')
     );
   }
@@ -28,7 +30,7 @@ export class HostelRoomAddEditComponent {
   updateHostelRoom(hostelRoom: HostelRoom): void {
     this.hostelRoomService.updateHostelRoom(this.hostelId, hostelRoom).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting HostelRoom......')
     );
   }
@@ -47,10 +49,16 @@ export class HostelRoomAddEditComponent {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadHostelRoom(hostelRoomID: number): void {
     this.hostelRoomService.getHostelRoom(this.hostelId, hostelRoomID).subscribe (
       (response: any) => this.assignHostelRoom(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting HostelRoom......')
     );
   }

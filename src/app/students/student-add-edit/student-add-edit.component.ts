@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { StudentService } from './../../service/student.service';
+import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -16,13 +17,14 @@ export class StudentAddEditComponent implements OnInit {
   public isNew = true;
   public formErr: any;
   
-  constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute){}
+  constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
+    private loginService: LoginService){}
 
 
   createStudent(student: Student): void {
     this.studentService.createStudent(student).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => this.assignErrors(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -30,7 +32,7 @@ export class StudentAddEditComponent implements OnInit {
   updateStudent(student: Student): void {
     this.studentService.updateStudent(student).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -48,10 +50,18 @@ export class StudentAddEditComponent implements OnInit {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    } else {
+      this.assignErrors(error);
+    }
+  }
+
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }

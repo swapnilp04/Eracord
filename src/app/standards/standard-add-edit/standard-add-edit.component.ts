@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {StandardService} from './../../service/standard.service';
+import { LoginService } from './../../service/login.service';
 import {Standard} from './../../interface/standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -15,13 +16,14 @@ export class StandardAddEditComponent {
   public standard = {} as Standard;
   public isNew = true;
   
-  constructor(private standardService: StandardService, private location: Location, private router: Router, private route: ActivatedRoute){}
+  constructor(private standardService: StandardService, private location: Location, private router: Router, private route: ActivatedRoute, 
+    private loginService: LoginService){}
 
 
   createStandard(standard: Standard): void {
     this.standardService.createStandard(standard).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Standard......')
     );
   }
@@ -29,7 +31,7 @@ export class StandardAddEditComponent {
   updateStandard(standard: Standard): void {
     this.standardService.updateStandard(standard).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Standard......')
     );
   }
@@ -47,10 +49,16 @@ export class StandardAddEditComponent {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadStandard(standardID: number): void {
     this.standardService.getStandard(standardID).subscribe (
       (response: any) => this.assignStandard(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Standard......')
     );
   }

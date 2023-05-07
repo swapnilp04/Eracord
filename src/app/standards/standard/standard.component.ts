@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StandardService} from './../../service/standard.service';
+import { LoginService } from './../../service/login.service';
 import {Standard} from './../../interface/standard';
 import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -26,7 +27,8 @@ export class StandardComponent {
   public alerts: Alert[] = [];
   public isLoading = true;
   
-  constructor(private standardService: StandardService, private route: ActivatedRoute, private location: Location, private router: Router){}
+  constructor(private standardService: StandardService, private route: ActivatedRoute, private location: Location, private router: Router,
+   private loginService: LoginService){}
 
 
   ngOnInit(): void {
@@ -44,6 +46,12 @@ export class StandardComponent {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   onClosed(dismissedAlert: any): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
@@ -51,7 +59,7 @@ export class StandardComponent {
   loadStandard(standardID: number): void {
     this.standardService.getStandard(standardID).subscribe (
       (response: any) => this.assignStandard(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Standard......')
     );
   }

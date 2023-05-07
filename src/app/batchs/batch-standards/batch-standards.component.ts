@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BatchStandardService } from './../../service/batch-standard.service';
+import { LoginService } from './../../service/login.service';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
 
@@ -15,16 +16,22 @@ export class BatchStandardsComponent implements OnInit{
   public batchStandards: BatchStandard[] = [];
   public isLoading: boolean = true
 
-  constructor(private batchStandardService: BatchStandardService) {}
+  constructor(private batchStandardService: BatchStandardService, private loginService: LoginService) {}
   
   ngOnInit(): void {
     this.loadBatchStandards()
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadBatchStandards(): void {
     this.batchStandardService.getBatchStandards(this.batchId).subscribe (
       (response: any) => this.assignBatchStandards(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostels......')
     );
   }

@@ -4,6 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user'
 import {CookieService} from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class LoginService {
   URL = "http://localhost:8080"
   public isLogin = false;
 
-  constructor(private cookies: CookieService, private http: HttpClient) { }
+  constructor(private cookies: CookieService, private http: HttpClient, private router: Router) { }
 
   loginUser(user: User): Observable<User> {
     const myHeaders = new HttpHeaders({
@@ -29,6 +30,10 @@ export class LoginService {
 
   getUrl() {
     return "http://localhost:8080"
+  }
+
+  toLogin() {
+    this.router.navigate(['/login']);
   }
 
   getHeaders(): any {

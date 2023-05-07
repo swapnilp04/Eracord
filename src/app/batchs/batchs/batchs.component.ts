@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BatchService} from './../../service/batch.service';
+import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
 
 
@@ -13,17 +14,23 @@ import {Batch} from './../../interface/batch';
 export class BatchsComponent  implements OnInit {
 
   public batchs: Batch[] = [];
-  constructor(private batchService: BatchService){}
+  constructor(private batchService: BatchService, private loginService: LoginService){}
 
 
   ngOnInit(): void {
     this.loadBatchs();
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadBatchs(): void {
     this.batchService.getBatchs().subscribe (
       (response: any) => this.assignBatch(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batchs......')
     );
   }
@@ -31,7 +38,7 @@ export class BatchsComponent  implements OnInit {
   loadBatch(batchID: number): void {
     this.batchService.getBatch(batchID).subscribe (
       (response: any) => console.log(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }
@@ -39,7 +46,7 @@ export class BatchsComponent  implements OnInit {
   createBatch(batch: Batch): void {
     this.batchService.createBatch(batch).subscribe (
       (response: any) => console.log(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }

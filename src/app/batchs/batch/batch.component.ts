@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BatchService} from './../../service/batch.service';
+import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
 import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -26,7 +27,8 @@ export class BatchComponent {
   public alerts: Alert[] = [];
   public isLoading = true;
   
-  constructor(private batchService: BatchService, private route: ActivatedRoute, private location: Location, private router: Router){}
+  constructor(private batchService: BatchService, private route: ActivatedRoute, private location: Location, private router: Router, 
+    private loginService: LoginService){}
 
 
   ngOnInit(): void {
@@ -44,6 +46,12 @@ export class BatchComponent {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+  
   onClosed(dismissedAlert: any): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
@@ -51,7 +59,7 @@ export class BatchComponent {
   loadBatch(batchID: number): void {
     this.batchService.getBatch(batchID).subscribe (
       (response: any) => this.assignBatch(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }

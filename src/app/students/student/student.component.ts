@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from './../../service/student.service';
+import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { BatchStandardStudent } from './../../interface/batch-standard-student';
 import { HostelStudent } from './../../interface/hostel-student';
@@ -38,7 +39,8 @@ export class StudentComponent  implements OnInit {
   value?: string;
   public hasHostel: boolean = false;
   
-  constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, private router: Router){}
+  constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, private router: Router,
+   private loginService: LoginService){}
 
 
   ngOnInit(): void {
@@ -51,6 +53,12 @@ export class StudentComponent  implements OnInit {
       this.id = Number(param.get('id'));      
       this.loadStudent(this.id);
     });
+  }
+
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
   }
 
   onClosed(dismissedAlert: any): void {
@@ -68,7 +76,7 @@ export class StudentComponent  implements OnInit {
   loadStudentBatchStandards(studentID: number): void {
     this.studentService.getStudentBatchStandards(studentID).subscribe (
       (response: any) => this.assignStudentBatchStandard(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -76,7 +84,7 @@ export class StudentComponent  implements OnInit {
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -84,7 +92,7 @@ export class StudentComponent  implements OnInit {
   loadStudentHostel(studentID: any): void {
     this.studentService.getStudentHostel(studentID).subscribe (
       (response: any) => this.assignHostel(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostel......')
     );
   }

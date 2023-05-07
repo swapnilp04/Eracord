@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from './../../service/student.service';
 import { HostelService } from './../../service/hostel.service';
 import { HostelRoomService } from './../../service/hostel-room.service';
+import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { Hostel } from './../../interface/hostel';
 import { HostelRoom } from './../../interface/hostel-room';
@@ -34,7 +35,7 @@ export class SwapRoomComponent {
   public selectedHostelRoom: number = 0;
   
   constructor(private studentService: StudentService, private hostelService: HostelService, private hostelRoomService: HostelRoomService, 
-    private route: ActivatedRoute, private location: Location, private router: Router){}
+    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
   
   ngOnInit(): void {
     
@@ -50,6 +51,12 @@ export class SwapRoomComponent {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   onChangeHostel(newObj: number): void {
     while(this.hostelRooms.length > 0) {
       this.hostelRooms.pop();
@@ -61,7 +68,7 @@ export class SwapRoomComponent {
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
@@ -80,7 +87,7 @@ export class SwapRoomComponent {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
       this.studentService.changeStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom).subscribe (
         (response: any) => this.back(),
-        (error: any) => console.log(error),
+        (error: any) => this.errorHandle(error),
         () => console.log('Done getting Hostels......')
       );
     }
@@ -93,7 +100,7 @@ export class SwapRoomComponent {
   loadHostels(): void {
     this.hostelService.getHostels().subscribe (
       (response: any) => this.assignHostels(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostels......')
     );
   }
@@ -105,7 +112,7 @@ export class SwapRoomComponent {
   getHostelRooms(hostelId: number): void {
    this.hostelRoomService.getHostelRooms(hostelId).subscribe (
       (response: any) => this.assignHostelRooms(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostel Rooms......')
     ); 
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {HostelService} from './../../service/hostel.service';
+import { LoginService } from './../../service/login.service';
 import {Hostel} from './../../interface/hostel';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -14,13 +15,14 @@ export class HostelAddEditComponent {
   public hostel = {} as Hostel;
   public isNew = true;
   
-  constructor(private hostelService: HostelService, private location: Location, private router: Router, private route: ActivatedRoute){}
+  constructor(private hostelService: HostelService, private location: Location, private router: Router, private route: ActivatedRoute, 
+    private loginService: LoginService){}
 
 
   createHostel(hostel: Hostel): void {
     this.hostelService.createHostel(hostel).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostel......')
     );
   }
@@ -28,7 +30,7 @@ export class HostelAddEditComponent {
   updateHostel(hostel: Hostel): void {
     this.hostelService.updateHostel(hostel).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostel......')
     );
   }
@@ -46,10 +48,16 @@ export class HostelAddEditComponent {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadHostel(hostelID: number): void {
     this.hostelService.getHostel(hostelID).subscribe (
       (response: any) => this.assignHostel(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostel......')
     );
   }

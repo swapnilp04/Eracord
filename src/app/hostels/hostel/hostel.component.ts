@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HostelService} from './../../service/hostel.service';
+import { LoginService } from './../../service/login.service';
 import {Hostel} from './../../interface/hostel';
 import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -27,7 +28,8 @@ export class HostelComponent implements OnInit {
   public isLoading = true;
   public hostelId: number;
   
-  constructor(private hostelService: HostelService, private route: ActivatedRoute, private location: Location, private router: Router){}
+  constructor(private hostelService: HostelService, private route: ActivatedRoute, private location: Location, private router: Router, 
+    private loginService: LoginService){}
 
 
   ngOnInit(): void {
@@ -44,6 +46,12 @@ export class HostelComponent implements OnInit {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   onClosed(dismissedAlert: any): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
@@ -51,7 +59,7 @@ export class HostelComponent implements OnInit {
   loadHostel(hostelID: number): void {
     this.hostelService.getHostel(hostelID).subscribe (
       (response: any) => this.assignHostel(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostel......')
     );
   }

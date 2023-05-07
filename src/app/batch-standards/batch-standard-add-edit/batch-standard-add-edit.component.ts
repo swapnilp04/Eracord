@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BatchService } from './../../service/batch.service';
 import { StandardService } from './../../service/standard.service';
 import { BatchStandardService } from './../../service/batch-standard.service';
+import { LoginService } from './../../service/login.service';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
 import { Standard } from './../../interface/standard';
@@ -34,7 +35,7 @@ export class BatchStandardAddEditComponent implements OnInit {
   public isLoading = true;
   
 
-  constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, 
+  constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, private loginService: LoginService,
     private route: ActivatedRoute, private location: Location, private router: Router, private standardService: StandardService){}
 
 
@@ -64,10 +65,16 @@ export class BatchStandardAddEditComponent implements OnInit {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadBatch(batchID: number): void {
     this.batchService.getBatch(batchID).subscribe (
       (response: any) => this.assignBatch(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }
@@ -125,7 +132,7 @@ export class BatchStandardAddEditComponent implements OnInit {
   createBatchStandard(): void {
     this.batchStandardService.createBatchStandard(this.batch.id, this.batchStandard).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }
@@ -133,7 +140,7 @@ export class BatchStandardAddEditComponent implements OnInit {
   updateBatchStandard(): void {
     this.batchStandardService.updateBatchStandard(this.batch.id, this.batchStandard).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }

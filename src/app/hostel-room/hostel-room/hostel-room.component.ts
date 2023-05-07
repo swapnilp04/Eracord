@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HostelRoomService} from './../../service/hostel-room.service';
+import { LoginService } from './../../service/login.service';
 import {HostelRoom} from './../../interface/hostel-room';
 import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -30,7 +31,8 @@ export class HostelRoomComponent implements OnInit{
   public isLoading = true;
   public hostelRoomId: number;
   
-  constructor(private hostelRoomService: HostelRoomService, private route: ActivatedRoute, private location: Location, private router: Router){}
+  constructor(private hostelRoomService: HostelRoomService, private route: ActivatedRoute, private location: Location, private router: Router, 
+    private loginService: LoginService){}
 
 
   ngOnInit(): void {
@@ -48,6 +50,12 @@ export class HostelRoomComponent implements OnInit{
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+  
   onClosed(dismissedAlert: any): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
@@ -55,7 +63,7 @@ export class HostelRoomComponent implements OnInit{
   loadHostelRoom(hostelRoomID: number): void {
     this.hostelRoomService.getHostelRoom(this.hostelId, hostelRoomID).subscribe (
       (response: any) => this.assignHostelRoom(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting HostelRoom......')
     );
   }

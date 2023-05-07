@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { StudentService } from './../../service/student.service';
+import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { Transaction } from './../../interface/transaction';
 import { Cheque } from './../../interface/cheque';
@@ -21,7 +22,8 @@ export class TransactionsAddEditComponent implements OnInit {
   public studentId: number;
   public isLoading: boolean = false;
 
-  constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute){}
+  constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
+    private loginService: LoginService){}
 
   ngOnInit(): void {
     this.transaction.payment_mode = "Cash";
@@ -35,13 +37,19 @@ export class TransactionsAddEditComponent implements OnInit {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   submitPayment(): void {
     if(this.transaction.payment_mode == "Cheque") {
       this.transaction.Cheque = this.cheque;
     }
     this.studentService.createStudentTransactions(this.studentId, this.transaction).subscribe (
       (response: any) => this.back(),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Transaction......')
     );
   }
@@ -49,7 +57,7 @@ export class TransactionsAddEditComponent implements OnInit {
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }

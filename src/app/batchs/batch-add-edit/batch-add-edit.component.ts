@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {BatchService} from './../../service/batch.service';
+import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -14,13 +15,14 @@ export class BatchAddEditComponent {
   public batch = {} as Batch;
   public isNew = true;
   
-  constructor(private batchService: BatchService, private location: Location, private router: Router, private route: ActivatedRoute){}
+  constructor(private batchService: BatchService, private location: Location, private router: Router, private route: ActivatedRoute, 
+    private loginService: LoginService){}
 
 
   createBatch(batch: Batch): void {
     this.batchService.createBatch(batch).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }
@@ -28,7 +30,7 @@ export class BatchAddEditComponent {
   updateBatch(batch: Batch): void {
     this.batchService.updateBatch(batch).subscribe (
       (response: any) => this.getSuccess(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }
@@ -46,10 +48,16 @@ export class BatchAddEditComponent {
     });
   }
 
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+  }
+
   loadBatch(batchID: number): void {
     this.batchService.getBatch(batchID).subscribe (
       (response: any) => this.assignBatch(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch......')
     );
   }

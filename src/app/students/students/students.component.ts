@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StudentService} from './../../service/student.service';
+import { LoginService } from './../../service/login.service';
 import {Student} from './../../interface/student';
 
 
@@ -13,7 +14,7 @@ import {Student} from './../../interface/student';
 export class StudentsComponent  implements OnInit {
 
   public students: Student[] = [];
-  constructor(private studentService: StudentService){}
+  constructor(private studentService: StudentService, private loginService: LoginService){}
 
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class StudentsComponent  implements OnInit {
   loadStudents(): void {
     this.studentService.getStudents().subscribe (
       (response: any) => this.assignStudents(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Students......')
     );
   }
@@ -31,15 +32,21 @@ export class StudentsComponent  implements OnInit {
   loadStudent(studentID: number): void {
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => console.log(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
+  }
+
+  errorHandle(error: any): void {
+    if(error.status == 401) {
+      this.loginService.toLogin();
+    }
   }
 
   createStudent(student: Student): void {
     this.studentService.createStudent(student).subscribe (
       (response: any) => console.log(response),
-      (error: any) => console.log(error),
+      (error: any) => this.errorHandle(error),
       () => console.log('Done getting Student......')
     );
   }
