@@ -20,12 +20,14 @@
       <p *ngFor="let err of getErrorValue('LastName')">{{err}}</p>
     </div>
   </div>
-  <div class="form-group mb-3">
-    <label for="exampleInputPassword1" class="form-label">Age</label>
-    <input type="number" class="form-control" [ngClass]="{'is-invalid': hasError('Age')}" placeholder="Age" [(ngModel)]="student.age" [ngModelOptions]="{standalone: true}"/>
-    <div class="invalid-feedback" *ngIf="hasError('Age')">
-      <p *ngFor="let err of getErrorValue('Age')">{{err}}</p>
-    </div>
+  <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Birth Date</label>
+    <input type="text"
+           placeholder="Birth Date"
+           class="form-control"
+           [(ngModel)]="student.birth_date"
+           [ngModelOptions]="{standalone: true}"
+           bsDatepicker>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">parent Name</label>

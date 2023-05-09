@@ -4,7 +4,7 @@ export interface Student {
 	first_name: string;
 	middle_name: string;
 	last_name: string;
-	age: string;
+	birth_date: Date;
 	parent_name: string;
 	parent_occupation: string;
 	contact_number: number;
