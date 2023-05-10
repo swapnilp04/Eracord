@@ -12,7 +12,8 @@ import { HostelStudent } from './../interface/hostel-student'
 })
 export class HostelRoomService {
 
-  URL = "http://localhost:8080"
+  //URL = "http://localhost:8080"
+  URL = "http://54.237.98.76:8080"
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 

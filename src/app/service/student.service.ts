@@ -15,7 +15,8 @@ import { Balance } from '../interface/balance'
   providedIn: 'root'
 })
 export class StudentService {
-  URL = "http://localhost:8080"
+  //URL = "http://localhost:8080"
+  URL = "http://54.237.98.76:8080"
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
