@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StudentService} from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
 import {Student} from './../../interface/student';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 
 
@@ -12,17 +13,39 @@ import {Student} from './../../interface/student';
 })
 
 export class StudentsComponent  implements OnInit {
+  currentPage = 1;
+  page= 1;
+  totalItems: number = 10;
+  search = "";
 
   public students: Student[] = [];
   constructor(private studentService: StudentService, private loginService: LoginService){}
 
 
   ngOnInit(): void {
-    this.loadStudents();
+    this.loadStudents(1);
   }
 
-  loadStudents(): void {
-    this.studentService.getStudents().subscribe (
+  pageChanged(event: PageChangedEvent): void {
+    this.page = event.page;
+    while(this.students.length > 0) {
+      this.students.pop();
+    } 
+    this.loadStudents(this.page);
+  }
+
+  searchTable(): void{
+   this.loadStudents(this.page); 
+  }
+
+  changed(e: any) {
+    this.page = 1;
+    this.currentPage = 1;
+    this.loadStudents(this.page);  
+  }
+
+  loadStudents(pageNumber: number): void {
+    this.studentService.getStudents(pageNumber, this.search).subscribe (
       (response: any) => this.assignStudents(response),
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting Students......')
@@ -52,6 +75,7 @@ export class StudentsComponent  implements OnInit {
   }
 
     assignStudents(response: any) {
-      this.students = response
+      this.students = response.students;
+      this.totalItems = response.total;
     }
 }

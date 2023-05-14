@@ -38,6 +38,7 @@ import { BatchStandardStudentsComponent } from './batch-standard-students/batch-
 import { BatchStandardStudentAddEditComponent } from './batch-standard-students/batch-standard-student-add-edit/batch-standard-student-add-edit.component';
 import { TransactionsComponent } from './transactions/transactions/transactions.component';
 import { TransactionsAddEditComponent } from './transactions/transactions-add-edit/transactions-add-edit.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 
@@ -83,7 +84,8 @@ import { TransactionsAddEditComponent } from './transactions/transactions-add-ed
     TooltipModule.forRoot(),
     AlertModule.forRoot(),
     TabsModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

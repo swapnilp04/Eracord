@@ -10,28 +10,28 @@ import { Standard } from './../interface/standard'
   providedIn: 'root'
 })
 export class StandardService {
-  //URL = "http://localhost:8080"
-  URL = "http://54.237.98.76:8080"
+  URL = "http://localhost:8080"
+  //URL = "http://54.237.98.76:8080"
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getStandards(): Observable<Standard[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Standard[]>(`${this.URL}/standards`, {headers: myHeaders});
+    return this.http.get<Standard[]>(`${this.loginService.URL}/standards`, {headers: myHeaders});
   }
 
   getStandard(standardID: number): Observable<Standard> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Standard>(`${this.URL}/standards/${standardID}`, {headers: myHeaders});
+    return this.http.get<Standard>(`${this.loginService.URL}/standards/${standardID}`, {headers: myHeaders});
   }
 
   createStandard(standard: Standard): Observable<Standard> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.post<Standard>(`${this.URL}/standards`, standard, {headers: myHeaders});
+    return this.http.post<Standard>(`${this.loginService.URL}/standards`, standard, {headers: myHeaders});
   }
 
   updateStandard(standard: Standard): Observable<Standard> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.put<Standard>(`${this.URL}/standards/${standard.id}`, standard, {headers: myHeaders});
+    return this.http.put<Standard>(`${this.loginService.URL}/standards/${standard.id}`, standard, {headers: myHeaders});
   }  
 }

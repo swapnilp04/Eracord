@@ -12,33 +12,33 @@ import { Standard } from './../interface/standard'
 })
 export class BatchService {
 
-  //URL = "http://localhost:8080"
-  URL = "http://54.237.98.76:8080"
+  URL = "http://localhost:8080"
+  //URL = "http://54.237.98.76:8080"
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getBatchs(): Observable<Batch[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Batch[]>(`${this.URL}/batchs`, {headers: myHeaders});
+    return this.http.get<Batch[]>(`${this.loginService.URL}/batchs`, {headers: myHeaders});
   }
 
   getBatch(batchID: number): Observable<Batch> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Batch>(`${this.URL}/batchs/${batchID}`, {headers: myHeaders});
+    return this.http.get<Batch>(`${this.loginService.URL}/batchs/${batchID}`, {headers: myHeaders});
   }
 
   createBatch(batch: Batch): Observable<Batch> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.post<Batch>(`${this.URL}/batchs`, batch, {headers: myHeaders});
+    return this.http.post<Batch>(`${this.loginService.URL}/batchs`, batch, {headers: myHeaders});
   }
 
   updateBatch(batch: Batch): Observable<Batch> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.put<Batch>(`${this.URL}/batchs/${batch.id}`, batch, {headers: myHeaders});
+    return this.http.put<Batch>(`${this.loginService.URL}/batchs/${batch.id}`, batch, {headers: myHeaders});
   }  
 
   getStandards(batchID: number): Observable<Standard[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Standard[]>(`${this.URL}/batchs/${batchID}/unassigned_standards`, {headers: myHeaders});
+    return this.http.get<Standard[]>(`${this.loginService.URL}/batchs/${batchID}/unassigned_standards`, {headers: myHeaders});
   }
 }
