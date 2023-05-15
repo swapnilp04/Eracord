@@ -8,6 +8,7 @@ import { BatchStandardStudent } from './../../interface/batch-standard-student';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
 import { Alert } from './../../interface/alert';
+
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -25,13 +26,10 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   public batchStandards: BatchStandard[] = [];
   public studentId: any;
   public isLoading = true;
+  dismissible = true;
 
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Sutdent Created successfully. `
-    }
-  ];
+  defaultAlerts: any[] = [];
+  public alerts: Alert[] = [];
 
   constructor(private studentService: StudentService, private batchService: BatchService, private batchStandardService: BatchStandardService,
     private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
@@ -42,6 +40,10 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
       this.batchStandardStudent.student_id = this.studentId;
       this.loadStudent(this.studentId);
     });
+  }
+
+  onClosed(dismissedAlert: any): void {
+    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
   name(): string {
@@ -117,6 +119,13 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else {
+      console.log(error.error.message);
+      this.defaultAlerts.push({
+        type: 'warning',
+        msg: error.error.message
+      })
+      this.alerts = this.defaultAlerts;
     }
   }
 }
