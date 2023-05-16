@@ -39,6 +39,7 @@ import { BatchStandardStudentAddEditComponent } from './batch-standard-students/
 import { TransactionsComponent } from './transactions/transactions/transactions.component';
 import { TransactionsAddEditComponent } from './transactions/transactions-add-edit/transactions-add-edit.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
 
 
 
@@ -73,6 +74,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     BatchStandardStudentAddEditComponent,
     TransactionsComponent,
     TransactionsAddEditComponent,
+    AllTransactionsComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ import { HostelComponent } from './hostels/hostel/hostel.component';
 import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edit.component';
 import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/hostel-room-add-edit.component';
 import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
+import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -58,6 +59,8 @@ const routes: Routes = [
   {path: 'hostels/:hostel_id/hostel-rooms/new' , component: HostelRoomAddEditComponent},
   {path: 'hostels/:hostel_id/hostel-rooms/:id' , component: HostelRoomComponent},
   {path: 'hostels/:hostel_id/hostel-rooms/:id/edit' , component: HostelRoomAddEditComponent},
+
+  {path: 'accounts' , component: AllTransactionsComponent},
   ];
 
 

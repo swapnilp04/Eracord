@@ -69,9 +69,9 @@ export class HostelRoomAddEditComponent {
 
   getSuccess(response: any): void {
     if(this.isNew) {
-      window.location.href = `/hostels/${response['hostelRoom']['hostel_id']}/hostel-rooms/${response['hostelRoom']['id']}?success=true`;
+      window.location.href = `/hostels/${response['hostelRoom']['hostel_id']}?success=true`;
     } else {
-      window.location.href = `/hostels/${response['hostelRoom']['hostel_id']}/hostel-rooms/${response['hostelRoom']['id']}?isUpdate=true`;
+      window.location.href = `/hostels/${response['hostelRoom']['hostel_id']}?isUpdate=true`;
     }
   }
 

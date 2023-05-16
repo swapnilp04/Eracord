@@ -38,6 +38,10 @@ export class StudentsComponent  implements OnInit {
    this.loadStudents(this.page); 
   }
 
+  name(student: Student): string {
+    return `${student.first_name} ${student.middle_name} ${student.last_name}`
+  }
+
   changed(e: any) {
     this.page = 1;
     this.currentPage = 1;

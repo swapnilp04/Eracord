@@ -1,4 +1,5 @@
 import { Cheque } from './cheque';
+import { Student } from './student';
 
 export interface Transaction {
 	id?: number;
@@ -14,4 +15,6 @@ export interface Transaction {
 	transaction_type: string;
 	amount: number;
 	Cheque: Cheque;
+	CreatedAt: Date;
+	Student: Student;
 }
