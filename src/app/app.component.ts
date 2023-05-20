@@ -53,4 +53,14 @@ export class AppComponent {
   public get isLogin() {
     return this.loginService.isLogin;
   }
+
+  logoutUser(): void {
+    this.loginService.logoutUser().subscribe (
+      (response: any) => this.loginService.toLogin(),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Hostel......')
+    );
+  }
+
+
 }

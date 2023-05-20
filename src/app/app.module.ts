@@ -40,6 +40,7 @@ import { TransactionsComponent } from './transactions/transactions/transactions.
 import { TransactionsAddEditComponent } from './transactions/transactions-add-edit/transactions-add-edit.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
+import { UsersComponent } from './users/users/users.component';
 
 
 
@@ -75,6 +76,7 @@ import { AllTransactionsComponent } from './accounts/all-transactions/all-transa
     TransactionsComponent,
     TransactionsAddEditComponent,
     AllTransactionsComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

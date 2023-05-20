@@ -20,3 +20,8 @@
 .marginLeft15 {
     margin-left: 15px;
 }
+
+.logout {
+    cursor: pointer;
+    color: #fff;
+}

@@ -25,6 +25,11 @@ export class LoginService {
     return this.http.post<User>(`${this.URL}/login`, user, {headers: myHeaders});
   }
 
+  logoutUser(): Observable<Object> {
+    const myHeaders = this.getHeaders();
+    return this.http.delete(`${this.URL}/logout`, {headers: myHeaders});
+  }
+
   getToken() {
     return this.cookies.get('token');
   }
@@ -34,6 +39,9 @@ export class LoginService {
   }
 
   toLogin() {
+    this.cookies.set('isLogin', 'false');
+    this.cookies.delete('token');
+    this.isLogin = false;
     this.router.navigate(['/login']);
   }
 
