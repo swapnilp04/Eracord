@@ -119,4 +119,8 @@ export class StudentComponent  implements OnInit {
   name(): string {
     return `${this.student.first_name} ${this.student.middle_name} ${this.student.last_name}`
   }
+
+  adharCard(): string {
+    return `${this.student.adhar_card.slice(0,4)} - ${this.student.adhar_card.slice(4,8)} - ${this.student.adhar_card.slice(8,12)}`
+  }
 }

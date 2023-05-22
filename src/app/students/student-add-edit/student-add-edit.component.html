@@ -29,6 +29,15 @@
            [ngModelOptions]="{standalone: true}"
            bsDatepicker>
   </div>
+
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Adhar Card</label>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('AdharCard')}" placeholder="Adhar Card" [(ngModel)]="student.adhar_card" [ngModelOptions]="{standalone: true}"/>
+    <div class="invalid-feedback" *ngIf="hasError('AdharCard')">
+      <p *ngFor="let err of getErrorValue('AdharCard')">{{err}}</p>
+    </div>
+  </div>
+
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">parent Name</label>
     <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('ParentName')}" placeholder="parent Name" [(ngModel)]="student.parent_name" [ngModelOptions]="{standalone: true}"/>

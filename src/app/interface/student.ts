@@ -9,6 +9,7 @@ export interface Student {
 	parent_occupation: string;
 	contact_number: number;
 	wh_number: number;
+	adhar_card: string;
 	status?: string;
 	town: string;
 	has_hostel: boolean;
