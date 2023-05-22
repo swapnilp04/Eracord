@@ -2,29 +2,29 @@
   <alert [type]="alert.type" [dismissible]="dismissible" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
 </div>
 
-<div *ngIf=!isLoading>
-	<div class="mb-3">
-		<h2>{{name()}}</h2>
-		<h5>Birth Date - {{student.birth_date}}</h5>
-		<h5>Parent Name - {{student.parent_name}}</h5>
-		<h5>Contact Number - {{student.contact_number}}</h5>
-		<h5>What's app Number - {{student.wh_number}}</h5>
-		
-		<h3>Select Batch</h3>
-		<select class="form-select" [ngModel]="batchStandardStudent.batch_id" (ngModelChange)="onChangeBatch($event)" aria-label="Default select example">
-			<option value="0">----</option>
-  		<option *ngFor="let batch of batchs" [ngValue]="batch.id">{{batch.name}}</option>
-		</select>
-		<div class="row row-cols-2 container">
-			<div *ngFor="let batchStandard of batchStandards" class="marginTop15 borderBox" [ngClass]="{selected: batchStandardStudent.batch_standard_id ==  batchStandard.id}"    (click)="selectBatchStandard(batchStandard.id)" >
-				<p>Name - {{batchStandard.Standard.name}}</p>
-				<p>Fees - {{batchStandard.fee}}</p>
-				<p>Students Count - {{batchStandard.students_count}}</p>
-			</div>
-		</div>
-		<div class="marginTop15">
-			<button (click)=createBatchStandardStudent() class="btn btn-secondary marginTop15">Assign</button>
-			<button (click)=back() class="btn btn-primary marginLeft15 marginTop15">Back</button>
+
+<div class="mb-3">
+	<h2>{{name()}}</h2>
+	<h5>Birth Date - {{student.birth_date}}</h5>
+	<h5>Parent Name - {{student.parent_name}}</h5>
+	<h5>Contact Number - {{student.contact_number}}</h5>
+	<h5>What's app Number - {{student.wh_number}}</h5>
+	
+	<h3>Select Batch</h3>
+	<select class="form-select" [ngModel]="batchStandardStudent.batch_id" (ngModelChange)="onChangeBatch($event)" aria-label="Default select example">
+		<option value="0">----</option>
+		<option *ngFor="let batch of batchs" [ngValue]="batch.id">{{batch.name}}</option>
+	</select>
+	<div class="row row-cols-2 container">
+		<div *ngFor="let batchStandard of batchStandards" class="marginTop15 borderBox" [ngClass]="{selected: batchStandardStudent.batch_standard_id ==  batchStandard.id}"    (click)="selectBatchStandard(batchStandard.id)" >
+			<p>Name - {{batchStandard.Standard.name}}</p>
+			<p>Fees - {{batchStandard.fee}}</p>
+			<p>Students Count - {{batchStandard.students_count}}</p>
 		</div>
 	</div>
+	<div class="marginTop15">
+		<button (click)=createBatchStandardStudent() [disabled]="isLoading" class="btn btn-secondary marginTop15">Assign</button>
+		<button (click)=back() class="btn btn-primary marginLeft15 marginTop15">Back</button>
+	</div>
 </div>
+

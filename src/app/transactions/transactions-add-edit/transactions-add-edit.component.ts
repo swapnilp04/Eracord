@@ -20,7 +20,7 @@ export class TransactionsAddEditComponent implements OnInit {
   public cheque = {} as Cheque;
   public isNew = true;
   public studentId: number;
-  public isLoading: boolean = false;
+  public isLoading= false;
 
   constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService){}
@@ -47,18 +47,20 @@ export class TransactionsAddEditComponent implements OnInit {
     if(this.transaction.payment_mode == "Cheque") {
       this.transaction.Cheque = this.cheque;
     }
+    this.isLoading = true;
     this.studentService.createStudentTransactions(this.studentId, this.transaction).subscribe (
       (response: any) => this.back(),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Transaction......')
+      () => this.isLoadingFalse()
     );
   }
 
   loadStudent(studentID: number): void {
+    this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -79,5 +81,9 @@ export class TransactionsAddEditComponent implements OnInit {
 
   back(): void {
     this.router.navigate(['/students', this.studentId]);
+  }
+
+  isLoadingFalse(): void {
+    this.isLoading = false;    
   }
 }

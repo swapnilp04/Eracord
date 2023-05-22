@@ -16,24 +16,27 @@ export class StudentAddEditComponent implements OnInit {
   public student = {} as Student;
   public isNew = true;
   public formErr: any;
+  public isLoading = false;
   
   constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService){}
 
 
   createStudent(student: Student): void {
+    this.isLoading = true;
     this.studentService.createStudent(student).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
   updateStudent(student: Student): void {
+    this.isLoading = true;    
     this.studentService.updateStudent(student).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -59,10 +62,11 @@ export class StudentAddEditComponent implements OnInit {
   }
 
   loadStudent(studentID: number): void {
+    this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -104,5 +108,9 @@ export class StudentAddEditComponent implements OnInit {
 
   assignStudent(response: any) {
     this.student = response;
+  }
+
+  isLoadingFalse(): void {
+    this.isLoading = false;    
   }
 }

@@ -14,24 +14,27 @@ export class BatchAddEditComponent {
 
   public batch = {} as Batch;
   public isNew = true;
+  public isLoading = false;
   
   constructor(private batchService: BatchService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService){}
 
 
   createBatch(batch: Batch): void {
+    this.isLoading = true;
     this.batchService.createBatch(batch).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
   updateBatch(batch: Batch): void {
+    this.isLoading = true;
     this.batchService.updateBatch(batch).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -55,10 +58,11 @@ export class BatchAddEditComponent {
   }
 
   loadBatch(batchID: number): void {
+    this.isLoading = true;
     this.batchService.getBatch(batchID).subscribe (
       (response: any) => this.assignBatch(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -80,6 +84,10 @@ export class BatchAddEditComponent {
 
   assignBatch(response: any) {
     this.batch = response;
+  }
+
+  isLoadingFalse(): void {
+    this.isLoading = false;    
   }
 
 }

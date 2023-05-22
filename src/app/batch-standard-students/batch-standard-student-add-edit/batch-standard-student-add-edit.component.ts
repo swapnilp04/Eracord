@@ -25,7 +25,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   public batchs: Batch[] = [];
   public batchStandards: BatchStandard[] = [];
   public studentId: any;
-  public isLoading = true;
+  public isLoading = false;
   dismissible = true;
 
   defaultAlerts: any[] = [];
@@ -51,40 +51,43 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   }
 
   loadStudent(studentID: number): void {
+    this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
   loadBatchs(): void {
+    this.isLoading = true;
     this.batchService.getBatchs().subscribe (
       (response: any) => this.assignBatchs(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
   loadBatchStandards(batchId: number): void {
+    this.isLoading = true;
     this.batchStandardService.getBatchStandards(batchId).subscribe (
       (response: any) => this.assignBatchStandards(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     ); 
   }
 
   createBatchStandardStudent(): void {
+    this.isLoading = true;
     this.studentService.assignStudentBatchStandard(this.studentId, this.batchStandardStudent).subscribe (
       (response: any) => this.batchStandardStudentCreated(),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );   
   }
 
   assignStudent(response: any) {
     this.student = response;
-    this.isLoading = false;
     this.loadBatchs();
   }
 
@@ -127,5 +130,9 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
       })
       this.alerts = this.defaultAlerts;
     }
+  }
+  
+  isLoadingFalse(): void {
+    this.isLoading = false;
   }
 }

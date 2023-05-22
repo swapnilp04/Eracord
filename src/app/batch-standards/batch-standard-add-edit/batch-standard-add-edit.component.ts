@@ -21,7 +21,7 @@ export class BatchStandardAddEditComponent implements OnInit {
   public batch = {} as Batch;
   public batchStandard = {} as BatchStandard;
   public standards: Standard[] = [];
-    public isNew = true;
+  public isNew = true;
   dismissible = true;
 
   defaultAlerts: any[] = [
@@ -32,7 +32,7 @@ export class BatchStandardAddEditComponent implements OnInit {
   ];
 
   public alerts: Alert[] = [];
-  public isLoading = true;
+  public isLoading = false;
   
 
   constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, private loginService: LoginService,
@@ -72,15 +72,17 @@ export class BatchStandardAddEditComponent implements OnInit {
   }
 
   loadBatch(batchID: number): void {
+    this.isLoading = true;
     this.batchService.getBatch(batchID).subscribe (
       (response: any) => this.assignBatch(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
   
   loadStandards(batchID: number): void {
+    this.isLoading = true;
     var service: any;
     if(this.isNew){
       service = this.batchService;
@@ -90,15 +92,16 @@ export class BatchStandardAddEditComponent implements OnInit {
     service.getStandards(batchID).subscribe (
       (response: any) => this.assignStandards(response),
       (error: any) => console.log(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
   loadBatchStandard(batchID: number, batchStandardId: number): void {
+    this.isLoading = true;
     this.batchStandardService.getBatchStandard(batchID, batchStandardId).subscribe (
       (response: any) => this.assignbatchStandard(response),
       (error: any) => console.log(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -130,18 +133,20 @@ export class BatchStandardAddEditComponent implements OnInit {
   }
   
   createBatchStandard(): void {
+    this.isLoading = true;
     this.batchStandardService.createBatchStandard(this.batch.id, this.batchStandard).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
   updateBatchStandard(): void {
+    this.isLoading = true;
     this.batchStandardService.updateBatchStandard(this.batch.id, this.batchStandard).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Batch......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -151,5 +156,9 @@ export class BatchStandardAddEditComponent implements OnInit {
     } else {
       window.location.href = `/batchs/${response['batch_standard']['batch_id']}?isUpdate=true`;
     }
+  }
+
+  isLoadingFalse(): void {
+    this.isLoading = false;    
   }
 }

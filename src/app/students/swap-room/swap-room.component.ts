@@ -30,7 +30,7 @@ export class SwapRoomComponent {
 
   public hostels: Hostel[] = [];
   public hostelRooms: HostelRoom[] = [];
-  public isLoading = true;
+  public isLoading = false;
   public selectedHosteId: number = 0;
   public selectedHostelRoom: number = 0;
   
@@ -66,16 +66,16 @@ export class SwapRoomComponent {
   }
 
   loadStudent(studentID: number): void {
+    this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
   assignStudent(response: any) {
     this.student = response;
-    this.isLoading = false;
     this.loadHostels();
   }
 
@@ -85,10 +85,11 @@ export class SwapRoomComponent {
 
   changeHostelRoom(): void {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
+      this.isLoading = true;
       this.studentService.changeStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom).subscribe (
         (response: any) => this.back(),
         (error: any) => this.errorHandle(error),
-        () => console.log('Done getting Hostels......')
+        () => this.isLoadingFalse()
       );
     }
   }
@@ -98,10 +99,11 @@ export class SwapRoomComponent {
   }
 
   loadHostels(): void {
+    this.isLoading = true;
     this.hostelService.getHostels().subscribe (
       (response: any) => this.assignHostels(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostels......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -110,10 +112,11 @@ export class SwapRoomComponent {
   }
 
   getHostelRooms(hostelId: number): void {
+    this.isLoading = true;
    this.hostelRoomService.getHostelRooms(hostelId).subscribe (
       (response: any) => this.assignHostelRooms(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostel Rooms......')
+      () => this.isLoadingFalse()
     ); 
   }
 
@@ -123,5 +126,9 @@ export class SwapRoomComponent {
 
   selectRoom(roomId: any): void {
     this.selectedHostelRoom = roomId;
+  }
+
+  isLoadingFalse(): void {
+    this.isLoading = false;    
   }
 }

@@ -13,25 +13,28 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class HostelRoomAddEditComponent {
   public hostelRoom = {} as HostelRoom;
   public isNew = true;
-  public hostelId: number ;
+  public hostelId: number;
+  public isLoading = false;
   
   constructor(private hostelRoomService: HostelRoomService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService){}
 
 
   createHostelRoom(hostelRoom: HostelRoom): void {
+    this.isLoading = true;
     this.hostelRoomService.createHostelRoom(this.hostelId, hostelRoom).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting HostelRoom......')
+      () => this.isLoadingFalse()
     );
   }
 
   updateHostelRoom(hostelRoom: HostelRoom): void {
+    this.isLoading = true;
     this.hostelRoomService.updateHostelRoom(this.hostelId, hostelRoom).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting HostelRoom......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -56,10 +59,11 @@ export class HostelRoomAddEditComponent {
   }
 
   loadHostelRoom(hostelRoomID: number): void {
+    this.isLoading = true;
     this.hostelRoomService.getHostelRoom(this.hostelId, hostelRoomID).subscribe (
       (response: any) => this.assignHostelRoom(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting HostelRoom......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -83,4 +87,7 @@ export class HostelRoomAddEditComponent {
     this.hostelRoom = response;
   }
 
+  isLoadingFalse(): void {
+    this.isLoading = false;    
+  }
 }

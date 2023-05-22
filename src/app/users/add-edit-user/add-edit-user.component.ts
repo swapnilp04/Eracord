@@ -16,7 +16,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class AddEditUserComponent implements OnInit{
   public user = {} as User;
   public isNew = true;
-  public isLoading: boolean = false;
+  public isLoading = false;
 
   constructor(private userService: UserService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService){}
@@ -35,26 +35,29 @@ export class AddEditUserComponent implements OnInit{
   }
 
   createUser(user: User): void {
+    this.isLoading = true;
     this.userService.createUser(user).subscribe (
       (response: any) => this.back(),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting User......')
+      () => this.isLoadingFalse()
     );
   }
 
   updateUser(user: User): void {
+    this.isLoading = true;
     this.userService.createUser(user).subscribe (
       (response: any) => this.back(),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting User......')
+      () => this.isLoadingFalse()
     );
   }
 
   loadUser(userID: number): void {
+    this.isLoading = true;
     this.userService.getUser(userID).subscribe (
       (response: any) => this.assignUser(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting User......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -70,5 +73,9 @@ export class AddEditUserComponent implements OnInit{
 
   back(): void {
     this.router.navigate(['/users']);
+  }
+
+  isLoadingFalse(): void {
+    this.isLoading = false;    
   }
 }

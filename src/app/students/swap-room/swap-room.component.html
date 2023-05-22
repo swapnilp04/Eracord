@@ -1,7 +1,7 @@
 <div class="mb-3">	
 	<h2>{{name()}}</h2>
 	<h3>Select Hostel</h3>
-	<select class="form-select" [ngModel]="selectedHosteId" (ngModelChange)="onChangeHostel($event)" aria-label="Default select example">
+	<select class="form-select" [disabled]="isLoading" [ngModel]="selectedHosteId" (ngModelChange)="onChangeHostel($event)" aria-label="Default select example">
 		<option value="0">----</option>
 		<option *ngFor="let hostel of hostels" [ngValue]="hostel.id">{{hostel.name}}</option>
 	</select>
@@ -12,7 +12,7 @@
 	</div>
 </div>
 
-<button (click)=changeHostelRoom() class="btn btn-secondary">
+<button [disabled]="isLoading" (click)=changeHostelRoom() class="btn btn-secondary">
 	Change Hostel/Room
 </button>
 <button (click)=back() class="btn btn-primary marginLeft15">

@@ -31,7 +31,7 @@ export class AssignHostelComponent implements OnInit {
 
   public hostels: Hostel[] = [];
   public hostelRooms: HostelRoom[] = [];
-  public isLoading = true;
+  public isLoading = false;
   public selectedHosteId: number = 0;
   public selectedHostelRoom: number = 0;
   
@@ -62,16 +62,16 @@ export class AssignHostelComponent implements OnInit {
   }
 
   loadStudent(studentID: number): void {
+    this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
+      () => this.isLoadingFalse()
     );
   }
 
   assignStudent(response: any) {
     this.student = response;
-    this.isLoading = false;
     this.loadHostels();
   }
 
@@ -81,10 +81,11 @@ export class AssignHostelComponent implements OnInit {
 
   assignHostelRoom(): void {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
+      this.isLoading = true;
       this.studentService.assignStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom).subscribe (
         (response: any) => this.back(),
         (error: any) => this.errorHandle(error),
-        () => console.log('Done getting Hostels......')
+        () => this.isLoadingFalse()
       );
     }
   }
@@ -94,10 +95,11 @@ export class AssignHostelComponent implements OnInit {
   }
 
   loadHostels(): void {
+    this.isLoading = true;
     this.hostelService.getHostels().subscribe (
       (response: any) => this.assignHostels(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostels......')
+      () => this.isLoading = true;
     );
   }
 
@@ -106,10 +108,11 @@ export class AssignHostelComponent implements OnInit {
   }
 
   getHostelRooms(hostelId: number): void {
-   this.hostelRoomService.getHostelRooms(hostelId).subscribe (
+    this.isLoading = true;
+    this.hostelRoomService.getHostelRooms(hostelId).subscribe (
       (response: any) => this.assignHostelRooms(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostel Rooms......')
+      () => this.isLoading = true;
     ); 
   }
 
@@ -119,5 +122,9 @@ export class AssignHostelComponent implements OnInit {
 
   selectRoom(roomId: any): void {
     this.selectedHostelRoom = roomId;
+  }
+
+  isLoadingFalse(): void {
+    this.isLoading = false;    
   }
 }

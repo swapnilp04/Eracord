@@ -15,24 +15,27 @@ export class StandardAddEditComponent {
 
   public standard = {} as Standard;
   public isNew = true;
+  public isLoading = false;
   
   constructor(private standardService: StandardService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService){}
 
 
   createStandard(standard: Standard): void {
+    this.isLoading = true;
     this.standardService.createStandard(standard).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standard......')
+      () => this.isLoadingFalse()
     );
   }
 
   updateStandard(standard: Standard): void {
+    this.isLoading = true;
     this.standardService.updateStandard(standard).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standard......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -56,10 +59,11 @@ export class StandardAddEditComponent {
   }
 
   loadStandard(standardID: number): void {
+    this.isLoading = true;
     this.standardService.getStandard(standardID).subscribe (
       (response: any) => this.assignStandard(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standard......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -83,4 +87,7 @@ export class StandardAddEditComponent {
     this.standard = response;
   }
 
+  isLoadingFalse(): void {
+    this.isLoading = false;    
+  }
 }

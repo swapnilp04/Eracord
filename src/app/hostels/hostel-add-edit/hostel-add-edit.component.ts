@@ -14,24 +14,27 @@ export class HostelAddEditComponent {
 
   public hostel = {} as Hostel;
   public isNew = true;
+  public isLoading = false;
   
   constructor(private hostelService: HostelService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService){}
 
 
   createHostel(hostel: Hostel): void {
+    this.isLoading = true;
     this.hostelService.createHostel(hostel).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostel......')
+      () => this.isLoadingFalse()
     );
   }
 
   updateHostel(hostel: Hostel): void {
+    this.isLoading = true;
     this.hostelService.updateHostel(hostel).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostel......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -55,10 +58,11 @@ export class HostelAddEditComponent {
   }
 
   loadHostel(hostelID: number): void {
+    this.isLoading = true;
     this.hostelService.getHostel(hostelID).subscribe (
       (response: any) => this.assignHostel(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostel......')
+      () => this.isLoadingFalse()
     );
   }
 
@@ -86,4 +90,7 @@ export class HostelAddEditComponent {
     this.hostel = response;
   }
 
+  isLoadingFalse(): void {
+    this.isLoading = false;    
+  }
 }

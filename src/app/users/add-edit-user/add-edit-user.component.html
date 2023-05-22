@@ -1,30 +1,28 @@
-<div *ngIf=!isLoading>
-	<div class="form-group mb-3">
-	  <label for="exampleInputPassword1" class="form-label">Username</label>
-	  <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}"/>
-	</div>
+<div class="form-group mb-3">
+  <label for="exampleInputPassword1" class="form-label">Username</label>
+  <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}"/>
+</div>
 
-	<div class="form-group mb-3">
-	  <label for="exampleInputPassword1" class="form-label">Password</label>
-	  <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"/>
-	</div>
-	<div class="form-group mb-3">
-	  <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-	  <input type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="user.confirm_password" [ngModelOptions]="{standalone: true}"/>
-	</div>
+<div class="form-group mb-3">
+  <label for="exampleInputPassword1" class="form-label">Password</label>
+  <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"/>
+</div>
+<div class="form-group mb-3">
+  <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+  <input type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="user.confirm_password" [ngModelOptions]="{standalone: true}"/>
+</div>
 
-	<div class="form-group mb-3">
-  	<label for="exampleInputPassword1" class="form-label">Role</label>
-  	<select class="form-select" [ngModel]="user.role" (ngModelChange)="onChangeRole($event)" aria-label="Payment Mode">
-			<option value="Admin">Admin</option>
-			<option value="Accountant">Accountant</option>
-			<option value="Clerk">Clerk</option>
-			<option value="Teacher">Teacher</option>
-		</select>
-	</div>
-	<div class="form-group mb-3">
-  	<button type="submit" *ngIf=isNew class="btn btn-primary" (click)=createUser(user)>Submit</button>
-  	<button type="submit" *ngIf=!isNew class="btn btn-primary" (click)=updateUser(user)>Submit</button>
-  	<button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
-	</div>
+<div class="form-group mb-3">
+	<label for="exampleInputPassword1" class="form-label">Role</label>
+	<select class="form-select" [ngModel]="user.role" (ngModelChange)="onChangeRole($event)" aria-label="Payment Mode">
+		<option value="Admin">Admin</option>
+		<option value="Accountant">Accountant</option>
+		<option value="Clerk">Clerk</option>
+		<option value="Teacher">Teacher</option>
+	</select>
+</div>
+<div class="form-group mb-3">
+	<button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createUser(user)>Submit</button>
+	<button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateUser(user)>Submit</button>
+	<button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
 </div>

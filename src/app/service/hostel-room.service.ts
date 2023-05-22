@@ -34,7 +34,7 @@ export class HostelRoomService {
 
   updateHostelRoom(hostelId: number, hostelRoom: HostelRoom): Observable<HostelRoom> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.put<HostelRoom>(`${this.loginService.URL}/hostels/${hostelRoom.id}/hostel_rooms/${hostelRoom.id}`, hostelRoom, {headers: myHeaders});
+    return this.http.put<HostelRoom>(`${this.loginService.URL}/hostels/${hostelId}/hostel_rooms/${hostelRoom.id}`, hostelRoom, {headers: myHeaders});
   }
 
   getHostelRoomStudents(hostelId: number, hostelRoomId: number): Observable<HostelStudent> {
