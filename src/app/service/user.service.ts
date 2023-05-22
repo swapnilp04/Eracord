@@ -16,9 +16,19 @@ export class UserService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
+  getUser(userId: number): Observable<User> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<User>(`${this.loginService.URL}/users/${userId}`, {headers: myHeaders});
+  }
+
   getUsers(): Observable<User[]> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<User[]>(`${this.loginService.URL}/users`, {headers: myHeaders});
+  }
+
+  createUser(user: User): Observable<User> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<User>(`${this.loginService.URL}/users`, user, {headers: myHeaders});
   }
 
 }

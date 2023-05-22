@@ -24,6 +24,7 @@ import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/h
 import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
 import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
 import { UsersComponent } from './users/users/users.component';
+import { AddEditUserComponent } from './users/add-edit-user/add-edit-user.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -64,6 +65,7 @@ const routes: Routes = [
   {path: 'accounts' , component: AllTransactionsComponent},
 
   {path: 'users' , component: UsersComponent},
+  {path: 'users/new' , component: AddEditUserComponent},
   ];
 
 

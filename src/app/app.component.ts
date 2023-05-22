@@ -4,17 +4,20 @@ import {LoginService} from './service/login.service';
 import { Observable } from 'rxjs';
 import { setTheme } from 'ngx-bootstrap/utils';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
 export class AppComponent {
   title = 'Eracord';
   
   constructor(private cookies: CookieService, private loginService: LoginService, private router: Router) {
     this.loginService.isLogin = this.cookies.get("isLogin") == "true";
+    this.loginService.username = this.cookies.get("username");
 
     type HttpRespone = {code: number, data: string};
 
@@ -52,6 +55,10 @@ export class AppComponent {
 
   public get isLogin() {
     return this.loginService.isLogin;
+  }
+
+  public get getUsername() {
+    return this.loginService.username; 
   }
 
   logoutUser(): void {

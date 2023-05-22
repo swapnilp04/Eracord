@@ -28,7 +28,9 @@ export class LoginComponent {
   successResponse(response: any) {
     this.cookies.set('isLogin', 'true');
     this.cookies.set('token', response['token']);
+    this.cookies.set('username', response['username']);
     this.loginService.isLogin = true;
+    this.loginService.username = response['username'];
     this._router.navigateByUrl('/dashboard');  // open welcome component
   }
 }

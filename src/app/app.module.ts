@@ -41,6 +41,8 @@ import { TransactionsAddEditComponent } from './transactions/transactions-add-ed
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
 import { UsersComponent } from './users/users/users.component';
+import { AddEditUserComponent } from './users/add-edit-user/add-edit-user.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -77,6 +79,7 @@ import { UsersComponent } from './users/users/users.component';
     TransactionsAddEditComponent,
     AllTransactionsComponent,
     UsersComponent,
+    AddEditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,8 @@ import { UsersComponent } from './users/users/users.component';
     AlertModule.forRoot(),
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

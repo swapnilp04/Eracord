@@ -25,3 +25,11 @@
     cursor: pointer;
     color: #fff;
 }
+
+#dropdown-animated {
+    inset: 100% auto auto -50px !important;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}

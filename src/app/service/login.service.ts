@@ -14,6 +14,7 @@ export class LoginService {
   URL = "http://localhost:8080"
   //URL = "http://54.237.98.76:8080"
   public isLogin = false;
+  public username = "";
 
   constructor(private cookies: CookieService, private http: HttpClient, private router: Router) { }
 

@@ -35,8 +35,21 @@
       </ul>
       <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
         <li class="nav-item">
-          <a *ngIf=!isLogin href="/login">Login</a>
-          <a *ngIf=isLogin  class="logout" (click)=logoutUser()>Logout</a>
+          <a *ngIf=!isLogin class="logout" href="/login">Login</a>
+          <div *ngIf=isLogin class="btn-group" dropdown>
+            <button id="button-animated" dropdownToggle type="button" class="btn logout dropdown-toggle"
+                    aria-controls="dropdown-animated">
+              Welcome <span class="capitalize">{{getUsername}}</span><span class="caret"></span>
+            </button>
+            <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu left-50"
+                role="menu" aria-labelledby="button-animated">
+              <li role="menuitem"><a class="dropdown-item" href="/dashboard">Change Password</a></li>
+              <li role="menuitem">
+                <a class="dropdown-item" (click)=logoutUser()>Logout</a>
+              </li>
+            </ul>
+          </div>
+          
         </li>
       </ul>
     </div>
