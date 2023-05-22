@@ -99,7 +99,7 @@ export class AssignHostelComponent implements OnInit {
     this.hostelService.getHostels().subscribe (
       (response: any) => this.assignHostels(response),
       (error: any) => this.errorHandle(error),
-      () => this.isLoading = true;
+      () => this.isLoadingFalse()
     );
   }
 
@@ -112,7 +112,7 @@ export class AssignHostelComponent implements OnInit {
     this.hostelRoomService.getHostelRooms(hostelId).subscribe (
       (response: any) => this.assignHostelRooms(response),
       (error: any) => this.errorHandle(error),
-      () => this.isLoading = true;
+      () => this.isLoadingFalse()
     ); 
   }
 
