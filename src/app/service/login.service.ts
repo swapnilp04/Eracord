@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  URL = "http://localhost:8080"
-  //URL = "http://54.237.98.76:8080"
+  //URL = "http://localhost:8080"
+  URL = "http://54.237.98.76:8080"
   public isLogin = false;
   public username = "";
 
