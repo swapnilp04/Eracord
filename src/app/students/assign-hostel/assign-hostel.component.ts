@@ -34,6 +34,7 @@ export class AssignHostelComponent implements OnInit {
   public isLoading = false;
   public selectedHosteId: number = 0;
   public selectedHostelRoom: number = 0;
+  public feeIncluded= false;
   
   constructor(private studentService: StudentService, private hostelService: HostelService, private hostelRoomService: HostelRoomService, 
     private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
@@ -82,12 +83,16 @@ export class AssignHostelComponent implements OnInit {
   assignHostelRoom(): void {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
       this.isLoading = true;
-      this.studentService.assignStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom).subscribe (
+      this.studentService.assignStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom, this.feeIncluded).subscribe (
         (response: any) => this.back(),
         (error: any) => this.errorHandle(error),
         () => this.isLoadingFalse()
       );
     }
+  }
+
+  onFeeInckudedChanged(e: any) {
+    this.feeIncluded = e.target.checked
   }
 
   name(): string {

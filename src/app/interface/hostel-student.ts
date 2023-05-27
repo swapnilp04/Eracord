@@ -12,4 +12,5 @@ export interface HostelStudent {
 	HostelRoom: HostelRoom;
 	contact_number: string;
 	name: string;
+	fee_included: boolean;
 }

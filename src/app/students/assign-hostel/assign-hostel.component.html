@@ -17,6 +17,13 @@
 	</div>
 </div>
 
+<div class="form-check">
+  <input class="form-check-input" id="defaultCheck1" type="checkbox" [ngModel]="feeIncluded" (change)="onFeeInckudedChanged($event)">
+  <label class="form-check-label" for="defaultCheck1">
+    Hostel Fee Included in Tution Fee
+  </label>
+</div>
+
 <button [disabled]="isLoading" (click)=assignHostelRoom() class="btn btn-secondary">
 	Assign Hostel Room
 </button>
