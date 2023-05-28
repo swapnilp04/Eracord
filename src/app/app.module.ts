@@ -43,6 +43,9 @@ import { AllTransactionsComponent } from './accounts/all-transactions/all-transa
 import { UsersComponent } from './users/users/users.component';
 import { AddEditUserComponent } from './users/add-edit-user/add-edit-user.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { StudentAccountsComponent } from './student-accounts/student-accounts/student-accounts.component';
+import { DepositComponent } from './student-accounts/deposit/deposit.component';
+import { WithdrawComponent } from './student-accounts/withdraw/withdraw.component';
 
 
 
@@ -80,6 +83,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AllTransactionsComponent,
     UsersComponent,
     AddEditUserComponent,
+    StudentAccountsComponent,
+    DepositComponent,
+    WithdrawComponent,
   ],
   imports: [
     BrowserModule,

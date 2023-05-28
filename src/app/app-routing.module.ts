@@ -25,6 +25,8 @@ import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.compo
 import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
 import { UsersComponent } from './users/users/users.component';
 import { AddEditUserComponent } from './users/add-edit-user/add-edit-user.component';
+import { DepositComponent } from './student-accounts/deposit/deposit.component';
+import { WithdrawComponent } from './student-accounts/withdraw/withdraw.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -38,6 +40,8 @@ const routes: Routes = [
   {path: 'students/:id/change-room' , component: SwapRoomComponent},
   {path: 'students/:student_id/batch-standards/new' , component: BatchStandardStudentAddEditComponent},
   {path: 'students/:student_id/transactions/new' , component: TransactionsAddEditComponent},
+  {path: 'students/:student_id/student-accounts/deposit' , component: DepositComponent},
+  {path: 'students/:student_id/student-accounts/withdraw' , component: WithdrawComponent},
 
 
 

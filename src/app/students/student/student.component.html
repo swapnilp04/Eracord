@@ -6,7 +6,7 @@
 <div *ngIf=!isLoading>
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
-		<h5>Birth Date - {{student.birth_date}}</h5>
+		<h5>Birth Date - {{student.birth_date | date:'MM/dd/yyyy'}}</h5>
 		<h5>Adhar Card number Number - {{adharCard()}}</h5>
 		<h5>Parent Name - {{student.parent_name}}</h5>
 		<h5>Contact Number - {{student.contact_number}}</h5>
@@ -42,6 +42,10 @@
 		  <tab heading="Transactions" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Transactions</h4>
 		    <app-transactions [studentId]="student.id"></app-transactions>
+		  </tab>
+		  <tab heading="Accounts" class="mt-2" (selectTab)="onSelect($event)">
+		    <h4>Student Accounts</h4>
+		    <app-student-accounts [studentId]="student.id" [student]="student"></app-student-accounts>
 		  </tab>
 		</tabset>
 	</div>

@@ -10,8 +10,9 @@
       <tr>
       <th class="col-md-1"> Sr No
       </th>
+      <th>Name</th>
       <th>Date</th>
-      <th>Reason</th>
+      <th>Type</th>
       <th>Amount</th>
     </tr>
     </thead>
@@ -19,6 +20,7 @@
     	<tr *ngFor="let transaction of transactions; index as i">
       <td>{{i+1}}</td> 
       <td>{{transaction.name}}</td>
+      <td>{{transaction.CreatedAt| date:'MM/dd/yyyy'}}</td>
       <td>{{transaction.transaction_type}}</td>
       <td [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</td>
     	</tr>

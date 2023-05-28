@@ -14,4 +14,5 @@ export interface Student {
 	town: string;
 	has_hostel: boolean;
 	balance: number;
+	student_account_balance: number;
 }

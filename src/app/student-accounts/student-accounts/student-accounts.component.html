@@ -1,0 +1,28 @@
+<div class="row marginTop15 container">
+  <h3>Total balance : {{student.student_account_balance}}</h3>
+  <div>
+    <a class="btn btn-primary" href="/students/{{studentId}}/student-accounts/deposit"> Deposit Funds</a>
+    <a class="btn btn-danger marginLeft15" href="/students/{{studentId}}/student-accounts/withdraw"> Withdraw Funds</a>
+  </div>
+	<table class="table table-striped table-bordered table-hover marginTop15">
+    <thead>
+      <tr>
+      <th class="col-md-1"> Sr No
+      </th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Balance</th>
+    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let studentAccount of studentAccounts; index as i">
+      <td>{{i+1}}</td> 
+      <td>{{studentAccount.CreatedAt | date:'MM/dd/yyyy @ h:mma'}}</td>
+      <td>{{studentAccount.transaction_type}}</td>
+      <td [ngClass]="studentAccount.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{studentAccount.amount}}</td>
+      <td>{{studentAccount.balance}}</td>
+    	</tr>
+    </tbody>
+	</table>	
+</div>
