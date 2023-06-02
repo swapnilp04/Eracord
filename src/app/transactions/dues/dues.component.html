@@ -10,8 +10,13 @@
 
 <div class="form-group mb-3">
   <label for="exampleInputPassword1" class="form-label">Amount</label>
-  <input type="number" class="form-control" placeholder="Amount" [(ngModel)]="studentAccount.amount" [ngModelOptions]="{standalone: true}"/>
+  <input type="number" class="form-control" placeholder="Amount" [(ngModel)]="transaction.amount" [ngModelOptions]="{standalone: true}"/>
 </div>
 
-<button class="btn btn-secondary" [disabled]="isLoading" (click)=submitDeposit()>Deposit</button>
+<div class="form-group mb-3">
+  <label for="exampleInputPassword1" class="form-label">Reason</label>
+  <input type="text" class="form-control" placeholder="Reason" [(ngModel)]="transaction.reason" [ngModelOptions]="{standalone: true}"/>
+</div>
+
+<button class="btn btn-secondary" [disabled]="isLoading" (click)=submitDues()>Submit Dues</button>
 <button class="btn btn-primary marginLeft15" (click)=back()>Back</button>

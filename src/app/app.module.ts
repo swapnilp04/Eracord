@@ -46,6 +46,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { StudentAccountsComponent } from './student-accounts/student-accounts/student-accounts.component';
 import { DepositComponent } from './student-accounts/deposit/deposit.component';
 import { WithdrawComponent } from './student-accounts/withdraw/withdraw.component';
+import { DuesComponent } from './transactions/dues/dues.component';
 
 
 
@@ -86,6 +87,7 @@ import { WithdrawComponent } from './student-accounts/withdraw/withdraw.componen
     StudentAccountsComponent,
     DepositComponent,
     WithdrawComponent,
+    DuesComponent
   ],
   imports: [
     BrowserModule,

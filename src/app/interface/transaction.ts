@@ -13,6 +13,7 @@ export interface Transaction {
 	is_cleared: boolean;
 	is_checked: boolean;
 	transaction_type: string;
+	reason: string;
 	amount: number;
 	Cheque: Cheque;
 	CreatedAt: Date;

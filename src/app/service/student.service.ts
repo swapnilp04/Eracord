@@ -83,6 +83,12 @@ export class StudentService {
     return this.http.post<Transaction>(`${this.loginService.URL}/students/${studentId}/transactions`, transaction, {headers: myHeaders});
   }
 
+  createStudentDues(studentId: number, transaction: Transaction): Observable<Transaction> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Transaction>(`${this.loginService.URL}/students/${studentId}/transactions/dues/new`, transaction, {headers: myHeaders});
+  }
+
+
   getStudentBalance(studentId: number): Observable<Balance> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Balance>(`${this.loginService.URL}/students/${studentId}/transactions/balance`, {headers: myHeaders});
