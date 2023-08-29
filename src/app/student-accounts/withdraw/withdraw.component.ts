@@ -60,7 +60,7 @@ export class WithdrawComponent implements OnInit{
 
 
   name(): string {
-    return `${this.student.first_name} ${this.student.middle_name} ${this.student.last_name}`
+    return `${this.student.first_name} ${this.student.middle_name} ${this.student.last_name} (${this.student.roll_number})`
   }
 
   back(): void {
