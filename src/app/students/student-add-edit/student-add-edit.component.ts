@@ -59,6 +59,7 @@ export class StudentAddEditComponent implements OnInit {
     } else {
       this.assignErrors(error);
     }
+    this.isLoading = false;
   }
 
   loadStudent(studentID: number): void {

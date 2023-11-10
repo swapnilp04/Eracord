@@ -3,6 +3,7 @@ import { Student } from './student';
 
 export interface Transaction {
 	id?: number;
+	receipt_id: string;
 	name: string;
 	student_id: number;
 	hostel_student_id: number;
