@@ -23,6 +23,7 @@ export class StudentComponent  implements OnInit {
   public hostelStudent = {} as HostelStudent;
   public batchStandardStudents: BatchStandardStudent[] = [];
   public id: any;
+  public studentId: any;
   public classLoaded: boolean = false;
   dismissible = true;
 

@@ -47,6 +47,9 @@ import { StudentAccountsComponent } from './student-accounts/student-accounts/st
 import { DepositComponent } from './student-accounts/deposit/deposit.component';
 import { WithdrawComponent } from './student-accounts/withdraw/withdraw.component';
 import { DuesComponent } from './transactions/dues/dues.component';
+import {NgxPrintModule} from 'ngx-print';
+import { TransactionComponent } from './accounts/transaction/transaction.component';
+
 
 
 
@@ -87,7 +90,8 @@ import { DuesComponent } from './transactions/dues/dues.component';
     StudentAccountsComponent,
     DepositComponent,
     WithdrawComponent,
-    DuesComponent
+    DuesComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +100,7 @@ import { DuesComponent } from './transactions/dues/dues.component';
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxPrintModule,
     TooltipModule.forRoot(),
     AlertModule.forRoot(),
     TabsModule.forRoot(),
