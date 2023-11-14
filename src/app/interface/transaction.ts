@@ -7,6 +7,7 @@ export interface Transaction {
 	name: string;
 	student_id: number;
 	hostel_student_id: number;
+	AmountToWord: string;
 	transaction_category_id: number;
 	batch_standard_student_id: number;
 	paid_by: string;

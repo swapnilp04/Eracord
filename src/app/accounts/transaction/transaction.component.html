@@ -1,18 +1,110 @@
-<p>Payment Receipt</p>
+<div class="container" style="float:left;">
+ 	<p>
+ 		<button class="btn btn-secondary"> Back</button>
+		<button 
+
+			class="btn btn-primary marginLeft15"
+			[useExistingCss]="true"
+			printSectionId="print-section"
+			ngxPrint>print</button>
+	</p>
+</div>
+
 <div id="print-section"> 
-  <!--Your html stuff that you want to print-->
-  asdasdbnvasd 
-  as df
-  asd 
-  asdf ads
-  f 
+	<div style="padding-left:50px;">
+			
+		<h1 style="text-align: center;">Receipt</h1>
+		<div style="width:100%;float:left;">
+			<div style="float:left;">
+				<img src="/assets/logo.jpg" style="width:90px;" alt="image">
+			</div>
+			<div style="width:500px;float:left;padding-left: 10px;">
+				<h1>JK SCIENCE ACADEMY</h1>
+				<span>KNP NAGAR ROAD NO 2 WALWA TALUKA SANGLI DISTRICT</span><br/>
+				<span>MAHARASHTRA (415409)</span>
+	 		</div>
+	 	</div>
+
+	 	<div style="width:100%;float:left;">
+		 	<div style="width:430px; float:left">
+				<strong>Bill To</strong><br />
+				<span style="text-transform: capitalize;">STUDENT NAME -  {{name()}}</span><br/>
+				<span>ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
+				<span>TOWN - {{transaction.Student.town}}</span>
+		 	</div>
+		 	<div style="float:left">
+		 			<span>RECEIPT NO #&nbsp;&nbsp;- &nbsp;&nbsp; {{transaction.receipt_id}}</span><br />
+		 			<span>RECEIPT DATE   - &nbsp;&nbsp;{{transaction.CreatedAt | date}}</span>
+		 	</div>
+		 </div>
+		 <div style="width:100%;float:left;margin-top:10px;">
+		 	<span style="font-size:18px;">AMOUNT&nbsp;&nbsp;<strong> &#8377;{{transaction.amount}}</strong></span><br/>
+		 	AMOUNT IN WORDS - <strong style="text-transform: uppercase;">{{transaction.AmountToWord}} ONLY </strong>
+		 </div>
+		 <div style="width:100%;float:left;margin-top:50px;">
+		 	<div style="width:450px;padding-left:100px; float:left">
+		 		Sign 
+		 	</div>
+		 	<div style="width:150px; float:right">
+		 		Accountant Sign 
+		 	</div>
+		 </div>
+		 <div style="width:100%;float:left;margin-top:20px;font-size:10px;">
+		 	<strong>Terms and conditions</strong>
+		 	<ul>
+		 		<li><span>No monetary refunds will be given for any reason</span></li>
+		 	</ul>
+		 </div>
+	</div>
+
+	<div style="padding-left:50px;width:100%; float:left;margin-top:50px;">
+		<h1 style="text-align: center;">Receipt</h1>
+		<div style="width:100%;float:left;">
+			<div style="float:left;">
+				<img src="/assets/logo.jpg" style="width:90px;" alt="image">
+			</div>
+			<div style="width:500px;float:left;padding-left: 10px;">
+				<h1>JK SCIENCE ACADEMY</h1>
+				<span>KNP NAGAR ROAD NO 2 WALWA TALUKA SANGLI DISTRICT</span><br/>
+				<span>MAHARASHTRA (415409)</span>
+	 		</div>
+	 	</div>
+
+	 	<div style="width:100%;float:left;">
+		 	<div style="width:430px; float:left">
+				<strong>Bill To</strong><br />
+				<span style="text-transform: capitalize;">STUDENT NAME -  {{name()}}</span><br/>
+				<span>ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
+				<span>TOWN - {{transaction.Student.town}}</span>
+		 	</div>
+		 	<div style="float:left">
+		 			<span>RECEIPT NO #&nbsp;&nbsp;- &nbsp;&nbsp; {{transaction.receipt_id}}</span><br />
+		 			<span>RECEIPT DATE   - &nbsp;&nbsp;{{transaction.CreatedAt | date}}</span>
+		 	</div>
+		 </div>
+		 <div style="width:100%;float:left;margin-top:10px;">
+		 	<span style="font-size:18px;">AMOUNT&nbsp;&nbsp;<strong> &#8377;{{transaction.amount}}</strong></span><br/>
+		 	AMOUNT IN WORDS - <strong style="text-transform: uppercase;">{{transaction.AmountToWord}} ONLY </strong>
+		 </div>
+		 <div style="width:100%;float:left;margin-top:50px;">
+		 	<div style="width:450px;padding-left:100px; float:left">
+		 		Sign 
+		 	</div>
+		 	<div style="width:150px; float:right">
+		 		Accountant Sign 
+		 	</div>
+		 </div>
+		 <div style="width:100%;float:left;margin-top:20px;font-size:10px;">
+		 	<strong>Terms and conditions</strong>
+		 	<ul>
+		 		<li><span>No monetary refunds will be given for any reason</span></li>
+		 	</ul>
+		 </div>
+	</div>
 </div>
 
  <!--
    2)- Add the directive name in your button (ngxPrint),
    3)- Affect your ID to printSectionId
  -->
-<button
-	[printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}"
-	printSectionId="print-section"
-	ngxPrint>print</button>
+ 

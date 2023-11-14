@@ -64,5 +64,9 @@ export class TransactionComponent {
   back(): void {
     this.router.navigate(['/students']);
   }
+
+  name(): string {
+    return `${this.transaction.Student.first_name} ${this.transaction.Student.middle_name} ${this.transaction.Student.last_name} `
+  }
 }
 
