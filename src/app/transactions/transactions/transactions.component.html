@@ -15,6 +15,7 @@
       <th>Date</th>
       <th>Type</th>
       <th>Amount</th>
+      <th>Receipt</th>
     </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
       <td>{{transaction.CreatedAt| date:'MM/dd/yyyy'}}</td>
       <td>{{transaction.transaction_type}}</td>
       <td [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</td>
+      <td><a href='/accounts/students/{{transaction.student_id}}/receipt/{{transaction.id}}'>#{{transaction.receipt_id}}</a></td>
     	</tr>
     </tbody>
 	</table>	
