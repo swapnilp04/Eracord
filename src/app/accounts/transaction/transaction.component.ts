@@ -59,6 +59,9 @@ export class TransactionComponent {
   assignTransaction(response: any) {
     this.transaction = response;
     this.isLoading = false;
+    if(this.transaction.transaction_type == "debit") {
+      this.router.navigate(['/accounts']);
+    }
   }
 
   back(): void {

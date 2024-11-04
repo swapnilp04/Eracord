@@ -27,7 +27,8 @@
     <tbody>
     	<tr *ngFor="let transaction of transactions; index as i">
       <td>
-        <a href='/accounts/students/{{transaction.student_id}}/receipt/{{transaction.id}}'> {{transaction.receipt_id}}</a></td> 
+        <a href='/accounts/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type =='cridit'"> {{transaction.receipt_id}}</a>
+      </td> 
       <td>{{transaction.CreatedAt | date:'MM/dd/yyyy @ h:mma'}}</td>
       <td>{{name(transaction.Student)}}</td>
       <td>{{transaction.transaction_type}}</td>
