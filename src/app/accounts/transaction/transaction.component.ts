@@ -62,7 +62,7 @@ export class TransactionComponent {
   }
 
   back(): void {
-    this.router.navigate(['/students']);
+    this.router.navigate(['/accounts']);
   }
 
   name(): string {

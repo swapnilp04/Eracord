@@ -45,10 +45,10 @@ export class StudentService {
     return this.http.get<Student>(`${this.loginService.URL}/students/${studentId}/hostel`, {headers: myHeaders});
   }
 
-  assignStudentHostel(userID: number, hostelId: number, hostelRoomID: number, feeIncluded: boolean): Observable<HostelStudent>{
+  assignStudentHostel(userID: number, hostelId: number, hostelRoomID: number, feeIncluded: boolean, feeIteration: string): Observable<HostelStudent>{
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<HostelStudent>(`${this.loginService.URL}/students/${userID}/assign_hostel`, 
-      {hostel_id: hostelId, hostel_room_id: hostelRoomID, fee_included: feeIncluded}, {headers: myHeaders});
+      {hostel_id: hostelId, hostel_room_id: hostelRoomID, fee_included: feeIncluded, fee_iteration: feeIteration}, {headers: myHeaders});
   }
 
   changeStudentHostel(userID: number, hostelId: number, hostelRoomID: number): Observable<HostelStudent>{

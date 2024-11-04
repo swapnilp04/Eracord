@@ -15,6 +15,8 @@ import { BatchComponent } from './batchs/batch/batch.component';
 import { BatchAddEditComponent } from './batchs/batch-add-edit/batch-add-edit.component';
 import { BatchStandardAddEditComponent } from './batch-standards/batch-standard-add-edit/batch-standard-add-edit.component';
 import { BatchStandardStudentAddEditComponent } from './batch-standard-students/batch-standard-student-add-edit/batch-standard-student-add-edit.component';
+import { BatchStandardsStudentsComponent } from './batchs/batch-standards-students/batch-standards-students.component';
+
 import { TransactionsAddEditComponent } from './transactions/transactions-add-edit/transactions-add-edit.component';
 import { DuesComponent } from './transactions/dues/dues.component';
 
@@ -58,7 +60,9 @@ const routes: Routes = [
   {path: 'batchs/:id' , component: BatchComponent},
   {path: 'batchs/:id/edit' , component: BatchAddEditComponent},
   {path: 'batchs/:batch_id/standards/new' , component: BatchStandardAddEditComponent},
+  {path: 'batchs/:batch_id/standards/:id' , component: BatchStandardsStudentsComponent},
   {path: 'batchs/:batch_id/standards/:id/edit' , component: BatchStandardAddEditComponent},
+
 
   {path: 'hostels' , component: HostelsComponent},
   {path: 'hostels/new' , component: HostelAddEditComponent},

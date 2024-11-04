@@ -27,6 +27,7 @@ export class AppComponent {
       subscriber.next({code: 200, data:"This is data 1....."})
       subscriber.next({code: 200, data:"This is data 1....."})
       subscriber.error({code: 500, data:"An Error occured"})
+      subscriber.error({code: 403, data:"Forbidden"})
       setTimeout(() => {
         subscriber.next({code: 200, data:"This is more data ....."});
         subscriber.complete();

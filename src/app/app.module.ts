@@ -49,6 +49,8 @@ import { WithdrawComponent } from './student-accounts/withdraw/withdraw.componen
 import { DuesComponent } from './transactions/dues/dues.component';
 import {NgxPrintModule} from 'ngx-print';
 import { TransactionComponent } from './accounts/transaction/transaction.component';
+import { BatchStandardsStudentsComponent } from './batchs/batch-standards-students/batch-standards-students.component';
+import { EditHostelComponent } from './students/edit-hostel/edit-hostel.component';
 
 
 
@@ -91,7 +93,9 @@ import { TransactionComponent } from './accounts/transaction/transaction.compone
     DepositComponent,
     WithdrawComponent,
     DuesComponent,
-    TransactionComponent
+    TransactionComponent,
+    BatchStandardsStudentsComponent,
+    EditHostelComponent
   ],
   imports: [
     BrowserModule,

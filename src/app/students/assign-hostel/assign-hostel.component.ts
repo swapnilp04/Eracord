@@ -35,6 +35,7 @@ export class AssignHostelComponent implements OnInit {
   public selectedHosteId: number = 0;
   public selectedHostelRoom: number = 0;
   public feeIncluded= false;
+  public feeIteration = "Yearly";
   
   constructor(private studentService: StudentService, private hostelService: HostelService, private hostelRoomService: HostelRoomService, 
     private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
@@ -62,6 +63,10 @@ export class AssignHostelComponent implements OnInit {
     this.getHostelRooms(this.selectedHosteId);
   }
 
+  onChangeIteration(newObj: string): void {
+    this.feeIteration = newObj;
+  }
+
   loadStudent(studentID: number): void {
     this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
@@ -83,7 +88,7 @@ export class AssignHostelComponent implements OnInit {
   assignHostelRoom(): void {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
       this.isLoading = true;
-      this.studentService.assignStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom, this.feeIncluded).subscribe (
+      this.studentService.assignStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom, this.feeIncluded, this.feeIteration).subscribe (
         (response: any) => this.back(),
         (error: any) => this.errorHandle(error),
         () => this.isLoadingFalse()
