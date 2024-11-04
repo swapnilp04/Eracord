@@ -76,6 +76,7 @@ export class SwapRoomComponent {
 
   assignStudent(response: any) {
     this.student = response;
+    this.selectedHostelRoom = this.student.hostel_room_id;
     this.loadHostels();
   }
 
