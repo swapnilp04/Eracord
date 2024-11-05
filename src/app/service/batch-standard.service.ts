@@ -4,6 +4,7 @@ import { LoginService } from './../service/login.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BatchStandard } from './../interface/batch-standard'
+import { BatchStandardStudent } from './../interface/batch-standard-student'
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ URL = "http://localhost:8080"
   getBatchStandards(batchID: number): Observable<BatchStandard> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<BatchStandard>(`${this.loginService.URL}/batchs/${batchID}/standards`, {headers: myHeaders});
+  }
+
+  getBatchStandardStudents(batchID: number, batchStandardId: number): Observable<BatchStandardStudent>{
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<BatchStandardStudent>(`${this.loginService.URL}/batchs/${batchID}/batch-standards/${batchStandardId}/students`, {headers: myHeaders});
   }
 
   createBatchStandard(batchId: any, batchStandard: BatchStandard): Observable<BatchStandard> {

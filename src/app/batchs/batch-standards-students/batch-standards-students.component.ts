@@ -4,6 +4,7 @@ import {BatchStandardService} from './../../service/batch-standard.service';
 import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
 import {BatchStandard} from './../../interface/batch-standard';
+import {BatchStandardStudent} from './../../interface/batch-standard-student';
 import {Student} from './../../interface/student';
 import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -17,6 +18,7 @@ import { Location } from '@angular/common';
 export class BatchStandardsStudentsComponent {
   public batch = {} as Batch;
   public batchStandard = {} as BatchStandard;
+  public batchStandardStudents: BatchStandardStudent[] = [];
   public id: any;
   dismissible = true;
 
@@ -48,6 +50,8 @@ export class BatchStandardsStudentsComponent {
       this.loadBatch(batchID);
       
       this.loadBatchStandard(batchID, batchStandardID);
+      this.loadBatchStandardStudents(batchID, batchStandardID);
+
     });
   }
 
@@ -80,6 +84,14 @@ export class BatchStandardsStudentsComponent {
     );
   }
 
+  loadBatchStandardStudents(batchID: number, standardID: number): void {
+    this.BatchStandardService.getBatchStandardStudents(batchID, standardID).subscribe (
+      (response: any) => this.assignBatchStandardStudents(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Batch Standard......')
+    );
+  }
+
   
   assignBatch(response: any) {
     this.batch = response;
@@ -91,12 +103,22 @@ export class BatchStandardsStudentsComponent {
     this.isLoading = false;
   }
 
+  assignBatchStandardStudents(response: any) {
+    this.batchStandardStudents = response;
+    this.isLoading = false;
+  }
+
+
   back(): void {
-    this.router.navigate(['/batchs']);
+    this.router.navigate(['/batchs/', this.batch.id]);
   }
 
   name(): string {
     return `${this.batch.name}`
+  }
+
+  studentName(student: Student): string {
+    return `${student.first_name} ${student.middle_name} ${student.last_name}`
   }
 
 }
