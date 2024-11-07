@@ -9,17 +9,20 @@
 	      <th class="col-md-1"> Sr No
 	      </th>
 	      <th>Name</th>
-	      <th>Year</th>
+	      <th>Default?</th>
+	      <th>Action</th>
 	    </tr>
     </thead>
     <tbody>
     	<tr *ngFor="let batch of batchs; index as i">
 	      <td>{{i+1}}</td> 
 	      <td>{{batch.name}}</td>
+	      <td>{{batch.is_default}}</td>
 	      <td>
 	        <a href='/batchs/{{batch.id}}'>Show</a>
 	        <a href='/batchs/{{batch.id}}/edit'>Edit</a>
 	      </td>
+	      
     	</tr>
     </tbody>
 	</table>	
