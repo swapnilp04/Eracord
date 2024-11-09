@@ -51,6 +51,7 @@ import {NgxPrintModule} from 'ngx-print';
 import { TransactionComponent } from './accounts/transaction/transaction.component';
 import { BatchStandardsStudentsComponent } from './batchs/batch-standards-students/batch-standards-students.component';
 import { EditHostelComponent } from './students/edit-hostel/edit-hostel.component';
+import { StudentsListComponent } from './hostels/students-list/students-list.component';
 
 
 
@@ -95,7 +96,8 @@ import { EditHostelComponent } from './students/edit-hostel/edit-hostel.componen
     DuesComponent,
     TransactionComponent,
     BatchStandardsStudentsComponent,
-    EditHostelComponent
+    EditHostelComponent,
+    StudentsListComponent
   ],
   imports: [
     BrowserModule,

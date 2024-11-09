@@ -15,6 +15,7 @@ export class HostelStudentsComponent implements OnInit{
   @Input() hostelId: number;
   @Input() hostelRoomId: any;
   @Input() hostelRoom: HostelRoom;
+  @Input() showAmount: any;
   public hostelStudents: HostelStudent[] = [];
 
   constructor(private hostelRoomService: HostelRoomService, private loginService: LoginService){}

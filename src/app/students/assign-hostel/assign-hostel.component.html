@@ -38,7 +38,7 @@
 	
 	<div class="row row-cols-2 marginTop15">
 		<div *ngFor="let hostelRoom of hostelRooms" class="marginTop15 borderBox" [ngClass]="{selected: selectedHostelRoom ==  hostelRoom.id}"    (click)="selectRoom(hostelRoom.id)" >
-			<app-hostel-students [hostelId]="selectedHosteId" [hostelRoomId]="hostelRoom.id" [hostelRoom]="hostelRoom"></app-hostel-students>
+			<app-hostel-students [hostelId]="selectedHosteId" [hostelRoomId]="hostelRoom.id" [hostelRoom]="hostelRoom" showAmount="true"></app-hostel-students>
 		</div>
 	</div>
 </div>

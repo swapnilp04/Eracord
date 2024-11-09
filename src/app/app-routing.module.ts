@@ -23,6 +23,7 @@ import { DuesComponent } from './transactions/dues/dues.component';
 import { HostelsComponent } from './hostels/hostels/hostels.component';
 import { HostelComponent } from './hostels/hostel/hostel.component';
 import { HostelAddEditComponent } from './hostels/hostel-add-edit/hostel-add-edit.component';
+import { StudentsListComponent } from './hostels/students-list/students-list.component'; // hostel students list
 import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/hostel-room-add-edit.component';
 import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
 import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
@@ -68,6 +69,7 @@ const routes: Routes = [
   {path: 'hostels/new' , component: HostelAddEditComponent},
   {path: 'hostels/:id' , component: HostelComponent},
   {path: 'hostels/:id/edit' , component: HostelAddEditComponent},
+  {path: 'hostels/:id/students-list' , component: StudentsListComponent},
 
   {path: 'hostels/:hostel_id/hostel-rooms/new' , component: HostelRoomAddEditComponent},
   {path: 'hostels/:hostel_id/hostel-rooms/:id' , component: HostelRoomComponent},
