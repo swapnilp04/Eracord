@@ -22,6 +22,9 @@ export class BatchsComponent  implements OnInit {
   }
 
   errorHandle(error: any): void {
+    if(error.name == "HttpErrorResponse") {
+      this.loginService.toLogin();
+    }
     if(error.status == 401) {
       this.loginService.toLogin();
     }

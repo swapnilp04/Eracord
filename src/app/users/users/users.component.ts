@@ -23,6 +23,9 @@ export class UsersComponent  implements OnInit {
     if(error.status == 401) {
       this.loginService.toLogin();
     }
+    if(error.name == "HttpErrorResponse") {
+      this.loginService.toLogin();
+    }
   }
 
   loadUsers(): void {
