@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
    URL = "http://localhost:8080"
-  //URL = "http://54.237.98.76:8080"
+  //URL = "http://65.254.80.148:8080"
   public isLogin = false;
   public username = "";
 
@@ -40,9 +40,11 @@ export class LoginService {
   }
 
   toLogin() {
+    this.cookies.deleteAll();
     this.cookies.set('isLogin', 'false');
     this.cookies.delete('token');
     this.isLogin = false;
+    this.cookies.deleteAll();
     this.router.navigate(['/login']);
   }
 
