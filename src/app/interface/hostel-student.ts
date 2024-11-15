@@ -14,4 +14,5 @@ export interface HostelStudent {
 	name: string;
 	fee_included: boolean;
 	next_collection: Date;
+	fee_iteration: string;
 }
