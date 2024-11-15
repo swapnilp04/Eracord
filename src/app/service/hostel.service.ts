@@ -4,6 +4,7 @@ import { LoginService } from './../service/login.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Hostel } from './../interface/hostel'
+import { HostelStudent } from './../interface/hostel-student'
 
 
 @Injectable({
@@ -34,5 +35,11 @@ export class HostelService {
   updateHostel(hostel: Hostel): Observable<Hostel> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.put<Hostel>(`${this.loginService.URL}/hostels/${hostel.id}`, hostel, {headers: myHeaders});
-  }  
+  }
+
+  getHostelEarlyExpireStudents(): Observable<HostelStudent[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<HostelStudent[]>(`${this.loginService.URL}/hostels/get_early_expired_students`, {headers: myHeaders});
+  }
+
 }

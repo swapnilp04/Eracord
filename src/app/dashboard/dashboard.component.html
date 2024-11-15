@@ -1,13 +1,26 @@
-<p>dashboard works!</p>
 <div class="row">
-	<nav>
-  	<ul>
-    	<li><a routerLink="/students" routerLinkActive="active" ariaCurrentWhenActive="page">Students</a></li>
-    	<li><a routerLink="/students" routerLinkActive="active" ariaCurrentWhenActive="page">Account</a></li>
-    	<li><a routerLink="/students" routerLinkActive="active" ariaCurrentWhenActive="page">Exam</a></li>
-    	<li><a routerLink="/hostels" routerLinkActive="active" ariaCurrentWhenActive="page">Hostel</a></li>
-    	<li><a routerLink="/batchs" routerLinkActive="active" ariaCurrentWhenActive="page">Batch</a></li>
-    	<li><a routerLink="/standards" routerLinkActive="active" ariaCurrentWhenActive="page">Standard</a></li>
-  	</ul>
-	</nav>
+	<h2>Hostel Expired Students</h2>
+	<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+	      <th class="col-md-1"> Sr No
+	      </th>
+	      <th>Student Name</th>
+	      <th>Hostel</th>
+	      <th>End Date</th>
+	      <th>Action</th>
+	    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let hostelStudent of hostelStudents; index as i">
+	      <td>{{i+1}}</td> 
+	      <td>{{name(hostelStudent.Student)}}</td>
+	      <td>{{hostelStudent.Hostel.name}}</td>
+	      <td>{{hostelStudent.next_collection | date:'dd MMMM yyyy'}}</td>
+	      <td>
+	      
+	      </td>
+    	</tr>
+    </tbody>
+	</table>	
 </div>

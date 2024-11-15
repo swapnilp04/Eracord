@@ -6,7 +6,7 @@
 <div *ngIf=!isLoading>
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
-		<h5>Birth Date - {{student.birth_date | date:'MM/dd/yyyy'}}</h5>
+		<h5>Birth Date - {{student.birth_date | date:'dd MMMM yyyy'}}</h5>
 		<h5>Adhar Card number Number - {{adharCard()}}</h5>
 		<h5>Parent Name - {{student.parent_name}}</h5>
 		<h5>Contact Number - {{student.contact_number}}</h5>
