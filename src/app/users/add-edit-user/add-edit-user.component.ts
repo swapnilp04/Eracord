@@ -24,6 +24,7 @@ export class AddEditUserComponent implements OnInit{
   ngOnInit(): void {
     this.user.role = "Clerk";
     if(this.router.url.includes('/edit')) {
+      this.loadUser()
       this.isNew = false;
     }
   }
@@ -45,16 +46,16 @@ export class AddEditUserComponent implements OnInit{
 
   updateUser(user: User): void {
     this.isLoading = true;
-    this.userService.createUser(user).subscribe (
-      (response: any) => this.back(),
+    this.userService.updatePassword(user).subscribe (
+      (response: any) => this.logoutUser(),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
   }
 
-  loadUser(userID: number): void {
+  loadUser(): void {
     this.isLoading = true;
-    this.userService.getUser(userID).subscribe (
+    this.userService.getUser().subscribe (
       (response: any) => this.assignUser(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
@@ -77,5 +78,13 @@ export class AddEditUserComponent implements OnInit{
 
   isLoadingFalse(): void {
     this.isLoading = false;    
+  }
+
+  logoutUser(): void {
+    this.loginService.logoutUser().subscribe (
+      (response: any) => this.loginService.toLogin(),
+      (error: any) => console.log(error),
+      () => console.log('Done getting Hostel......')
+    );
   }
 }

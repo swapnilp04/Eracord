@@ -80,6 +80,7 @@ const routes: Routes = [
 
   {path: 'users' , component: UsersComponent},
   {path: 'users/new' , component: AddEditUserComponent},
+  {path: 'users/edit' , component: AddEditUserComponent},
   ];
 
 

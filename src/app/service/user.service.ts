@@ -16,9 +16,9 @@ export class UserService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  getUser(userId: number): Observable<User> {
+  getUser(): Observable<User> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<User>(`${this.loginService.URL}/users/${userId}`, {headers: myHeaders});
+    return this.http.get<User>(`${this.loginService.URL}/users/current`, {headers: myHeaders});
   }
 
   getUsers(): Observable<User[]> {
@@ -29,6 +29,11 @@ export class UserService {
   createUser(user: User): Observable<User> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<User>(`${this.loginService.URL}/users`, user, {headers: myHeaders});
+  }
+
+  updatePassword(user: User): Observable<User> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.put<User>(`${this.loginService.URL}/users/update_password`, user, {headers: myHeaders});
   }
 
 }
