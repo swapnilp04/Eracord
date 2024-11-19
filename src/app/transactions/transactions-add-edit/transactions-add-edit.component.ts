@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToWords } from 'to-words';
+
 import { Location } from '@angular/common';
 import { StudentService } from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
@@ -21,9 +23,10 @@ export class TransactionsAddEditComponent implements OnInit {
   public isNew = true;
   public studentId: number;
   public isLoading= false;
+  public toWords = new ToWords();
 
   constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService){}
+    private loginService: LoginService, toWords: ToWords){}
 
   ngOnInit(): void {
     this.transaction.payment_mode = "Cash";

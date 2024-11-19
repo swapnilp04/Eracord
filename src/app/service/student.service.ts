@@ -93,4 +93,9 @@ export class StudentService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Balance>(`${this.loginService.URL}/students/${studentId}/transactions/balance`, {headers: myHeaders});
   }
+
+  getUpcommingBirthdays() : Observable<Student[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Student[]>(`${this.loginService.URL}/students/get-upcomming-birthdays`, {headers: myHeaders});
+  }
 }

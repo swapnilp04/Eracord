@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from './../service/login.service';
 import { HostelService } from './../service/hostel.service';
+import { StudentService } from './../service/student.service';
 import { HostelStudent } from './../interface/hostel-student';
 import { HostelRoom } from './../interface/hostel-room';
 import {Student} from './../interface/student';
@@ -13,11 +14,13 @@ import {Student} from './../interface/student';
 export class DashboardComponent implements OnInit {
   
   public hostelStudents: HostelStudent[] = [];
+  public students: Student[] = [];
 
-  constructor(private hostelService: HostelService, private loginService: LoginService){}
+  constructor(private hostelService: HostelService, private studentService: StudentService, private loginService: LoginService){}
 
   ngOnInit(): void {
     this.loadHostelStudent()
+    this.loadUpcommingBirdays()
   }
 
   errorHandle(error: any): void {
@@ -40,6 +43,18 @@ export class DashboardComponent implements OnInit {
 
   name(student: Student): string {
     return `${student.first_name} ${student.middle_name} ${student.last_name}`
+  }
+
+  loadUpcommingBirdays(): void {
+    this.studentService.getUpcommingBirthdays().subscribe (
+      (response: any) => this.assignStudents(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Hostels......')
+    );
+  }
+
+  assignStudents(response: any) {
+    this.students = response;
   }
 
 }

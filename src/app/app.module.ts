@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
+import { ToWords } from 'to-words';
 import { StudentComponent } from './students/student/student.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -97,7 +98,7 @@ import { StudentsListComponent } from './hostels/students-list/students-list.com
     TransactionComponent,
     BatchStandardsStudentsComponent,
     EditHostelComponent,
-    StudentsListComponent
+    StudentsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,7 +115,7 @@ import { StudentsListComponent } from './hostels/students-list/students-list.com
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
-  providers: [CookieService],
+  providers: [CookieService, ToWords],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
