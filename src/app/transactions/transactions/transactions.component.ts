@@ -13,6 +13,7 @@ import { Balance } from './../../interface/balance';
 export class TransactionsComponent  implements OnInit {
 
   @Input() studentId: any;
+  @Input() showActions: any;
   public transactions: Transaction[] = [];
   public balance = {} as Balance;
 

@@ -41,7 +41,7 @@
 		  </tab>
 		  <tab heading="Transactions" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Transactions</h4>
-		    <app-transactions [studentId]="student.id"></app-transactions>
+		    <app-transactions [studentId]="student.id" [showActions]="true"></app-transactions>
 		  </tab>
 		  <tab heading="Accounts" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Student Accounts</h4>
