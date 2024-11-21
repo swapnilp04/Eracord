@@ -14,7 +14,7 @@
   	<tr *ngFor="let hostelStudent of hostelStudents; index as i">
       <td>{{i+1}}</td> 
       <td>
-     		{{hostelStudent.Student.first_name}} {{hostelStudent.Student.last_name}}
+     		{{hostelStudent.Student.first_name}} {{hostelStudent.Student.last_name}} <strong>({{hostelStudent.Student.Standard.name}})</strong>
       </td>
       <td>{{hostelStudent.Student.town}}</td>
   	</tr>

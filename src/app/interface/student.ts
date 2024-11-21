@@ -1,3 +1,5 @@
+import { Standard } from './standard';
+
 export interface Student {
 	id?: number;
 	init: string;
@@ -17,4 +19,6 @@ export interface Student {
 	hostel_room_id: number;
 	balance: number;
 	student_account_balance: number;
+	standard_id: number;
+	Standard: Standard;
 }
