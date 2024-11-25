@@ -69,7 +69,10 @@ export class TransactionComponent {
   }
 
   name(): string {
-    return `${this.transaction.Student.first_name} ${this.transaction.Student.middle_name} ${this.transaction.Student.last_name} `
+    if(this.transaction.Student) {
+      return `${this.transaction.Student.first_name} ${this.transaction.Student.middle_name} ${this.transaction.Student.last_name} `
+    } 
+    return ``
   }
 }
 

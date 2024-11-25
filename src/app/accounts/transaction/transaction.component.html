@@ -29,12 +29,15 @@
 		 	<div style="width:430px; float:left">
 				<strong>Bill To</strong><br />
 				<span style="text-transform: capitalize;">STUDENT NAME -  {{name()}}</span><br/>
-				<span>ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
-				<span>TOWN - {{transaction.Student.town}}</span>
+				<span *ngIf="transaction.Student">ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
+				<span *ngIf="transaction.Student">TOWN - {{transaction.Student.town}}</span><br/>
+				<span *ngIf="transaction.Student">Standard   - &nbsp;&nbsp;{{transaction.Student.Standard.name }}</span>
 		 	</div>
 		 	<div style="float:left">
 		 			<span>RECEIPT NO #&nbsp;&nbsp;- &nbsp;&nbsp; {{transaction.receipt_id}}</span><br />
-		 			<span>RECEIPT DATE   - &nbsp;&nbsp;{{transaction.CreatedAt | date}}</span>
+		 			<span>RECEIPT DATE   - &nbsp;&nbsp;{{transaction.CreatedAt | date}}</span><br />
+		 			<span>Payment Mode   - &nbsp;&nbsp;{{transaction.payment_mode }}</span><br />
+		 			<span>Paid By   - &nbsp;&nbsp;{{transaction.paid_by }}</span>
 		 	</div>
 		 </div>
 		 <div style="width:100%;float:left;margin-top:10px;">
@@ -74,12 +77,15 @@
 		 	<div style="width:430px; float:left">
 				<strong>Bill To</strong><br />
 				<span style="text-transform: capitalize;">STUDENT NAME -  {{name()}}</span><br/>
-				<span>ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
-				<span>TOWN - {{transaction.Student.town}}</span>
+				<span *ngIf="transaction.Student">ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
+				<span *ngIf="transaction.Student">TOWN - {{transaction.Student.town}}</span><br/>
+				<span *ngIf="transaction.Student">Standard   - &nbsp;&nbsp;{{transaction.Student.Standard.name }}</span>
 		 	</div>
 		 	<div style="float:left">
 		 			<span>RECEIPT NO #&nbsp;&nbsp;- &nbsp;&nbsp; {{transaction.receipt_id}}</span><br />
 		 			<span>RECEIPT DATE   - &nbsp;&nbsp;{{transaction.CreatedAt | date}}</span>
+		 			<span>Payment Mode   - &nbsp;&nbsp;{{transaction.payment_mode }}</span><br />
+		 			<span>Paid By   - &nbsp;&nbsp;{{transaction.paid_by }}</span>
 		 	</div>
 		 </div>
 		 <div style="width:100%;float:left;margin-top:10px;">
@@ -119,12 +125,15 @@
 		 	<div style="width:430px; float:left">
 				<strong>Bill To</strong><br />
 				<span style="text-transform: capitalize;">STUDENT NAME -  {{name()}}</span><br/>
-				<span>ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
-				<span>TOWN - {{transaction.Student.town}}</span>
+				<span *ngIf="transaction.Student">ROLL NO. - {{transaction.Student.roll_number}}</span><br/>
+				<span *ngIf="transaction.Student">TOWN - {{transaction.Student.town}}</span><br/>
+				<span *ngIf="transaction.Student">Standard   - &nbsp;&nbsp;{{transaction.Student.Standard.name }}</span>
 		 	</div>
 		 	<div style="float:left">
 		 			<span>RECEIPT NO #&nbsp;&nbsp;- &nbsp;&nbsp; {{transaction.receipt_id}}</span><br />
 		 			<span>RECEIPT DATE   - &nbsp;&nbsp;{{transaction.CreatedAt | date}}</span>
+		 			<span>Payment Mode   - &nbsp;&nbsp;{{transaction.payment_mode }}</span><br />
+		 			<span>Paid By   - &nbsp;&nbsp;{{transaction.paid_by }}</span>
 		 	</div>
 		 </div>
 		 <div style="width:100%;float:left;margin-top:10px;">

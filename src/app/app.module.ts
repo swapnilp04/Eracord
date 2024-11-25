@@ -53,6 +53,7 @@ import { TransactionComponent } from './accounts/transaction/transaction.compone
 import { BatchStandardsStudentsComponent } from './batchs/batch-standards-students/batch-standards-students.component';
 import { EditHostelComponent } from './students/edit-hostel/edit-hostel.component';
 import { StudentsListComponent } from './hostels/students-list/students-list.component';
+import { DiscountsAddEditComponent } from './transactions/discounts-add-edit/discounts-add-edit.component';
 
 
 
@@ -99,6 +100,7 @@ import { StudentsListComponent } from './hostels/students-list/students-list.com
     BatchStandardsStudentsComponent,
     EditHostelComponent,
     StudentsListComponent,
+    DiscountsAddEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,10 @@
 
 
 <div *ngIf=!isLoading>
+	<div *ngIf="student.id" class="pull-right"> 
+		<a href='/students/{{student.id - 1}}'>Preview</a> &nbsp;
+		<a href='/students/{{student.id + 1}}'>Next</a>
+	</div>
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
 		<h5>Birth Date - {{student.birth_date | date:'dd MMMM yyyy'}}</h5>
@@ -12,6 +16,7 @@
 		<h5>Contact Number - {{student.contact_number}}</h5>
 		<h5>What's app Number - {{student.wh_number}}</h5>
 		<h5>Address - {{student.town}}</h5>
+		<h5>Standard - {{student.Standard.name}}</h5>
 		
 		<a class="btn btn-secondary" href='/students/{{student.id}}/edit'>Edit</a>
 		<button (click)=back() class="btn btn-primary marginLeft15">

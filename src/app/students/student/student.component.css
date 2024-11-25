@@ -1,3 +1,6 @@
 .changeRoom {
 	font-size: 0.8rem;
 }
+.pull-right {
+	float: right;
+}
