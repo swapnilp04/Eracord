@@ -25,13 +25,13 @@
     <tbody>
     	<tr *ngFor="let transaction of transactions; index as i">
       <td>{{i+1}}</td> 
-      <td>{{transaction.name}}</td>
+      <td>{{transaction.name == 'Dues' ? transaction.reason :  transaction.name }}</td>
       <td>{{transaction.CreatedAt| date:'MM/dd/yyyy'}}</td>
       <td>{{transaction.transaction_type}}</td>
       <td [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</td>
       <td>{{transaction.paid_by}}</td>
       <td>
-        <a href='/accounts/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type == 'cridit'">#{{transaction.receipt_id}}</a>
+        <a href='/transactions/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type == 'cridit'">#{{transaction.receipt_id}}</a>
       </td>
     	</tr>
     </tbody>

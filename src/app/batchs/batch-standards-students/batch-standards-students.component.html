@@ -5,7 +5,7 @@
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
 		<h5>Year - {{batch.year}}</h5>
-		<h5>Standard </h5>
+		<h5 *ngIf="batchStandard.Standard">Standard - {{batchStandard.Standard.name}}</h5>
 		<button (click)=back() class="btn btn-primary marginLeft15">
 			Back
 		</button>

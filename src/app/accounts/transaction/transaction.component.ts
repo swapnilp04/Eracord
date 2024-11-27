@@ -60,12 +60,12 @@ export class TransactionComponent {
     this.transaction = response;
     this.isLoading = false;
     if(this.transaction.transaction_type == "debit") {
-      this.router.navigate(['/accounts']);
+      this.router.navigate(['/transactions']);
     }
   }
 
   back(): void {
-    this.router.navigate(['/accounts']);
+    this.router.navigate(['/transactions']);
   }
 
   name(): string {

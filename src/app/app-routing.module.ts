@@ -77,8 +77,8 @@ const routes: Routes = [
   {path: 'hostels/:hostel_id/hostel-rooms/:id' , component: HostelRoomComponent},
   {path: 'hostels/:hostel_id/hostel-rooms/:id/edit' , component: HostelRoomAddEditComponent},
 
-  {path: 'accounts' , component: AllTransactionsComponent},
-  {path: 'accounts/students/:student_id/receipt/:id' , component: TransactionComponent},
+  {path: 'transactions' , component: AllTransactionsComponent},
+  {path: 'transactions/students/:student_id/receipt/:id' , component: TransactionComponent},
 
   {path: 'users' , component: UsersComponent},
   {path: 'users/new' , component: AddEditUserComponent},
