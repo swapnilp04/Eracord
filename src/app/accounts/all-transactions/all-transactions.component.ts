@@ -36,7 +36,7 @@ export class AllTransactionsComponent  implements OnInit {
   }
 
   name(student: Student): string {
-    return `${student.first_name} ${student.middle_name} ${student.last_name} -- ${student.contact_number}`
+    return `${student.first_name} ${student.middle_name} ${student.last_name}`
   }
 
   pageChanged(event: PageChangedEvent): void {

@@ -4,35 +4,43 @@
 <div *ngIf=!isLoading>
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
-		<h5>Year - {{batch.year}}</h5>
-		<h5 *ngIf="batchStandard.Standard">Standard - {{batchStandard.Standard.name}}</h5>
-		<button (click)=back() class="btn btn-primary marginLeft15">
+		<button (click)=back() class="btn btn-primary">
 			Back
 		</button>
+		<button 
+			class="btn btn-primary marginLeft15"
+			[useExistingCss]="true"
+			printSectionId="print-section"
+			ngxPrint>print</button>
 	</div>
-	<h4>Students</h4>
-	<table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-      <th class="col-md-1"> Sr No
-      </th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>HasHostel</th>
-      <th>Balance</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    	<tr *ngFor="let batchStandardStudent of batchStandardStudents; index as i">
-    		<td>{{i+1}}</td>
-      	<td>{{studentName(batchStandardStudent.Student)}}</td>
-      	<td>{{batchStandardStudent.Student.town}}</td>
-      	<td>{{batchStandardStudent.Student.has_hostel}}</td>
-      	<td>{{batchStandardStudent.Student.balance}}</td>
-      	<td>
-      	</td>
-    	</tr>
-    </tbody>
-	</table>	
+	<div id="print-section">
+
+		<h5>Year - {{batch.year}}</h5>
+		<h5 *ngIf="batchStandard.Standard">Standard - {{batchStandard.Standard.name}}</h5>
+		<h4>Students</h4>
+		<table class="table table-striped table-bordered table-hover">
+	    <thead>
+	      <tr>
+	      <th class="col-md-1"> Sr No
+	      </th>
+	      <th>Name</th>
+	      <th>Address</th>
+	      <th>HasHostel</th>
+	      <th>Balance</th>
+	      <th>Action</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    	<tr *ngFor="let batchStandardStudent of batchStandardStudents; index as i">
+	    		<td>{{i+1}}</td>
+	      	<td>{{studentName(batchStandardStudent.Student)}}</td>
+	      	<td>{{batchStandardStudent.Student.town}}</td>
+	      	<td>{{batchStandardStudent.Student.has_hostel}}</td>
+	      	<td>{{batchStandardStudent.Student.balance}}</td>
+	      	<td>
+	      	</td>
+	    	</tr>
+	    </tbody>
+		</table>	
+	</div>
 </div>
