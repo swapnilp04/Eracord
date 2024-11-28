@@ -101,7 +101,9 @@ export class StudentComponent  implements OnInit {
   assignStudent(response: any) {
     this.student = response;
     this.isLoading = false;
-    this.loadStudentHostel(this.student['id']);
+    if(!this.student.has_absconded) {
+      this.loadStudentHostel(this.student['id']);
+    }
   }
 
   assignHostel(response: any): void {

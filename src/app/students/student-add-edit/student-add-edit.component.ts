@@ -109,6 +109,9 @@ export class StudentAddEditComponent implements OnInit {
 
   assignStudent(response: any) {
     this.student = response;
+    if(!this.isNew) {
+      this.student.birth_date = new Date(this.student.birth_date)
+    }
   }
 
   isLoadingFalse(): void {

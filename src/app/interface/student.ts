@@ -21,4 +21,5 @@ export interface Student {
 	student_account_balance: number;
 	standard_id: number;
 	Standard: Standard;
+	has_absconded: boolean;
 }

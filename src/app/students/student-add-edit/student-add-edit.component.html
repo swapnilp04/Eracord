@@ -27,6 +27,7 @@
            class="form-control"
            [(ngModel)]="student.birth_date"
            [ngModelOptions]="{standalone: true}"
+           [bsConfig]="{ dateInputFormat: 'DD MMMM YYYY'}"
            bsDatepicker>
   </div>
 

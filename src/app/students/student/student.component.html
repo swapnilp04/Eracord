@@ -18,12 +18,12 @@
 		<h5>Address - {{student.town}}</h5>
 		<h5>Standard - {{student.Standard.name}}</h5>
 		
-		<a class="btn btn-secondary" href='/students/{{student.id}}/edit'>Edit</a>
+		<a *ngIf=!student.has_absconded class="btn btn-secondary" href='/students/{{student.id}}/edit'>Edit</a>
 		<button (click)=back() class="btn btn-primary marginLeft15">
 			Back
 		</button>
 	</div>
-	<div>	
+	<div *ngIf="!student.has_absconded">	
 		<tabset>
 		  <tab heading="Hostel" class="mt-2" (selectTab)="onSelect($event)">
 		    <span *ngIf=hasHostel>
