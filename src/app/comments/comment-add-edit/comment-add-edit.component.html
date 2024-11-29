@@ -10,7 +10,7 @@
     <label class="form-check-label">
       Comment Category
     </label>
-    <select class="form-select" [disabled]="isLoading" [ngModel]="comment.comment_category_id" aria-label="Default select example" [ngModelOptions]="{standalone: true}">
+    <select class="form-select" [ngModel]="comment.comment_category_id" aria-label="Default select example" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCommentCategory($event)">
       <option value="0">----</option>
       <option *ngFor="let category of commentCategories" [ngValue]="category.id">{{category.name}}</option>
     </select>

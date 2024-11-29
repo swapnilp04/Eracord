@@ -76,6 +76,10 @@ export class CommentAddEditComponent {
     this.student = response;
   }
 
+  onChangeCommentCategory(newObj: number): void {
+    this.comment.comment_category_id = newObj;
+  }
+
   loadComment(commentId: number): void {
     this.isLoading = true;
     this.commentService.getComment(commentId).subscribe (
@@ -101,7 +105,7 @@ export class CommentAddEditComponent {
 
   getSuccess(response: any): void {
     if(this.isNew) {
-      window.location.href = `/comments/${response['comment']['id']}?success=true`;
+      this.router.navigate([`/students/${this.student.id}`]);
     } else {
       window.location.href = `/comments/${response['comment']['id']}?isUpdate=true`;
     }
