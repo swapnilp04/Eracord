@@ -15,7 +15,7 @@ export class CommentsComponent implements OnInit{
   constructor(private commentService: CommentService, private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.loadHostels();    
+    this.loadComments();    
   }
 
   loadComments(): void {
