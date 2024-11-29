@@ -54,6 +54,7 @@ import { BatchStandardsStudentsComponent } from './batchs/batch-standards-studen
 import { EditHostelComponent } from './students/edit-hostel/edit-hostel.component';
 import { StudentsListComponent } from './hostels/students-list/students-list.component';
 import { DiscountsAddEditComponent } from './transactions/discounts-add-edit/discounts-add-edit.component';
+import { CommentsComponent } from './comments/comments/comments.component';
 
 
 
@@ -101,6 +102,7 @@ import { DiscountsAddEditComponent } from './transactions/discounts-add-edit/dis
     EditHostelComponent,
     StudentsListComponent,
     DiscountsAddEditComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
