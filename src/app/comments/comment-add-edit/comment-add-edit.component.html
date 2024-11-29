@@ -1,0 +1,46 @@
+<div class="mb-3">
+  <h2>{{name()}}</h2>
+  <h5>Birth Date - {{student.birth_date| date:'MM/dd/yyyy'}}</h5>
+  <h5>Parent Name - {{student.parent_name}}</h5>
+  <h5>Contact Number - {{student.contact_number}}</h5>
+  <h5>What's app Number - {{student.wh_number}}</h5>
+
+<form>
+  <div class="marginTop15">
+    <label class="form-check-label">
+      Comment Category
+    </label>
+    <select class="form-select" [disabled]="isLoading" [ngModel]="comment.comment_category_id" aria-label="Default select example" [ngModelOptions]="{standalone: true}">
+      <option value="0">----</option>
+      <option *ngFor="let category of commentCategories" [ngValue]="category.id">{{category.name}}</option>
+    </select>
+  </div>
+  
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">Comment</label>
+    <input type="text" class="form-control" placeholder="Comment" [(ngModel)]="comment.comment" [ngModelOptions]="{standalone: true}"/>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Reminder?</label>
+    <input type="checkbox"  placeholder="IsDefault" [(ngModel)]="comment.has_reminder" [ngModelOptions]="{standalone: true}"/>
+  </div>
+
+  <div *ngIf=comment.has_reminder>
+		<div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+			<label for="exampleInputPassword1" class="form-label">Reminder On</label>
+    	<input type="text"
+           placeholder="Reminder On"
+           class="form-control"
+           [(ngModel)]="comment.reminder_on"
+           [ngModelOptions]="{standalone: true}"
+           [bsConfig]="{ dateInputFormat: 'DD MMMM YYYY'}"
+           bsDatepicker>
+  </div>
+</div>
+  <div class="form-group mb-3">
+  <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createComment(comment)>Submit</button>
+  <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateComment(comment)>Submit</button>
+  <button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
+</div>
+</form>

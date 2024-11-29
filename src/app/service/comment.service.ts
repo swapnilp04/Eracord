@@ -22,5 +22,15 @@ export class CommentService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Comment>(`${this.loginService.URL}/comments/${commentID}`, {headers: myHeaders});
   }
+
+  createComment(studentID: number, comment: Comment): Observable<Comment> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Comment>(`${this.loginService.URL}/students/${studentID}/comments`, comment, {headers: myHeaders});
+  }
+
+  updateComment(comment: Comment): Observable<Comment> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.put<Comment>(`${this.loginService.URL}/comments/${comment.id}`, comment, {headers: myHeaders});
+  }
 }
 

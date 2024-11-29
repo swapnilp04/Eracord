@@ -22,6 +22,7 @@
 		<button (click)=back() class="btn btn-primary marginLeft15">
 			Back
 		</button>
+		<a class="btn btn-secondary marginLeft15" href='/students/{{student.id}}/comments/new'>Comment</a>
 	</div>
 	<div *ngIf="!student.has_absconded">	
 		<tabset>
