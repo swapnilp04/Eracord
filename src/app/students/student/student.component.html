@@ -22,7 +22,7 @@
 		<button (click)=back() class="btn btn-primary marginLeft15">
 			Back
 		</button>
-		<a class="btn btn-secondary marginLeft15" href='/students/{{student.id}}/comments/new'>Comment</a>
+		<a class="btn btn-secondary marginLeft15" href='/students/{{student.id}}/comments/new'>New Comment</a>
 	</div>
 	<div *ngIf="!student.has_absconded">	
 		<tabset>
@@ -53,6 +53,10 @@
 		  <tab heading="Accounts" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Student Accounts</h4>
 		    <app-student-accounts [studentId]="student.id" [student]="student"></app-student-accounts>
+		  </tab>
+		  <tab heading="Comments" class="mt-2" (selectTab)="onSelect($event)">
+		    <h4>Student Comments</h4>
+		    <app-student-comments [studentId]="student.id" [student]="student"></app-student-comments>
 		  </tab>
 		</tabset>
 	</div>

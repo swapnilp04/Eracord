@@ -18,6 +18,11 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.loginService.URL}/comments`, {headers: myHeaders});
   }
 
+  getStudentComments(studentID: number,): Observable<Comment[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Comment[]>(`${this.loginService.URL}/students/${studentID}/comments`, {headers: myHeaders});
+  }
+
   getComment(commentID: number): Observable<Comment> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Comment>(`${this.loginService.URL}/comments/${commentID}`, {headers: myHeaders});

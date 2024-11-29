@@ -56,6 +56,7 @@ import { StudentsListComponent } from './hostels/students-list/students-list.com
 import { DiscountsAddEditComponent } from './transactions/discounts-add-edit/discounts-add-edit.component';
 import { CommentsComponent } from './comments/comments/comments.component';
 import { CommentAddEditComponent } from './comments/comment-add-edit/comment-add-edit.component';
+import { StudentCommentsComponent } from './students/student-comments/student-comments.component';
 
 
 
@@ -105,6 +106,7 @@ import { CommentAddEditComponent } from './comments/comment-add-edit/comment-add
     DiscountsAddEditComponent,
     CommentsComponent,
     CommentAddEditComponent,
+    StudentCommentsComponent,
   ],
   imports: [
     BrowserModule,
