@@ -18,9 +18,9 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.loginService.URL}/comments`, {headers: myHeaders});
   }
 
-  getStudentComments(studentID: number,): Observable<Comment[]> {
+  getStudentComments(studentID: number, page: number): Observable<Comment[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Comment[]>(`${this.loginService.URL}/students/${studentID}/comments`, {headers: myHeaders});
+    return this.http.get<Comment[]>(`${this.loginService.URL}/students/${studentID}/comments?page=${page}`, {headers: myHeaders});
   }
 
   getComment(commentID: number): Observable<Comment> {
@@ -38,4 +38,3 @@ export class CommentService {
     return this.http.put<Comment>(`${this.loginService.URL}/comments/${comment.id}`, comment, {headers: myHeaders});
   }
 }
-

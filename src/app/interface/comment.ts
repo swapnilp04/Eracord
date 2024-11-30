@@ -13,4 +13,5 @@ export interface Comment {
 	CommentCategory: CommentCategory
 	user_id: number;
 	User: User;
+	CreatedAt: Date;
 }
