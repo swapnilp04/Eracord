@@ -13,9 +13,9 @@ export class CommentService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  getComments(): Observable<Comment[]> {
+  getComments(page: number): Observable<Comment[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Comment[]>(`${this.loginService.URL}/comments`, {headers: myHeaders});
+    return this.http.get<Comment[]>(`${this.loginService.URL}/comments?page=${page}`, {headers: myHeaders});
   }
 
   getStudentComments(studentID: number, page: number): Observable<Comment[]> {

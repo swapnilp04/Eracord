@@ -52,10 +52,9 @@ const routes: Routes = [
   {path: 'students/:student_id/transactions/dues' , component: DuesComponent},
   {path: 'students/:student_id/student-accounts/deposit' , component: DepositComponent},
   {path: 'students/:student_id/student-accounts/withdraw' , component: WithdrawComponent},
-  {path: 'students/:student_id/comments' , component: CommentsComponent},
   {path: 'students/:student_id/comments/new' , component: CommentAddEditComponent},
 
-
+  {path: 'comments' , component: CommentsComponent},
 
   {path: 'standards' , component: StandardsComponent},
   {path: 'standards/new' , component: StandardAddEditComponent},
