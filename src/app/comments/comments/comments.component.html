@@ -1,4 +1,14 @@
 <div class="row">
+  <div class="col-md-3 offset-md-9">
+    <div class="input-group">
+      <input type="text" class="form-control" (change)="changed($event)" [(ngModel)]="search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)=searchTable()>Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row marginTop15">
   <div class="row">
     <div class="col-xs-12 col-12">
       <pagination class="pull-right" [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8">        

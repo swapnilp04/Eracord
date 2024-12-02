@@ -16,6 +16,7 @@ export class CommentsComponent implements OnInit {
   currentPage = 1;
   page= 1;
   totalItems: number = 10;
+  search = "";
 
   constructor(private commentService: CommentService, private loginService: LoginService){}
 
@@ -37,6 +38,10 @@ export class CommentsComponent implements OnInit {
     this.loadComments(this.page);
   }
 
+  searchTable(): void{
+   this.loadComments(this.page); 
+  }
+
   changed(e: any) {
     this.page = 1;
     this.currentPage = 1;
@@ -44,7 +49,7 @@ export class CommentsComponent implements OnInit {
   }
 
   loadComments(pageNumber: number): void {
-    this.commentService.getComments(pageNumber).subscribe (
+    this.commentService.getComments(pageNumber, this.search).subscribe (
       (response: any) => this.assignComments(response),
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting Standards......')
