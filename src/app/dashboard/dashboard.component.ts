@@ -2,9 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from './../service/login.service';
 import { HostelService } from './../service/hostel.service';
 import { StudentService } from './../service/student.service';
+import { CommentService } from './../service/comment.service';
 import { HostelStudent } from './../interface/hostel-student';
 import { HostelRoom } from './../interface/hostel-room';
-import {Student} from './../interface/student';
+import { Student } from './../interface/student';
+import { Comment } from './../interface/comment';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,12 +17,14 @@ export class DashboardComponent implements OnInit {
   
   public hostelStudents: HostelStudent[] = [];
   public students: Student[] = [];
+  public comments: Comment[] = [];
 
-  constructor(private hostelService: HostelService, private studentService: StudentService, private loginService: LoginService){}
+  constructor(private hostelService: HostelService, private studentService: StudentService, private commentService: CommentService,private loginService: LoginService){}
 
   ngOnInit(): void {
     this.loadHostelStudent()
     this.loadUpcommingBirdays()
+    this.loadUpcommingComments()
   }
 
   errorHandle(error: any): void {
@@ -42,7 +46,7 @@ export class DashboardComponent implements OnInit {
   }
 
   name(student: Student): string {
-    return `${student.first_name} ${student.middle_name} ${student.last_name}`
+    return `${student.first_name} ${student.middle_name} ${student.last_name} (${student.Standard.name})`
   }
 
   loadUpcommingBirdays(): void {
@@ -51,6 +55,18 @@ export class DashboardComponent implements OnInit {
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting Hostels......')
     );
+  }
+
+  loadUpcommingComments(): void {
+    this.commentService.getUpcommingComments().subscribe (
+      (response: any) => this.assignComments(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Hostels......')
+    );
+  }
+
+  assignComments(response: any) {
+    this.comments = response;
   }
 
   assignStudents(response: any) {
