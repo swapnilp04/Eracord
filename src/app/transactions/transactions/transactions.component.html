@@ -7,7 +7,8 @@
   <div>
     <h6 class="colorRed">Total Debits -  {{balance.debits}}</h6>
     <h6 class="colorGreen">Total Credits - {{balance.credits}}</h6>
-    <h6 class="">Total Balance - {{balance.credits - balance.debits}}</h6>
+    <h6 class="colorGreen">Total Discounts - {{balance.discounts}}</h6>
+    <h6 class="">Total Balance - {{balance.credits + balance.discounts - balance.debits }}</h6>
   </div>
 	<table class="table table-striped table-bordered table-hover">
     <thead>

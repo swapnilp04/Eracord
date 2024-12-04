@@ -48,7 +48,7 @@ import { StudentAccountsComponent } from './student-accounts/student-accounts/st
 import { DepositComponent } from './student-accounts/deposit/deposit.component';
 import { WithdrawComponent } from './student-accounts/withdraw/withdraw.component';
 import { DuesComponent } from './transactions/dues/dues.component';
-import {NgxPrintModule} from 'ngx-print';
+import { NgxPrintModule } from 'ngx-print';
 import { TransactionComponent } from './accounts/transaction/transaction.component';
 import { BatchStandardsStudentsComponent } from './batchs/batch-standards-students/batch-standards-students.component';
 import { EditHostelComponent } from './students/edit-hostel/edit-hostel.component';
@@ -57,6 +57,7 @@ import { DiscountsAddEditComponent } from './transactions/discounts-add-edit/dis
 import { CommentsComponent } from './comments/comments/comments.component';
 import { CommentAddEditComponent } from './comments/comment-add-edit/comment-add-edit.component';
 import { StudentCommentsComponent } from './students/student-comments/student-comments.component';
+import { ExamsComponent } from './exams/exams/exams.component';
 
 
 
@@ -107,6 +108,7 @@ import { StudentCommentsComponent } from './students/student-comments/student-co
     CommentsComponent,
     CommentAddEditComponent,
     StudentCommentsComponent,
+    ExamsComponent,
   ],
   imports: [
     BrowserModule,

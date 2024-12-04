@@ -35,6 +35,7 @@ import { DepositComponent } from './student-accounts/deposit/deposit.component';
 import { WithdrawComponent } from './student-accounts/withdraw/withdraw.component';
 import { CommentsComponent } from './comments/comments/comments.component';
 import { CommentAddEditComponent } from './comments/comment-add-edit/comment-add-edit.component';
+import { ExamsComponent } from './exams/exams/exams.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -55,6 +56,8 @@ const routes: Routes = [
   {path: 'students/:student_id/comments/new' , component: CommentAddEditComponent},
 
   {path: 'comments' , component: CommentsComponent},
+
+  {path: 'exams' , component: ExamsComponent},
 
   {path: 'standards' , component: StandardsComponent},
   {path: 'standards/new' , component: StandardAddEditComponent},

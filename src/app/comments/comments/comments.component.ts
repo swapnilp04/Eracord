@@ -24,8 +24,12 @@ export class CommentsComponent implements OnInit {
     this.loadComments(this.page);
   }
 
-  errorHandle(error: any): void {
+  
+  errorHandle(error: any): void {  
     if(error.status == 401) {
+      this.loginService.toLogin();
+    }
+    if(error.status == 0) {
       this.loginService.toLogin();
     }
   }
