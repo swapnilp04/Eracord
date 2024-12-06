@@ -38,6 +38,11 @@ export class CommentService {
     return this.http.post<Comment>(`${this.loginService.URL}/students/${studentID}/comments`, comment, {headers: myHeaders});
   }
 
+  commentCompleted(comment: Comment): Observable<Comment> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Comment>(`${this.loginService.URL}/comments/${comment.id}/completed_comment`, {}, {headers: myHeaders});
+  }
+
   updateComment(comment: Comment): Observable<Comment> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.put<Comment>(`${this.loginService.URL}/comments/${comment.id}`, comment, {headers: myHeaders});

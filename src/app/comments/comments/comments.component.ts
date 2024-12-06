@@ -60,6 +60,16 @@ export class CommentsComponent implements OnInit {
     );
   }
 
+  completeComment(comment: Comment): void {
+    if(confirm("Are you sure to complete this comment")) {
+      this.commentService.commentCompleted(comment).subscribe (
+        (response: any) => comment.completed = true,
+        (error: any) => this.errorHandle(error),
+        () => comment.is_loading = false
+      );
+    }
+  }
+
   name(student: Student): string {
     return `${student.first_name} ${student.middle_name} ${student.last_name}`
   }

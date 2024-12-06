@@ -10,7 +10,7 @@
 	</div>
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
-		<h5>Birth Date - {{student.birth_date | date:'dd MMMM yyyy'}}</h5>
+		<h5>Birth Date - {{student.birth_date | date:'dd MMM yyyy'}}</h5>
 		<h5>Adhar Card number Number - {{adharCard()}}</h5>
 		<h5>Parent Name - {{student.parent_name}}</h5>
 		<h5>Contact Number - {{student.contact_number}}</h5>
@@ -35,7 +35,7 @@
 			    <p>Rector Number - {{hostelStudent.Hostel.rector}}</p>
 			    <p>Number of students in rooms - {{hostelStudent.HostelRoom.no_of_students}}</p>
 			    <p *ngIf="!hostelStudent.fee_included">Monthly Charges - {{hostelStudent.Hostel.rate}}</p>
-			    <h6 *ngIf="!hostelStudent.fee_included">Renew Date - {{hostelStudent.next_collection | date:'dd MMMM yyyy'}}</h6>
+			    <h6 *ngIf="!hostelStudent.fee_included">Renew Date - {{hostelStudent.next_collection | date:'dd MMM yyyy'}}</h6>
 			    <h4>Room Students</h4>
 			    <app-hostel-students [hostelId]="hostelStudent.hostel_id" [hostelRoomId]="hostelStudent.hostel_room_id" [hostelRoom]="hostelStudent.HostelRoom"></app-hostel-students>
 		  	</span>

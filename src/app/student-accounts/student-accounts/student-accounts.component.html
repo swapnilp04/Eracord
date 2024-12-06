@@ -18,7 +18,7 @@
     <tbody>
     	<tr *ngFor="let studentAccount of studentAccounts; index as i">
       <td>{{i+1}}</td> 
-      <td>{{studentAccount.CreatedAt | date:'MM/dd/yyyy @ h:mma'}}</td>
+      <td>{{studentAccount.CreatedAt | date:'dd MMMM yyyy @ h:mma'}}</td>
       <td>{{studentAccount.transaction_type}}</td>
       <td [ngClass]="studentAccount.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{studentAccount.amount}}</td>
       <td>{{studentAccount.balance}}</td>

@@ -27,7 +27,7 @@
     	<tr *ngFor="let transaction of transactions; index as i">
       <td>{{i+1}}</td> 
       <td>{{transaction.name == 'Dues' ? transaction.reason :  transaction.name }}</td>
-      <td>{{transaction.CreatedAt| date:'MM/dd/yyyy'}}</td>
+      <td>{{transaction.CreatedAt| date:'dd MMM yyyy'}}</td>
       <td>{{transaction.transaction_type}}</td>
       <td [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</td>
       <td>{{transaction.paid_by}}</td>

@@ -54,6 +54,16 @@ export class StudentCommentsComponent implements OnInit {
     );
   }
 
+  completeComment(comment: Comment): void {
+    if(confirm("Are you sure to complete this comment")) {
+      this.commentService.commentCompleted(comment).subscribe (
+        (response: any) => comment.completed = true,
+        (error: any) => this.errorHandle(error),
+        () => comment.is_loading = false
+      );
+    }
+  }
+
   assignStudentComments(response: any) {
     this.comments = response.comments;
     this.totalItems = response.total;

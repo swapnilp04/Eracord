@@ -16,6 +16,7 @@
         <th>Reminder On</th>
         <th>Added By</th>
         <th>Added On</th>
+        <th>Completed?</th>
       </tr>
       </thead>
       <tbody>
@@ -23,9 +24,13 @@
         <td>{{i+1}}</td> 
         <td>{{comment.comment}}</td>
         <td>{{comment.CommentCategory.name}}</td>
-        <td >{{comment.reminder_on | date:'dd MMMM yyyy'}}</td>
+        <td >{{comment.reminder_on | date:'dd MMM yyyy'}}</td>
         <td>{{comment.User.username}}</td>
-        <td>{{comment.CreatedAt | date:'dd MMMM yyyy'}}</td>
+        <td>{{comment.CreatedAt | date:'dd MMM yyyy'}}</td>
+        <td>
+          <button type="submit" [disabled]="comment.is_loading" *ngIf=!comment.completed class="btn btn-primary" (click)=completeComment(comment)>Complete</button>
+          <span *ngIf=comment.completed>{{comment.completed_on | date:'dd MMM yyyy'}}</span>
+        </td>
       	</tr>
       </tbody>
     </table>	
