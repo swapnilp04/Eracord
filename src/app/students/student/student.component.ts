@@ -116,7 +116,8 @@ export class StudentComponent  implements OnInit {
   }
 
   back(): void {
-    this.router.navigate(['/students']);
+    this.location.back();
+    //this.router.navigate(['/students']);
   }
 
   name(): string {

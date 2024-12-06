@@ -22,4 +22,5 @@ export interface Student {
 	standard_id: number;
 	Standard: Standard;
 	has_absconded: boolean;
+	last_payment_on: Date;
 }
