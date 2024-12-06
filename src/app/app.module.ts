@@ -58,6 +58,7 @@ import { CommentsComponent } from './comments/comments/comments.component';
 import { CommentAddEditComponent } from './comments/comment-add-edit/comment-add-edit.component';
 import { StudentCommentsComponent } from './students/student-comments/student-comments.component';
 import { ExamsComponent } from './exams/exams/exams.component';
+import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.component';
 
 
 
@@ -109,6 +110,7 @@ import { ExamsComponent } from './exams/exams/exams.component';
     CommentAddEditComponent,
     StudentCommentsComponent,
     ExamsComponent,
+    ExamAddEditComponent,
   ],
   imports: [
     BrowserModule,

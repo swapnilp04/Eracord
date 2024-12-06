@@ -1,1 +1,33 @@
-<p>exams works!</p>
+<div class="row">
+  <p class="clearfix">
+      
+      <a href="/exams/new" class="btn btn-primary"><span>New Exam</span></a>
+    </p>
+	<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+	      <th class="col-md-1"> Sr No
+	      </th>
+	      <th>Name</th>
+	      <th>Standard</th>
+	      <th>Exam Date</th>
+	      <th>Status</th>
+	      <th>Action</th>
+	    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let exam of exams; index as i">
+	      <td>{{i+1}}</td> 
+	      <td>{{exam.name}}</td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td>
+	        <a href='/exams/{{exam.id}}'>Show</a>
+	        &nbsp;&nbsp;&nbsp;
+	        <a href='/exams/{{exam.id}}/edit'>Edit</a>
+	      </td>
+    	</tr>
+    </tbody>
+	</table>	
+</div>

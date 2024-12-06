@@ -17,4 +17,19 @@ export class ExamService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Exam[]>(`${this.loginService.URL}/exams`, {headers: myHeaders});
   }
+
+  getExam(examID: number): Observable<Exam> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Exam>(`${this.loginService.URL}/exams/${examID}`, {headers: myHeaders});
+  }
+
+  createExam(exam: Exam): Observable<Exam> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Exam>(`${this.loginService.URL}/exams`, exam, {headers: myHeaders});
+  }
+
+  updateExam(exam: Exam): Observable<Exam> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.put<Exam>(`${this.loginService.URL}/exams/${exam.id}`, exam, {headers: myHeaders});
+  }
 }

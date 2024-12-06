@@ -36,6 +36,7 @@ import { WithdrawComponent } from './student-accounts/withdraw/withdraw.componen
 import { CommentsComponent } from './comments/comments/comments.component';
 import { CommentAddEditComponent } from './comments/comment-add-edit/comment-add-edit.component';
 import { ExamsComponent } from './exams/exams/exams.component';
+import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -58,6 +59,7 @@ const routes: Routes = [
   {path: 'comments' , component: CommentsComponent},
 
   {path: 'exams' , component: ExamsComponent},
+  {path: 'exams/new' , component: ExamAddEditComponent},
 
   {path: 'standards' , component: StandardsComponent},
   {path: 'standards/new' , component: StandardAddEditComponent},
