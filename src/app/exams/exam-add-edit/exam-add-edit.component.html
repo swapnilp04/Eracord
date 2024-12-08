@@ -3,6 +3,13 @@
     <label for="exampleInputEmail1" class="form-label">Name</label>
     <input type="text" class="form-control" placeholder="Name" [(ngModel)]="exam.name" [ngModelOptions]="{standalone: true}"/>
   </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Standard</label>
+    <select class="form-select" [disabled]="isLoading" [ngModel]="exam.batch_standard_id" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard" [ngModelOptions]="{standalone: true}">
+        <option value="0">----</option>
+        <option *ngFor="let batchStandard of defaultBatchStandards" [ngValue]="batchStandard.id">{{batchStandard.Standard.name}}</option>
+    </select>
+  </div>
 
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Exam Type</label>

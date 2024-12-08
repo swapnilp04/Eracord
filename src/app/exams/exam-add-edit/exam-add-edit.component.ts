@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ExamService } from './../../service/exam.service';
+import { BatchStandardService } from './../../service/batch-standard.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
+import { BatchStandard } from './../../interface/batch-standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -12,12 +14,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ExamAddEditComponent implements OnInit{
   public exam = {} as Exam;
+  public defaultBatchStandards: BatchStandard[] = [];
   public isNew = true;
   public isLoading = false;
   
   
   constructor(private examService: ExamService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService) {}
+    private loginService: LoginService, private batchStandardService: BatchStandardService) {}
 
   createExam(exam: Exam): void {
     this.isLoading = true;
@@ -42,6 +45,7 @@ export class ExamAddEditComponent implements OnInit{
       this.isNew = false;
     }
     this.exam.exam_type = "Objective"
+    this.loadDefaultBatchStandards();
 
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
@@ -57,6 +61,14 @@ export class ExamAddEditComponent implements OnInit{
     }
   }
 
+  loadDefaultBatchStandards(): void {
+    this.batchStandardService.getDefaultBatchStandards().subscribe (
+      (response: any) => this.assignBatchStandards(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting exams......')
+    );
+  }
+
   loadExam(examID: number): void {
     this.isLoading = true;
     this.examService.getExam(examID).subscribe (
@@ -64,6 +76,10 @@ export class ExamAddEditComponent implements OnInit{
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
+  }
+
+  onChangeBatchStandard(newObj: number): void {
+    //this.exam.batch_standard_id = newObj;
   }
 
   back(): void {
@@ -84,6 +100,10 @@ export class ExamAddEditComponent implements OnInit{
 
   getError(error: any): void {
     
+  }
+
+  assignBatchStandards(response: any) {
+    this.defaultBatchStandards = response;
   }
 
   assignExam(response: any) {

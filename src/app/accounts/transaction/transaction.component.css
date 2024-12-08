@@ -1,0 +1,27 @@
+.reciptBox {
+	float: left;
+  width: 793px;
+  height: 374px;
+  border-style: solid;
+  padding: 10px;
+}
+
+.receiptHeader {
+	font-size: 12px;
+	width:500px;
+	float:left;
+	padding-left: 10px;
+}
+
+.receiptAddress {
+	font-size: 12px;
+	width:100%;
+	float:left;
+}
+
+.receiptAmount {
+	font-size: 12px;
+	width:100%;
+	float:left;
+	margin-top:10px;
+}

@@ -25,6 +25,11 @@ URL = "http://localhost:8080"
     return this.http.get<BatchStandard>(`${this.loginService.URL}/batchs/${batchID}/standards`, {headers: myHeaders});
   }
 
+  getDefaultBatchStandards(): Observable<BatchStandard[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<BatchStandard[]>(`${this.loginService.URL}/batchs/get_default_batch_standards`, {headers: myHeaders});
+  }
+
   getBatchStandardStudents(batchID: number, batchStandardId: number): Observable<BatchStandardStudent>{
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<BatchStandardStudent>(`${this.loginService.URL}/batchs/${batchID}/batch-standards/${batchStandardId}/students`, {headers: myHeaders});
