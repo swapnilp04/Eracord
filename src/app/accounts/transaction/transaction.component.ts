@@ -68,6 +68,10 @@ export class TransactionComponent {
     this.router.navigate(['/transactions']);
   }
 
+  numberComma(amount: number): string {
+    return amount.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  }
+
   name(): string {
     if(this.transaction.Student) {
       return `${this.transaction.Student.first_name} ${this.transaction.Student.middle_name} ${this.transaction.Student.last_name} `
