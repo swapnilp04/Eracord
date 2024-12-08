@@ -69,7 +69,11 @@ export class TransactionComponent {
   }
 
   numberComma(amount: number): string {
-    return amount.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    if(amount != undefined) {
+      return amount.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    } else {
+      return ""
+    }
   }
 
   name(): string {

@@ -10,49 +10,51 @@
 	</p>
 </div>
 <div id="print-section" class="padding:10px">
-	<div class="reciptBox"> 
-		<div style="padding-left:50px;">
-				
-			<h3 style="text-align: center;">Receipt</h3>
-			<div style="width:100%;float:left;">
-				<div style="float:left;">
-					<img src="/assets/logo.jpg" style="width:60px;" alt="image">
-				</div>
-				<div style=""  class="receiptHeader">
-					<h4>JK SCIENCE ACADEMY ISLAMPUR</h4>
-					<span>KNP NAGAR ROAD NO 2 WALWA TALUKA SANGLI DISTRICT</span><br/>
-					<span>MAHARASHTRA (415409) (M- 9420674796)</span>
-		 		</div>
-		 	</div>
+	<div class="reciptBox" >
+		<div class="reciptBorder"> 
+			<div style="padding-left:50px;">
+					
+				<h3 style="text-align: center;">Receipt</h3>
+				<div style="width:100%;float:left;">
+					<div style="float:left;">
+						<img src="/assets/logo.jpg" style="width:60px;" alt="image">
+					</div>
+					<div style=""  class="receiptHeader">
+						<h4>JK SCIENCE ACADEMY ISLAMPUR</h4>
+						<span>KNP NAGAR ROAD NO 2 Islampur, WALWA TALUKA, SANGLI DISTRICT</span><br/>
+						<span>MAHARASHTRA (415409) (M- 9420674796)</span>
+			 		</div>
+			 	</div>
 
-		 	<div class="receiptAddress">
-			 	<div style="width:430px; float:left">
-					<strong>Bill To</strong><br />
-					<strong style="text-transform: capitalize;">STUDENT NAME -  {{name()}}</strong><br/>
-					<span *ngIf="transaction.Student">TOWN - {{transaction.Student.town}}</span><br/>
-					<span *ngIf="transaction.Student">Standard   - &nbsp;{{transaction.Student.Standard.name }}</span>
-			 	</div>
-			 	<div style="float:left">
-			 			<span><strong>#{{transaction.receipt_id}}</strong> on {{transaction.CreatedAt | date:"dd MMM yyyy"}}</span><br />
-			 			<span>{{transaction.payment_mode }}&nbsp;Payment</span><br />
-			 			<span>Paid By   - &nbsp;&nbsp;{{transaction.paid_by }}</span>
-			 	</div>
-			 </div>
-			 <div class="receiptAmount">
-			 	<span style="font-size:18px;">AMOUNT&nbsp;&nbsp;<strong> &#8377;{{numberComma(transaction.amount)}}&#47;&#45;</strong></span><br/>
-			 	AMOUNT IN WORDS - <strong style="text-transform: uppercase;"> &#8377;&nbsp;{{transaction.AmountToWord}} ONLY </strong>
-			 </div>
-			 <div style="width:100%;float:left;margin-top:30px;">
-			 	<div style="width:150px; float:right">
-			 		Accountant Sign 
-			 	</div>
-			 </div>
-			 <div style="width:100%;float:left;margin-top:10px;font-size:10px;">
-			 	<strong>Terms and conditions</strong>
-			 	<ul>
-			 		<li><span>No monetary refunds will be given for any reason</span></li>
-			 	</ul>
-			 </div>
+			 	<div class="receiptAddress">
+				 	<div style="width:430px; float:left">
+						<strong>Bill To</strong><br />
+						<strong style="text-transform: capitalize;">STUDENT NAME -  {{name()}}</strong><br/>
+						<span *ngIf="transaction.Student">TOWN - {{transaction.Student.town}}</span><br/>
+						<span *ngIf="transaction.Student">Standard   - &nbsp;{{transaction.Student.Standard.name }}</span>
+				 	</div>
+				 	<div style="float:left">
+				 			<span><strong>#{{transaction.receipt_id}}</strong> on {{transaction.CreatedAt | date:"dd MMM yyyy"}}</span><br />
+				 			<span>{{transaction.payment_mode }}&nbsp;Payment</span><br />
+				 			<span>Paid By   - &nbsp;&nbsp;{{transaction.paid_by }}</span>
+				 	</div>
+				 </div>
+				 <div class="receiptAmount">
+				 	<span style="font-size:18px;">AMOUNT&nbsp;&nbsp;<strong> &#8377;{{numberComma(transaction.amount)}}&#47;&#45;</strong></span><br/>
+				 	AMOUNT IN WORDS - <strong style="text-transform: uppercase;"> &#8377;&nbsp;{{transaction.AmountToWord}} ONLY </strong>
+				 </div>
+				 <div style="width:100%;float:left;margin-top:30px;">
+				 	<div style="width:150px; float:right">
+				 		Accountant Sign 
+				 	</div>
+				 </div>
+				 <div style="width:100%;float:left;margin-top:10px;font-size:10px;">
+				 	<strong>Terms and conditions</strong>
+				 	<ul>
+				 		<li><span>No monetary refunds will be given for any reason</span></li>
+				 	</ul>
+				 </div>
+			</div>
 		</div>
 	</div>
 </div>
