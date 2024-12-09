@@ -19,13 +19,13 @@
     	<tr *ngFor="let exam of exams; index as i">
 	      <td>{{i+1}}</td> 
 	      <td>{{exam.name}}</td>
-	      <td></td>
-	      <td></td>
-	      <td></td>
+	      <td>{{exam.Standard.name}}</td>
+	      <td>{{exam.exam_date | date:'dd MMM yyyy'}}</td>
+	      <td>{{exam.exam_status}}</td>
 	      <td>
 	        <a href='/exams/{{exam.id}}'>Show</a>
 	        &nbsp;&nbsp;&nbsp;
-	        <a href='/exams/{{exam.id}}/edit'>Edit</a>
+	        <a *ngIf="exam.exam_status == 'Created'" href='/exams/{{exam.id}}/edit'>Edit</a>
 	      </td>
     	</tr>
     </tbody>

@@ -79,15 +79,11 @@ export class ExamAddEditComponent implements OnInit{
   }
 
   onChangeBatchStandard(newObj: number): void {
-    //this.exam.batch_standard_id = newObj;
+    this.exam.batch_standard_id = newObj;
   }
 
   back(): void {
-    if(this.isNew) {
-      this.router.navigate(['/exams']);
-    }else {
-      this.router.navigate(['/exams', this.exam.id]);
-    }
+    this.router.navigate(['/exams']);
   }
 
   getSuccess(response: any): void {
@@ -108,6 +104,9 @@ export class ExamAddEditComponent implements OnInit{
 
   assignExam(response: any) {
     this.exam = response;
+    if(!this.isNew) {
+      this.exam.exam_date = new Date(this.exam.exam_date)
+    }
   }
 
   isLoadingFalse(): void {

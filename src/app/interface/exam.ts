@@ -14,5 +14,5 @@ export interface Exam {
 	exam_marks: number;
 	exam_time: number;
 	exam_date: Date;
-	exam_status: Date;
+	exam_status: string;
 }
