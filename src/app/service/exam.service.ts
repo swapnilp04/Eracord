@@ -4,6 +4,7 @@ import { LoginService } from './../service/login.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Exam } from './../interface/exam'
+import { ExamStudent } from './../interface/exam-student'
 
 
 @Injectable({
@@ -36,5 +37,10 @@ export class ExamService {
   conductExam(examID: number): Observable<Exam> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<Exam>(`${this.loginService.URL}/exams/${examID}/conduct_exam`, {}, {headers: myHeaders});
+  }
+
+  getExamStudents(examID: number): Observable<ExamStudent[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/exams/${examID}/exam_students`, {headers: myHeaders});
   }
 }

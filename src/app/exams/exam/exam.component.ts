@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExamService } from './../../service/exam.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
+import { Student } from './../../interface/student';
 import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';

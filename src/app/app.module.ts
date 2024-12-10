@@ -60,6 +60,7 @@ import { StudentCommentsComponent } from './students/student-comments/student-co
 import { ExamsComponent } from './exams/exams/exams.component';
 import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.component';
 import { ExamComponent } from './exams/exam/exam.component';
+import { ExamStudentsComponent } from './exams/exam-students/exam-students.component';
 
 
 
@@ -113,6 +114,7 @@ import { ExamComponent } from './exams/exam/exam.component';
     ExamsComponent,
     ExamAddEditComponent,
     ExamComponent,
+    ExamStudentsComponent,
   ],
   imports: [
     BrowserModule,
