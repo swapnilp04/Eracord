@@ -3,7 +3,6 @@ import { ExamService } from './../../service/exam.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
 import { Student } from './../../interface/student';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -18,14 +17,6 @@ export class ExamComponent implements OnInit {
   public id: any;
   dismissible = true;
 
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Sutdent Created successfully. `
-    }
-  ];
-
-  public alerts: Alert[] = [];
   public isLoading = true;
 
   value?: string;
@@ -34,11 +25,6 @@ export class ExamComponent implements OnInit {
    private loginService: LoginService){}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-        this.alerts = this.defaultAlerts;
-      }
-    });
     this.route.paramMap.subscribe((param) => {
       this.id = Number(param.get('id'));      
       this.loadExam(this.id);
@@ -49,10 +35,6 @@ export class ExamComponent implements OnInit {
     if(error.status == 401) {
       this.loginService.toLogin();
     }
-  }
-
-  onClosed(dismissedAlert: any): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
   loadExam(examID: number): void {
