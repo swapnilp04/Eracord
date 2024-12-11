@@ -35,6 +35,6 @@
 			</button>
 		</div>
 
-		<app-exam-students *ngIf="exam.exam_status != 'Created'"  [examId]="exam.id" [examStatus]="exam.exam_status"></app-exam-students>
+		<app-exam-students *ngIf="exam.exam_status != 'Created'"  [examId]="exam.id" [examStatus]="exam.exam_status" [marks]="exam.exam_marks"></app-exam-students>
 	</div>
 </div>

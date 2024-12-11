@@ -15,6 +15,7 @@ export class ExamStudentsComponent  implements OnInit {
 
   @Input() examId: any;
   @Input() examStatus: any;
+  @Input() marks: any;
   public isLoading = true;
   public examStudents: ExamStudent[] = [];
 

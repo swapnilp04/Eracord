@@ -21,7 +21,7 @@
             [disabled]="checkBoxEnables(examStudent)"/></td>
       <td>
       	<input *ngIf="examStatus == 'Conducted'" type="number" [(ngModel)]="examStudent.marks" [disabled]="markBoxEnables(examStudent)" /> 
-        <span *ngIf="examStatus == 'Published'">{{examStudent.is_present ? examStudent.marks : "Absent"}}</span>
+        <span *ngIf="examStatus == 'Published'">{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{marks}}</span>
 			</td>
     	</tr>
     </tbody>

@@ -23,7 +23,7 @@
         <td><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></td>
         <td>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</td>
         <td>{{examStudent.Exam.exam_status}}</td>
-        <td>{{examStudent.is_present ? examStudent.marks : "Absent"}}</td>
+        <td>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}</td>
       	</tr>
       </tbody>
   	</table>
