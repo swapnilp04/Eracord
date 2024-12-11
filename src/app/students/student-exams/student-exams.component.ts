@@ -14,6 +14,7 @@ import { Location } from '@angular/common';
 export class StudentExamsComponent implements OnInit{
 
   @Input() studentId: any;
+  @Input() studentName: any;
   public isLoading = true;
   public examStudents: ExamStudent[] = [];
 

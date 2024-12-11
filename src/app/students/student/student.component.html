@@ -60,7 +60,7 @@
 		  </tab>
 		  <tab heading="Exams" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Exams</h4>
-		    <app-student-exams [studentId]="student.id"></app-student-exams>
+		    <app-student-exams [studentId]="student.id" [studentName]="name()"></app-student-exams>
 		  </tab>
 		</tabset>
 	</div>
