@@ -1,4 +1,8 @@
-a{
+a {
     color: #717171;
+}
+
+.absent > td {
+    color: #ff097a;
 }
 
