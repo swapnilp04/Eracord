@@ -61,6 +61,7 @@ import { ExamsComponent } from './exams/exams/exams.component';
 import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.component';
 import { ExamComponent } from './exams/exam/exam.component';
 import { ExamStudentsComponent } from './exams/exam-students/exam-students.component';
+import { StudentExamsComponent } from './students/student-exams/student-exams.component';
 
 
 
@@ -115,6 +116,7 @@ import { ExamStudentsComponent } from './exams/exam-students/exam-students.compo
     ExamAddEditComponent,
     ExamComponent,
     ExamStudentsComponent,
+    StudentExamsComponent,
   ],
   imports: [
     BrowserModule,

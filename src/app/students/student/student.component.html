@@ -58,6 +58,10 @@
 		    <h4>Student Comments</h4>
 		    <app-student-comments [studentId]="student.id" [student]="student"></app-student-comments>
 		  </tab>
+		  <tab heading="Exams" class="mt-2" (selectTab)="onSelect($event)">
+		    <h4>Student Exams</h4>
+		    <app-student-exams [studentId]="student.id"></app-student-exams>
+		  </tab>
 		</tabset>
 	</div>
 </div>

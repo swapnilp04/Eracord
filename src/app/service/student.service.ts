@@ -8,6 +8,7 @@ import { HostelStudent } from '../interface/hostel-student'
 import { BatchStandard } from '../interface/batch-standard'
 import { BatchStandardStudent } from '../interface/batch-standard-student'
 import { Transaction } from '../interface/transaction'
+import { ExamStudent } from '../interface/exam-student'
 import { Balance } from '../interface/balance'
 
 
@@ -98,8 +99,12 @@ export class StudentService {
     return this.http.get<Balance>(`${this.loginService.URL}/students/${studentId}/transactions/balance`, {headers: myHeaders});
   }
 
-  getUpcommingBirthdays() : Observable<Student[]> {
+  getUpcommingBirthdays(): Observable<Student[]> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Student[]>(`${this.loginService.URL}/students/get-upcomming-birthdays`, {headers: myHeaders});
+  }
+  getStudentExams(studentId: number): Observable<ExamStudent[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/get_exams`, {headers: myHeaders});
   }
 }
