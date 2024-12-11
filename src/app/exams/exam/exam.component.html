@@ -2,27 +2,43 @@
   <alert [type]="alert.type" [dismissible]="dismissible" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
 </div>
 
-<div *ngIf=!isLoading>
-	<div class="mb-3">
-		<h2>{{exam.name}}</h2>
-		<h5>Exam Date - {{exam.exam_date | date:'dd MMM yyyy'}}</h5>
-		<h5>Standard - {{exam.Standard.name}}</h5>
-		<h5>Status - {{exam.exam_status}}</h5>
-		
-		
-		<a *ngIf="exam.exam_status == 'Created'" class="btn btn-secondary marginRight15" href='/exams/{{exam.id}}/edit'>Edit</a>
-		<button (click)=back() class="btn btn-primary marginRight15">
+<div class="container" style="float:left;">
+ 	<p>
+		<button 
+			class="btn btn-primary marginRight15"
+			[useExistingCss]="true"
+			printSectionId="print-section"
+			ngxPrint>print</button>
+		<button *ngIf="exam.exam_status == 'Published'" (click)=back() class="btn btn-primary marginRight15">
 			Back
 		</button>
+	</p>
+	
+</div>
 
-		<button *ngIf="exam.exam_status == 'Created'" (click)=conductExam(exam.id) class="btn btn-primary marginRight15">
-			Conduct Exam
-		</button>
+<div id="print-section" class="container">
+	<div *ngIf=!isLoading>
+		<div class="mb-3">
+			<h2>{{exam.name}}</h2>
+			<h5>Exam Date - {{exam.exam_date | date:'dd MMM yyyy'}}</h5>
+			<h5>Standard - {{exam.Standard.name}}</h5>
+			<h5>Status - {{exam.exam_status}}</h5>
+			
+			
+			<a *ngIf="exam.exam_status == 'Created'" class="btn btn-secondary marginRight15" href='/exams/{{exam.id}}/edit'>Edit</a>
+			<button *ngIf="exam.exam_status != 'Published'" (click)=back() class="btn btn-primary marginRight15">
+				Back
+			</button>
 
-		<button *ngIf="exam.exam_status == 'Conducted'" (click)=publishExam(exam.id) class="btn btn-primary marginRight15">
-			Publish Exam
-		</button>
+			<button *ngIf="exam.exam_status == 'Created'" (click)=conductExam(exam.id) class="btn btn-primary marginRight15">
+				Conduct Exam
+			</button>
+
+			<button *ngIf="exam.exam_status == 'Conducted'" (click)=publishExam(exam.id) class="btn btn-primary marginRight15">
+				Publish Exam
+			</button>
+		</div>
+
+		<app-exam-students *ngIf="exam.exam_status != 'Created'"  [examId]="exam.id" [examStatus]="exam.exam_status"></app-exam-students>
 	</div>
-
-	<app-exam-students *ngIf="exam.exam_status != 'Created'"  [examId]="exam.id" [examStatus]="exam.exam_status"></app-exam-students>
 </div>
