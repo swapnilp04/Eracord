@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    	<tr *ngFor="let examStudent of examStudents; index as i">
+    	<tr *ngFor="let examStudent of examStudents; index as i" [ngClass]="{'published': examStudent.Exam.exam_status == 'Published'}">
       <td>{{i + 1 }}</td>
       <td><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></td>
       <td>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</td>

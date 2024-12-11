@@ -51,15 +51,15 @@
 		    <app-transactions [studentId]="student.id" [showActions]="true"></app-transactions>
 		  </tab>
 		  <tab heading="Accounts" class="mt-2" (selectTab)="onSelect($event)">
-		    <h4>Student Accounts</h4>
+		    <h4>Accounts</h4>
 		    <app-student-accounts [studentId]="student.id" [student]="student"></app-student-accounts>
 		  </tab>
 		  <tab heading="Comments" class="mt-2" (selectTab)="onSelect($event)">
-		    <h4>Student Comments</h4>
+		    <h4>Comments</h4>
 		    <app-student-comments [studentId]="student.id" [student]="student"></app-student-comments>
 		  </tab>
 		  <tab heading="Exams" class="mt-2" (selectTab)="onSelect($event)">
-		    <h4>Student Exams</h4>
+		    <h4>Exams</h4>
 		    <app-student-exams [studentId]="student.id"></app-student-exams>
 		  </tab>
 		</tabset>

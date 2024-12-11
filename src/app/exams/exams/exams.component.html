@@ -16,7 +16,7 @@
 	    </tr>
     </thead>
     <tbody>
-    	<tr *ngFor="let exam of exams; index as i">
+    	<tr *ngFor="let exam of exams; index as i" [ngClass]="{'published': exam.exam_status == 'Published'}">
 	      <td>{{i+1}}</td> 
 	      <td>{{exam.name}}</td>
 	      <td>{{exam.Standard.name}}</td>

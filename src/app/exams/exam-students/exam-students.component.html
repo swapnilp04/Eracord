@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    	<tr *ngFor="let examStudent of examStudents; index as i">
+    	<tr *ngFor="let examStudent of examStudents; index as i" >
       <td>{{i + 1 }}</td>
       <td><a href="students/{{examStudent.student_id}}">{{name(examStudent.Student)}}</a></td>
       <td *ngIf="examStatus == 'Conducted'"><input
