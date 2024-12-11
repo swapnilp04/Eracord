@@ -14,6 +14,8 @@ import { Location } from '@angular/common';
 export class ExamStudentsComponent  implements OnInit {
 
   @Input() examId: any;
+  @Input() examStatus: any;
+  public isLoading = true;
   public examStudents: ExamStudent[] = [];
 
   constructor(private examService: ExamService, private route: ActivatedRoute, private location: Location, 
@@ -23,9 +25,26 @@ export class ExamStudentsComponent  implements OnInit {
     this.loadExamStudents(this.examId);
   }
 
+  checkBoxEnables(examStudent: ExamStudent): boolean {
+    return this.examStatus != "Conducted" || this.isLoading
+  }
+
+  markBoxEnables(examStudent: ExamStudent): boolean {
+    return (!examStudent.is_present && this.examStatus == "Conducted") || this.isLoading
+  }
+
   loadExamStudents(examID: number): void {
     this.examService.getExamStudents(examID).subscribe (
       (response: any) => this.assignExamStudents(response),
+      (error: any) => this.errorHandle(error),
+      () => this.isLoading =false
+    );
+  }
+
+  saveExamMarks(examId: any): void {
+    this.isLoading = true
+    this.examService.saveExamMarks(examId, this.examStudents).subscribe (
+      (response: any) => this.savedExamMarks(response),
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting Exam Students......')
     );
@@ -33,6 +52,11 @@ export class ExamStudentsComponent  implements OnInit {
 
   assignExamStudents(response: any) {
     this.examStudents = response;
+    this.isLoading =false;
+  }
+
+  savedExamMarks(response: any) {
+    this.isLoading =false
   }
 
   name(student: Student): string {
@@ -48,7 +72,5 @@ export class ExamStudentsComponent  implements OnInit {
   changeExamPresentee(examStudent: ExamStudent):void {
     examStudent.is_present = !examStudent.is_present;
     examStudent.marks = 0;
-
   }
-
 }

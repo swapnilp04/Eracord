@@ -64,12 +64,26 @@ export class ExamComponent implements OnInit {
   }
 
   conductExam(examID: any): void {
-    if(examID != undefined) {
-      this.examService.conductExam(examID).subscribe (
-        (response: any) => this.examConducted(response),
-        (error: any) => this.errorHandle(error),
-        () => console.log('Done getting Exam......')
-      );
+    if(confirm("Are you sure to Conduct this exam")) {
+      if(examID != undefined) {
+        this.examService.conductExam(examID).subscribe (
+          (response: any) => this.examConducted(response),
+          (error: any) => this.errorHandle(error),
+          () => console.log('Done getting Exam......')
+        );
+      }
+    }
+  }
+
+  publishExam(examID: any): void {
+    if(confirm("Are you sure to Conduct this exam")) {
+      if(examID != undefined) {
+        this.examService.publishExam(examID).subscribe (
+          (response: any) => this.examPublished(response),
+          (error: any) => this.errorHandle(error),
+          () => console.log('Done getting Exam......')
+        );
+      }
     }
   }
 
@@ -80,6 +94,10 @@ export class ExamComponent implements OnInit {
 
   examConducted(response: any) {
     this.exam.exam_status = "Conducted";
+  }
+
+  examPublished(response: any) {
+    this.exam.exam_status = "Published";
   }
 
   back(): void {

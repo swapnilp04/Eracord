@@ -5,6 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Exam } from './../interface/exam'
 import { ExamStudent } from './../interface/exam-student'
+import { ExamStudentMarks } from './../interface/exam-student-marks'
 
 
 @Injectable({
@@ -39,8 +40,28 @@ export class ExamService {
     return this.http.post<Exam>(`${this.loginService.URL}/exams/${examID}/conduct_exam`, {}, {headers: myHeaders});
   }
 
+  publishExam(examID: number): Observable<Exam> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Exam>(`${this.loginService.URL}/exams/${examID}/publish_exam`, {}, {headers: myHeaders});
+  }
+
   getExamStudents(examID: number): Observable<ExamStudent[]> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<ExamStudent[]>(`${this.loginService.URL}/exams/${examID}/exam_students`, {headers: myHeaders});
+  }
+
+  saveExamMarks(examID: number, examStudents: ExamStudent[]): Observable<Exam> {
+    const myHeaders = this.loginService.getHeaders();
+    var examStudentsObj = this.examStudentsToObj(examStudents)
+    return this.http.post<Exam>(`${this.loginService.URL}/exams/${examID}/save_exam_marks`, examStudentsObj,  {headers: myHeaders});
+  }
+
+  examStudentsToObj(examStudents: ExamStudent[]): ExamStudentMarks[] {
+    var studentObject = [];
+    
+    for (let i = 0; i < examStudents.length; i++) {
+      studentObject.push({id: examStudents[i].id, marks: examStudents[i].marks, is_present: examStudents[i].is_present})
+    }
+    return studentObject
   }
 }

@@ -1,4 +1,4 @@
-<div class="mb-3">
+<div class="mb-3" style="padding-bottom:50px;" *ngIf=!isLoading>
 	<h3>Students</h3>
 	<table class="table table-striped table-bordered table-hover">
     <thead>
@@ -6,7 +6,7 @@
       <th class="col-md-1"> Sr No
       </th>
       <th>Student Name</th>
-      <th>Is Present?</th>
+      <th *ngIf="examStatus == 'Conducted'">Is Present?</th>
       <th>Marks</th> 
     </tr>
     </thead>
@@ -14,14 +14,17 @@
     	<tr *ngFor="let examStudent of examStudents; index as i">
       <td>{{i + 1 }}</td>
       <td>{{name(examStudent.Student)}}</td>
-      <td><input
+      <td *ngIf="examStatus == 'Conducted'"><input
   					type="checkbox"
 						[checked]="examStudent.is_present"
-						(change)="changeExamPresentee(examStudent)"/></td>
+						(change)="changeExamPresentee(examStudent)"
+            [disabled]="checkBoxEnables(examStudent)"/></td>
       <td>
-      	<input type="number" [(ngModel)]="examStudent.marks" [disabled]="!examStudent.is_present" /> 
+      	<input *ngIf="examStatus == 'Conducted'" type="number" [(ngModel)]="examStudent.marks" [disabled]="markBoxEnables(examStudent)" /> 
+        <span *ngIf="examStatus == 'Published'">{{examStudent.marks}}</span>
 			</td>
     	</tr>
     </tbody>
 	</table>	
+  <button *ngIf="examStatus == 'Conducted'" class="btn btn-primary" (click)=saveExamMarks(examId)>Save Marks</button>
 </div>

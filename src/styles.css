@@ -14,6 +14,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 	margin-top:15px;		
 }
 
+.marginRight15 {
+    margin-right: 15px;
+}
+
 .theme-green .bs-datepicker-head {
     background-color: #5cb85c
 }

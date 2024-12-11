@@ -10,15 +10,19 @@
 		<h5>Status - {{exam.exam_status}}</h5>
 		
 		
-		<a *ngIf="exam.exam_status == 'Created'" class="btn btn-secondary" href='/exams/{{exam.id}}/edit'>Edit</a>
-		<button (click)=back() class="btn btn-primary marginLeft15">
+		<a *ngIf="exam.exam_status == 'Created'" class="btn btn-secondary marginRight15" href='/exams/{{exam.id}}/edit'>Edit</a>
+		<button (click)=back() class="btn btn-primary marginRight15">
 			Back
 		</button>
 
-		<button *ngIf="exam.exam_status == 'Created'" (click)=conductExam(exam.id) class="btn btn-primary marginLeft15">
+		<button *ngIf="exam.exam_status == 'Created'" (click)=conductExam(exam.id) class="btn btn-primary marginRight15">
 			Conduct Exam
+		</button>
+
+		<button *ngIf="exam.exam_status == 'Conducted'" (click)=publishExam(exam.id) class="btn btn-primary marginRight15">
+			Publish Exam
 		</button>
 	</div>
 
-	<app-exam-students *ngIf="exam.exam_status != 'Created'"  [examId]="exam.id"></app-exam-students>
+	<app-exam-students *ngIf="exam.exam_status != 'Created'"  [examId]="exam.id" [examStatus]="exam.exam_status"></app-exam-students>
 </div>
