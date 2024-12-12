@@ -5,7 +5,7 @@ import { Exam } from './../../interface/exam';
 import { Student } from './../../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-exam',
@@ -21,7 +21,7 @@ export class ExamComponent implements OnInit {
   value?: string;
   
   constructor(private examService: ExamService, private route: ActivatedRoute, private location: Location, private router: Router,
-   private loginService: LoginService){}
+   private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
@@ -75,10 +75,12 @@ export class ExamComponent implements OnInit {
 
   examConducted(response: any) {
     this.exam.exam_status = "Conducted";
+    this.alertService.success("Exam Conducted Successful");
   }
 
   examPublished(response: any) {
     this.exam.exam_status = "Published";
+    this.alertService.success("Exam Published Successful");
   }
 
   back(): void {
