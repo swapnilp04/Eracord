@@ -8,6 +8,7 @@ import { Comment } from './../../interface/comment';
 import { Student } from './../../interface/student';
 import { CommentCategory } from './../../interface/comment-category';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-comment-add-edit',
@@ -24,7 +25,8 @@ export class CommentAddEditComponent {
   public isLoading = false;
 
   constructor(private commentService: CommentService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService, private commentCategoryService: CommentCategoryService, private studentService: StudentService){}
+    private loginService: LoginService, private commentCategoryService: CommentCategoryService, private studentService: StudentService,
+    private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadCommentCategory()
@@ -106,8 +108,10 @@ export class CommentAddEditComponent {
   getSuccess(response: any): void {
     if(this.isNew) {
       this.router.navigate([`/students/${this.student.id}`]);
+      this.alertService.success("Comment Created Successful");
     } else {
       window.location.href = `/comments/${response['comment']['id']}?isUpdate=true`;
+      this.alertService.success("Comment updated Successful");
     }
   }
 

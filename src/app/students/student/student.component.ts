@@ -4,7 +4,6 @@ import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { BatchStandardStudent } from './../../interface/batch-standard-student';
 import { HostelStudent } from './../../interface/hostel-student';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { TabDirective } from 'ngx-bootstrap/tabs';
@@ -25,16 +24,6 @@ export class StudentComponent  implements OnInit {
   public id: any;
   public studentId: any;
   public classLoaded: boolean = false;
-  dismissible = true;
-
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Sutdent Created successfully. `
-    }
-  ];
-
-  public alerts: Alert[] = [];
   public isLoading = true;
 
   value?: string;
@@ -45,11 +34,6 @@ export class StudentComponent  implements OnInit {
 
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-        this.alerts = this.defaultAlerts;
-      }
-    });
     this.route.paramMap.subscribe((param) => {
       this.id = Number(param.get('id'));      
       this.loadStudent(this.id);
@@ -60,10 +44,6 @@ export class StudentComponent  implements OnInit {
     if(error.status == 401) {
       this.loginService.toLogin();
     }
-  }
-
-  onClosed(dismissedAlert: any): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
   onSelect(data: TabDirective): void {

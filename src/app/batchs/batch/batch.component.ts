@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {BatchService} from './../../service/batch.service';
 import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -15,16 +14,7 @@ import { Location } from '@angular/common';
 export class BatchComponent {
   public batch = {} as Batch;
   public id: any;
-  dismissible = true;
-
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Batch Created successfully. `
-    }
-  ];
-
-  public alerts: Alert[] = [];
+  
   public isLoading = true;
   
   constructor(private batchService: BatchService, private route: ActivatedRoute, private location: Location, private router: Router, 
@@ -32,13 +22,6 @@ export class BatchComponent {
 
 
   ngOnInit(): void {
-    
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-        this.alerts = this.defaultAlerts;
-      }
-    });
-
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
       
@@ -50,10 +33,6 @@ export class BatchComponent {
     if(error.status == 401) {
       this.loginService.toLogin();
     }
-  }
-  
-  onClosed(dismissedAlert: any): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
   loadBatch(batchID: number): void {

@@ -63,6 +63,7 @@ import { ExamComponent } from './exams/exam/exam.component';
 import { ExamStudentsComponent } from './exams/exam-students/exam-students.component';
 import { StudentExamsComponent } from './students/student-exams/student-exams.component';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { AlertComponent } from './alert/alert.component';
 
 
 
@@ -118,6 +119,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     ExamComponent,
     ExamStudentsComponent,
     StudentExamsComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

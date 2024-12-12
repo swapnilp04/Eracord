@@ -15,8 +15,7 @@ import { Location } from '@angular/common';
 export class ExamComponent implements OnInit {
   public exam = {} as Exam;
   public id: any;
-  dismissible = true;
-
+  
   public isLoading = true;
 
   value?: string;

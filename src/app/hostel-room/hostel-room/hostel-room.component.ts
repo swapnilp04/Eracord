@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HostelRoomService} from './../../service/hostel-room.service';
 import { LoginService } from './../../service/login.service';
 import {HostelRoom} from './../../interface/hostel-room';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -18,16 +17,7 @@ export class HostelRoomComponent implements OnInit{
   public hostelRoom = {} as HostelRoom;
   public id: any;
   public hostelId: any;
-  dismissible = true;
-
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `HostelRoom Created successfully. `
-    }
-  ];
-
-  public alerts: Alert[] = [];
+  
   public isLoading = true;
   public hostelRoomId: number;
   
@@ -37,12 +27,6 @@ export class HostelRoomComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-        this.alerts = this.defaultAlerts;
-      }
-    });
-
     this.route.paramMap.subscribe((param) => {
       this.hostelId = Number(param.get('hostel_id'));
       this.id = Number(param.get('id'));
@@ -56,10 +40,6 @@ export class HostelRoomComponent implements OnInit{
     }
   }
   
-  onClosed(dismissedAlert: any): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
-  }
-
   loadHostelRoom(hostelRoomID: number): void {
     this.hostelRoomService.getHostelRoom(this.hostelId, hostelRoomID).subscribe (
       (response: any) => this.assignHostelRoom(response),

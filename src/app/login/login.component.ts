@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {LoginService} from '../service/login.service';
+import { AlertService } from '../service/alert.service';
 import { User } from '../interface/user';
-import { Alert } from './../interface/alert';
 import { Router } from '@angular/router';
 
 
@@ -14,10 +14,12 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
   public user :User = {username: "", password: ""};
-  public alerts: Alert[] = [];
+  
   dismissible = true;
   
-  constructor(private cookies: CookieService, private loginService: LoginService, private _router: Router) { 
+  constructor(private cookies: CookieService, private loginService: LoginService, 
+    private _router: Router,
+     private alertService: AlertService) { 
   }
 
   login() {
@@ -35,15 +37,12 @@ export class LoginComponent {
     this.loginService.isLogin = true;
     this.loginService.username = response['username'];
     this._router.navigateByUrl('/dashboard');  // open welcome component
+    this.alertService.success("Login Successful");
   }
 
   errorResponse(error: any): void {
     if(error.status == 400) {
-      this.alerts.push({type:"danger", msg: error.error.error});
+      this.alertService.error(error.error.error);
     } 
-  }
-
-  onClosed(dismissedAlert: any): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
-  }
+  }  
 }

@@ -6,7 +6,6 @@ import { LoginService } from './../../service/login.service';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
 import { Standard } from './../../interface/standard';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -22,19 +21,10 @@ export class BatchStandardAddEditComponent implements OnInit {
   public batchStandard = {} as BatchStandard;
   public standards: Standard[] = [];
   public isNew = true;
-  dismissible = true;
 
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Batch Created successfully. `
-    }
-  ];
-
-  public alerts: Alert[] = [];
+  
   public isLoading = false;
   
-
   constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, private loginService: LoginService,
     private route: ActivatedRoute, private location: Location, private router: Router, private standardService: StandardService){}
 
@@ -45,12 +35,6 @@ export class BatchStandardAddEditComponent implements OnInit {
       this.isNew = false;
     }
 
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-        this.alerts = this.defaultAlerts;
-      }
-    });
-
     this.route.paramMap.subscribe((param) => {
       this.batchStandard.batch_id = Number(param.get('batch_id'));
       this.loadBatch(this.batchStandard.batch_id);
@@ -59,10 +43,6 @@ export class BatchStandardAddEditComponent implements OnInit {
         this.loadBatchStandard(this.batchStandard.batch_id, Number(param.get('id')));
       }
     });
-  }
-
-  onClosed(dismissedAlert: any): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
 
   errorHandle(error: any): void {

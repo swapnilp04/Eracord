@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TransactionService } from './../../service/transaction.service';
 import { LoginService } from './../../service/login.service';
 import { Transaction } from './../../interface/transaction';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -18,16 +17,7 @@ export class TransactionComponent {
   public id: any;
   public studentId: any;
   public classLoaded: boolean = false;
-  dismissible = true;
-
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Sutdent Created successfully. `
-    }
-  ];
-
-  public alerts: Alert[] = [];
+  
   public isLoading = true;
 
 

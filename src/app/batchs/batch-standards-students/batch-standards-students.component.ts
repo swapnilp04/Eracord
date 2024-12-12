@@ -6,7 +6,6 @@ import {Batch} from './../../interface/batch';
 import {BatchStandard} from './../../interface/batch-standard';
 import {BatchStandardStudent} from './../../interface/batch-standard-student';
 import {Student} from './../../interface/student';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -20,28 +19,13 @@ export class BatchStandardsStudentsComponent {
   public batchStandard = {} as BatchStandard;
   public batchStandardStudents: BatchStandardStudent[] = [];
   public id: any;
-  dismissible = true;
-
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Batch Created successfully. `
-    }
-  ];
-
-  public alerts: Alert[] = [];
+  
   public isLoading = true;
   
   constructor(private batchService: BatchService, private BatchStandardService: BatchStandardService, private route: ActivatedRoute, private location: Location, private router: Router, 
     private loginService: LoginService){}
 
   ngOnInit(): void {    
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-        this.alerts = this.defaultAlerts;
-      }
-    });
-
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
       var batchID = Number(param.get('batch_id'));
@@ -63,11 +47,6 @@ export class BatchStandardsStudentsComponent {
     }
   }
   
-  onClosed(dismissedAlert: any): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
-  }
-
-
   loadBatch(batchID: number): void {
     this.batchService.getBatch(batchID).subscribe (
       (response: any) => this.assignBatch(response),

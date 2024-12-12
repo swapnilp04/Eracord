@@ -6,7 +6,6 @@ import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { Hostel } from './../../interface/hostel';
 import { HostelRoom } from './../../interface/hostel-room';
-import { Alert } from './../../interface/alert';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -21,13 +20,6 @@ import { Location } from '@angular/common';
 export class AssignHostelComponent implements OnInit {
   public student = {} as Student;
   public id: any;
-
-  defaultAlerts: any[] = [
-    {
-      type: 'success',
-      msg: `Sutdent Created successfully. `
-    }
-  ];
 
   public hostels: Hostel[] = [];
   public hostelRooms: HostelRoom[] = [];
