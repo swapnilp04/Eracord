@@ -4,7 +4,7 @@ import {StandardService} from './../../service/standard.service';
 import { LoginService } from './../../service/login.service';
 import {Standard} from './../../interface/standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-standard-add-edit',
@@ -18,7 +18,7 @@ export class StandardAddEditComponent {
   public isLoading = false;
   
   constructor(private standardService: StandardService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
 
   createStandard(standard: Standard): void {
@@ -74,8 +74,10 @@ export class StandardAddEditComponent {
   getSuccess(response: any): void {
     if(this.isNew) {
       window.location.href = `/standards/${response['standard']['id']}?success=true`;
+      this.alertService.success("Standard Created Successful");
     } else {
       window.location.href = `/standards/${response['standard']['id']}?isUpdate=true`;
+      this.alertService.success("Standard updated Successful");
     }
   }
 

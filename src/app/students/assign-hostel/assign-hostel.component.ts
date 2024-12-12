@@ -8,8 +8,7 @@ import { Hostel } from './../../interface/hostel';
 import { HostelRoom } from './../../interface/hostel-room';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-assign-hostel',
@@ -30,13 +29,12 @@ export class AssignHostelComponent implements OnInit {
   public feeIteration = "Yearly";
   
   constructor(private studentService: StudentService, private hostelService: HostelService, private hostelRoomService: HostelRoomService, 
-    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
+    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService, 
+    private alertService: AlertService){}
   
   ngOnInit(): void {
-    
     this.route.paramMap.subscribe((param) => {
       this.id = Number(param.get('id'));
-      
       this.loadStudent(this.id);
     });
   }
@@ -81,11 +79,16 @@ export class AssignHostelComponent implements OnInit {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
       this.isLoading = true;
       this.studentService.assignStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom, this.feeIncluded, this.feeIteration).subscribe (
-        (response: any) => this.back(),
+        (response: any) => this.onSuccessAssignHostel(response),
         (error: any) => this.errorHandle(error),
         () => this.isLoadingFalse()
       );
     }
+  }
+
+  onSuccessAssignHostel(response: any): void {
+    this.back();
+    this.alertService.success("Hostel Has been assigned Successful");
   }
 
   onFeeInckudedChanged(e: any) {

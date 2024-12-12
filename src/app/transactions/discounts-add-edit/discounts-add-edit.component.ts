@@ -8,7 +8,7 @@ import { Student } from './../../interface/student';
 import { Transaction } from './../../interface/transaction';
 import { Cheque } from './../../interface/cheque';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-discounts-add-edit',
@@ -24,7 +24,7 @@ export class DiscountsAddEditComponent implements OnInit {
   public toWords = new ToWords();
 
   constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService, toWords: ToWords){}
+    private loginService: LoginService, toWords: ToWords, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.transaction.payment_mode = "Cash";
@@ -47,10 +47,15 @@ export class DiscountsAddEditComponent implements OnInit {
   submitDiscount(): void {
     this.isLoading = true;
     this.studentService.createStudentDiscounts(this.studentId, this.transaction).subscribe (
-      (response: any) => this.back(),
+      (response: any) => this.successSubmitDiscount(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
+  }
+
+  successSubmitDiscount(response: any): void {
+    this.back();
+    this.alertService.success("Discount has been added Successful");
   }
 
   loadStudent(studentID: number): void {

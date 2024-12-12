@@ -8,7 +8,7 @@ import { BatchStandard } from './../../interface/batch-standard';
 import { Standard } from './../../interface/standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-batch-standard-add-edit',
@@ -26,7 +26,8 @@ export class BatchStandardAddEditComponent implements OnInit {
   public isLoading = false;
   
   constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, private loginService: LoginService,
-    private route: ActivatedRoute, private location: Location, private router: Router, private standardService: StandardService){}
+    private route: ActivatedRoute, private location: Location, private router: Router, private standardService: StandardService,
+    private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -133,8 +134,10 @@ export class BatchStandardAddEditComponent implements OnInit {
   getSuccess(response: any): void {
     if(this.isNew) {
       window.location.href = `/batchs/${response['batch_standard']['batch_id']}?success=true`;
+      this.alertService.success("Standard has been assigned to Batch Successful");
     } else {
       window.location.href = `/batchs/${response['batch_standard']['batch_id']}?isUpdate=true`;
+      this.alertService.success("Standard has been assigned to Batch Successful");
     }
   }
 

@@ -4,7 +4,7 @@ import { StudentService } from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-student-add-edit',
@@ -19,7 +19,7 @@ export class StudentAddEditComponent implements OnInit {
   public isLoading = false;
   
   constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
 
   createStudent(student: Student): void {
@@ -81,15 +81,15 @@ export class StudentAddEditComponent implements OnInit {
 
   assignErrors(error: any): void {
     this.formErr = error.error.error
-    console.log(this.formErr);
-    console.log(typeof(this.formErr));
   }
 
   getSuccess(response: any): void {
     if(this.isNew) {
       window.location.href = `/students/${response['student']['id']}?success=true`;
+      this.alertService.success("Student Created Successful");
     } else {
       window.location.href = `/students/${response['student']['id']}?isUpdate=true`;
+      this.alertService.success("Student Updated Successful");
     }
   }
 

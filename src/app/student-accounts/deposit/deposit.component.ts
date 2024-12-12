@@ -6,7 +6,7 @@ import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { StudentAccount } from './../../interface/student-account';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-deposit',
@@ -20,7 +20,7 @@ export class DepositComponent implements OnInit{
   public isLoading= false;
 
   constructor(private studentAccountsService: StudentAccountsService, private studentService: StudentService, private location: Location, 
-    private router: Router, private route: ActivatedRoute, private loginService: LoginService){}
+    private router: Router, private route: ActivatedRoute, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
@@ -38,10 +38,15 @@ export class DepositComponent implements OnInit{
   submitDeposit(): void {    
     this.isLoading = true;
     this.studentAccountsService.createDeposit(this.studentId, this.studentAccount).subscribe (
-      (response: any) => this.back(),
+      (response: any) => this.SuccessSubmitDeposit(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
+  }
+
+  SuccessSubmitDeposit(response: any):void {
+    this.back();
+    this.alertService.success("Deposit hass been Successful");
   }
 
   loadStudent(studentID: number): void {

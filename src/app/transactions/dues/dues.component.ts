@@ -5,7 +5,7 @@ import { LoginService } from './../../service/login.service';
 import { Student } from './../../interface/student';
 import { Transaction } from './../../interface/transaction';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-dues',
@@ -20,7 +20,7 @@ export class DuesComponent implements OnInit {
   public isLoading= false;
 
   constructor(private studentService: StudentService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
@@ -38,10 +38,15 @@ export class DuesComponent implements OnInit {
   submitDues(): void {
     this.isLoading = true;
     this.studentService.createStudentDues(this.studentId, this.transaction).subscribe (
-      (response: any) => this.back(),
+      (response: any) => this.successSubmitDues(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
+  }
+
+  successSubmitDues(response: any): void {
+    this.back();
+    this.alertService.success("Dues has been added Successful");
   }
 
   loadStudent(studentID: number): void {

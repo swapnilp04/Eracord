@@ -4,6 +4,7 @@ import {HostelService} from './../../service/hostel.service';
 import { LoginService } from './../../service/login.service';
 import {Hostel} from './../../interface/hostel';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-hostel-add-edit',
@@ -17,7 +18,7 @@ export class HostelAddEditComponent {
   public isLoading = false;
   
   constructor(private hostelService: HostelService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
 
   createHostel(hostel: Hostel): void {
@@ -77,8 +78,10 @@ export class HostelAddEditComponent {
   getSuccess(response: any): void {
     if(this.isNew) {
       window.location.href = `/hostels/${response['hostel']['id']}?success=true`;
+      this.alertService.success("Hostel Created Successful");
     } else {
       window.location.href = `/hostels/${response['hostel']['id']}?isUpdate=true`;
+      this.alertService.success("Hostel updated Successful");
     }
   }
 

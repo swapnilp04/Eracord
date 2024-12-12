@@ -6,6 +6,7 @@ import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
 import { BatchStandard } from './../../interface/batch-standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-exam-add-edit',
@@ -20,7 +21,8 @@ export class ExamAddEditComponent implements OnInit{
   
   
   constructor(private examService: ExamService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService, private batchStandardService: BatchStandardService) {}
+    private loginService: LoginService, private batchStandardService: BatchStandardService,
+    private alertService: AlertService) {}
 
   createExam(exam: Exam): void {
     this.isLoading = true;
@@ -89,8 +91,10 @@ export class ExamAddEditComponent implements OnInit{
   getSuccess(response: any): void {
     if(this.isNew) {
       window.location.href = `/exams/${response['exam']['id']}?success=true`;
+      this.alertService.success("Exam Created Successful");
     } else {
       window.location.href = `/exams/${response['exam']['id']}?isUpdate=true`;
+      this.alertService.success("Exam updated Successful");
     }
   }
 

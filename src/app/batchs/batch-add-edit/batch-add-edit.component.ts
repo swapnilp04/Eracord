@@ -4,6 +4,7 @@ import {BatchService} from './../../service/batch.service';
 import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-batch-add-edit',
@@ -17,7 +18,7 @@ export class BatchAddEditComponent {
   public isLoading = false;
   
   constructor(private batchService: BatchService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
 
   createBatch(batch: Batch): void {
@@ -73,8 +74,10 @@ export class BatchAddEditComponent {
   getSuccess(response: any): void {
     if(this.isNew) {
       window.location.href = `/batchs/${response['batch']['id']}?success=true`;
+      this.alertService.success("New Batch has been Created Successful");
     } else {
       window.location.href = `/batchs/${response['batch']['id']}?isUpdate=true`;
+      this.alertService.success("Batch has been updated Successful");
     }
   }
 

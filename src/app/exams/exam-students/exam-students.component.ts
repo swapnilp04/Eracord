@@ -5,6 +5,7 @@ import { ExamService } from './../../service/exam.service';
 import { LoginService } from './../../service/login.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-exam-students',
@@ -20,7 +21,8 @@ export class ExamStudentsComponent  implements OnInit {
   public examStudents: ExamStudent[] = [];
 
   constructor(private examService: ExamService, private route: ActivatedRoute, private location: Location, 
-    private router: Router, private loginService: LoginService){}
+    private router: Router, private loginService: LoginService,
+    private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadExamStudents(this.examId);
@@ -58,6 +60,7 @@ export class ExamStudentsComponent  implements OnInit {
 
   savedExamMarks(response: any) {
     this.isLoading =false
+    this.alertService.success("Exam Marks has been saved Successful");
   }
 
   name(student: Student): string {

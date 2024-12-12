@@ -8,6 +8,7 @@ import { Hostel } from './../../interface/hostel';
 import { HostelRoom } from './../../interface/hostel-room';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { AlertService } from '../../service/alert.service';
 
 
 @Component({
@@ -28,15 +29,11 @@ export class SwapRoomComponent {
   public selectedHostelRoom: number = 0;
   
   constructor(private studentService: StudentService, private hostelService: HostelService, private hostelRoomService: HostelRoomService, 
-    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
+    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService, 
+    private alertService: AlertService){}
   
   ngOnInit(): void {
     
-    this.route.queryParams.subscribe((param) => {
-      if (param['success'] == 'true') {
-      }
-    });
-
     this.route.paramMap.subscribe((param) => {
       this.id = Number(param.get('id'));
       
@@ -81,11 +78,16 @@ export class SwapRoomComponent {
     if(this.selectedHosteId != 0 && this.selectedHostelRoom != 0) {
       this.isLoading = true;
       this.studentService.changeStudentHostel(this.id, this.selectedHosteId, this.selectedHostelRoom).subscribe (
-        (response: any) => this.back(),
+        (response: any) => this.successChangeRoom(response),
         (error: any) => this.errorHandle(error),
         () => this.isLoadingFalse()
       );
     }
+  }
+
+  successChangeRoom(response: any): void {
+    this.back()
+    this.alertService.success("Change Hostel Room has been Success");
   }
 
   name(): string {

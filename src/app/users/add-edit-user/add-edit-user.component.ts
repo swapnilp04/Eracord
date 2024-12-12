@@ -6,7 +6,7 @@ import { User } from './../../interface/user';
 import { Transaction } from './../../interface/transaction';
 import { Cheque } from './../../interface/cheque';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -19,7 +19,7 @@ export class AddEditUserComponent implements OnInit{
   public isLoading = false;
 
   constructor(private userService: UserService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.user.role = "Clerk";
@@ -38,10 +38,15 @@ export class AddEditUserComponent implements OnInit{
   createUser(user: User): void {
     this.isLoading = true;
     this.userService.createUser(user).subscribe (
-      (response: any) => this.back(),
+      (response: any) => this.successCreateUser(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
+  }
+
+  successCreateUser(response: any): void {
+    this.back();
+    this.alertService.success("New User has been created Successful");
   }
 
   updateUser(user: User): void {

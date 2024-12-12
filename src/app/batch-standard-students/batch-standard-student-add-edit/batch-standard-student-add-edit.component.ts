@@ -7,7 +7,7 @@ import { Student } from './../../interface/student';
 import { BatchStandardStudent } from './../../interface/batch-standard-student';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
-
+import { AlertService } from '../../service/alert.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -27,7 +27,8 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   public isLoading = false;
   
   constructor(private studentService: StudentService, private batchService: BatchService, private batchStandardService: BatchStandardService,
-    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService){}
+    private route: ActivatedRoute, private location: Location, private router: Router, private loginService: LoginService,
+    private alertService: AlertService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
@@ -96,6 +97,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
 
   batchStandardStudentCreated(): void {
     this.router.navigate(['/students', this.studentId]);
+    this.alertService.success("Student has been assigned to Standard Successful");
   }
 
   onChangeBatch(newObj: number): void {
