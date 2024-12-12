@@ -1,11 +1,11 @@
-<div class="container" style="float:left;">
+<div class="container" style="float:left;" *ngIf="exam.exam_status == 'Published'" >
  	<p>
 		<button 
 			class="btn btn-primary marginRight15"
 			[useExistingCss]="true"
 			printSectionId="print-section"
 			ngxPrint>print</button>
-		<button *ngIf="exam.exam_status == 'Published'" (click)=back() class="btn btn-primary marginRight15">
+		<button (click)=back() class="btn btn-primary marginRight15">
 			Back
 		</button>
 	</p>
