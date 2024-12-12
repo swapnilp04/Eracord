@@ -62,6 +62,7 @@ import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.compon
 import { ExamComponent } from './exams/exam/exam.component';
 import { ExamStudentsComponent } from './exams/exam-students/exam-students.component';
 import { StudentExamsComponent } from './students/student-exams/student-exams.component';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 
 
@@ -131,7 +132,8 @@ import { StudentExamsComponent } from './students/student-exams/student-exams.co
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
   providers: [CookieService, ToWords],
   bootstrap: [AppComponent]
