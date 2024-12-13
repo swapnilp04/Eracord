@@ -1,0 +1,27 @@
+<div class="row">
+  <p class="clearfix">
+      
+      <a href="/subjects/new" class="btn btn-primary"><span>New Subject</span></a>
+    </p>
+	<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+	      <th class="col-md-1"> Sr No
+	      </th>
+	      <th>Name</th>
+	      <th>Subject</th>
+	    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let subject of subjects; index as i">
+	      <td>{{i+1}}</td> 
+	      <td>{{subject.name}}</td>
+	      <td>
+	        <a href='/subjects/{{subject.id}}'>Show</a>
+	        &nbsp;&nbsp;&nbsp;
+	        <a href='/subjects/{{subject.id}}/edit'>Edit</a>
+	      </td>
+    	</tr>
+    </tbody>
+	</table>	
+</div>
