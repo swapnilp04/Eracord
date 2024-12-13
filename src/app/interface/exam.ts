@@ -1,4 +1,5 @@
 import { Standard } from './standard';
+import { Subject } from './subject';
 import { Batch } from './batch';
 
 export interface Exam {
@@ -15,4 +16,6 @@ export interface Exam {
 	exam_time: number;
 	exam_date: Date;
 	exam_status: string;
+	subject_id: number;
+	Subject: Subject;
 }

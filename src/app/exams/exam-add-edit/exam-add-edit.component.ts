@@ -5,6 +5,7 @@ import { BatchStandardService } from './../../service/batch-standard.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
 import { BatchStandard } from './../../interface/batch-standard';
+import { Subject } from './../../interface/subject';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
 
@@ -16,6 +17,7 @@ import { AlertService } from '../../service/alert.service';
 export class ExamAddEditComponent implements OnInit{
   public exam = {} as Exam;
   public defaultBatchStandards: BatchStandard[] = [];
+  public subjects: Subject[] = [];
   public isNew = true;
   public isLoading = false;
   
@@ -80,8 +82,21 @@ export class ExamAddEditComponent implements OnInit{
     );
   }
 
+  loadSubjects(newObj: number): void {
+    this.batchStandardService.getBatchStandardSubjects(newObj).subscribe (
+      (response: any) => this.assignSubjects(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Subjects......')
+    );
+  }
+
   onChangeBatchStandard(newObj: number): void {
     this.exam.batch_standard_id = newObj;
+    this.loadSubjects(newObj);
+  }
+
+  onChangeSubject(newObj: number): void {
+    this.exam.subject_id = newObj;
   }
 
   back(): void {
@@ -105,11 +120,16 @@ export class ExamAddEditComponent implements OnInit{
   assignBatchStandards(response: any) {
     this.defaultBatchStandards = response;
   }
+  
+  assignSubjects(response: any) {
+    this.subjects = response;
+  }
 
   assignExam(response: any) {
     this.exam = response;
     if(!this.isNew) {
       this.exam.exam_date = new Date(this.exam.exam_date)
+      this.loadSubjects(this.exam.batch_standard_id);
     }
   }
 

@@ -12,6 +12,7 @@
         <th class="col-md-1"> Sr No
         </th>
         <th>Exam Name</th>
+        <th>Subject</th>
         <th>Date</th>
         <th>Status</th>
         <th>Marks</th> 
@@ -21,6 +22,7 @@
       	<tr *ngFor="let examStudent of examStudents; index as i" [ngClass]="{'published': examStudent.Exam.exam_status == 'Published'}">
         <td>{{i + 1 }}</td>
         <td><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></td>
+        <td>{{examStudent.Exam.Subject.name}}</td>
         <td>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</td>
         <td>{{examStudent.Exam.exam_status}}</td>
         <td>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}</td>
