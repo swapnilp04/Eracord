@@ -15,9 +15,9 @@ export class ExamService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  getExams(): Observable<Exam[]> {
+  getExams(page: number): Observable<Exam[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<Exam[]>(`${this.loginService.URL}/exams`, {headers: myHeaders});
+    return this.http.get<Exam[]>(`${this.loginService.URL}/exams?page=${page}`, {headers: myHeaders});
   }
 
   getExam(examID: number): Observable<Exam> {

@@ -3,6 +3,12 @@
       
       <a href="/exams/new" class="btn btn-primary"><span>New Exam</span></a>
     </p>
+   <div class="row">
+    <div class="col-xs-12 col-12">
+      <pagination class="pull-right" [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8">        
+      </pagination>
+    </div>
+  </div>
 	<table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>

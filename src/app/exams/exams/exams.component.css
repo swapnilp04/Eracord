@@ -1,3 +1,7 @@
 .published > td {
     color: #ff097a;
 }
+
+.pull-right {
+    float:right;
+}

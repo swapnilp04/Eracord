@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExamService } from './../../service/exam.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 
 @Component({
@@ -12,12 +13,29 @@ import { Exam } from './../../interface/exam';
 export class ExamsComponent implements OnInit {
 
   public exams: Exam[] = [];
+  currentPage = 1;
+  public page = 1;
+  totalItems: number = 10;
   constructor(private examService: ExamService, private loginService: LoginService){}
 
 
 
   ngOnInit(): void {
-    this.loadExams();
+    this.loadExams(this.page);
+  }
+
+  pageChanged(event: PageChangedEvent): void {
+    this.page = event.page;
+    while(this.exams.length > 0) {
+      this.exams.pop();
+    } 
+    this.loadExams(this.page);
+  }
+
+  changed(e: any) {
+    this.page = 1;
+    this.currentPage = 1;
+    this.loadExams(this.page);  
   }
 
   errorHandle(error: any): void {
@@ -29,8 +47,8 @@ export class ExamsComponent implements OnInit {
     }
   }
 
-  loadExams(): void {
-    this.examService.getExams().subscribe (
+  loadExams(pageNumber: number): void {
+    this.examService.getExams(pageNumber).subscribe (
       (response: any) => this.assignExam(response),
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting exams......')
@@ -39,7 +57,8 @@ export class ExamsComponent implements OnInit {
 
 
   assignExam(response: any) {
-    this.exams = response
+    this.exams = response.exams
+    this.totalItems = response.total;
   }
 
 }
