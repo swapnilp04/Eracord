@@ -38,6 +38,7 @@ import { CommentAddEditComponent } from './comments/comment-add-edit/comment-add
 import { ExamsComponent } from './exams/exams/exams.component';
 import { ExamComponent } from './exams/exam/exam.component';
 import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.component';
+import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add-edit.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -68,6 +69,8 @@ const routes: Routes = [
   {path: 'standards/new' , component: StandardAddEditComponent},
   {path: 'standards/:id' , component: StandardComponent},
   {path: 'standards/:id/edit' , component: StandardAddEditComponent},
+  {path: 'standards/:standard_id/subjects/new' , component: SubjectAddEditComponent},
+  {path: 'standards/:standard_id/subjects/:id/edit' , component: SubjectAddEditComponent},
 
   {path: 'batchs' , component: BatchsComponent},
   {path: 'batchs/new' , component: BatchAddEditComponent},

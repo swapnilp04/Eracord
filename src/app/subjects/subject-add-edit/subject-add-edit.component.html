@@ -1,1 +1,11 @@
-<p>subject-add-edit works!</p>
+<form>
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="subject.name" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+  <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createSubject(subject)>Submit</button>
+  <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateSubject(subject)>Submit</button>
+  <button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
+</div>
+</form>
