@@ -34,6 +34,7 @@ export class LoginComponent {
     this.cookies.set('isLogin', 'true');
     this.cookies.set('token', response['token']);
     this.cookies.set('username', response['username']);
+    this.cookies.set('role', response['role']);
     this.loginService.isLogin = true;
     this.loginService.username = response['username'];
     this._router.navigateByUrl('/dashboard');  // open welcome component
