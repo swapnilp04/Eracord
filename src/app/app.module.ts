@@ -68,6 +68,8 @@ import { SubjectsComponent } from './subjects/subjects/subjects.component';
 import { SubjectComponent } from './subjects/subject/subject.component';
 import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add-edit.component';
 import { TeachersComponent } from './teachers/teachers/teachers.component';
+import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add-edit.component';
+import { TeacherComponent } from './teachers/teacher/teacher.component';
 
 
 
@@ -128,6 +130,8 @@ import { TeachersComponent } from './teachers/teachers/teachers.component';
     SubjectComponent,
     SubjectAddEditComponent,
     TeachersComponent,
+    TeacherAddEditComponent,
+    TeacherComponent,
   ],
   imports: [
     BrowserModule,

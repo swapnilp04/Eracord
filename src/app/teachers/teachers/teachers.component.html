@@ -9,13 +9,14 @@
 	      <th class="col-md-1"> Sr No
 	      </th>
 	      <th>Name</th>
-	      <th>Standard</th>
+	      <th>Mobile</th>
 	    </tr>
     </thead>
     <tbody>
     	<tr *ngFor="let teacher of teachers; index as i">
 	      <td>{{i+1}}</td> 
 	      <td>{{teacher.name}}</td>
+	      <td>{{teacher.mobile}}</td>
 	      <td>
 	        <a href='/teachers/{{teacher.id}}'>Show</a>
 	        &nbsp;&nbsp;&nbsp;

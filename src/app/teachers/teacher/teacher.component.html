@@ -1,0 +1,10 @@
+<div *ngIf=!isLoading>
+	<div class="mb-3">
+		<h2>{{name()}}</h2>
+		<h5>Mobile - {{teacher.mobile}}</h5>
+		<h5>Joining Date - {{teacher.joining_date | date:'dd MMM yyyy'}}</h5>
+		<button (click)=back() class="btn btn-primary">
+			Back
+		</button>
+	</div>
+</div>
