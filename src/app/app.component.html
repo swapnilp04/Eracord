@@ -32,10 +32,10 @@
         <li class="nav-item">
           <a class="nav-link" [ngClass]="{'active': activeLink('/batchs')}" href="/batchs">Batch</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf=isAdmin()>
           <a class="nav-link" [ngClass]="{'active': activeLink('/standards')}" href="/standards">Standard</a>
         </li>      
-        <li class="nav-item">
+        <li class="nav-item" *ngIf=isAdmin()>
           <a class="nav-link" [ngClass]="{'active': activeLink('/users')}" href="/users">Users</a>
         </li>      
       </ul>

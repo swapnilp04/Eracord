@@ -62,6 +62,10 @@ export class AppComponent {
     return this.cookies.get('role') == "Teacher";
   }
 
+  isAdmin() {
+    return this.cookies.get('role') == "Admin";
+  }
+
   public get getUsername() {
     return this.loginService.username; 
   }
