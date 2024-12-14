@@ -15,7 +15,6 @@ export class StandardsComponent  implements OnInit {
   public standards: Standard[] = [];
   constructor(private standardService: StandardService, private loginService: LoginService){}
 
-
   ngOnInit(): void {
     this.loadStandards();
   }
@@ -37,23 +36,7 @@ export class StandardsComponent  implements OnInit {
     );
   }
 
-  loadStandard(standardID: number): void {
-    this.standardService.getStandard(standardID).subscribe (
-      (response: any) => console.log(response),
-      (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standard......')
-    );
+  assignStandard(response: any) {
+    this.standards = response
   }
-
-  createStandard(standard: Standard): void {
-    this.standardService.createStandard(standard).subscribe (
-      (response: any) => console.log(response),
-      (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standard......')
-    );
-  }
-
-    assignStandard(response: any) {
-      this.standards = response
-    }
 }

@@ -67,6 +67,7 @@ import { AlertComponent } from './alert/alert.component';
 import { SubjectsComponent } from './subjects/subjects/subjects.component';
 import { SubjectComponent } from './subjects/subject/subject.component';
 import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add-edit.component';
+import { TeachersComponent } from './teachers/teachers/teachers.component';
 
 
 
@@ -126,6 +127,7 @@ import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add
     SubjectsComponent,
     SubjectComponent,
     SubjectAddEditComponent,
+    TeachersComponent,
   ],
   imports: [
     BrowserModule,

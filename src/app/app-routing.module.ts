@@ -39,6 +39,7 @@ import { ExamsComponent } from './exams/exams/exams.component';
 import { ExamComponent } from './exams/exam/exam.component';
 import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.component';
 import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add-edit.component';
+import { TeachersComponent } from './teachers/teachers/teachers.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -71,6 +72,8 @@ const routes: Routes = [
   {path: 'standards/:id/edit' , component: StandardAddEditComponent},
   {path: 'standards/:standard_id/subjects/new' , component: SubjectAddEditComponent},
   {path: 'standards/:standard_id/subjects/:id/edit' , component: SubjectAddEditComponent},
+
+  {path: 'teachers' , component: TeachersComponent},
 
   {path: 'batchs' , component: BatchsComponent},
   {path: 'batchs/new' , component: BatchAddEditComponent},
