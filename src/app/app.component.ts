@@ -14,10 +14,14 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class AppComponent {
   title = 'Eracord';
+  role = "";
   
   constructor(private cookies: CookieService, private loginService: LoginService, private router: Router) {
     this.loginService.isLogin = this.cookies.get("isLogin") == "true";
     this.loginService.username = this.cookies.get("username");
+    this.loginService.role = this.cookies.get("role");
+    this.role = this.cookies.get('role');
+
 
     type HttpRespone = {code: number, data: string};
 
@@ -64,6 +68,10 @@ export class AppComponent {
 
   isAdmin() {
     return this.cookies.get('role') == "Admin";
+  }
+
+  isAdminAccountant() { 
+    return this.role == "Admin" || this.role == "Accountant";
   }
 
   public get getUsername() {

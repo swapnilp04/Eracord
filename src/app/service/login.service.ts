@@ -15,6 +15,7 @@ export class LoginService {
   //URL = "http://65.254.80.148:8080"
   public isLogin = false;
   public username = "";
+  public role = "";
 
   constructor(private cookies: CookieService, private http: HttpClient, private router: Router) { }
 
