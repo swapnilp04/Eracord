@@ -13,9 +13,9 @@ export class TeacherLogService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  getTeacherLogs(): Observable<TeacherLog[]> {
+  getTeacherLogs(page: number): Observable<TeacherLog[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<TeacherLog[]>(`${this.loginService.URL}/logs`, {headers: myHeaders});
+    return this.http.get<TeacherLog[]>(`${this.loginService.URL}/logs?page=${page}`, {headers: myHeaders});
   }
 
   getTeacherLog(teacherLogID: number): Observable<TeacherLog> {
