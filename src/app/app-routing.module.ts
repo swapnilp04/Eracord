@@ -43,6 +43,7 @@ import { TeachersComponent } from './teachers/teachers/teachers.component';
 import { TeacherComponent } from './teachers/teacher/teacher.component';
 import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add-edit.component';
 import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.component';
+import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edit/teacher-logs-add-edit.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -107,6 +108,7 @@ const routes: Routes = [
   {path: 'users/new' , component: AddEditUserComponent},
   {path: 'users/edit' , component: AddEditUserComponent},
   {path: 'logs' , component: TeacherLogsComponent},
+  {path: 'logs/new' , component: TeacherLogsAddEditComponent},
   ];
 
 
