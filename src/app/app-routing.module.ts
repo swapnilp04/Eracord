@@ -42,6 +42,7 @@ import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add
 import { TeachersComponent } from './teachers/teachers/teachers.component';
 import { TeacherComponent } from './teachers/teacher/teacher.component';
 import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add-edit.component';
+import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -105,6 +106,7 @@ const routes: Routes = [
   {path: 'users' , component: UsersComponent},
   {path: 'users/new' , component: AddEditUserComponent},
   {path: 'users/edit' , component: AddEditUserComponent},
+  {path: 'logs' , component: TeacherLogsComponent},
   ];
 
 

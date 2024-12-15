@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoginService } from './../service/login.service'
+import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { TeacherLog } from './../interface/teacher-log'
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TeacherLogService {
+
+  constructor(private http: HttpClient, private loginService: LoginService) { }
+
+  getTeacherLogs(): Observable<TeacherLog[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<TeacherLog[]>(`${this.loginService.URL}/logs`, {headers: myHeaders});
+  }
+
+  getTeacherLog(teacherLogID: number): Observable<TeacherLog> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<TeacherLog>(`${this.loginService.URL}/logs/${teacherLogID}`, {headers: myHeaders});
+  }
+
+  createTeacherLog(teacherLog: TeacherLog): Observable<TeacherLog> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<TeacherLog>(`${this.loginService.URL}/logs`, teacherLog, {headers: myHeaders});
+  }
+
+  updateTeacherLog(teacherLog: TeacherLog): Observable<TeacherLog> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.put<TeacherLog>(`${this.loginService.URL}/logs/${teacherLog.id}`, teacherLog, {headers: myHeaders});
+  }  
+}

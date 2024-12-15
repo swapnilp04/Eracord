@@ -37,7 +37,10 @@
         </li>      
         <li class="nav-item" *ngIf=isAdmin()>
           <a class="nav-link" [ngClass]="{'active': activeLink('/users')}" href="/users">Users</a>
-        </li>      
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': activeLink('/logs')}" href="/logs">Logs</a>
+        </li>
       </ul>
       <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
         <li class="nav-item">
