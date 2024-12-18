@@ -8,6 +8,7 @@ import {BatchStandardStudent} from './../../interface/batch-standard-student';
 import {Student} from './../../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-batch-standards-students',
@@ -23,7 +24,7 @@ export class BatchStandardsStudentsComponent {
   public isLoading = true;
   
   constructor(private batchService: BatchService, private BatchStandardService: BatchStandardService, private route: ActivatedRoute, private location: Location, private router: Router, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {    
     this.route.paramMap.subscribe((param) => {
@@ -44,6 +45,13 @@ export class BatchStandardsStudentsComponent {
       this.loginService.toLogin();
     } else if(error.status == 500) {
       this.isLoading = true;
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
+      window.scroll({ 
+           top: 0, 
+           left: 0, 
+           behavior: 'smooth' 
+      });
     }
   }
   

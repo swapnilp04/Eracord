@@ -43,6 +43,13 @@ export class StudentComponent  implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
+      window.scroll({ 
+           top: 0, 
+           left: 0, 
+           behavior: 'smooth' 
+      });
     }
   }
 
@@ -79,7 +86,7 @@ export class StudentComponent  implements OnInit {
   }
 
   leftAcademy(studentID: any): void {
-    if(confirm("Are you sure to Conduct this exam")) {
+    if(confirm("Are you sure to leave student from academy?")) {
       this.studentService.leftAcademy(studentID).subscribe (
         (response: any) => this.leftAcademySuccess(response),
         (error: any) => this.errorHandle(error),

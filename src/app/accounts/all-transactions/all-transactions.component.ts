@@ -4,7 +4,7 @@ import { LoginService } from './../../service/login.service';
 import { Transaction } from './../../interface/transaction';
 import { Student } from './../../interface/student';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-all-transactions',
@@ -19,7 +19,7 @@ export class AllTransactionsComponent  implements OnInit {
   totalItems: number = 10;
   search = "";
 
-  constructor(private transactionService: TransactionService, private loginService: LoginService){}
+  constructor(private transactionService: TransactionService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadTransactions(1);
@@ -50,6 +50,9 @@ export class AllTransactionsComponent  implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    }
+    if(error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();
