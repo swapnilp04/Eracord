@@ -12,16 +12,21 @@
 		<h5>What's app Number - {{student.wh_number}}</h5>
 		<h5>Address - {{student.town}}</h5>
 		<h5>Standard - {{student.Standard.name}}</h5>
-		
-		<a *ngIf=!student.has_absconded class="btn btn-secondary" href='/students/{{student.id}}/edit'>Edit</a>
-		<button (click)=back() class="btn btn-primary marginLeft15">
+		<h5 class="text-danger" *ngIf="student.has_left">Left On - {{student.left_at | date:'dd MMM YYYY'}}</h5>
+	</div>
+	<div class="mb-3">
+		<a *ngIf="!student.has_absconded && !isLeft()" class="btn btn-secondary marginRight15" href='/students/{{student.id}}/edit'>Edit</a>
+		<button (click)=back() class="btn btn-primary marginRight15">
 			Back
 		</button>
-		<a class="btn btn-secondary marginLeft15" href='/students/{{student.id}}/comments/new'>New Comment</a>
+		<a class="btn btn-secondary marginRight15" href='/students/{{student.id}}/comments/new'>New Comment</a>
+		<button (click)=leftAcademy(student.id) class="btn btn-primary marginRight15" *ngIf="!isLeft()">
+			Left Academy
+		</button>
 	</div>
-	<div *ngIf="!student.has_absconded">	
+	<div>	
 		<tabset>
-		  <tab heading="Hostel" class="mt-2" (selectTab)="onSelect($event)">
+		  <tab heading="Hostel" class="mt-2" (selectTab)="onSelect($event)" *ngIf="!student.has_absconded && !isLeft()">
 		    <span *ngIf=hasHostel>
 		    	<h4>Hostel  <a class="changeRoom" href="/students/{{student.id}}/change-room">Change Hostel / Room</a></h4>
 			    <p>Hostel Name - {{hostelStudent.Hostel.name}} </p>
@@ -37,23 +42,23 @@
 		  	<h3 *ngIf=!hasHostel>No hostel Assigned</h3>
 		  	<a *ngIf=!hasHostel href="/students/{{student.id}}/assign-hostel"><span>Assign Hostel</span></a>
 		  </tab>
-		  <tab heading="Class" class="mt-2" (selectTab)="onSelect($event)">
+		  <tab heading="Class" class="mt-2" (selectTab)="onSelect($event)" *ngIf="!student.has_absconded && !isLeft()">
 		  	<h4>Class</h4>
 		  	<p><app-batch-standard-students [batchStandardStudents]="batchStandardStudents" [student]="student"></app-batch-standard-students></p>
 		  </tab>
 		  <tab heading="Transactions" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Transactions</h4>
-		    <app-transactions [studentId]="student.id" [showActions]="true"></app-transactions>
+		    <app-transactions [studentId]="student.id" [showActions]="!student.has_absconded && !isLeft()"></app-transactions>
 		  </tab>
 		  <tab heading="Accounts" class="mt-2" (selectTab)="onSelect($event)">
 		    <h4>Accounts</h4>
-		    <app-student-accounts [studentId]="student.id" [student]="student"></app-student-accounts>
+		    <app-student-accounts [studentId]="student.id" [student]="student" [showActions]="!student.has_absconded && !isLeft()"></app-student-accounts>
 		  </tab>
-		  <tab heading="Comments" class="mt-2" (selectTab)="onSelect($event)">
+		  <tab heading="Comments" class="mt-2" (selectTab)="onSelect($event)" >
 		    <h4>Comments</h4>
 		    <app-student-comments [studentId]="student.id" [student]="student"></app-student-comments>
 		  </tab>
-		  <tab heading="Exams" class="mt-2" (selectTab)="onSelect($event)">
+		  <tab heading="Exams" class="mt-2" (selectTab)="onSelect($event)" *ngIf="!student.has_absconded && !isLeft()">
 		    <h4>Exams</h4>
 		    <app-student-exams [studentId]="student.id" [studentName]="name()"></app-student-exams>
 		  </tab>

@@ -1,6 +1,6 @@
 <div class="row marginTop15 container">
   <h3>Total balance : {{student.student_account_balance}}</h3>
-  <div>
+  <div *ngIf="showActions">
     <a class="btn btn-primary" href="/students/{{studentId}}/student-accounts/deposit"> Deposit Funds</a>
     <a class="btn btn-danger marginLeft15" href="/students/{{studentId}}/student-accounts/withdraw"> Withdraw Funds</a>
   </div>

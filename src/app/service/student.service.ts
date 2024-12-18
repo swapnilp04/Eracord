@@ -107,4 +107,9 @@ export class StudentService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/get_exams`, {headers: myHeaders});
   }
+
+  leftAcademy(studentId: number): Observable<Student> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Student>(`${this.loginService.URL}/students/${studentId}/left_academy`, {}, {headers: myHeaders});
+  }
 }

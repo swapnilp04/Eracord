@@ -29,7 +29,7 @@
     </tr>
     </thead>
     <tbody>
-    	<tr *ngFor="let student of students; index as i">
+    	<tr *ngFor="let student of students; index as i" [ngClass]="{'table-danger': student.has_left}">
       <td>{{((page - 1) *10) + i + 1 }}</td> 
       <td>{{name(student)}} <strong>({{student.Standard.name}})</strong></td>
       <td>{{student.town}}</td>
@@ -37,11 +37,9 @@
       <td>{{student.balance}}</td>
       <td>{{student.last_payment_on | date:'dd MMM yyyy'}}</td>
       <td>
-        <a href='/students/{{student.id}}'>Show</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href='/students/{{student.id}}/edit'>Edit</a>
-        &nbsp;&nbsp;&nbsp;
-        <a class="btn-primary" href="/students/{{student.id}}/transactions/new"> Pay</a>
+        <a href='/students/{{student.id}}' class="marginRight15">Show</a>
+        <a href='/students/{{student.id}}/edit' *ngIf="!student.has_left" class="marginRight15">Edit</a> 
+        <a class="btn-primary" href="/students/{{student.id}}/transactions/new" *ngIf="!student.has_left"> Pay</a>
       </td>
     	</tr>
     </tbody>

@@ -7,7 +7,7 @@ import { HostelStudent } from './../../interface/hostel-student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { TabDirective } from 'ngx-bootstrap/tabs';
-
+import { AlertService } from '../../service/alert.service';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class StudentComponent  implements OnInit {
   public hasHostel: boolean = false;
   
   constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, private router: Router,
-   private loginService: LoginService){}
+   private loginService: LoginService, private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -78,6 +78,21 @@ export class StudentComponent  implements OnInit {
     );
   }
 
+  leftAcademy(studentID: any): void {
+    if(confirm("Are you sure to Conduct this exam")) {
+      this.studentService.leftAcademy(studentID).subscribe (
+        (response: any) => this.leftAcademySuccess(response),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done getting Student......')
+      );
+    }
+  }
+
+  leftAcademySuccess(response: any): void {
+    window.location.reload();
+    this.alertService.success("Student Left Successful");
+  }
+
   assignStudent(response: any) {
     this.student = response;
     this.isLoading = false;
@@ -93,6 +108,10 @@ export class StudentComponent  implements OnInit {
 
   assignStudentBatchStandard(response: any): void {
     this.batchStandardStudents = response;
+  }
+
+  isLeft(): boolean {
+    return this.student.has_left
   }
 
   back(): void {

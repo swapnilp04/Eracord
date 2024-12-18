@@ -14,6 +14,7 @@ export class StudentAccountsComponent implements OnInit {
   
   @Input() studentId: any;
   @Input() student: Student;
+  @Input() showActions: any;
   public studentAccounts: StudentAccount[] = [];
 
   constructor(private studentAccountsService: StudentAccountsService, private loginService: LoginService){}

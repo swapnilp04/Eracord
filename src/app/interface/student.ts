@@ -23,4 +23,6 @@ export interface Student {
 	Standard: Standard;
 	has_absconded: boolean;
 	last_payment_on: Date;
+	has_left: boolean;
+	left_at: Date;
 }
