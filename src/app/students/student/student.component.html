@@ -19,8 +19,8 @@
 		<button (click)=back() class="btn btn-primary marginRight15">
 			Back
 		</button>
-		<a class="btn btn-secondary marginRight15" href='/students/{{student.id}}/comments/new'>New Comment</a>
-		<button (click)=leftAcademy(student.id) class="btn btn-primary marginRight15" *ngIf="!isLeft()">
+		<a class="btn btn-info marginRight15" href='/students/{{student.id}}/comments/new'>New Comment</a>
+		<button (click)=leftAcademy(student.id) class="btn btn-info text-white marginRight15" *ngIf="!isLeft()">
 			Left Academy
 		</button>
 	</div>

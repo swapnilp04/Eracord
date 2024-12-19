@@ -31,6 +31,7 @@ export class LoginComponent {
   };
 
   successResponse(response: any) {
+    this.cookies.deleteAll();
     this.cookies.set('isLogin', 'true');
     this.cookies.set('token', response['token']);
     this.cookies.set('username', response['username']);
