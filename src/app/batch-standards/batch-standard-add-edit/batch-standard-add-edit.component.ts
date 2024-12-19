@@ -51,11 +51,6 @@ export class BatchStandardAddEditComponent implements OnInit {
       this.loginService.toLogin();
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
-      window.scroll({ 
-           top: 0, 
-           left: 0, 
-           behavior: 'smooth' 
-      });
     }
   }
 

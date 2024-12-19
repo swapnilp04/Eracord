@@ -7,6 +7,7 @@ import { HostelStudent } from './../interface/hostel-student';
 import { HostelRoom } from './../interface/hostel-room';
 import { Student } from './../interface/student';
 import { Comment } from './../interface/comment';
+import { AlertService } from '../service/alert.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,8 @@ export class DashboardComponent implements OnInit {
   public students: Student[] = [];
   public comments: Comment[] = [];
 
-  constructor(private hostelService: HostelService, private studentService: StudentService, private commentService: CommentService,private loginService: LoginService){}
+  constructor(private hostelService: HostelService, private studentService: StudentService, private commentService: CommentService,
+    private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadHostelStudent()
@@ -30,6 +32,8 @@ export class DashboardComponent implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

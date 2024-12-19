@@ -4,6 +4,7 @@ import { LoginService } from './../../service/login.service';
 import { Transaction } from './../../interface/transaction';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { AlertService } from '../../service/alert.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class TransactionComponent {
 
 
   constructor(private transactionService: TransactionService, private route: ActivatedRoute, private location: Location, private router: Router,
-   private loginService: LoginService){}
+   private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {

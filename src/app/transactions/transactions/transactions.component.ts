@@ -3,7 +3,7 @@ import { StudentService } from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
 import { Transaction } from './../../interface/transaction';
 import { Balance } from './../../interface/balance';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-transactions',
@@ -17,7 +17,7 @@ export class TransactionsComponent  implements OnInit {
   public transactions: Transaction[] = [];
   public balance = {} as Balance;
 
-  constructor(private studentService: StudentService, private loginService: LoginService){}
+  constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -28,6 +28,8 @@ export class TransactionsComponent  implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

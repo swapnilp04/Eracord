@@ -6,7 +6,7 @@ import { Hostel } from './../../interface/hostel';
 import { HostelRoom } from './../../interface/hostel-room';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-students-list',
@@ -24,7 +24,7 @@ export class StudentsListComponent implements OnInit {
   
 
   constructor(private hostelService: HostelService, private route: ActivatedRoute, private location: Location, private router: Router, 
-    private loginService: LoginService, private hostelRoomService: HostelRoomService){}
+    private loginService: LoginService, private hostelRoomService: HostelRoomService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
@@ -37,6 +37,8 @@ export class StudentsListComponent implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

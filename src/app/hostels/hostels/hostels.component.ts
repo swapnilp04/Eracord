@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HostelService} from './../../service/hostel.service';
 import { LoginService } from './../../service/login.service';
 import {Hostel} from './../../interface/hostel';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-hostels',
@@ -14,7 +14,7 @@ import {Hostel} from './../../interface/hostel';
 export class HostelsComponent  implements OnInit {
 
   public hostels: Hostel[] = [];
-  constructor(private hostelService: HostelService, private loginService: LoginService){}
+  constructor(private hostelService: HostelService, private loginService: LoginService, private alertService: AlertService){}
 
 
 
@@ -25,6 +25,8 @@ export class HostelsComponent  implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

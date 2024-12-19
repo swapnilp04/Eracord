@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StandardService} from './../../service/standard.service';
 import { LoginService } from './../../service/login.service';
 import {Standard} from './../../interface/standard';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-standards',
@@ -13,7 +13,7 @@ import {Standard} from './../../interface/standard';
 export class StandardsComponent  implements OnInit {
 
   public standards: Standard[] = [];
-  constructor(private standardService: StandardService, private loginService: LoginService){}
+  constructor(private standardService: StandardService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadStandards();
@@ -22,6 +22,8 @@ export class StandardsComponent  implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

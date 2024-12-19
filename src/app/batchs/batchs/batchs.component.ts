@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BatchService} from './../../service/batch.service';
 import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-batchs',
@@ -14,7 +14,7 @@ import {Batch} from './../../interface/batch';
 export class BatchsComponent  implements OnInit {
 
   public batchs: Batch[] = [];
-  constructor(private batchService: BatchService, private loginService: LoginService){}
+  constructor(private batchService: BatchService, private loginService: LoginService, private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -24,6 +24,8 @@ export class BatchsComponent  implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

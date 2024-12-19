@@ -4,7 +4,7 @@ import { LoginService } from './../../service/login.service';
 import {Standard} from './../../interface/standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-standard',
@@ -17,7 +17,7 @@ export class StandardComponent {
   public isLoading = true;
   
   constructor(private standardService: StandardService, private route: ActivatedRoute, private location: Location, private router: Router,
-   private loginService: LoginService){}
+   private loginService: LoginService, private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -34,6 +34,8 @@ export class StandardComponent {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

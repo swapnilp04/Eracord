@@ -4,6 +4,7 @@ import { LoginService } from './../../service/login.service';
 import {Hostel} from './../../interface/hostel';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-hostel',
@@ -18,7 +19,7 @@ export class HostelComponent implements OnInit {
   public hostelId: number;
   
   constructor(private hostelService: HostelService, private route: ActivatedRoute, private location: Location, private router: Router, 
-    private loginService: LoginService){}
+    private loginService: LoginService, private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -32,6 +33,8 @@ export class HostelComponent implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeacherService } from './../../service/teacher.service';
 import { LoginService } from './../../service/login.service';
 import { Teacher } from './../../interface/teacher';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-teachers',
@@ -10,7 +11,7 @@ import { Teacher } from './../../interface/teacher';
 })
 export class TeachersComponent {
   public teachers: Teacher[] = [];
-  constructor(private teacherService: TeacherService, private loginService: LoginService){}
+  constructor(private teacherService: TeacherService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadTeachers();
@@ -19,6 +20,8 @@ export class TeachersComponent {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

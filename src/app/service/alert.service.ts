@@ -31,11 +31,21 @@ export class AlertService {
     success(message: string, keepAfterRouteChange = false) {
         this.keepAfterRouteChange = keepAfterRouteChange;
         this.subject.next({ type: 'success', text: message });
+        window.scroll({ 
+           top: 0, 
+           left: 0, 
+           behavior: 'smooth' 
+      });
     }
 
     error(message: string, keepAfterRouteChange = false) {
          this.keepAfterRouteChange = keepAfterRouteChange;
          this.subject.next({ type: 'error', text: message });
+         window.scroll({ 
+           top: 0, 
+           left: 0, 
+           behavior: 'smooth' 
+        });
     }
 
     clear() {

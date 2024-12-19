@@ -5,6 +5,7 @@ import { StudentService } from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-student-exams',
@@ -19,7 +20,7 @@ export class StudentExamsComponent implements OnInit{
   public examStudents: ExamStudent[] = [];
 
   constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, 
-    private router: Router, private loginService: LoginService){}
+    private router: Router, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadExamStudents(this.studentId);
@@ -41,6 +42,8 @@ export class StudentExamsComponent implements OnInit{
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 }

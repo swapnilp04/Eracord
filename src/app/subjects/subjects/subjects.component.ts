@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SubjectService } from './../../service/subject.service';
 import { LoginService } from './../../service/login.service';
 import { Subject } from './../../interface/subject';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-subjects',
@@ -13,7 +13,7 @@ export class SubjectsComponent implements OnInit {
 
   @Input() standardId: any;
   public subjects: Subject[] = [];
-  constructor(private subjectService: SubjectService, private loginService: LoginService){}
+  constructor(private subjectService: SubjectService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadStandards();
@@ -22,6 +22,8 @@ export class SubjectsComponent implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

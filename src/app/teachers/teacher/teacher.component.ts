@@ -4,6 +4,7 @@ import { LoginService } from './../../service/login.service';
 import { Teacher } from './../../interface/teacher';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-teacher',
@@ -16,7 +17,7 @@ export class TeacherComponent {
   public isLoading = true;
   
   constructor(private teacherService: TeacherService, private route: ActivatedRoute, private location: Location, private router: Router,
-   private loginService: LoginService){}
+   private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {    
     this.route.queryParams.subscribe((param) => {
@@ -31,6 +32,8 @@ export class TeacherComponent {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

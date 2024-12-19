@@ -3,7 +3,7 @@ import {StudentService} from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
 import {Student} from './../../interface/student';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
-
+import { AlertService } from '../../service/alert.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class StudentsComponent  implements OnInit {
   search = "";
 
   public students: Student[] = [];
-  constructor(private studentService: StudentService, private loginService: LoginService){}
+  constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -68,6 +68,8 @@ export class StudentsComponent  implements OnInit {
     
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

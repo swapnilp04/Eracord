@@ -3,6 +3,7 @@ import { BatchStandardService } from './../../service/batch-standard.service';
 import { LoginService } from './../../service/login.service';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-batch-standards',
@@ -16,7 +17,7 @@ export class BatchStandardsComponent implements OnInit{
   public batchStandards: BatchStandard[] = [];
   public isLoading: boolean = true
 
-  constructor(private batchStandardService: BatchStandardService, private loginService: LoginService) {}
+  constructor(private batchStandardService: BatchStandardService, private loginService: LoginService,  private alertService: AlertService) {}
   
   ngOnInit(): void {
     this.loadBatchStandards()
@@ -25,6 +26,8 @@ export class BatchStandardsComponent implements OnInit{
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../service/user.service';
 import { LoginService } from './../../service/login.service';
 import { User } from './../../interface/user';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +12,7 @@ import { User } from './../../interface/user';
 export class UsersComponent  implements OnInit {
 
   public users: User[] = [];
-  constructor(private userService: UserService, private loginService: LoginService){}
+  constructor(private userService: UserService, private loginService: LoginService, private alertService: AlertService){}
 
 
   ngOnInit(): void {
@@ -22,6 +22,8 @@ export class UsersComponent  implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

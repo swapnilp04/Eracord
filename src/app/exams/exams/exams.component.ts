@@ -3,7 +3,7 @@ import { ExamService } from './../../service/exam.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-exams',
@@ -16,7 +16,7 @@ export class ExamsComponent implements OnInit {
   currentPage = 1;
   public page = 1;
   totalItems: number = 10;
-  constructor(private examService: ExamService, private loginService: LoginService){}
+  constructor(private examService: ExamService, private loginService: LoginService, private alertService: AlertService){}
 
 
 
@@ -41,6 +41,8 @@ export class ExamsComponent implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
     if(error.status == 0) {
       this.loginService.toLogin();

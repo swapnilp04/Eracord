@@ -3,7 +3,7 @@ import { HostelRoomService } from './../../service/hostel-room.service';
 import { LoginService } from './../../service/login.service';
 import { HostelStudent } from './../../interface/hostel-student';
 import { HostelRoom } from './../../interface/hostel-room';
-
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-hostel-students',
@@ -18,7 +18,7 @@ export class HostelStudentsComponent implements OnInit{
   @Input() showAmount: any;
   public hostelStudents: HostelStudent[] = [];
 
-  constructor(private hostelRoomService: HostelRoomService, private loginService: LoginService){}
+  constructor(private hostelRoomService: HostelRoomService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadHostelStudent()
@@ -27,6 +27,8 @@ export class HostelStudentsComponent implements OnInit{
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 

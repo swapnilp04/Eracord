@@ -3,6 +3,7 @@ import { StudentAccountsService } from './../../service/student-accounts.service
 import { LoginService } from './../../service/login.service';
 import { StudentAccount } from './../../interface/student-account';
 import { Student } from './../../interface/student';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-student-accounts',
@@ -17,7 +18,7 @@ export class StudentAccountsComponent implements OnInit {
   @Input() showActions: any;
   public studentAccounts: StudentAccount[] = [];
 
-  constructor(private studentAccountsService: StudentAccountsService, private loginService: LoginService){}
+  constructor(private studentAccountsService: StudentAccountsService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadStudentAccounts();
@@ -26,6 +27,8 @@ export class StudentAccountsComponent implements OnInit {
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
+    } else if (error.status == 403) {
+      this.alertService.error("Unauthorized");
     }
   }
 
