@@ -29,7 +29,7 @@
     </tr>
     </thead>
     <tbody>
-    	<tr *ngFor="let student of students; index as i" [ngClass]="{'table-danger': student.has_left}">
+    	<tr *ngFor="let student of students; index as i" [ngClass]="{'table-warning': student.has_left}">
       <td>{{((page - 1) *10) + i + 1 }}</td> 
       <td>{{name(student)}} <strong>({{student.Standard.name}})</strong></td>
       <td>{{student.town}}</td>
