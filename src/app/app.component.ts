@@ -58,7 +58,7 @@ export class AppComponent {
   }
 
   public loginLink(): string {
-    return this.loginService.isLogin == true ? "/dashboard" : "/login"
+    return this.loginService.isLogin == true ? "/dashboard" : "/"
   }
 
   public get isLogin() {
@@ -83,10 +83,15 @@ export class AppComponent {
 
   logoutUser(): void {
     this.loginService.logoutUser().subscribe (
-      (response: any) => this.loginService.toLogin(),
+      (response: any) => this.successLogout(),
       (error: any) => console.log(error),
       () => console.log('Done getting Hostel......')
     );
+  }
+
+  successLogout() {
+    this.loginService.toLogin()
+    this.router.navigate(['/']);
   }
 
 
