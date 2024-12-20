@@ -1,20 +1,20 @@
-<div class="row">
-	<div class="form-group mb-3">
-	    <select class="form-select width30 marginRight15" [disabled]="isLoading" [ngModel]="searchBatchStandard" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard">
-	    	<option value="0" selected>----</option>
-	        <option *ngFor="let batchStandard of batchStandards" [ngValue]="batchStandard.id">{{batchStandard.Standard.name}}</option>
-	    </select>
-	    <select class="form-select width30 marginRight15" [disabled]="isLoading" [ngModel]="searchSubject" (ngModelChange)="onChangeSubject($event)" aria-label="Selecte Subject">
-	    	<option value="0" selected>----</option>
-	        <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
-	    </select>
-	    
-	    <select class="form-select width30" [disabled]="isLoading" [ngModel]="searchTeacher" (ngModelChange)="onChangeTeacher($event)" aria-label="Selecte Teacher">
-	    	<option value="0" selected>----</option>
-	        <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">{{teacher.name}}</option>
-	    </select>
-  	</div>
-  <div>  
+<div class="">
+	<div class="form-group mb-3 fullWidth">
+    <select class="form-select width30 marginRight15" [disabled]="isLoading" [ngModel]="searchBatchStandard" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard">
+    	<option value="0" selected>----</option>
+        <option *ngFor="let batchStandard of batchStandards" [ngValue]="batchStandard.id">{{batchStandard.Standard.name}}</option>
+    </select>
+    <select class="form-select width30 marginRight15" [disabled]="isLoading" [ngModel]="searchSubject" (ngModelChange)="onChangeSubject($event)" aria-label="Selecte Subject">
+    	<option value="0" selected>----</option>
+        <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
+    </select>
+    
+    <select class="form-select width30" [disabled]="isLoading" [ngModel]="searchTeacher" (ngModelChange)="onChangeTeacher($event)" aria-label="Selecte Teacher">
+    	<option value="0" selected>----</option>
+        <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">{{teacher.name}}</option>
+    </select>
+  </div>
+  <div class="fullWidth">  
     <button class="btn btn-primary marginRight15" (click)="filterLogs()">Filter</button>
     <button class="btn btn-primary" (click)=clear()>Clear</button>
   </div>
