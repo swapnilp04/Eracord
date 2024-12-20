@@ -44,8 +44,10 @@ import { TeacherComponent } from './teachers/teacher/teacher.component';
 import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add-edit.component';
 import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.component';
 import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edit/teacher-logs-add-edit.component';
+import { HomeComponent } from './homes/home/home.component';
 
 const routes: Routes = [
+  {path: '' , component: HomeComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'dashboard' , component: DashboardComponent},
   {path: 'students' , component: StudentsComponent},

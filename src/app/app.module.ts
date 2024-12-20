@@ -72,6 +72,7 @@ import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add
 import { TeacherComponent } from './teachers/teacher/teacher.component';
 import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.component';
 import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edit/teacher-logs-add-edit.component';
+import { HomeComponent } from './homes/home/home.component';
 
 
 
@@ -136,6 +137,7 @@ import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edi
     TeacherComponent,
     TeacherLogsComponent,
     TeacherLogsAddEditComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
