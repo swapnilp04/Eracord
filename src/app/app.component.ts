@@ -55,7 +55,10 @@ export class AppComponent {
 
   public activeLink(str: string) {
     return this.router.url == str;
-    
+  }
+
+  public loginLink(): string {
+    return this.loginService.isLogin == true ? "/dashboard" : "/login"
   }
 
   public get isLogin() {

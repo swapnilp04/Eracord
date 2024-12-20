@@ -12,6 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     float: left;
 }
 
+.logoCss {
+    height: 32px;
+}
+
 .pull-right {
     float: right;
 }
