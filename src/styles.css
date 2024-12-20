@@ -7,6 +7,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 	margin-left:15px;
 
 }
+
+.pull-right {
+    float: right;
+}
 .marginBottom15 {
 	margin-bottom:15px;	
 }
