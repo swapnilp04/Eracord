@@ -24,6 +24,8 @@ export class UsersComponent  implements OnInit {
       this.loginService.toLogin();
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
+    }else if (error.status == 500) { 
+      this.alertService.error(error.error.message);
     }
     if(error.status == 0) {
       this.loginService.toLogin();
@@ -37,8 +39,38 @@ export class UsersComponent  implements OnInit {
       () => console.log('Done getting Users......')
     );
   }
+
+  deactiveUser(user: any): void {
+    if(confirm("Are you sure to Deactivate User")) {
+      this.userService.deactiveUser(user.id).subscribe (
+        (response: any) => this.successDeactiveUser(user),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done getting Users......')
+      );
+    }
+  }
+
+  activeUser(user: any): void {
+    if(confirm("Are you sure to Activate User")) {
+      this.userService.activeUser(user.id).subscribe (
+        (response: any) => this.successActiveUser(user),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done getting Users......')
+      );
+    }
+  }
   
   assignUsers(response: any) {
     this.users = response
+  }
+
+  successDeactiveUser(user: any): void {
+    this.alertService.success("User Deactiveted");
+    user.active = false;
+  }
+
+  successActiveUser(user: any): void {
+    this.alertService.success("User Activeted");
+    user.active = true;
   }
 }

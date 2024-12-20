@@ -9,13 +9,20 @@
 	      </th>
 	      <th>UserName</th>
 	      <th>Role</th>
+	      <th>Active</th>
+	      <th>Action</th>
 	    </tr>
     </thead>
     <tbody>
-    	<tr *ngFor="let user of users; index as i">
+    	<tr *ngFor="let user of users; index as i" [ngClass]="{'table-warning': !user.active}">
 	      <td>{{i+1}}</td> 
 	      <td>{{user.username}}</td>
 	      <td>{{user.role}}</td>
+	      <td>{{user.active}}</td>
+	      <td>
+	      	<button *ngIf=user.active class="btn btn-danger" (click)=deactiveUser(user)>Deactive User</button>
+	      	<button *ngIf=!user.active class="btn btn-primary" (click)=activeUser(user)>Activate User</button>
+	      </td>
     	</tr>
     </tbody>
 	</table>	

@@ -36,4 +36,14 @@ export class UserService {
     return this.http.put<User>(`${this.loginService.URL}/users/update_password`, user, {headers: myHeaders});
   }
 
+  deactiveUser(userID: number): Observable<User> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<User>(`${this.loginService.URL}/users/${userID}/deactive_user`, {}, {headers: myHeaders});
+  }
+
+  activeUser(userID: number): Observable<User> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<User>(`${this.loginService.URL}/users/${userID}/active_user`, {}, {headers: myHeaders});
+  }
+
 }
