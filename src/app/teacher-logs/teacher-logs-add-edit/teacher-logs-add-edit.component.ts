@@ -24,6 +24,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
   public batchStandards: BatchStandard[] = [];
   public subjects: Subject[] = [];
   public currentTime = new Date()
+  public formErr: any;
   public startTime: Date;//= new Date(2024, 11, 17, 9, 30)
   public endTime: Date;//= new Date(2024, 11, 17, 10, 30)
   
@@ -38,6 +39,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
     this.teacherLog.start_minuit = this.startTime.getMinutes();
     this.teacherLog.end_hour = this.endTime.getHours();
     this.teacherLog.end_minuit = this.endTime.getMinutes();
+
     this.teacherLogService.createTeacherLog(teacherLog).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
@@ -103,20 +105,52 @@ export class TeacherLogsAddEditComponent implements OnInit {
       this.loginService.toLogin();
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
+    } else if (error.status == 500) { 
+      this.alertService.error(error.error.meaasge);
+    } else if (error.status == 400) {
+      this.assignErrors(error);
     }
+  }
+
+  assignErrors(error: any): void {
+    this.formErr = error.error.error
+    this.isLoadingFalse();
+  }
+
+  hasError(field: string): any {
+    if(this.formErr == undefined) {
+      return false
+    }
+    return (this.formErr[field] || []).length > 0
+  }
+
+  removeError(field: string): void {
+    if(this.formErr != undefined && this.formErr[field] != undefined) {
+      delete(this.formErr[field]);
+    }
+  }
+
+  getErrorValue(field: string): any {
+   if(this.formErr == undefined) {
+      return []
+    }
+    return this.formErr[field] || []
   }
 
   onChangeBatchStandard(newObj: number): void {
     this.teacherLog.batch_standard_id = newObj;
+    this.removeError("BatchStandardID");
     this.loadSubjects(newObj);
   }
 
   onChangeSubject(newObj: number): void {
     this.teacherLog.subject_id = newObj;
+    this.removeError("SubjectID");
   }
 
   onChangeCategory(newObj: number): void {
     this.teacherLog.log_category_id = newObj;
+    this.removeError("LogCategoryID");
   }
 
   loadTeacherLog(teacherLogID: number): void {
