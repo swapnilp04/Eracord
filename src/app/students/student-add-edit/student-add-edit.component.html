@@ -1,21 +1,21 @@
 <form>
   <div class="form-group mb-3">
     <label for="exampleInputEmail1" class="form-label">First Name</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('FirstName')}" placeholder="First Name" [(ngModel)]="student.first_name" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('FirstName')}" placeholder="First Name" [(ngModel)]="student.first_name" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('FirstName')"/>
     <div class="invalid-feedback" *ngIf="hasError('FirstName')">
       <p *ngFor="let err of getErrorValue('FirstName')">{{err}}</p>
     </div>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputEmail1" class="form-label">Middle Name</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('MiddleName')}" placeholder="Middle Name" [(ngModel)]="student.middle_name" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('MiddleName')}" placeholder="Middle Name" [(ngModel)]="student.middle_name" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('MiddleName')"/>
     <div class="invalid-feedback" *ngIf="hasError('MiddleName')">
       <p *ngFor="let err of getErrorValue('MiddleName')">{{err}}</p>
     </div>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Last Name</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('LastName')}" placeholder="Last Name" [(ngModel)]="student.last_name" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('LastName')}" placeholder="Last Name" [(ngModel)]="student.last_name" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('LastName')"/>
     <div class="invalid-feedback" *ngIf="hasError('LastName')">
       <p *ngFor="let err of getErrorValue('LastName')">{{err}}</p>
     </div>
@@ -33,7 +33,7 @@
 
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Adhar Card</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('AdharCard')}" placeholder="Adhar Card" [(ngModel)]="student.adhar_card" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('AdharCard')}" placeholder="Adhar Card" [(ngModel)]="student.adhar_card" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('AdharCard')"/>
     <div class="invalid-feedback" *ngIf="hasError('AdharCard')">
       <p *ngFor="let err of getErrorValue('AdharCard')">{{err}}</p>
     </div>
@@ -41,35 +41,35 @@
 
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">parent Name</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('ParentName')}" placeholder="parent Name" [(ngModel)]="student.parent_name" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('ParentName')}" placeholder="parent Name" [(ngModel)]="student.parent_name" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('ParentName')"/>
     <div class="invalid-feedback" *ngIf="hasError('ParentName')">
       <p *ngFor="let err of getErrorValue('Parentname')">{{err}}</p>
     </div>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Parent Occupation</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('ParentOccupation')}"placeholder="Parent Occupation" [(ngModel)]="student.parent_occupation" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('ParentOccupation')}"placeholder="Parent Occupation" [(ngModel)]="student.parent_occupation" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('ParentOccupation')"/>
     <div class="invalid-feedback" *ngIf="hasError('ParentOccupation')">
       <p *ngFor="let err of getErrorValue('ParentOccupation')">{{err}}</p>
     </div>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Contact Number</label>
-    <input type="text" class="form-control is-invalid" [ngClass]="{'is-invalid': hasError('ContactNumber')}" placeholder="Contact Number" [(ngModel)]="student.contact_number" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control is-invalid" [ngClass]="{'is-invalid': hasError('ContactNumber')}" placeholder="Contact Number" [(ngModel)]="student.contact_number" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('ContactNumber')"/>
     <div class="invalid-feedback" *ngIf="hasError('ContactNumber')">
       <p *ngFor="let err of getErrorValue('ContactNumber')">{{err}}</p>
     </div>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">What's app Number</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('WhNumber')}" placeholder="What's app number" [(ngModel)]="student.wh_number" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('WhNumber')}" placeholder="What's app number" [(ngModel)]="student.wh_number" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('WhNumber')"/>
     <div class="invalid-feedback" *ngIf="hasError('WhNumber')">
       <p *ngFor="let err of getErrorValue('WhNumber')">{{err}}</p>
     </div>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Town</label>
-    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('Town')}" placeholder="Town" [(ngModel)]="student.town" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('Town')}" placeholder="Town" [(ngModel)]="student.town" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('Town')"/>
     <div class="invalid-feedback" *ngIf="hasError('Town')">
       <p *ngFor="let err of getErrorValue('Town')">{{err}}</p>
     </div>

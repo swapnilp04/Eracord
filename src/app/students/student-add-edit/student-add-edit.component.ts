@@ -64,6 +64,12 @@ export class StudentAddEditComponent implements OnInit {
     this.isLoading = false;
   }
 
+  removeError(field: string): void {
+    if(this.formErr != undefined && this.formErr[field] != undefined) {
+      delete(this.formErr[field]);
+    }
+  }
+
   loadStudent(studentID: number): void {
     this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
