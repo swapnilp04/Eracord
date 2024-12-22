@@ -60,6 +60,7 @@ export class TeacherAddEditComponent {
     } else {
       this.assignErrors(error);
     }
+    this.isLoadingFalse()
   }
 
   loadTeacher(teacherID: number): void {
