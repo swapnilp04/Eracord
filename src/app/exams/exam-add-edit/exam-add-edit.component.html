@@ -1,39 +1,58 @@
 <form>
   <div class="form-group mb-3">
     <label for="exampleInputEmail1" class="form-label">Name</label>
-    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="exam.name" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="exam.name" [ngModelOptions]="{standalone: true}" [ngClass]="{'is-invalid': hasError('Name')}" (ngModelChange)="removeError('Name')"/>
+    <div class="invalid-feedback" *ngIf="hasError('Name')">
+      <p *ngFor="let err of getErrorValue('Name')">{{err}}</p>
+    </div>
   </div>
+
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Standard</label>
-    <select class="form-select" [disabled]="isLoading" [ngModel]="exam.batch_standard_id" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard" [ngModelOptions]="{standalone: true}">
+    <select class="form-select" [disabled]="isLoading" [ngModel]="exam.batch_standard_id" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard" [ngModelOptions]="{standalone: true}" [ngClass]="{'is-invalid': hasError('FirstName')}">
         <option value="0">----</option>
         <option *ngFor="let batchStandard of defaultBatchStandards" [ngValue]="batchStandard.id">{{batchStandard.Standard.name}}</option>
     </select>
+    <div class="invalid-feedback" *ngIf="hasError('FirstName')">
+      <p *ngFor="let err of getErrorValue('FirstName')">{{err}}</p>
+    </div>
   </div>
 
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Subject</label>
-    <select class="form-select" [disabled]="isLoading" [ngModel]="exam.subject_id" (ngModelChange)="onChangeSubject($event)" aria-label="Selecte Subject" [ngModelOptions]="{standalone: true}">
+    <select class="form-select" [disabled]="isLoading" [ngModel]="exam.subject_id" (ngModelChange)="onChangeSubject($event)" aria-label="Selecte Subject" [ngModelOptions]="{standalone: true}" [ngClass]="{'is-invalid': hasError('SubjectID')}">
         <option value="0">----</option>
         <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
     </select>
+    <div class="invalid-feedback" *ngIf="hasError('SubjectID')">
+      <p *ngFor="let err of getErrorValue('SubjectID')">{{err}}</p>
+    </div>
   </div>
 
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Exam Type</label>
-    <select class="form-select" [(ngModel)]="exam.exam_type" (ngModelChange)="onChangeExamType($event)" aria-label="Exam Type" [ngModelOptions]="{standalone: true}">
+    <select class="form-select" [(ngModel)]="exam.exam_type" (ngModelChange)="onChangeExamType($event)" aria-label="Exam Type" [ngModelOptions]="{standalone: true}" [ngClass]="{'is-invalid': hasError('FirstName')}">
 			<option value="Objective">Objective</option>
 			<option value="Subjective">Subjective</option>
-	</select>
+	   </select>
+     <div class="invalid-feedback" *ngIf="hasError('FirstName')">
+      <p *ngFor="let err of getErrorValue('FirstName')">{{err}}</p>
+     </div>
   </div>
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Exam Marks</label>
-    <input type="number" class="form-control" placeholder="Exam Marks" [(ngModel)]="exam.exam_marks" [ngModelOptions]="{standalone: true}"/>
+    <input type="number" class="form-control" placeholder="Exam Marks" [(ngModel)]="exam.exam_marks" [ngModelOptions]="{standalone: true}" [ngClass]="{'is-invalid': hasError('ExamMarks')}" (ngModelChange)="removeError('ExamMarks')"/>
+    <div class="invalid-feedback" *ngIf="hasError('ExamMarks')">
+      <p *ngFor="let err of getErrorValue('ExamMarks')">{{err}}</p>
+    </div>
   </div>
 
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Exam Time in Min</label>
-    <input type="number" class="form-control" placeholder="Exam Time in min" [(ngModel)]="exam.exam_time" [ngModelOptions]="{standalone: true}"/>
+    <input type="number" class="form-control" placeholder="Exam Time in min" [(ngModel)]="exam.exam_time" [ngModelOptions]="{standalone: true}" [ngClass]="{'is-invalid': hasError('ExamTime')}" (ngModelChange)="removeError('ExamTime')"/>
+    <div class="invalid-feedback" *ngIf="hasError('ExamTime')">
+      <p *ngFor="let err of getErrorValue('ExamTime')">{{err}}</p>
+    </div>
   </div>
 
   <div class="col-xs-12 col-12 col-md-4 form-group mb-3">

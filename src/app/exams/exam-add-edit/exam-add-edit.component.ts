@@ -20,6 +20,7 @@ export class ExamAddEditComponent implements OnInit{
   public subjects: Subject[] = [];
   public isNew = true;
   public isLoading = false;
+  public formErr: any;
   
   
   constructor(private examService: ExamService, private location: Location, private router: Router, private route: ActivatedRoute, 
@@ -64,7 +65,34 @@ export class ExamAddEditComponent implements OnInit{
       this.loginService.toLogin();
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
+    } else if (error.status == 400){
+      this.assignErrors(error);
     }
+  }
+
+  removeError(field: string): void {
+    if(this.formErr != undefined && this.formErr[field] != undefined) {
+      delete(this.formErr[field]);
+    }
+  }
+
+  assignErrors(error: any): void {
+    this.formErr = error.error.error;
+    this.isLoadingFalse();
+  }
+
+  hasError(field: string): any {
+    if(this.formErr == undefined) {
+      return false
+    }
+    return (this.formErr[field] || []).length > 0
+  }
+
+  getErrorValue(field: string): any {
+   if(this.formErr == undefined) {
+      return []
+    }
+    return this.formErr[field] || []
   }
 
   loadDefaultBatchStandards(): void {
@@ -99,6 +127,7 @@ export class ExamAddEditComponent implements OnInit{
 
   onChangeSubject(newObj: number): void {
     this.exam.subject_id = newObj;
+    this.removeError("SubjectID")
   }
 
   back(): void {
