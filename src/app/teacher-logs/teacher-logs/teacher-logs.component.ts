@@ -169,7 +169,6 @@ export class TeacherLogsComponent implements OnInit {
     if(this.searchTeacher != 0) {
       this.searchStr = this.searchStr + "&searchTeacher="+this.searchTeacher;
     }
-    console.log(this.searchStr);
     this.loadTeacherLogs(this.page, this.searchStr);
   }
 
