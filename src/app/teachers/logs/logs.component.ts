@@ -27,6 +27,7 @@ export class LogsComponent implements OnInit{
   public isLoading = false;  
   public searchBatchStandard = 0;
   public searchSubject= 0;
+  public searchDate: any ;
   public searchStr = "";
   currentPage = 1;
   page= 1;
@@ -137,7 +138,7 @@ export class LogsComponent implements OnInit{
 
   filterLogs(): void {
     this.searchStr = "";
-    if(this.searchBatchStandard == 0 && this.searchSubject ==0 ) {
+    if(this.searchBatchStandard == 0 && this.searchSubject ==0 && this.searchDate == undefined) {
       this.alertService.error("Please select Filter");
     }
 
@@ -148,6 +149,11 @@ export class LogsComponent implements OnInit{
     if(this.searchSubject != 0) {
       this.searchStr = this.searchStr + "&searchSubject="+this.searchSubject;
     }
+
+    if(this.searchDate != undefined) {
+      var dateFormat = `${this.searchDate.getDate()}/${this.searchDate.getMonth() + 1}/${this.searchDate.getFullYear()}`;
+      this.searchStr = this.searchStr + "&searchDate="+dateFormat;
+    }
     this.loadTeachersLogs(this.page, this.searchStr);
   }
 
@@ -156,6 +162,7 @@ export class LogsComponent implements OnInit{
     this.searchSubject = 0;
     this.subjects = [];
     this.searchStr = "";
+    this.searchDate = undefined
     this.loadTeachersLogs(this.page, this.searchStr);
   }
 }

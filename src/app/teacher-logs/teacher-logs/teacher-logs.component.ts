@@ -28,6 +28,7 @@ export class TeacherLogsComponent implements OnInit {
   public searchBatchStandard = 0;
   public searchSubject= 0;
   public searchTeacher = 0 ;
+  public searchDate: any ;
   public searchStr = "";
   currentPage = 1;
   page= 1;
@@ -154,7 +155,7 @@ export class TeacherLogsComponent implements OnInit {
 
   filterLogs(): void {
     this.searchStr = "";
-    if(this.searchBatchStandard == 0 && this.searchSubject ==0 && this.searchTeacher == 0) {
+    if(this.searchBatchStandard == 0 && this.searchSubject ==0 && this.searchTeacher == 0 && this.searchDate == undefined) {
       this.alertService.error("Please select Filter");
     }
 
@@ -169,6 +170,11 @@ export class TeacherLogsComponent implements OnInit {
     if(this.searchTeacher != 0) {
       this.searchStr = this.searchStr + "&searchTeacher="+this.searchTeacher;
     }
+
+    if(this.searchDate != undefined) {
+      var dateFormat = `${this.searchDate.getDate()}/${this.searchDate.getMonth() + 1}/${this.searchDate.getFullYear()}`;
+      this.searchStr = this.searchStr + "&searchDate="+dateFormat;
+    }
     this.loadTeacherLogs(this.page, this.searchStr);
   }
 
@@ -177,6 +183,7 @@ export class TeacherLogsComponent implements OnInit {
     this.searchSubject = 0;
     this.searchTeacher = 0;
     this.subjects = [];
+    this.searchDate = undefined
     this.searchStr = "";
     this.loadTeacherLogs(this.page, this.searchStr);
   }

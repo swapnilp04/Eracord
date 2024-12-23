@@ -9,6 +9,14 @@
   	<option value="0" selected>----</option>
       <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
   </select>
+  <div class="width30">
+    <input type="text"
+           placeholder="Search Date wise"
+           class="form-control"
+           [(ngModel)]="searchDate"
+           [bsConfig]="{ dateInputFormat: 'DD MMMM YYYY'}"
+           bsDatepicker>
+    </div>
 </div>
 <div class="fullWidth">  
   <button class="btn btn-primary marginRight15" (click)="filterLogs()">Filter</button>
