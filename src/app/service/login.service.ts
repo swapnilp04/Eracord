@@ -40,6 +40,10 @@ export class LoginService {
     return "http://localhost:8080"
   }
 
+  getUserID() {
+    return parseInt(this.cookies.get('id'));
+  }
+
   toLogin() {
     this.cookies.deleteAll();
     this.cookies.set('isLogin', 'false');

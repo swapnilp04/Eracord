@@ -43,6 +43,7 @@
 	      <th>Subject</th>
 	      <th>Category</th>
 	      <th>Comment</th>
+        <th>Edit</th>
 	    </tr>
     </thead>
     <tbody>
@@ -55,6 +56,7 @@
 	      <td>{{teacherLog.Subject.name}}</td>
 	      <td>{{teacherLog.LogCategory.name}}</td>
 	      <td>{{teacherLog.comment}}</td>
+        <td><a href="/logs/{{teacherLog.id}}/edit" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)">Edit</a></td>
     	</tr>
     </tbody>
 	</table>	

@@ -111,6 +111,7 @@ const routes: Routes = [
   {path: 'users/edit' , component: AddEditUserComponent},
   {path: 'logs' , component: TeacherLogsComponent},
   {path: 'logs/new' , component: TeacherLogsAddEditComponent},
+  {path: 'logs/:id/edit' , component: TeacherLogsAddEditComponent},
   ];
 
 

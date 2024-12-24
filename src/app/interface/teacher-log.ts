@@ -19,5 +19,6 @@ export interface TeacherLog {
 	comment: string;
 	log_category_id: number;
 	LogCategory: LogCategory;
-	ApprovedOn: Date
+	ApprovedOn: Date;
+	user_id: number;
 }

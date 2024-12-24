@@ -33,6 +33,7 @@ export class TeacherLogsComponent implements OnInit {
   currentPage = 1;
   page= 1;
   totalItems: number = 10;
+  public userID: number;
 
   constructor(private teacherLogService: TeacherLogService, private loginService: LoginService,
     private batchStandardService: BatchStandardService, private teacherService: TeacherService,
@@ -42,6 +43,7 @@ export class TeacherLogsComponent implements OnInit {
     this.loadTeacherLogs(1, this.searchStr);
     this.loadDefaultBatchStandards();
     this.loadTeachers();
+    this.userID = this.loginService.getUserID();
   }
 
   pageChanged(event: PageChangedEvent): void {
@@ -67,6 +69,12 @@ export class TeacherLogsComponent implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+  }
+
+  hasEdit(logUserID: number, logDate: Date) {
+    let da = new Date(logDate);
+    let current = new Date();
+    return (logUserID == this.userID && da.toDateString() == current.toDateString());
   }
 
   loadTeacherLogs(pageNumber: number, searchStr: string): void {

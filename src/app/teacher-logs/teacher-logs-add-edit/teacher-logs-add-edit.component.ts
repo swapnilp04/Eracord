@@ -74,6 +74,11 @@ export class TeacherLogsAddEditComponent implements OnInit {
 
   updateTeacherLog(teacherLog: TeacherLog): void {
     this.isLoading = true;
+    this.teacherLog.start_hour = this.startTime.getHours();
+    this.teacherLog.start_minuit = this.startTime.getMinutes();
+    this.teacherLog.end_hour = this.endTime.getHours();
+    this.teacherLog.end_minuit = this.endTime.getMinutes();
+
     this.teacherLogService.updateTeacherLog(teacherLog).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
@@ -163,7 +168,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigate(['/teacherLogs']);
+    this.router.navigate(['/logs']);
   }
 
   getSuccess(response: any): void {
@@ -184,6 +189,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
     this.teacherLog = response;
     this.startTime = new Date(2024, 11, 17, this.teacherLog.start_hour, this.teacherLog.start_minuit)
     this.endTime = new Date(2024, 11, 17, this.teacherLog.end_hour, this.teacherLog.end_minuit)
+    this.loadSubjects(this.teacherLog.batch_standard_id); 
   }
 
   assignLogCategories(response: any) {
