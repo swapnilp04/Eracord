@@ -45,6 +45,7 @@ import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add
 import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.component';
 import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edit/teacher-logs-add-edit.component';
 import { HomeComponent } from './homes/home/home.component';
+import { ReportLogsComponent } from './reports/report-logs/report-logs.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -112,6 +113,7 @@ const routes: Routes = [
   {path: 'logs' , component: TeacherLogsComponent},
   {path: 'logs/new' , component: TeacherLogsAddEditComponent},
   {path: 'logs/:id/edit' , component: TeacherLogsAddEditComponent},
+  {path: 'reports/logs' , component: ReportLogsComponent},
   ];
 
 

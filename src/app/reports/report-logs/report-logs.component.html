@@ -1,0 +1,31 @@
+<div class="row">
+ 	<p>
+		<button 
+			class="btn btn-primary marginRight15"
+			[useExistingCss]="true"
+			printSectionId="print-section"
+			ngxPrint>print</button>
+	</p>
+</div>
+
+<div class="row">
+<div class="marginTop15 width30">
+    <input type="text"
+           placeholder="Select Date"
+           class="form-control"
+           [(ngModel)]="searchDate"
+           [bsConfig]="{ dateInputFormat: 'DD MMMM YYYY'}"
+           bsDatepicker>
+    </div>
+
+</div>
+<button class="btn btn-primary marginTop15" (click)=loadDefaultBatchStandards()>Get Report</button>
+
+<div *ngIf=!isLoading id="print-section">
+
+	<div style="page-break-after: always" *ngFor="let batchStandard of batchStandards" class="marginTop15">
+		<h3>{{searchDate | date:"dd MMM yyyy"}}</h3>
+		<h5>{{batchStandard.Standard.name}}</h5>
+		<app-report-batch-standard-log [batchStandardId]=batchStandard.id [date]=searchDate> </app-report-batch-standard-log>
+	</div>
+</div>

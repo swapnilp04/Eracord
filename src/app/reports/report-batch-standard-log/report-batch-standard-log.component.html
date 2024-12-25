@@ -1,0 +1,23 @@
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+	      <th class="col-md-1"> Sr No
+	      </th>
+	      <th>Time</th>
+	      <th>Teacher Name</th>
+	      <th>Subject</th>
+	      <th>Category</th>
+	      <th>Comment</th>
+	    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let teacherLog of teacherLogs; index as i">
+	      <td>{{i+1}}</td> 
+	      <td>{{teacherLog.start_hour}}.{{teacherLog.start_minuit}} <strong>TO</strong> {{teacherLog.end_hour}}.{{teacherLog.end_minuit}}</td>
+	      <td>{{teacherLog.Teacher.name}}</td>
+	      <td>{{teacherLog.Subject.name}}</td>
+	      <td>{{teacherLog.LogCategory.name}}</td>
+	      <td>{{teacherLog.comment}}</td>
+    	</tr>
+    </tbody>
+	</table>	

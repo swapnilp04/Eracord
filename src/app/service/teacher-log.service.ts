@@ -28,6 +28,11 @@ export class TeacherLogService {
     return this.http.get<TeacherLog[]>(`${this.loginService.URL}/batch_standards/${batchStandardID}/get_logs?page=${page}&${searchStr}`, {headers: myHeaders});
   }
 
+  getBatchStandardReportLogs(batchStandardID: number, dateStr: string): Observable<TeacherLog[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<TeacherLog[]>(`${this.loginService.URL}/batch_standards/${batchStandardID}/get_report_logs?${dateStr}`, {headers: myHeaders});
+  }
+
   getTeacherLog(teacherLogID: number): Observable<TeacherLog> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<TeacherLog>(`${this.loginService.URL}/logs/${teacherLogID}`, {headers: myHeaders});
