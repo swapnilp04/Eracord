@@ -157,7 +157,6 @@ export class BatchStandardsLogsComponent implements OnInit{
   clear(): void {
     this.searchTeacher = 0;
     this.searchSubject = 0;
-    this.subjects = [];
     this.searchStr = "";
     this.searchDate = undefined
     this.loadBatchStandardLogs(this.page);
