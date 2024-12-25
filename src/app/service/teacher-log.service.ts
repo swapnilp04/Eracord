@@ -25,7 +25,7 @@ export class TeacherLogService {
 
   getBatchStandardTeacherLogs(batchStandardID: number, page: number, searchStr: string): Observable<TeacherLog[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<TeacherLog[]>(`${this.loginService.URL}/batch_standards/${batchStandardID}/logs?page=${page}&${searchStr}`, {headers: myHeaders});
+    return this.http.get<TeacherLog[]>(`${this.loginService.URL}/batch_standards/${batchStandardID}/get_logs?page=${page}&${searchStr}`, {headers: myHeaders});
   }
 
   getTeacherLog(teacherLogID: number): Observable<TeacherLog> {

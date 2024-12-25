@@ -3,6 +3,10 @@
   	<option value="0" selected>----</option>
       <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
   </select>
+  <select class="form-select width30" [disabled]="isLoading" [ngModel]="searchTeacher" (ngModelChange)="onChangeTeacher($event)" aria-label="Selecte Teacher">
+      <option value="0" selected>----</option>
+        <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">{{teacher.name}}</option>
+    </select>
   <div class="width30">
     <input type="text"
            placeholder="Search Date wise"

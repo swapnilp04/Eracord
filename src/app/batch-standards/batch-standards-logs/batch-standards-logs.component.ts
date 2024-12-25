@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TeacherLogService } from './../../service/teacher-log.service';
 import { BatchStandardService } from './../../service/batch-standard.service';
+import { TeacherService } from './../../service/teacher.service';
 import { LoginService } from './../../service/login.service';
 import { TeacherLog } from './../../interface/teacher-log';
 import { BatchStandard } from './../../interface/batch-standard';
@@ -24,8 +25,9 @@ export class BatchStandardsLogsComponent implements OnInit{
   public teacherLogs: TeacherLog[] = [];
   public subjects: Subject[] = [];
   public logCategories: LogCategory[] = [];
+  public teachers: Teacher[] = [];
   public isLoading = false;  
-  public searchBatchStandard = 0;
+  public searchTeacher = 0 ;
   public searchSubject= 0;
   public searchDate: any ;
   public searchStr = "";
@@ -35,11 +37,12 @@ export class BatchStandardsLogsComponent implements OnInit{
   totalItems: number = 10;
 
   constructor(private teacherLogService: TeacherLogService, private loginService: LoginService, private alertService: AlertService,
-    private batchStandardService: BatchStandardService){}
+    private batchStandardService: BatchStandardService, private teacherService: TeacherService){}
 
   ngOnInit(): void {
     this.loadBatchStandardLogs(1);
     this.loadSubjects(this.batchStandardId);
+    this.loadTeachers();
   }
 
   errorHandle(error: any): void {
@@ -73,12 +76,16 @@ export class BatchStandardsLogsComponent implements OnInit{
   }
 
   assignTeacherLogs(response: any) {
-    this.teacherLogs = response.teacher_logs;
+    this.teacherLogs = response.batchStandardLogs;
     this.totalItems = response.total;
   }
 
   onChangeSubject(newObj: number): void {
     this.searchSubject = newObj;
+  }
+
+  onChangeTeacher(newObj: number): void {
+    this.searchTeacher = newObj;
   }
 
   loadLogCategory(): void {
@@ -95,6 +102,18 @@ export class BatchStandardsLogsComponent implements OnInit{
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting Subjects......')
     );
+  }
+
+  loadTeachers(): void {
+    this.teacherService.getTeachers().subscribe (
+      (response: any) => this.assignTeacher(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Teachers......')
+    );
+  }
+
+  assignTeacher(response: any) {
+    this.teachers = response
   }
 
   onChangeCategory(newObj: number): void {
@@ -116,12 +135,12 @@ export class BatchStandardsLogsComponent implements OnInit{
 
   filterLogs(): void {
     this.searchStr = "";
-    if(this.searchBatchStandard == 0 && this.searchSubject ==0 && this.searchDate == undefined) {
+    if(this.searchTeacher == 0 && this.searchSubject ==0 && this.searchDate == undefined) {
       this.alertService.error("Please select Filter");
     }
 
-    if(this.searchBatchStandard != 0) {
-      this.searchStr = this.searchStr + "&searchBatchStandard="+this.searchBatchStandard;
+    if(this.searchTeacher != 0) {
+      this.searchStr = this.searchStr + "&searchTeacher="+this.searchTeacher;
     }
 
     if(this.searchSubject != 0) {
@@ -136,7 +155,7 @@ export class BatchStandardsLogsComponent implements OnInit{
   }
 
   clear(): void {
-    this.searchBatchStandard = 0;
+    this.searchTeacher = 0;
     this.searchSubject = 0;
     this.subjects = [];
     this.searchStr = "";
