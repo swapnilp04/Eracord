@@ -9,6 +9,7 @@ import {Student} from './../../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { TabDirective } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-batch-standards-students',
@@ -48,6 +49,11 @@ export class BatchStandardsStudentsComponent {
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
     }
+  }
+
+  onSelect(data: TabDirective): void {
+    //this.value = data.heading;
+    
   }
   
   loadBatch(batchID: number): void {

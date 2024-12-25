@@ -74,6 +74,7 @@ import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.c
 import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edit/teacher-logs-add-edit.component';
 import { HomeComponent } from './homes/home/home.component';
 import { LogsComponent } from './teachers/logs/logs.component';
+import { BatchStandardsLogsComponent } from './batch-standards/batch-standards-logs/batch-standards-logs.component';
 
 
 
@@ -140,6 +141,7 @@ import { LogsComponent } from './teachers/logs/logs.component';
     TeacherLogsAddEditComponent,
     HomeComponent,
     LogsComponent,
+    BatchStandardsLogsComponent,
   ],
   imports: [
     BrowserModule,
