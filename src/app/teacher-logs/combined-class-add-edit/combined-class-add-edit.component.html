@@ -1,0 +1,20 @@
+<h3>Combined Class</h3>
+<div class="form-group mb-3">
+  <label for="exampleInputPassword1" class="form-label">Standard</label>
+  <select class="form-select" [ngModel]="combinedClass.batch_standard_id" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard" 
+  	[ngModelOptions]="{standalone: true}">
+      <option value="0">----</option>
+      <option *ngFor="let batchStandard of batchStandards" [ngValue]="batchStandard.id">{{batchStandard.Standard.name}}</option>
+  </select>
+</div>
+
+<div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Subject</label>
+    <select class="form-select" [ngModel]="combinedClass.subject_id" (ngModelChange)="onChangeSubject($event)" aria-label="Selecte Subject" [ngModelOptions]="{standalone: true}">
+        <option value="0">----</option>
+        <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
+    </select>
+    
+  </div>
+
+

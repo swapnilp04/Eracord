@@ -48,7 +48,7 @@
 	    </tr>
     </thead>
     <tbody>
-    	<tr *ngFor="let teacherLog of teacherLogs; index as i">
+    	<tr *ngFor="let teacherLog of teacherLogs; index as i" [ngClass]="{'table-success': teacherLog.has_combined_class}">
 	      <td>{{i+1}}</td> 
 	      <td>{{teacherLog.log_date | date:"dd MMM yyyy"}}</td>
 	      <td>{{teacherLog.start_hour}}.{{teacherLog.start_minuit}} <strong>TO</strong> {{teacherLog.end_hour}}.{{teacherLog.end_minuit}}</td>

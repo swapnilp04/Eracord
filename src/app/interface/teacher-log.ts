@@ -2,6 +2,7 @@ import { LogCategory } from './log-category';
 import { Teacher } from './teacher';
 import { Subject } from './subject';
 import { BatchStandard } from './batch-standard';
+import { CombinedClass } from './combined-class';
 
 export interface TeacherLog {
 	id?: number;
@@ -21,4 +22,6 @@ export interface TeacherLog {
 	LogCategory: LogCategory;
 	ApprovedOn: Date;
 	user_id: number;
+	has_combined_class: boolean;
+	combined_classes?: CombinedClass[];
 }

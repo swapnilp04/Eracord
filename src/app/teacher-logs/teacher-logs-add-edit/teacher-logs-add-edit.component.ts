@@ -7,6 +7,7 @@ import { TeacherLog } from './../../interface/teacher-log';
 import { BatchStandard } from './../../interface/batch-standard';
 import { Subject } from './../../interface/subject';
 import { LogCategory } from './../../interface/log-category';
+import { CombinedClass } from './../../interface/combined-class';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
 
@@ -18,6 +19,7 @@ import { AlertService } from '../../service/alert.service';
 })
 export class TeacherLogsAddEditComponent implements OnInit {
   public teacherLog = {} as TeacherLog;
+  public combinedClasses: CombinedClass[] = [];
   public isNew = true;
   public isLoading = false;
   public logCategories: LogCategory[] = [];
@@ -34,11 +36,13 @@ export class TeacherLogsAddEditComponent implements OnInit {
 
 
   createTeacherLog(teacherLog: TeacherLog): void {
+
     this.isLoading = true;
     this.teacherLog.start_hour = this.startTime.getHours();
     this.teacherLog.start_minuit = this.startTime.getMinutes();
     this.teacherLog.end_hour = this.endTime.getHours();
     this.teacherLog.end_minuit = this.endTime.getMinutes();
+    this.teacherLog.combined_classes = this.combinedClasses;
 
     this.teacherLogService.createTeacherLog(teacherLog).subscribe (
       (response: any) => this.getSuccess(response),
@@ -105,6 +109,15 @@ export class TeacherLogsAddEditComponent implements OnInit {
     this.loadDefaultBatchStandards();
   }
 
+  addCombinedClass():void {
+    let combinedClass = {} as CombinedClass;
+    this.combinedClasses.push(combinedClass)
+  }
+  
+  removeCombinedClass(combinedClass: CombinedClass): void {
+    this.combinedClasses = this.combinedClasses.filter(item => item !== combinedClass)
+  }
+
   errorHandle(error: any): void {
     if(error.status == 401) {
       this.loginService.toLogin();
@@ -145,7 +158,13 @@ export class TeacherLogsAddEditComponent implements OnInit {
   onChangeBatchStandard(newObj: number): void {
     this.teacherLog.batch_standard_id = newObj;
     this.removeError("BatchStandardID");
-    this.loadSubjects(newObj);
+    if(newObj != 0) {
+      this.loadSubjects(newObj);
+    } else {
+      while(this.subjects.length > 0) {
+        this.subjects.pop();
+      }
+    }
   }
 
   onChangeSubject(newObj: number): void {
