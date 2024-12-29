@@ -55,6 +55,9 @@ export class ExamStudentsComponent  implements OnInit {
 
   assignExamStudents(response: any) {
     this.examStudents = response;
+    if(this.examStatus == "Published") {
+       this.examStudents = this.examStudents.sort((n2,n1) => (n1.marks || 0) - (n2.marks || 0));
+    }
     this.isLoading =false;
   }
 
