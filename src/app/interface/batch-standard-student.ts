@@ -13,4 +13,5 @@ export interface BatchStandardStudent {
 	Standard: Standard;
 	Student: Student;
 	BatchStandard: BatchStandard;
+	totalMarks?: number;
 }

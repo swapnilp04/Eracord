@@ -21,6 +21,7 @@ export class GroupResultComponent implements OnInit {
   public batchStandardStudents: BatchStandardStudent[] = [];
   public batchStandards: BatchStandard[] = [];
   public selectedBatchStandard: number;
+  public showReport = false;
 
   constructor(private examService: ExamService, private loginService: LoginService, private alertService: AlertService,
     private batchStandardService: BatchStandardService){}
@@ -65,25 +66,34 @@ export class GroupResultComponent implements OnInit {
   }
 
   onChangeBatchStandard(newObj: number): void {
+    this.selectedBatchStandard = newObj;
     if(newObj != 0) {
-      this.selectedBatchStandard = newObj;
       this.loadExams(newObj);
     } else {
       while(this.exams.length > 0) {
         this.exams.pop();
       }
+      this.showReport=false;
     }
   }
 
-  getReport(): void {
-    var selectedExam  = this.exams.filter(exam => exam.selected == true);
-    var examStr = selectedExam.map(exam => exam.id).join(',');
-    this.getBatchStandardStudents(this.selectedBatchStandard);
-    this.getExamsReport(examStr);
+  selectedExams(): Exam[] {
+    return this.exams.filter(exam => exam.selected == true);
   }
 
-  getBatchStandardStudents(batchStandardID: number): void {
-    
+  getReport(): void {
+    if(this.selectedBatchStandard == undefined || this.selectedBatchStandard == 0) {
+      this.showReport=false;
+    } else {
+      var selectedExam  = this.exams.filter(exam => exam.selected == true);
+      var examStr = selectedExam.map(exam => exam.id).join(',');
+      this.getBatchStandardStudents(this.selectedBatchStandard);
+      this.getExamsReport(examStr);
+      this.showReport=true;
+    }
+  }
+
+  getBatchStandardStudents(batchStandardID: number): void {    
     this.batchStandardService.getBatchClassStudents(batchStandardID).subscribe (
       (response: any) => this.assignBatchStandardStudents(response),
       (error: any) => this.errorHandle(error),

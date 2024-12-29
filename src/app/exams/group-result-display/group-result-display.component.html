@@ -1,0 +1,31 @@
+<div class="marginTop15 row">
+ 	<div>
+ 		<button class="btn btn-primary marginRight15" (click)="saveTotalStudentsMarks()">Sort</button>
+		<button 
+			class="btn btn-primary marginRight15"
+			[useExistingCss]="true"
+			printSectionId="print-section"
+			ngxPrint>print</button>
+
+	</div>
+
+</div>
+<div id="print-section">
+	<h5>JK Science Academy Islampur</h5>
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+			<th>Student Name</th>
+			<th *ngFor="let exam of exams; index as i">{{exam.name}}<br />{{exam.exam_date | date:"dd MMM yy"}}</th>
+			<th style="width:90px;">Total</th>
+		</thead>
+		<tbody>
+	  	<tr *ngFor="let batchStudent of batchStudents; index as i">
+	      <td>{{batchStudent.Student.first_name}}&nbsp;{{batchStudent.Student.last_name}}</td> 
+	      <td *ngFor="let exam of exams; index as i" [ngClass]="{'bg-warning strong': getExam(batchStudent.student_id, exam.id) ==  'A'}">
+	      	{{getExam(batchStudent.student_id, exam.id)}}/{{exam.exam_marks}}
+	    	</td>
+	    	<td>{{batchStudent.totalMarks}} / {{getTotalExamsMarks()}}</td>
+	  	</tr>
+	  </tbody>
+	</table>
+</div>

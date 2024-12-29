@@ -32,3 +32,6 @@
   </tbody>
 </table>	
 <button class="btn btn-primary" (click)="getReport()">Get Report</button>
+
+<app-group-result-display *ngIf="showReport" [batchStudents]="batchStandardStudents" [exams]="selectedExams()" 
+[examsStudents]="examStudents"></app-group-result-display>
