@@ -36,6 +36,11 @@ URL = "http://localhost:8080"
     return this.http.get<BatchStandardStudent>(`${this.loginService.URL}/batchs/${batchID}/batch-standards/${batchStandardId}/students`, {headers: myHeaders});
   }
 
+  getBatchClassStudents(batchStandardId: number): Observable<BatchStandardStudent>{
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<BatchStandardStudent>(`${this.loginService.URL}/batch-standards/${batchStandardId}/students`, {headers: myHeaders});
+  }
+
   createBatchStandard(batchId: any, batchStandard: BatchStandard): Observable<BatchStandard> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<BatchStandard>(`${this.loginService.URL}/batchs/${batchId}/batch-standards`, batchStandard, {headers: myHeaders});

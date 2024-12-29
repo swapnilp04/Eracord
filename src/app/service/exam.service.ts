@@ -64,4 +64,14 @@ export class ExamService {
     }
     return studentObject
   }
+
+  getBatchStandardExams(batchStandardID: number): Observable<Exam[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Exam[]>(`${this.loginService.URL}/batch_standards/${batchStandardID}/get_exams`, {headers: myHeaders});
+  }
+
+  getExamsReport(examsStr: string): Observable<ExamStudent[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/exams/get_exam_group_report?&examString=${examsStr}`, {headers: myHeaders});
+  }
 }

@@ -46,6 +46,7 @@ import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.c
 import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edit/teacher-logs-add-edit.component';
 import { HomeComponent } from './homes/home/home.component';
 import { ReportLogsComponent } from './reports/report-logs/report-logs.component';
+import { GroupResultComponent } from './exams/group-result/group-result.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -70,8 +71,10 @@ const routes: Routes = [
 
   {path: 'exams' , component: ExamsComponent},
   {path: 'exams/new' , component: ExamAddEditComponent},
+  {path: 'exams/group_exams' , component: GroupResultComponent},
   {path: 'exams/:id' , component: ExamComponent},
   {path: 'exams/:id/edit' , component: ExamAddEditComponent},
+  
 
   {path: 'standards' , component: StandardsComponent},
   {path: 'standards/new' , component: StandardAddEditComponent},

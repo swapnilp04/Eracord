@@ -18,4 +18,5 @@ export interface Exam {
 	exam_status: string;
 	subject_id: number;
 	Subject: Subject;
+	selected?: boolean;
 }
