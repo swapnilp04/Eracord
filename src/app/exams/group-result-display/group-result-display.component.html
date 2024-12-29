@@ -15,7 +15,11 @@
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<th>Student Name</th>
-			<th *ngFor="let exam of exams; index as i">{{exam.name}}<br />{{exam.exam_date | date:"dd MMM yy"}}</th>
+			<th *ngFor="let exam of exams; index as i">
+				{{exam.name}}<br />
+				{{exam.exam_date | date:"dd MMM yy"}}<br />
+				{{exam.Subject.name}}
+		</th>
 			<th style="width:90px;">Total</th>
 		</thead>
 		<tbody>
