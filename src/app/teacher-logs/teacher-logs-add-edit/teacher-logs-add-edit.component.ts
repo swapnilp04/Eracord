@@ -43,6 +43,10 @@ export class TeacherLogsAddEditComponent implements OnInit {
     this.teacherLog.end_hour = this.endTime.getHours();
     this.teacherLog.end_minuit = this.endTime.getMinutes();
     this.teacherLog.combined_classes = this.combinedClasses;
+    if (this.checkCombinedClasses()) {
+      this.isLoading = false;
+      this.alertService.error("Fill Combined Classes Proper");
+    }
 
     this.teacherLogService.createTeacherLog(teacherLog).subscribe (
       (response: any) => this.getSuccess(response),
@@ -116,6 +120,11 @@ export class TeacherLogsAddEditComponent implements OnInit {
   
   removeCombinedClass(combinedClass: CombinedClass): void {
     this.combinedClasses = this.combinedClasses.filter(item => item !== combinedClass)
+  }
+
+  checkCombinedClasses(): boolean {
+    let unfieledCombinedClasses = this.combinedClasses.filter(item => item.subject_id == undefined || item.subject_id == 0 || item.batch_standard_id == undefined || item.batch_standard_id == 0)
+    return unfieledCombinedClasses.length > 0
   }
 
   errorHandle(error: any): void {
