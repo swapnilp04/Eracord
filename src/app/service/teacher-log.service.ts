@@ -52,4 +52,9 @@ export class TeacherLogService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<LogCategory[]>(`${this.loginService.URL}/log_categories`, {headers: myHeaders});
   }
+
+  deleteTeacherLogs(teacherLogID: number): Observable<{}> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.delete<{}>(`${this.loginService.URL}/logs/${teacherLogID}`, {headers: myHeaders});
+  }
 }

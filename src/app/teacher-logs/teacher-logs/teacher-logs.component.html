@@ -57,7 +57,10 @@
 	      <td>{{teacherLog.Subject.name}}</td>
 	      <td>{{teacherLog.LogCategory.name}}</td>
 	      <td>{{teacherLog.comment}}</td>
-        <td><a href="/logs/{{teacherLog.id}}/edit" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)">Edit</a></td>
+        <td>
+          <a href="/logs/{{teacherLog.id}}/edit" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)">Edit</a> 
+          <button class="btn btn-link" (click)="deleteTeacherLog(teacherLog.id)" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)">Delete</button>
+        </td>
     	</tr>
     </tbody>
 	</table>	

@@ -161,6 +161,21 @@ export class TeacherLogsComponent implements OnInit {
     this.isLoading = false;    
   } 
 
+  deleteTeacherLog(teacherLogID: any): void {
+    if(confirm("Are you sure to Conduct this exam")) {
+      this.teacherLogService.deleteTeacherLogs(teacherLogID).subscribe (
+        (response: any) => this.deleteTeacherLogSuccess(response),
+        (error: any) => this.errorHandle(error),
+        () => this.isLoadingFalse()
+      );
+    }
+  }
+
+  deleteTeacherLogSuccess(response: any) {
+    console.log(response['id']);
+    this.teacherLogs = this.teacherLogs.filter((value) => value.id != response['id']);
+  }
+
   filterLogs(): void {
     this.searchStr = "";
     if(this.searchBatchStandard == 0 && this.searchSubject ==0 && this.searchTeacher == 0 && this.searchDate == undefined) {
