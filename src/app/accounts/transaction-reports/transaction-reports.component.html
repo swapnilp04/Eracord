@@ -1,0 +1,88 @@
+<h5>Transaction Report</h5>
+<form>
+	<div class="form-group mb-3">
+    <label for="ReportType" class="form-label">Type</label>
+    <select class="form-select" [disabled]="isLoading" [ngModel]="reportForm.report_type" (ngModelChange)="onChangeReportType($event)" aria-label="Selecte Standard" [ngModelOptions]="{standalone: true}">
+        <option value="Daily">Daily</option>
+        <option value="Monthly">Monthly</option>
+        <option value="Custom">Custom</option>
+    </select>
+	</div>    
+  <div class="col-xs-12 col-12 col-md-4 form-group mb-3" *ngIf="reportForm.report_type == 'Daily'">
+  	<label for="exampleInputPassword1" class="form-label">Report Date</label>
+  	<input type="text"
+         placeholder="Report Date"
+         class="form-control"
+         [(ngModel)]="reportForm.report_date"
+         [ngModelOptions]="{standalone: true}"
+         [bsConfig]="{ dateInputFormat: 'DD MMMM YYYY'}"
+         bsDatepicker>
+	</div>
+
+	<div class="col-xs-12 col-12 col-md-4 form-group mb-3" *ngIf="reportForm.report_type == 'Monthly'">
+  	<label for="exampleInputPassword1" class="form-label">Set Month</label>
+  	<input type="text"
+         placeholder="Report Month"
+         class="form-control"
+         [(ngModel)]="reportForm.report_month"
+         [ngModelOptions]="{standalone: true}"
+         [bsConfig]="{ dateInputFormat: 'MMMM YYYY'}"
+         bsDatepicker>
+	</div>
+
+	<div  *ngIf="reportForm.report_type == 'Custom'">
+		<div class="col-xs-12 col-12 col-md-4 form-group mb-3 floatLeft">
+			<label for="exampleInputPassword1" class="form-label">Start Date</label>
+			<input type="text"
+		       placeholder="Report End Date"
+		       class="form-control floatLeft"
+		       [(ngModel)]="reportForm.report_start"
+		       [ngModelOptions]="{standalone: true}"
+		       [bsConfig]="{ dateInputFormat: 'DD MMMM YYYY'}"
+		       bsDatepicker>
+		 </div>
+		 <div class="col-xs-12 col-12 col-md-4 form-group mb-3 floatLeft marginLeft15">
+		 	<label for="exampleInputPassword1" class="form-label">End Date</label>
+		  <input type="text"
+		       placeholder="Report Month"
+		       class="form-control"
+		       [(ngModel)]="reportForm.report_end"
+		       [ngModelOptions]="{standalone: true}"
+		       [bsConfig]="{ dateInputFormat: 'DD MMMM YYYY'}"
+		       bsDatepicker>
+    </div>
+	</div>
+	<div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+		<button class="btn btn-primary" (click)="getReport()" [disabled]="isLoading">Get Report</button>
+	</div>
+</form>
+
+<div>
+	<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+      <th class="col-md-1"> Receipt ID
+      </th>
+      <th>Date</th>
+      <th>Student</th>
+      <th>Reason</th>
+      <th>Mode</th>
+      <th>Paid By</th>
+      <th>Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    	<tr *ngFor="let transaction of transactions; index as i">
+      <td>
+        <a href='/transactions/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type =='cridit'"> {{transaction.receipt_id}}</a>
+      </td> 
+      <td>{{transaction.CreatedAt | date:'dd MMM yyyy @ h:mma'}}</td>
+      <td><a href='/students/{{transaction.Student.id}}'>{{name(transaction.Student)}}</a></td>
+      <td>{{transaction.transaction_type}}</td>
+      <td>{{transaction.payment_mode}}</td>
+      <td>{{transaction.paid_by}}</td>
+      <td [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</td>
+    	</tr>
+    </tbody>
+	</table>	
+</div>

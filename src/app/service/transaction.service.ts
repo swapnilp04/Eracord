@@ -23,5 +23,8 @@ export class TransactionService {
     return this.http.get<Transaction>(`${this.loginService.URL}/accounts/students/${studentId}/transactions/${transactionId}`, {headers: myHeaders});
   }
 
-  
+  getTransactionReport(paramString: string): Observable<Transaction[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Transaction[]>(`${this.loginService.URL}/accounts/transactions/report?${paramString}`, {headers: myHeaders});
+  }
 }

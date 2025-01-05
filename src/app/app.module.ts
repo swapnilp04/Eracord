@@ -80,6 +80,7 @@ import { ReportBatchStandardLogComponent } from './reports/report-batch-standard
 import { CombinedClassAddEditComponent } from './teacher-logs/combined-class-add-edit/combined-class-add-edit.component';
 import { GroupResultComponent } from './exams/group-result/group-result.component';
 import { GroupResultDisplayComponent } from './exams/group-result-display/group-result-display.component';
+import { TransactionReportsComponent } from './accounts/transaction-reports/transaction-reports.component';
 
 
 
@@ -152,6 +153,7 @@ import { GroupResultDisplayComponent } from './exams/group-result-display/group-
     CombinedClassAddEditComponent,
     GroupResultComponent,
     GroupResultDisplayComponent,
+    TransactionReportsComponent,
   ],
   imports: [
     BrowserModule,

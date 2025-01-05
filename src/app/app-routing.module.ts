@@ -29,6 +29,7 @@ import { HostelRoomAddEditComponent } from './hostel-room/hostel-room-add-edit/h
 import { HostelRoomComponent } from './hostel-room/hostel-room/hostel-room.component';
 import { AllTransactionsComponent } from './accounts/all-transactions/all-transactions.component';
 import { TransactionComponent } from './accounts/transaction/transaction.component';
+import { TransactionReportsComponent } from './accounts/transaction-reports/transaction-reports.component';
 import { UsersComponent } from './users/users/users.component';
 import { AddEditUserComponent } from './users/add-edit-user/add-edit-user.component';
 import { DepositComponent } from './student-accounts/deposit/deposit.component';
@@ -109,6 +110,8 @@ const routes: Routes = [
 
   {path: 'transactions' , component: AllTransactionsComponent},
   {path: 'transactions/students/:student_id/receipt/:id' , component: TransactionComponent},
+  {path: 'transactions/get_reports' , component: TransactionReportsComponent},
+
 
   {path: 'users' , component: UsersComponent},
   {path: 'users/new' , component: AddEditUserComponent},
