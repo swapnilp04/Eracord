@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {LoginService} from '../service/login.service';
 import { AlertService } from '../service/alert.service';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   public user :User = {username: "", password: ""};
   
   dismissible = true;
@@ -22,13 +22,23 @@ export class LoginComponent {
      private alertService: AlertService) { 
   }
 
+  ngOnInit(): void {
+    this.checkLogin();
+  }
+
   login() {
     this.loginService.loginUser(this.user).subscribe(
       (response: any) => this.successResponse(response),
       (error: any) => this.errorResponse(error),
-      () => console.log('Done getting Student......')
+      () => this.reloadPage()
     );
   };
+
+  checkLogin() {
+    if(this.cookies.get('isLogin')) {
+      this._router.navigateByUrl('/dashboard');
+    }
+  }
 
   successResponse(response: any) {
     this.cookies.deleteAll();
@@ -39,8 +49,12 @@ export class LoginComponent {
     this.cookies.set('id', response['id']);
     this.loginService.isLogin = true;
     this.loginService.username = response['username'];
-    this._router.navigateByUrl('/dashboard');  // open welcome component
+    //this._router.navigateByUrl('/dashboard');  // open welcome component
     this.alertService.success("Login Successful");
+  }
+
+  reloadPage() {
+    window.location.reload(); 
   }
 
   errorResponse(error: any): void {
