@@ -81,6 +81,7 @@ import { CombinedClassAddEditComponent } from './teacher-logs/combined-class-add
 import { GroupResultComponent } from './exams/group-result/group-result.component';
 import { GroupResultDisplayComponent } from './exams/group-result-display/group-result-display.component';
 import { TransactionReportsComponent } from './accounts/transaction-reports/transaction-reports.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -169,7 +170,8 @@ import { TransactionReportsComponent } from './accounts/transaction-reports/tran
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [CookieService, ToWords],
   bootstrap: [AppComponent]

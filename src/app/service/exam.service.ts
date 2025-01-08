@@ -35,6 +35,11 @@ export class ExamService {
     return this.http.put<Exam>(`${this.loginService.URL}/exams/${exam.id}`, exam, {headers: myHeaders});
   }
 
+  deleteExam(examID: number): Observable<{}> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.delete<{}>(`${this.loginService.URL}/exams/${examID}`, {headers: myHeaders});
+  }
+
   conductExam(examID: number): Observable<Exam> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<Exam>(`${this.loginService.URL}/exams/${examID}/conduct_exam`, {}, {headers: myHeaders});
