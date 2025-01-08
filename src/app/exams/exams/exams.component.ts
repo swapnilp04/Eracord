@@ -4,6 +4,8 @@ import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AlertService } from '../../service/alert.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faFilePen, faFolderOpen, faSquarePlus, faFileLines } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-exams',
@@ -16,6 +18,10 @@ export class ExamsComponent implements OnInit {
   currentPage = 1;
   public page = 1;
   totalItems: number = 10;
+  faFilePen = faFilePen;
+  faFolderOpen = faFolderOpen;
+  faSquarePlus = faSquarePlus;
+  faFileLines = faFileLines;
   constructor(private examService: ExamService, private loginService: LoginService, private alertService: AlertService){}
 
 

@@ -26,5 +26,7 @@
     	</tr>
     </tbody>
 	</table>	
-  <button *ngIf="examStatus == 'Conducted'" class="btn btn-primary" (click)=saveExamMarks(examId)>Save Marks</button>
+  <button *ngIf="examStatus == 'Conducted'" class="btn btn-primary" (click)=saveExamMarks(examId) tooltip="Save">
+    <fa-icon [icon]="faFloppyDisk"></fa-icon>
+  </button>
 </div>

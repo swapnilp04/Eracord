@@ -2,13 +2,13 @@
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
 		<button (click)=back() class="btn btn-primary">
-			Back
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
 		<button 
 			class="btn btn-primary marginLeft15"
 			[useExistingCss]="true"
 			printSectionId="print-section"
-			ngxPrint>print</button>
+			ngxPrint><fa-icon [icon]="faPrint"></fa-icon></button>
 	</div>
 
 	<div id="print-section">
@@ -26,7 +26,6 @@
 				      </th>
 				      <th>Name</th>
 				      <th>Address</th>
-				      <th>HasHostel</th>
 				      <th>Balance</th>
 				      <th>Last Payent on</th>
 				      <th>Action</th>
@@ -35,9 +34,11 @@
 				    <tbody>
 				    	<tr *ngFor="let batchStandardStudent of batchStandardStudents; index as i">
 				    		<td>{{i+1}}</td>
-				      	<td><a href='/students/{{batchStandardStudent.Student.id}}'>{{studentName(batchStandardStudent.Student)}}</a></td>
+				      	<td>
+				      		<a href='/students/{{batchStandardStudent.Student.id}}'>{{studentName(batchStandardStudent.Student)}}</a>
+				      		&nbsp;<fa-icon [icon]="faBed" [ngClass]="batchStandardStudent.Student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
+				      	</td>
 				      	<td>{{batchStandardStudent.Student.town}}</td>
-				      	<td>{{batchStandardStudent.Student.has_hostel}}</td>
 				      	<td>{{batchStandardStudent.Student.balance}}</td>
 				      	<td>{{batchStandardStudent.Student.last_payment_on | date:'dd MMM yy'}}</td>
 				      	<td>

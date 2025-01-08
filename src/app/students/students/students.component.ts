@@ -4,6 +4,8 @@ import { LoginService } from './../../service/login.service';
 import {Student} from './../../interface/student';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AlertService } from '../../service/alert.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBed, faUserPen, faFolderOpen, faMoneyBill, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,6 +19,11 @@ export class StudentsComponent  implements OnInit {
   page= 1;
   totalItems: number = 10;
   search = "";
+  faBed = faBed;
+  faUserPen = faUserPen;
+  faFolderOpen = faFolderOpen;
+  faMoneyBill = faMoneyBill;
+  faSquarePlus = faSquarePlus;
 
   public students: Student[] = [];
   constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService){}

@@ -15,13 +15,17 @@
 		<h5 class="text-danger" *ngIf="student.has_left">Left On - {{student.left_at | date:'dd MMM YYYY'}}</h5>
 	</div>
 	<div class="mb-3">
-		<a *ngIf="!student.has_absconded && !isLeft()" class="btn btn-secondary marginRight15" href='/students/{{student.id}}/edit'>Edit</a>
-		<button (click)=back() class="btn btn-primary marginRight15">
-			Back
+		<a *ngIf="!student.has_absconded && !isLeft()" class="btn btn-secondary marginRight15" href='/students/{{student.id}}/edit' tooltip="Edit">
+			<fa-icon [icon]="faUserPen"></fa-icon>
+		</a>
+		<button (click)=back() class="btn btn-primary marginRight15" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
-		<a class="btn btn-info marginRight15" href='/students/{{student.id}}/comments/new'>New Comment</a>
-		<button (click)=leftAcademy(student.id) class="btn btn-info text-white marginRight15" *ngIf="!isLeft()">
-			Left Academy
+		<a class="btn btn-info marginRight15" href='/students/{{student.id}}/comments/new' tooltip="New Comment">
+			<fa-icon [icon]="faComment"></fa-icon>
+		</a>
+		<button (click)=leftAcademy(student.id) class="btn btn-info text-white marginRight15" *ngIf="!isLeft()" tooltip="Exit From Academy">
+			<fa-icon [icon]="faPersonWalkingArrowRight" class="text-danger"></fa-icon>
 		</button>
 	</div>
 	<div>	

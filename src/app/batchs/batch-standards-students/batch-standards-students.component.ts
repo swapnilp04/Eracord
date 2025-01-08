@@ -10,6 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
 import { TabDirective } from 'ngx-bootstrap/tabs';
+import { faBed, faPrint, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-batch-standards-students',
@@ -21,6 +22,9 @@ export class BatchStandardsStudentsComponent {
   public batchStandard = {} as BatchStandard;
   public batchStandardStudents: BatchStandardStudent[] = [];
   public id: any;
+  faBed = faBed;
+  faPrint = faPrint;
+  faChevronLeft = faChevronLeft;
   
   public isLoading = true;
   

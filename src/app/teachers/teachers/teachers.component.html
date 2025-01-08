@@ -1,7 +1,9 @@
 <div class="row">
   <p class="clearfix">
       
-      <a href="/teachers/new" class="btn btn-primary"><span>New Teacher</span></a>
+      <a href="/teachers/new" class="btn btn-primary" tooltip="New Teacher">
+      	<fa-icon [icon]="faUserTie"></fa-icon>
+      </a>
     </p>
 	<table class="table table-striped table-bordered table-hover">
     <thead>
@@ -18,9 +20,13 @@
 	      <td>{{teacher.name}}</td>
 	      <td>{{teacher.mobile}}</td>
 	      <td>
-	        <a href='/teachers/{{teacher.id}}'>Show</a>
+	        <a href='/teachers/{{teacher.id}}' tooltip="Show">
+	        	<fa-icon [icon]="faFolderOpen"></fa-icon>
+	      	</a>
 	        &nbsp;&nbsp;&nbsp;
-	        <a href='/teachers/{{teacher.id}}/edit'>Edit</a>
+	        <a href='/teachers/{{teacher.id}}/edit' tooltip="Edit">
+	        	<fa-icon [icon]="faFilePen"></fa-icon>
+	        </a>
 	      </td>
     	</tr>
     </tbody>

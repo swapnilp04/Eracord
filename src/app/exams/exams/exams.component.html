@@ -1,8 +1,8 @@
 <div class="">
   <p class="clearfix">
       
-      <a href="/exams/new" class="btn btn-primary marginRight15"><span>New Exam</span></a>
-      <a href="/exams/group_exams" class="btn btn-primary"><span>Group Exam Report</span></a>
+      <a href="/exams/new" class="btn btn-primary marginRight15" tooltip="New Exam"><fa-icon [icon]="faSquarePlus"></fa-icon></a>
+      <a href="/exams/group_exams" class="btn btn-primary" tooltip="Group Exam Report"><fa-icon [icon]="faFileLines"></fa-icon></a>
     </p>
    
     <pagination class="pull-right" [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8">        
@@ -30,9 +30,9 @@
 	      <td>{{exam.exam_date | date:'dd MMM yyyy'}}</td>
 	      <td>{{exam.exam_status}}</td>
 	      <td>
-	        <a href='/exams/{{exam.id}}'>Show</a>
+	        <a href='/exams/{{exam.id}}' tooltip="Show"><fa-icon [icon]="faFolderOpen"></fa-icon></a>
 	        &nbsp;&nbsp;&nbsp;
-	        <a *ngIf="exam.exam_status == 'Created'" href='/exams/{{exam.id}}/edit'>Edit</a>
+	        <a *ngIf="exam.exam_status == 'Created'" href='/exams/{{exam.id}}/edit' tooltip="Edit"><fa-icon [icon]="faFilePen"></fa-icon></a>
 	      </td>
     	</tr>
     </tbody>

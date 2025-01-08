@@ -3,10 +3,10 @@
 		<button 
 			class="btn btn-primary marginRight15"
 			[useExistingCss]="true"
-			printSectionId="print-section"
-			ngxPrint>print</button>
-		<button (click)=back() class="btn btn-primary marginRight15">
-			Back
+			printSectionId="print-section" tooltip="Print"
+			ngxPrint><fa-icon [icon]="faPrint"></fa-icon></button>
+		<button (click)=back() class="btn btn-primary marginRight15" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
 	</p>
 	
@@ -21,17 +21,19 @@
 			<h5>Subject - {{exam.Subject.name}}</h5>
 			<h5>Status - {{exam.exam_status}}</h5>
 			
-			<a *ngIf="exam.exam_status == 'Created'" class="btn btn-secondary marginRight15" href='/exams/{{exam.id}}/edit'>Edit</a>
-			<button *ngIf="exam.exam_status != 'Published'" (click)=back() class="btn btn-primary marginRight15">
-				Back
+			<a *ngIf="exam.exam_status == 'Created'" class="btn btn-secondary marginRight15" href='/exams/{{exam.id}}/edit' tooltip="Edit">
+				<fa-icon [icon]="faFilePen"></fa-icon>
+			</a>
+			<button *ngIf="exam.exam_status != 'Published'" (click)=back() class="btn btn-primary marginRight15" tooltip="Back">
+				<fa-icon [icon]="faChevronLeft"></fa-icon>
 			</button>
 
-			<button *ngIf="exam.exam_status == 'Created'" (click)=conductExam(exam.id) class="btn btn-primary marginRight15">
-				Conduct Exam
+			<button *ngIf="exam.exam_status == 'Created'" (click)=conductExam(exam.id) class="btn btn-primary marginRight15" tooltip="Conduct Exam">
+				<fa-icon [icon]="faPlay"></fa-icon>
 			</button>
 
-			<button *ngIf="exam.exam_status == 'Conducted'" (click)=publishExam(exam.id) class="btn btn-primary marginRight15">
-				Publish Exam
+			<button *ngIf="exam.exam_status == 'Conducted'" (click)=publishExam(exam.id) class="btn btn-primary marginRight15" tooltip="Publish Exam">
+				<fa-icon [icon]="faBullhorn"></fa-icon>
 			</button>
 		</div>
 

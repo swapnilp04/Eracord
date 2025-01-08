@@ -5,6 +5,7 @@ import { Teacher } from './../../interface/teacher';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-teacher',
@@ -15,6 +16,7 @@ export class TeacherComponent {
   public teacher = {} as Teacher;
   public id: any;
   public isLoading = true;
+  faChevronLeft = faChevronLeft;
   
   constructor(private teacherService: TeacherService, private route: ActivatedRoute, private location: Location, private router: Router,
    private loginService: LoginService, private alertService: AlertService){}

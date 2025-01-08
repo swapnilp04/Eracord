@@ -67,8 +67,14 @@
   </div>
 
   <div class="form-group mb-3">
-  <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createExam(exam)>Submit</button>
-  <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateExam(exam)>Submit</button>
-  <button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
+  <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createExam(exam) tooltip="Submit">
+    <fa-icon [icon]="faCircleCheck"></fa-icon>
+  </button>
+  <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateExam(exam) tooltip="Submit">
+    <fa-icon [icon]="faCircleCheck"></fa-icon>
+  </button>
+  <button type="submit" class="btn btn-primary marginLeft15" (click)=back() tooltip="Back">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </button>
 </div>
 </form>

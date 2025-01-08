@@ -6,6 +6,7 @@ import { Student } from './../../interface/student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { faFilePen, faChevronLeft, faFloppyDisk, faPrint, faPlay, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-exam',
@@ -17,6 +18,11 @@ export class ExamComponent implements OnInit {
   public id: any;
   
   public isLoading = true;
+  faFilePen = faFilePen;
+  faChevronLeft = faChevronLeft;
+  faPlay = faPlay;
+  faBullhorn = faBullhorn;
+  faPrint = faPrint;
 
   value?: string;
   

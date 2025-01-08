@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-8">
-    <a href="/students/new" class="btn btn-primary"><span>New Student</span></a>
+    <a href="/students/new" class="btn btn-primary" tooltip="New Student"><span><fa-icon [icon]="faSquarePlus"></fa-icon> </span></a>
   </div>
   <div class="input-group mb-3 col">
     <input type="text" class="form-control" (change)="changed($event)" [(ngModel)]="search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
@@ -22,7 +22,6 @@
       </th>
       <th>Name</th>
       <th>Address</th>
-      <th>HasHostel</th>
       <th>Balance</th>
       <th>Last Payment On</th>
       <th>Action</th>
@@ -31,15 +30,23 @@
     <tbody>
     	<tr *ngFor="let student of students; index as i" [ngClass]="{'table-warning': student.has_left}">
       <td>{{((page - 1) *10) + i + 1 }}</td> 
-      <td>{{name(student)}} <strong>({{student.Standard.name}})</strong></td>
+      <td>
+        {{name(student)}} <strong>({{student.Standard.name}}) &nbsp;</strong>
+        <fa-icon [icon]="faBed" [ngClass]="student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
+      </td>
       <td>{{student.town}}</td>
-      <td>{{student.has_hostel}}</td>
       <td>{{student.balance}}</td>
       <td>{{student.last_payment_on | date:'dd MMM yyyy'}}</td>
       <td>
-        <a href='/students/{{student.id}}' class="marginRight15">Show</a>
-        <a href='/students/{{student.id}}/edit' *ngIf="!student.has_left" class="marginRight15">Edit</a> 
-        <a class="btn-primary" href="/students/{{student.id}}/transactions/new" *ngIf="!student.has_left"> Pay</a>
+        <a href='/students/{{student.id}}' class="marginRight15" tooltip="Show">
+          <fa-icon [icon]="faFolderOpen"></fa-icon>
+        </a>
+        <a href='/students/{{student.id}}/edit' *ngIf="!student.has_left" class="marginRight15" tooltip="Edit">
+          <fa-icon [icon]="faUserPen"></fa-icon>
+        </a> 
+        <a class="btn-primary" href="/students/{{student.id}}/transactions/new" *ngIf="!student.has_left" tooltip="Pay"> 
+          <fa-icon [icon]="faMoneyBill"></fa-icon>
+        </a>
       </td>
     	</tr>
     </tbody>

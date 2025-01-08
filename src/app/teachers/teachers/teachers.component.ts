@@ -3,6 +3,7 @@ import { TeacherService } from './../../service/teacher.service';
 import { LoginService } from './../../service/login.service';
 import { Teacher } from './../../interface/teacher';
 import { AlertService } from '../../service/alert.service';
+import { faFilePen, faChevronLeft, faFolderOpen, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-teachers',
@@ -11,6 +12,12 @@ import { AlertService } from '../../service/alert.service';
 })
 export class TeachersComponent {
   public teachers: Teacher[] = [];
+  faChevronLeft = faChevronLeft;
+  faFilePen = faFilePen;
+  faFolderOpen = faFolderOpen;
+  faUserTie = faUserTie;
+
+
   constructor(private teacherService: TeacherService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {

@@ -3,8 +3,8 @@
 		<h2>{{name()}}</h2>
 		<h5>Mobile - {{teacher.mobile}}</h5>
 		<h5>Joining Date - {{teacher.joining_date | date:'dd MMM yyyy'}}</h5>
-		<button (click)=back() class="btn btn-primary">
-			Back
+		<button (click)=back() class="btn btn-primary" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
 	</div>
 </div>

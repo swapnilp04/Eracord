@@ -8,6 +8,7 @@ import { BatchStandard } from './../../interface/batch-standard';
 import { Subject } from './../../interface/subject';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
+import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-exam-add-edit',
@@ -21,7 +22,8 @@ export class ExamAddEditComponent implements OnInit{
   public isNew = true;
   public isLoading = false;
   public formErr: any;
-  
+  faChevronLeft = faChevronLeft;
+  faCircleCheck = faCircleCheck;
   
   constructor(private examService: ExamService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private batchStandardService: BatchStandardService,

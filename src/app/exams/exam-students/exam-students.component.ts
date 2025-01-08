@@ -6,6 +6,7 @@ import { LoginService } from './../../service/login.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-exam-students',
@@ -19,6 +20,7 @@ export class ExamStudentsComponent  implements OnInit {
   @Input() marks: any;
   public isLoading = true;
   public examStudents: ExamStudent[] = [];
+  faFloppyDisk = faFloppyDisk;
 
   constructor(private examService: ExamService, private route: ActivatedRoute, private location: Location, 
     private router: Router, private loginService: LoginService,

@@ -6,6 +6,8 @@ import { LoginService } from './../../service/login.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-student-exams',
@@ -18,6 +20,7 @@ export class StudentExamsComponent implements OnInit{
   @Input() studentName: any;
   public isLoading = true;
   public examStudents: ExamStudent[] = [];
+  faPrint = faPrint;
 
   constructor(private studentService: StudentService, private route: ActivatedRoute, private location: Location, 
     private router: Router, private loginService: LoginService, private alertService: AlertService){}

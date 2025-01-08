@@ -10,6 +10,7 @@ import { LogCategory } from './../../interface/log-category';
 import { Teacher } from './../../interface/teacher';
 import { AlertService } from '../../service/alert.service';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { faFilter, faBroom } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-logs',
@@ -32,6 +33,8 @@ export class LogsComponent implements OnInit{
   currentPage = 1;
   page= 1;
   totalItems: number = 10;
+  faFilter = faFilter;
+  faBroom = faBroom;
 
   constructor(private teacherLogService: TeacherLogService, private loginService: LoginService,
     private batchStandardService: BatchStandardService, private teacherService: TeacherService,

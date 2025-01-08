@@ -5,6 +5,7 @@ import { LoginService } from './../../service/login.service';
 import {Teacher} from './../../interface/teacher';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
+import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-teacher-add-edit',
@@ -16,6 +17,9 @@ export class TeacherAddEditComponent {
   public isNew = true;
   public isLoading = false;
   public formErr: any;
+  faChevronLeft = faChevronLeft;
+  faCircleCheck = faCircleCheck;
+  
   
   constructor(private teacherService: TeacherService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private alertService: AlertService){}
