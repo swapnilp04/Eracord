@@ -5,6 +5,7 @@ import {Hostel} from './../../interface/hostel';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { faFilePen, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hostel',
@@ -17,6 +18,9 @@ export class HostelComponent implements OnInit {
   public id: any;
   public isLoading = true;
   public hostelId: number;
+  faFilePen = faFilePen;
+  faChevronLeft = faChevronLeft;
+
   
   constructor(private hostelService: HostelService, private route: ActivatedRoute, private location: Location, private router: Router, 
     private loginService: LoginService, private alertService: AlertService){}

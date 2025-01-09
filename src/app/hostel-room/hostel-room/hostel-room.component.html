@@ -2,8 +2,8 @@
 	<div class="mb-3">
 		<h2>{{name()}} Hostel Room</h2>
 		<h5>No of Students - {{hostelRoom.no_of_students}}</h5>
-		<button (click)=back() class="btn btn-primary">
-			Back
+		<button (click)=back() class="btn btn-primary" tooltip="back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
 	</div>
 </div>

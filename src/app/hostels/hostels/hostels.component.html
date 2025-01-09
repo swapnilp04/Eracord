@@ -1,7 +1,6 @@
 <div class="row">
-  <p class="clearfix">
-      
-      <a href="/hostels/new" class="btn btn-primary"><span>New Hostel</span></a>
+  <p class="clearfix">      
+      <a href="/hostels/new" class="btn btn-primary" tooltip="New Hostel"><fa-icon [icon]="faHotel"></fa-icon></a>
     </p>
 	<table class="table table-striped table-bordered table-hover">
     <thead>
@@ -21,12 +20,17 @@
 	      <td>{{hostel.hostel_rooms_count}}</td>
 	      <td>{{hostel.hostel_students_count}}</td>
 	      <td>
-	        <a href='/hostels/{{hostel.id}}'>Show</a>
+	        <a href='/hostels/{{hostel.id}}'>
+	        	<fa-icon [icon]="faFolderOpen" tooltip="Show"></fa-icon>
+	        </a>
 	        &nbsp;&nbsp;&nbsp;
-	        <a href='/hostels/{{hostel.id}}/edit'>Edit</a>
-
+	        <a href='/hostels/{{hostel.id}}/edit' tooltip="Edit">
+	        	<fa-icon [icon]="faFilePen"></fa-icon>
+	        </a>
 	        &nbsp;&nbsp;&nbsp;
-	        <a href='/hostels/{{hostel.id}}/students-list'>Print List</a>
+	        <a href='/hostels/{{hostel.id}}/students-list' tooltip="Print List">
+	        	<fa-icon [icon]="faPrint"></fa-icon>
+	        </a>
 	      </td>
     	</tr>
     </tbody>

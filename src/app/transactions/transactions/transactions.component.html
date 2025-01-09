@@ -1,7 +1,8 @@
 <div *ngIf="showActions">
-  <a class="btn btn-primary" href="/students/{{studentId}}/transactions/new"> Pay</a>
-  <a class="btn btn-danger marginLeft15" href="/students/{{studentId}}/transactions/dues"> Dues</a>
-  <a class="btn btn-primary marginLeft15" href="/students/{{studentId}}/discounts/new"> Add Discount</a>
+
+  <a class="btn btn-primary" href="/students/{{studentId}}/transactions/new" tooltip="Pay">  <fa-icon [icon]="faMoneyBill"></fa-icon></a>
+  <a class="btn btn-danger marginLeft15" href="/students/{{studentId}}/transactions/dues" tooltip="Dues"> <fa-icon [icon]="faMoneyBillTransfer"></fa-icon></a>
+  <a class="btn btn-primary marginLeft15" href="/students/{{studentId}}/discounts/new" tooltip="Add Discount"> Add Discount</a>
 </div>
 <div class="row marginTop15 container">
   <div>

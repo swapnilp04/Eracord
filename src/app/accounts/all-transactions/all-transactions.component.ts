@@ -5,6 +5,7 @@ import { Transaction } from './../../interface/transaction';
 import { Student } from './../../interface/student';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AlertService } from '../../service/alert.service';
+import { faFileExport, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-all-transactions',
@@ -18,6 +19,7 @@ export class AllTransactionsComponent  implements OnInit {
   page= 1;
   totalItems: number = 10;
   search = "";
+  faFileExport = faFileExport;
 
   constructor(private transactionService: TransactionService, private loginService: LoginService, private alertService: AlertService){}
 

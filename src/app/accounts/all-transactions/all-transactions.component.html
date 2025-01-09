@@ -9,7 +9,7 @@
 <div class="marginTop15">
   <div class="row">
     <div class="col-xs-12 col-12">
-      <a class="btn btn-primary text-white" href="/transactions/get_reports">Get Report</a>
+      <a class="btn btn-primary text-white" href="/transactions/get_reports" tooltip="Get Report"><fa-icon [icon]="faFileExport"></fa-icon></a>
       <pagination class="pullRight" [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
     </div>
   </div>

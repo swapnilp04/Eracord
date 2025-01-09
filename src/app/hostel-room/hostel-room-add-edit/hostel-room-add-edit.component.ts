@@ -5,6 +5,7 @@ import { LoginService } from './../../service/login.service';
 import {HostelRoom} from './../../interface/hostel-room';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
+import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hostel-room-add-edit',
@@ -16,6 +17,8 @@ export class HostelRoomAddEditComponent {
   public isNew = true;
   public hostelId: number;
   public isLoading = false;
+  faChevronLeft = faChevronLeft;
+  faCircleCheck = faCircleCheck;
   
   constructor(private hostelRoomService: HostelRoomService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private alertService: AlertService){}

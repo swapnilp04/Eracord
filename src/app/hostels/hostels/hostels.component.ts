@@ -3,6 +3,7 @@ import {HostelService} from './../../service/hostel.service';
 import { LoginService } from './../../service/login.service';
 import {Hostel} from './../../interface/hostel';
 import { AlertService } from '../../service/alert.service';
+import { faHotel, faFilePen, faFolderOpen, faPrint } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hostels',
@@ -10,13 +11,13 @@ import { AlertService } from '../../service/alert.service';
   styleUrls: ['./hostels.component.css']
 })
 
-
 export class HostelsComponent  implements OnInit {
-
   public hostels: Hostel[] = [];
+  faHotel = faHotel;
+  faFolderOpen = faFolderOpen;
+  faFilePen = faFilePen;
+  faPrint = faPrint;
   constructor(private hostelService: HostelService, private loginService: LoginService, private alertService: AlertService){}
-
-
 
   ngOnInit(): void {
     this.loadHostels();
@@ -40,7 +41,6 @@ export class HostelsComponent  implements OnInit {
       () => console.log('Done getting Hostels......')
     );
   }
-
 
   assignHostel(response: any) {
     this.hostels = response

@@ -4,6 +4,7 @@ import { LoginService } from './../../service/login.service';
 import { Transaction } from './../../interface/transaction';
 import { Balance } from './../../interface/balance';
 import { AlertService } from '../../service/alert.service';
+import { faMoneyBill, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-transactions',
@@ -16,6 +17,8 @@ export class TransactionsComponent  implements OnInit {
   @Input() showActions: any;
   public transactions: Transaction[] = [];
   public balance = {} as Balance;
+  faMoneyBill = faMoneyBill;
+  faMoneyBillTransfer = faMoneyBillTransfer;
 
   constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService){}
 

@@ -3,6 +3,7 @@ import { HostelRoomService } from './../../service/hostel-room.service';
 import { LoginService } from './../../service/login.service';
 import { HostelRoom } from './../../interface/hostel-room';
 import { AlertService } from '../../service/alert.service';
+import { faPeopleRoof, faFilePen, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hostel-rooms',
@@ -11,6 +12,9 @@ import { AlertService } from '../../service/alert.service';
 })
 export class HostelRoomsComponent implements OnInit{
   @Input() hostelId: number;
+  faPeopleRoof = faPeopleRoof;
+  faFilePen = faFilePen; 
+  faFolderOpen = faFolderOpen;
   ngOnInit(): void {
     this.loadHostelRooms();
   }

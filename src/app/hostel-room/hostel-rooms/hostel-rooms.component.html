@@ -1,5 +1,5 @@
 <p class="clearfix">  
-  <a href="/hostels/{{hostelId}}/hostel-rooms/new" class="btn btn-primary"><span>New Hostel Room</span></a>
+  <a href="/hostels/{{hostelId}}/hostel-rooms/new" class="btn btn-primary" tooltip="New Hostel Room"><fa-icon [icon]="faPeopleRoof"> </fa-icon></a>
 </p>
 <table class="table table-striped table-bordered table-hover">
   <thead>
@@ -17,9 +17,9 @@
       <td>{{hostelRoom.name}}</td>
       <td>{{hostelRoom.hostel_students_count}}</td>
       <td>
-        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}'>Show</a>
+        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}' tooltip="Show"><fa-icon [icon]="faFolderOpen"></fa-icon></a>
         &nbsp;&nbsp;&nbsp;
-        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}/edit'>Edit</a>
+        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}/edit' tooltip="Edit"><fa-icon [icon]="faFilePen"></fa-icon></a>
       </td>
   	</tr>
   </tbody>

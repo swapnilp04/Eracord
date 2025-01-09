@@ -3,9 +3,11 @@
 		<h2>{{name()}} Hostel</h2>
 		<h5>Rooms - {{hostel.hostel_rooms_count}}</h5>
 		<h5>Total Students - {{hostel.hostel_students_count}}</h5>
-		<a class="btn btn-secondary" href="/hostels/{{hostel.id}}/edit">Edit</a>
-		<button (click)=back() class="btn btn-primary marginLeft15">
-			Back
+		<a class="btn btn-secondary" href="/hostels/{{hostel.id}}/edit" tooltip="Edit">
+			<fa-icon [icon]="faFilePen"></fa-icon>
+		</a>
+		<button (click)=back() class="btn btn-primary marginLeft15" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
 	</div>
 	<h3>Rooms</h3>
