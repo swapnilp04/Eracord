@@ -11,6 +11,7 @@ import { Teacher } from './../../interface/teacher';
 
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AlertService } from '../../service/alert.service';
+import { faBroom, faFilter } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -31,6 +32,8 @@ export class BatchStandardsLogsComponent implements OnInit{
   public searchSubject= 0;
   public searchDate: any ;
   public searchStr = "";
+  faFilter = faFilter;
+  faBroom = faBroom;
   
   currentPage = 1;
   page= 1;

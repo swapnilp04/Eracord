@@ -9,6 +9,7 @@ import { Standard } from './../../interface/standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-batch-standard-add-edit',
@@ -21,8 +22,8 @@ export class BatchStandardAddEditComponent implements OnInit {
   public batchStandard = {} as BatchStandard;
   public standards: Standard[] = [];
   public isNew = true;
-
-  
+  faChevronLeft = faChevronLeft;
+  faCircleCheck = faCircleCheck;
   public isLoading = false;
   
   constructor(private batchService: BatchService, private batchStandardService: BatchStandardService, private loginService: LoginService,

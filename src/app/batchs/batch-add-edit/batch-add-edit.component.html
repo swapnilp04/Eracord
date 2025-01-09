@@ -12,8 +12,14 @@
     <input type="checkbox"  placeholder="IsDefault" [(ngModel)]="batch.is_default" [ngModelOptions]="{standalone: true}"/>
   </div>
   <div class="form-group mb-3">
-  <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createBatch(batch)>Submit</button>
-  <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateBatch(batch)>Submit</button>
-  <button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
-</div>
+    <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createBatch(batch) tooltip="Submit">
+      <fa-icon [icon]="faCircleCheck"></fa-icon>
+    </button>
+    <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateBatch(batch) tooltip="Submit">
+      <fa-icon [icon]="faCircleCheck"></fa-icon>
+    </button>
+    <button type="submit" class="btn btn-primary marginLeft15" (click)=back() tooltip="Back">
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
+  </div>
 </form>

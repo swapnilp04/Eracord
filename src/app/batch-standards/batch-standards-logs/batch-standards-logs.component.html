@@ -17,8 +17,12 @@
     </div>
 </div>
 <div class="fullWidth">  
-  <button class="btn btn-primary marginRight15" (click)="filterLogs()">Filter</button>
-  <button class="btn btn-primary" (click)=clear()>Clear</button>
+  <button class="btn btn-primary marginRight15" (click)="filterLogs()" tooltip="Filter">
+    <fa-icon [icon]="faFilter"></fa-icon>
+  </button>
+  <button class="btn btn-primary" (click)=clear() tooltip="Clear">
+    <fa-icon [icon]="faBroom"></fa-icon>
+  </button>
 </div>
 
 <div class="row">

@@ -5,6 +5,7 @@ import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
+import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-batch-add-edit',
@@ -16,6 +17,8 @@ export class BatchAddEditComponent {
   public batch = {} as Batch;
   public isNew = true;
   public isLoading = false;
+  faChevronLeft = faChevronLeft;
+  faCircleCheck = faCircleCheck;
   
   constructor(private batchService: BatchService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private alertService: AlertService){}

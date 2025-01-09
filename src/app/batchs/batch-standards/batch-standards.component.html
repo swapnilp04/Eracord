@@ -5,8 +5,12 @@
 				<p>Name - {{batchStandard.Standard.name}}</p>
 				<p>Student Count - {{batchStandard.students_count}}</p>
 				<p>Fee - {{batchStandard.fee}}</p>
-				<a class="btn btn-secondary marginBottom15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}">Show</a>
-				<a class="btn btn-secondary marginBottom15 marginLeft15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}/edit">Edit</a>
+				<a class="btn btn-secondary marginBottom15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}" tooltip="Show">
+					<fa-icon [icon]="faFolderOpen"></fa-icon>
+				</a>
+				<a class="btn btn-secondary marginBottom15 marginLeft15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}/edit"  tooltip="Edit">
+					<fa-icon [icon]="faFilePen"></fa-icon>
+				</a>
 			</div>
 		</div>
 	</div>

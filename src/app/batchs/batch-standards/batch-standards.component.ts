@@ -4,6 +4,7 @@ import { LoginService } from './../../service/login.service';
 import { Batch } from './../../interface/batch';
 import { BatchStandard } from './../../interface/batch-standard';
 import { AlertService } from '../../service/alert.service';
+import { faFilePen, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-batch-standards',
@@ -16,6 +17,8 @@ export class BatchStandardsComponent implements OnInit{
   public selectedBatchStandard: any;
   public batchStandards: BatchStandard[] = [];
   public isLoading: boolean = true
+  faFilePen = faFilePen;
+  faFolderOpen = faFolderOpen;
 
   constructor(private batchStandardService: BatchStandardService, private loginService: LoginService,  private alertService: AlertService) {}
   

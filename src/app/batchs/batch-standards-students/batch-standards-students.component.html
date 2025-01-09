@@ -1,13 +1,13 @@
 <div *ngIf=!isLoading>
 	<div class="mb-3">
 		<h2>{{name()}}</h2>
-		<button (click)=back() class="btn btn-primary">
+		<button (click)=back() class="btn btn-primary" tooltip="Back">
 			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
 		<button 
 			class="btn btn-primary marginLeft15"
 			[useExistingCss]="true"
-			printSectionId="print-section"
+			printSectionId="print-section" tooltip="Print"
 			ngxPrint><fa-icon [icon]="faPrint"></fa-icon></button>
 	</div>
 
