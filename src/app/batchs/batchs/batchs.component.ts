@@ -3,6 +3,7 @@ import {BatchService} from './../../service/batch.service';
 import { LoginService } from './../../service/login.service';
 import {Batch} from './../../interface/batch';
 import { AlertService } from '../../service/alert.service';
+import { faFilePen, faFolderOpen, faSquarePlus, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-batchs',
@@ -14,6 +15,10 @@ import { AlertService } from '../../service/alert.service';
 export class BatchsComponent  implements OnInit {
 
   public batchs: Batch[] = [];
+  faFilePen = faFilePen;
+  faFolderOpen = faFolderOpen;
+  faSquarePlus = faSquarePlus;
+  faUsers = faUsers;
   constructor(private batchService: BatchService, private loginService: LoginService, private alertService: AlertService){}
 
 

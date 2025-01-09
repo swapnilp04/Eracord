@@ -5,6 +5,7 @@ import {Batch} from './../../interface/batch';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { faChevronLeft, faCity} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-batch',
@@ -16,6 +17,8 @@ export class BatchComponent {
   public id: any;
   
   public isLoading = true;
+  faChevronLeft = faChevronLeft;
+  faCity = faCity;
   
   constructor(private batchService: BatchService, private route: ActivatedRoute, private location: Location, private router: Router, 
     private loginService: LoginService,  private alertService: AlertService){}
