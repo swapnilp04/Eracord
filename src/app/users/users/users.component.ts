@@ -3,6 +3,7 @@ import { UserService } from './../../service/user.service';
 import { LoginService } from './../../service/login.service';
 import { User } from './../../interface/user';
 import { AlertService } from '../../service/alert.service';
+import { faUserPlus, faUserCheck, faUserXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-users',
@@ -12,6 +13,9 @@ import { AlertService } from '../../service/alert.service';
 export class UsersComponent  implements OnInit {
 
   public users: User[] = [];
+  faUserPlus = faUserPlus;
+  faUserCheck = faUserCheck;
+  faUserXmark = faUserXmark;
   constructor(private userService: UserService, private loginService: LoginService, private alertService: AlertService){}
 
 

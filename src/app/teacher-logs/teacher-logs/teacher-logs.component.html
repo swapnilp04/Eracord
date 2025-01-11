@@ -23,9 +23,15 @@
     </div>
   </div>
   <div class="fullWidth">  
-    <button class="btn btn-primary marginRight15" (click)="filterLogs()">Filter</button>
-    <button class="btn btn-primary marginRight15" (click)=clear()>Clear</button>
-    <a href="/reports/logs" class="btn btn-primary">Report</a>
+    <button class="btn btn-primary marginRight15" (click)="filterLogs()" tooltip="Filter">
+      <fa-icon [icon]="faFilter"></fa-icon>
+    </button>
+    <button class="btn btn-primary marginRight15" (click)=clear() tooltip="Clear">
+      <fa-icon [icon]="faBroom"></fa-icon>
+    </button>
+    <a href="/reports/logs" class="btn btn-primary" tooltip="Report">
+      <fa-icon [icon]="faFileLines"></fa-icon>
+    </a>
   </div>
 	<div class="row">
     <div class="col-xs-12 col-12">
@@ -58,8 +64,12 @@
 	      <td>{{teacherLog.LogCategory.name}}</td>
 	      <td>{{teacherLog.comment}}</td>
         <td>
-          <a href="/logs/{{teacherLog.id}}/edit" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)">Edit</a> 
-          <button class="btn btn-link" (click)="deleteTeacherLog(teacherLog.id)" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)">Delete</button>
+          <a href="/logs/{{teacherLog.id}}/edit" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)" tooltip="Edit">
+            <fa-icon [icon]="faFilePen"></fa-icon>
+          </a> 
+          <button class="btn btn-link text-danger" (click)="deleteTeacherLog(teacherLog.id)" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)" tooltip="Delet">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+          </button>
         </td>
     	</tr>
     </tbody>

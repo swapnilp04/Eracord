@@ -7,6 +7,7 @@ import { Transaction } from './../../interface/transaction';
 import { Cheque } from './../../interface/cheque';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
+import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -17,6 +18,8 @@ export class AddEditUserComponent implements OnInit{
   public user = {} as User;
   public isNew = true;
   public isLoading = false;
+  faChevronLeft = faChevronLeft;
+  faCircleCheck = faCircleCheck;
 
   constructor(private userService: UserService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private alertService: AlertService){}

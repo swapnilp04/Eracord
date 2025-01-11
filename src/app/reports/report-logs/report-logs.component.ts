@@ -3,6 +3,7 @@ import { BatchStandardService } from './../../service/batch-standard.service';
 import { LoginService } from './../../service/login.service';
 import { BatchStandard } from './../../interface/batch-standard';
 import { AlertService } from '../../service/alert.service';
+import { faFileLines, faPrint } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-report-logs',
@@ -13,6 +14,8 @@ export class ReportLogsComponent implements OnInit {
   public batchStandards: BatchStandard[] = [];
   public isLoading = false;  
   public searchDate: any;
+  faFileLines = faFileLines;
+  faPrint = faPrint;
   
   constructor(private loginService: LoginService,
     private batchStandardService: BatchStandardService,

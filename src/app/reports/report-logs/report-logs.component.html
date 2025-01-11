@@ -4,7 +4,7 @@
 			class="btn btn-primary marginRight15"
 			[useExistingCss]="true"
 			printSectionId="print-section"
-			ngxPrint>print</button>
+			ngxPrint><fa-icon [icon]="faPrint"></fa-icon></button>
 	</p>
 </div>
 
@@ -19,7 +19,9 @@
     </div>
 
 </div>
-<button class="btn btn-primary marginTop15" (click)=loadDefaultBatchStandards()>Get Report</button>
+<button class="btn btn-primary marginTop15" (click)=loadDefaultBatchStandards() tooltip="Get Report">
+	<fa-icon [icon]="faFileLines"></fa-icon>
+</button>
 
 <div *ngIf=!isLoading id="print-section">
 

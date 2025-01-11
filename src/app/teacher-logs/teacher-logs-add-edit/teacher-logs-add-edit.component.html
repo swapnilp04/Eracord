@@ -49,10 +49,14 @@
    <div class="combinedClasses" *ngIf=isNew>
     <div *ngFor="let combinedClass of combinedClasses">
       <app-combined-class-add-edit [combinedClass]="combinedClass" [batchStandards]="batchStandards"></app-combined-class-add-edit>
-      <button class="btn btn-secondary" (click)="removeCombinedClass(combinedClass)">Remove</button>
+      <button class="btn btn-secondary bg-danger" (click)="removeCombinedClass(combinedClass)" tooltip="Remove">
+        <fa-icon [icon]="faTrashCan"></fa-icon>
+      </button>
     </div>
 
-    <button class="btn btn-primary marginTop15" (click)="addCombinedClass()">Add Combined Class</button>
+    <button class="btn btn-primary marginTop15" (click)="addCombinedClass()" tooltip="Add Combined Class">
+      <fa-icon [icon]="faPersonChalkboard"></fa-icon>
+    </button>
   </div>
 
   <!-- <div class="form-group mb-3">
@@ -63,9 +67,15 @@
   
 
   <div class="form-group mb-3 marginTop15">
-		<button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createTeacherLog(teacherLog)>Submit</button>
-		<button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateTeacherLog(teacherLog)>Submit</button>
-		<button type="submit" class="btn btn-primary marginLeft15" (click)=back()>Back</button>
+		<button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createTeacherLog(teacherLog) tooltip="Submit">
+      <fa-icon [icon]="faCircleCheck"></fa-icon>
+    </button>
+		<button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateTeacherLog(teacherLog) tooltip="Submit">
+      <fa-icon [icon]="faCircleCheck"></fa-icon>
+    </button>
+		<button type="submit" class="btn btn-primary marginLeft15" (click)=back() tooltip="Back">
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
 	</div>
 </form>
 

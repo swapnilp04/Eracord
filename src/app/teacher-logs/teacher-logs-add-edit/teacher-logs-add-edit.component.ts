@@ -10,6 +10,7 @@ import { LogCategory } from './../../interface/log-category';
 import { CombinedClass } from './../../interface/combined-class';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
+import {  faChevronLeft, faCircleCheck, faPersonChalkboard, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -29,6 +30,10 @@ export class TeacherLogsAddEditComponent implements OnInit {
   public formErr: any;
   public startTime: Date;//= new Date(2024, 11, 17, 9, 30)
   public endTime: Date;//= new Date(2024, 11, 17, 10, 30)
+  faChevronLeft = faChevronLeft;
+  faCircleCheck = faCircleCheck;
+  faPersonChalkboard = faPersonChalkboard;
+  faTrashCan = faTrashCan;
   
   constructor(private teacherLogService: TeacherLogService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private alertService: AlertService, 
