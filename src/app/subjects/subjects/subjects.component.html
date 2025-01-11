@@ -1,7 +1,9 @@
 <div class="row">
   <p class="clearfix">
       
-      <a href='standards/{{standardId}}/subjects/new' class="btn btn-primary"><span>New Subject</span></a>
+      <a href='standards/{{standardId}}/subjects/new' class="btn btn-primary" tooltip="New Subject">
+      	<fa-icon [icon]="faBook"></fa-icon>
+      </a>
     </p>
 	<table class="table table-striped table-bordered table-hover">
     <thead>
@@ -17,7 +19,9 @@
 	      <td>{{i+1}}</td> 
 	      <td>{{subject.name}}</td>
 	      <td>
-	        <a href='standards/{{standardId}}/subjects/{{subject.id}}/edit'>Edit</a>
+	        <a href='standards/{{standardId}}/subjects/{{subject.id}}/edit' tooltip="Edit">
+	        	<fa-icon [icon]="faFilePen"></fa-icon>
+	      	</a>
 	      </td>
     	</tr>
     </tbody>

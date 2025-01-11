@@ -3,6 +3,7 @@ import {StandardService} from './../../service/standard.service';
 import { LoginService } from './../../service/login.service';
 import {Standard} from './../../interface/standard';
 import { AlertService } from '../../service/alert.service';
+import { faFilePen, faFolderOpen, faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-standards',
@@ -13,6 +14,11 @@ import { AlertService } from '../../service/alert.service';
 export class StandardsComponent  implements OnInit {
 
   public standards: Standard[] = [];
+  faFilePen = faFilePen;
+  faFolderOpen = faFolderOpen;
+  faBookOpenReader = faBookOpenReader;
+  
+
   constructor(private standardService: StandardService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {

@@ -1,8 +1,12 @@
 <div class="">
   <p class="clearfix">
       
-      <a href="/exams/new" class="btn btn-primary marginRight15" tooltip="New Exam"><fa-icon [icon]="faSquarePlus"></fa-icon></a>
-      <a href="/exams/group_exams" class="btn btn-primary" tooltip="Group Exam Report"><fa-icon [icon]="faFileLines"></fa-icon></a>
+      <a href="/exams/new" class="btn btn-primary marginRight15" tooltip="New Exam">
+      	<fa-icon [icon]="faSquarePlus"></fa-icon>
+      </a>
+      <a href="/exams/group_exams" class="btn btn-primary" tooltip="Group Exam Report">
+      	<fa-icon [icon]="faFileLines"></fa-icon>
+      </a>
     </p>
    
     <pagination class="pull-right" [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8">        

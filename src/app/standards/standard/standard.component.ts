@@ -5,6 +5,7 @@ import {Standard} from './../../interface/standard';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-standard',
@@ -15,6 +16,7 @@ export class StandardComponent {
   public standard = {} as Standard;
   public id: any;
   public isLoading = true;
+  faChevronLeft = faChevronLeft;
   
   constructor(private standardService: StandardService, private route: ActivatedRoute, private location: Location, private router: Router,
    private loginService: LoginService, private alertService: AlertService){}
