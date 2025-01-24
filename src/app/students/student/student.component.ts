@@ -8,7 +8,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { TabDirective } from 'ngx-bootstrap/tabs';
 import { AlertService } from '../../service/alert.service';
-import { faBed, faUserPen, faFolderOpen, faMoneyBill, faChevronLeft, faComment , faPersonWalkingArrowRight} from '@fortawesome/free-solid-svg-icons';
+import { faBed, faUserPen, faFolderOpen, faMoneyBill, faChevronLeft, faComment , faPersonWalkingArrowRight, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -30,6 +30,7 @@ export class StudentComponent  implements OnInit {
   faChevronLeft = faChevronLeft;
   faComment = faComment;
   faPersonWalkingArrowRight = faPersonWalkingArrowRight;
+  faEnvelopeOpenText = faEnvelopeOpenText;
 
   value?: string;
   public hasHostel: boolean = false;

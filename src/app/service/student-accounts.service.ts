@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 export class StudentAccountsService {
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  getStudentAccounts(studentId: number): Observable<StudentAccount[]> {
+  getStudentAccounts(studentId: number, page: number): Observable<StudentAccount[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<StudentAccount[]>(`${this.loginService.URL}/students/${studentId}/student_accounts`, {headers: myHeaders});
+    return this.http.get<StudentAccount[]>(`${this.loginService.URL}/students/${studentId}/student_accounts?page=${page}`, {headers: myHeaders});
   }
 
   createDeposit(studentId: number, studentAccount: StudentAccount): Observable<StudentAccount> {

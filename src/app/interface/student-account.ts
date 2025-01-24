@@ -1,4 +1,5 @@
 import { Student } from './student';
+import { User } from './user';
 
 export interface StudentAccount {
 	id?: number;
@@ -8,4 +9,5 @@ export interface StudentAccount {
 	balance: number;
 	CreatedAt: Date;
 	Student: Student;
+	User: User;
 }

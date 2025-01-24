@@ -7,6 +7,7 @@
     <th class="col-md-1"> Sr No</th>
     <th>batch</th>
     <th>Standard</th>
+    <th>Remove</th>
   </tr>
   </thead>
   <tbody>
@@ -14,6 +15,11 @@
     <td>{{i+1}}</td> 
     <td>{{batchStandardStudent.Batch.name}}</td>
     <td>{{batchStandardStudent.Standard.name}}</td>
+    <td>
+      <button class="btn btn-link" (click)="removeFromClass(batchStandardStudent)">
+        <fa-icon [icon]="faTrashArrowUp"></fa-icon>
+      </button>
+    </td>
   	</tr>
   </tbody>
 </table>

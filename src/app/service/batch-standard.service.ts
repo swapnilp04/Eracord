@@ -60,5 +60,10 @@ URL = "http://localhost:8080"
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Subject[]>(`${this.loginService.URL}/batch-standards/${batchStandardId}/subjects`, {headers: myHeaders});
   }
+
+  deleteBatchStandardStudent(batchStandardId: number, batchStandardStudentID: number): Observable<BatchStandardStudent>{
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.delete<BatchStandardStudent>(`${this.loginService.URL}/batch-standards/${batchStandardId}/batch-standard-students/${batchStandardStudentID}`, {headers: myHeaders});
+  }
   
 }

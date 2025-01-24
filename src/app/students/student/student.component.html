@@ -24,6 +24,9 @@
 		<a class="btn btn-info marginRight15" href='/students/{{student.id}}/comments/new' tooltip="New Comment">
 			<fa-icon [icon]="faComment"></fa-icon>
 		</a>
+		<a class="btn btn-info marginRight15" href='/students/{{student.id}}/admission-form' tooltip="Get Admission Form">
+			<fa-icon [icon]="faEnvelopeOpenText"></fa-icon>
+		</a>
 		<button (click)=leftAcademy(student.id) class="btn btn-info text-white marginRight15" *ngIf="!isLeft()" tooltip="Exit From Academy">
 			<fa-icon [icon]="faPersonWalkingArrowRight" class="text-danger"></fa-icon>
 		</button>
