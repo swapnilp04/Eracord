@@ -117,9 +117,8 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
       this.loginService.toLogin();
     } else if(error.status == 403) {
       this.alertService.error("Unauthorized");
-    } else {
-      
-      
+    } else if(error.status == 500){
+      this.alertService.error(error.error.message);
     }
     this.isLoading = false;
   }
