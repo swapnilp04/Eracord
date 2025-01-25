@@ -5,6 +5,7 @@ export interface StudentAccount {
 	id?: number;
 	student_id: number;
 	transaction_type: string;
+	reason: string;
 	amount: number;
 	balance: number;
 	CreatedAt: Date;
