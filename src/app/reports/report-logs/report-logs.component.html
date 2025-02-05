@@ -19,15 +19,19 @@
     </div>
 
 </div>
-<button class="btn btn-primary marginTop15" (click)=loadDefaultBatchStandards() tooltip="Get Report">
+<button class="btn btn-primary marginTop15" (click)="loadDefaultBatchStandards('daily')" tooltip="Get Report">
 	<fa-icon [icon]="faFileLines"></fa-icon>
+</button>
+<button class="btn btn-primary marginTop15 marginLeft15" (click)="loadDefaultBatchStandards('monthly')" tooltip="Get Monthly Report">
+	<fa-icon [icon]="faCalendarDays"></fa-icon>
 </button>
 
 <div *ngIf=!isLoading id="print-section">
 
 	<div style="page-break-after: always" *ngFor="let batchStandard of batchStandards" class="marginTop15">
-		<h3>{{searchDate | date:"dd MMM yyyy"}}</h3>
+		<h3 *ngIf="reportType == 'daily'"> {{searchDate | date:"dd MMM yyyy"}}</h3>
+		<h3 *ngIf="reportType != 'daily'"> {{searchDate | date:"MMM yyyy"}}</h3>
 		<h5>{{batchStandard.Standard.name}}</h5>
-		<app-report-batch-standard-log [batchStandardId]=batchStandard.id [date]=searchDate> </app-report-batch-standard-log>
+		<app-report-batch-standard-log [batchStandardId]=batchStandard.id [date]=searchDate [reportType]=reportType> </app-report-batch-standard-log>
 	</div>
 </div>

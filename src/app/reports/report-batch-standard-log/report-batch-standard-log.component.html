@@ -3,6 +3,7 @@
       <tr>
 	      <th class="col-md-1"> Sr No
 	      </th>
+	      <th>Date</th>
 	      <th>Time</th>
 	      <th>Teacher Name</th>
 	      <th>Subject</th>
@@ -13,6 +14,7 @@
     <tbody>
     	<tr *ngFor="let teacherLog of teacherLogs; index as i">
 	      <td>{{i+1}}</td> 
+	      <td>{{teacherLog.log_date | date:'EEEE, dd MMMM'}}</td>
 	      <td>{{teacherLog.start_hour}}.{{teacherLog.start_minuit}} <strong>TO</strong> {{teacherLog.end_hour}}.{{teacherLog.end_minuit}}</td>
 	      <td>{{teacherLog.Teacher.name}}</td>
 	      <td>{{teacherLog.Subject.name}}</td>

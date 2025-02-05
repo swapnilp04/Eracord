@@ -3,7 +3,7 @@ import { BatchStandardService } from './../../service/batch-standard.service';
 import { LoginService } from './../../service/login.service';
 import { BatchStandard } from './../../interface/batch-standard';
 import { AlertService } from '../../service/alert.service';
-import { faFileLines, faPrint } from '@fortawesome/free-solid-svg-icons';
+import { faFileLines, faPrint, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-report-logs',
@@ -14,8 +14,10 @@ export class ReportLogsComponent implements OnInit {
   public batchStandards: BatchStandard[] = [];
   public isLoading = false;  
   public searchDate: any;
+  public reportType="daily"
   faFileLines = faFileLines;
   faPrint = faPrint;
+  faCalendarDays = faCalendarDays;
   
   constructor(private loginService: LoginService,
     private batchStandardService: BatchStandardService,
@@ -36,7 +38,8 @@ export class ReportLogsComponent implements OnInit {
     }
   }
 
-  loadDefaultBatchStandards(): void {
+  loadDefaultBatchStandards(type: string): void {
+    this.reportType = type;
     if(this.searchDate == undefined) {
       this.alertService.error("Please select Date")
       return;

@@ -14,6 +14,7 @@ export class ReportBatchStandardLogComponent implements OnInit {
 
   @Input() batchStandardId: any;
   @Input() date: Date;
+  @Input() reportType: string;
 
   public teacherLogs: TeacherLog[] = [];
   public isLoading = false;  
@@ -31,7 +32,7 @@ export class ReportBatchStandardLogComponent implements OnInit {
   loadTeacherLogs(): void {
     this.isLoading = true;
     let dateStr = this.getDate();
-    this.teacherLogService.getBatchStandardReportLogs(this.batchStandardId, dateStr).subscribe (
+    this.teacherLogService.getBatchStandardReportLogs(this.batchStandardId, this.reportType, dateStr).subscribe (
       (response: any) => this.assignTeacherLogs(response),
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting TeacherLogs......')
