@@ -31,6 +31,11 @@
 	<div style="page-break-after: always" *ngFor="let batchStandard of batchStandards" class="marginTop15">
 		<h3 *ngIf="reportType == 'daily'"> {{searchDate | date:"dd MMM yyyy"}}</h3>
 		<h3 *ngIf="reportType != 'daily'"> {{searchDate | date:"MMM yyyy"}}</h3>
+		<nav *ngIf="reportType != 'daily'">
+		<hr /> <br />
+		<hr /> <br />
+		<hr /> <br />
+		</nav>
 		<h5>{{batchStandard.Standard.name}}</h5>
 		<app-report-batch-standard-log [batchStandardId]=batchStandard.id [date]=searchDate [reportType]=reportType> </app-report-batch-standard-log>
 	</div>
