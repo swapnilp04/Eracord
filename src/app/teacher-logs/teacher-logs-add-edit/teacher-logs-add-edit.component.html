@@ -12,7 +12,7 @@
     <label for="exampleInputPassword1" class="form-label">Standard</label>
     <select class="form-select" [disabled]="isLoading" [ngClass]="{'is-invalid': hasError('BatchStandardID')}" [ngModel]="teacherLog.batch_standard_id" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard" [ngModelOptions]="{standalone: true}">
         <option value="0">----</option>
-        <option *ngFor="let batchStandard of batchStandards" [ngValue]="batchStandard.id">{{batchStandard.Standard.name}}</option>
+        <option *ngFor="let batchStandard of batchStandards" [ngValue]="batchStandard.id">{{batchStandard.Standard.name}} - {{batchStandard.Batch.name}}</option>
     </select>
     <div class="invalid-feedback" *ngIf="hasError('BatchStandardID')">
       <p *ngFor="let err of getErrorValue('BatchStandardID')">{{err}}</p>
