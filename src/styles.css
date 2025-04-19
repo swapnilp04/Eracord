@@ -672,6 +672,17 @@ position: absolute;
     background-color: #f56b79 !important;
 }
 
+.pagination {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+pagination {
+    margin: auto;
+}
+
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';

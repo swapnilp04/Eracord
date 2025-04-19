@@ -10,12 +10,7 @@
   </div>
 </div>
 <div class="studentTable">
-  <div class="row">
-    <div class="col-xs-12 col-12">
-      <pagination class="pull-right" [totalItems]="totalItems" [ngModel]="currentPage" 
-        (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
-    </div>
-  </div>
+  
   <div>
     <div *ngFor="let student of students; index as i" [ngClass]="{'bg-warning': student.has_left}" class="Students student">
       <p class="name">{{((page - 1) *10) + i + 1 }} - <strong>{{name(student)}}</strong></p>
@@ -39,5 +34,9 @@
         </a>
       </div>
     </div>
+  </div>
+  <div class="pagination">
+    <pagination [totalItems]="totalItems" [ngModel]="currentPage" 
+      (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
   </div>
 </div>
