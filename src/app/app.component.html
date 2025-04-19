@@ -70,7 +70,7 @@
   </div>
 </header>
 
-<div class="container" role="main">
+<div class="container" [ngClass]="responsiveClass" role="main">
   <app-alert></app-alert>
   <router-outlet class="container bs-docs-container"></router-outlet>
 </div>

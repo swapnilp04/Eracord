@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {LoginService} from './service/login.service';
 import { Observable } from 'rxjs';
 import { setTheme } from 'ngx-bootstrap/utils';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { BreakpointObserver,Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,13 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
   styleUrls: ['./app.component.css'],
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Eracord';
   role = "";
+  responsiveClass = "";
   
-  constructor(private cookies: CookieService, private loginService: LoginService, private router: Router) {
+  constructor(private cookies: CookieService, private loginService: LoginService, private router: Router, 
+    public responsive: BreakpointObserver) {
     this.loginService.isLogin = this.cookies.get("isLogin") == "true";
     this.loginService.username = this.cookies.get("username");
     this.loginService.role = this.cookies.get("role");
@@ -51,6 +54,29 @@ export class AppComponent {
     //   }
     // });
     setTheme('bs5');
+  }
+
+
+  ngOnInit() {
+    this.responsive.observe([ Breakpoints.XSmall, 
+      Breakpoints.Small, 
+      Breakpoints.Medium, 
+      Breakpoints.Large, 
+      Breakpoints.XLarge])
+      .subscribe(result => {
+        if(result.breakpoints['(max-width: 599.98px)']) {
+          this.responsiveClass = "XSmall";
+        } else if(result.breakpoints['(min-width: 600px) and (max-width: 959.98px)']) {
+          this.responsiveClass = "Small";
+        } else if(result.breakpoints['(min-width: 960px) and (max-width: 1279.98px)']) {
+          this.responsiveClass = "Medium";
+        } else if(result.breakpoints['(min-width: 1280px) and (max-width: 1919.98px)']) {
+          this.responsiveClass = "Large";
+        } else {
+          this.responsiveClass = "Default";
+        }
+        
+    });  
   }
 
   public activeLink(str: string) {
@@ -93,6 +119,4 @@ export class AppComponent {
     this.loginService.toLogin()
     this.router.navigate(['/']);
   }
-
-
 }
