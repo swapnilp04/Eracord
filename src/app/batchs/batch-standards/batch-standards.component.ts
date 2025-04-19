@@ -50,4 +50,24 @@ export class BatchStandardsComponent implements OnInit{
   selectBatchStandard(batchStandardId: any): void {
     this.selectedBatchStandard = batchStandardId;
   }
+
+  deactivateBatchStandard(batchStandard: any):void {
+    if(confirm("Are you sure to Deactivate Batch Standard?")) {
+      this.batchStandardService.deactivateBatchStandard(this.batchId, batchStandard).subscribe (
+        (response: any) => batchStandard.is_active = false,
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done ......')
+      );  
+    }
+  }
+
+  activateBatchStandard(batchStandard: any):void {
+    if(confirm("Are you sure to Activate Batch Standard?")) {
+      this.batchStandardService.activateBatchStandard(this.batchId, batchStandard).subscribe (
+        (response: any) => batchStandard.is_active = true,
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done ......')
+      );
+    }
+  }
 }

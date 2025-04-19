@@ -51,6 +51,16 @@ URL = "http://localhost:8080"
     return this.http.put<BatchStandard>(`${this.loginService.URL}/batchs/${batchId}/batch-standards/${batchStandard.id}`, batchStandard, {headers: myHeaders});
   }
 
+  activateBatchStandard(batchId: any, batchStandard: BatchStandard): Observable<BatchStandard> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.put<BatchStandard>(`${this.loginService.URL}/batchs/${batchId}/batch-standards/${batchStandard.id}/activate`, {}, {headers: myHeaders});
+  }
+
+  deactivateBatchStandard(batchId: any, batchStandard: BatchStandard): Observable<BatchStandard> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.put<BatchStandard>(`${this.loginService.URL}/batchs/${batchId}/batch-standards/${batchStandard.id}/deactivate`, {}, {headers: myHeaders});
+  }
+
   updateBatch(batchID: number, batchStandard: BatchStandard): Observable<BatchStandard> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.put<BatchStandard>(`${this.loginService.URL}/batchs/${batchID}/batch-standards/${batchStandard.id}`, batchStandard, {headers: myHeaders});

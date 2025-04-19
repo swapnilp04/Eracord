@@ -1,0 +1,11 @@
+.active {
+	background: #a0f3b6;
+}
+
+.deactive {
+	background: #ff9999;
+}
+
+.borderBox > div {
+	padding: 20px;
+}
