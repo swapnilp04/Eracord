@@ -27,7 +27,7 @@
       <span *ngIf="student.has_left">Left Academy <br /></span> 
       <span *ngIf="!student.has_left">Last Pay on {{student.last_payment_on | date:'dd MMM yyyy'}} &nbsp;</span>
       </p>
-      <div>
+      <div class="Students actions">
         <a href='/students/{{student.id}}' class="marginRight15" tooltip="Show">
           <fa-icon [icon]="faFolderOpen"></fa-icon>
         </a>

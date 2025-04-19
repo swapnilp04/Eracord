@@ -659,6 +659,11 @@ position: absolute;
     font-size: 17px;
 }
 
+.Students.actions {
+    position: absolute;
+    bottom: 15px;
+}
+
 .bg-warning {
     background-color: #f5de98 !important;
 }
