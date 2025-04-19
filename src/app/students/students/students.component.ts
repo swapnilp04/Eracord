@@ -39,8 +39,6 @@ export class StudentsComponent  implements OnInit {
         this.loadStudents(this.page);
       }
     );
-
-    
   }
 
   pageChanged(event: PageChangedEvent): void {

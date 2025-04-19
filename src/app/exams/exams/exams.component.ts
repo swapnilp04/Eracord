@@ -5,6 +5,7 @@ import { Exam } from './../../interface/exam';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AlertService } from '../../service/alert.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { faFilePen, faFolderOpen, faSquarePlus, faFileLines } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -22,15 +23,23 @@ export class ExamsComponent implements OnInit {
   faFolderOpen = faFolderOpen;
   faSquarePlus = faSquarePlus;
   faFileLines = faFileLines;
-  constructor(private examService: ExamService, private loginService: LoginService, private alertService: AlertService){}
+  constructor(private examService: ExamService, private loginService: LoginService, private alertService: AlertService,
+    private router: Router, private route: ActivatedRoute){}
 
 
 
   ngOnInit(): void {
-    this.loadExams(this.page);
+    this.route.queryParams
+      //.filter(params => params.order)
+      .subscribe(params => {
+        this.page = params['page'] || 1;
+        this.loadExams(this.page);
+      }
+    );
   }
 
   pageChanged(event: PageChangedEvent): void {
+    this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
     this.page = event.page;
     while(this.exams.length > 0) {
       this.exams.pop();
@@ -59,7 +68,7 @@ export class ExamsComponent implements OnInit {
     this.examService.getExams(pageNumber).subscribe (
       (response: any) => this.assignExam(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting exams......')
+      () => this.currentPage = parseInt(pageNumber.toString())
     );
   }
 

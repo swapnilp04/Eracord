@@ -11,6 +11,7 @@ import { Teacher } from './../../interface/teacher';
 import { AlertService } from '../../service/alert.service';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { faFilePen, faTrashCan, faBroom, faFilter, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-logs',
@@ -43,16 +44,23 @@ export class TeacherLogsComponent implements OnInit {
 
   constructor(private teacherLogService: TeacherLogService, private loginService: LoginService,
     private batchStandardService: BatchStandardService, private teacherService: TeacherService,
-    private alertService: AlertService){}
+    private alertService: AlertService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.loadTeacherLogs(1, this.searchStr);
+    this.route.queryParams
+      //.filter(params => params.order)
+      .subscribe(params => {
+        this.page = params['page'] || 1;
+        this.loadTeacherLogs(this.page, this.searchStr);
+      }
+    );    
     this.loadDefaultBatchStandards();
     this.loadTeachers();
     this.userID = this.loginService.getUserID();
   }
 
   pageChanged(event: PageChangedEvent): void {
+    this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
     this.page = event.page;
     while(this.teacherLogs.length > 0) {
       this.teacherLogs.pop();
@@ -87,7 +95,7 @@ export class TeacherLogsComponent implements OnInit {
     this.teacherLogService.getTeacherLogs(pageNumber, searchStr).subscribe (
       (response: any) => this.assignTeacherLogs(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting TeacherLogs......')
+      () => this.currentPage = parseInt(pageNumber.toString())
     );
   }
 

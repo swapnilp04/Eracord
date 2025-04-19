@@ -5,6 +5,7 @@ import { Transaction } from './../../interface/transaction';
 import { Student } from './../../interface/student';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AlertService } from '../../service/alert.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { faFileExport, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -21,10 +22,17 @@ export class AllTransactionsComponent  implements OnInit {
   search = "";
   faFileExport = faFileExport;
 
-  constructor(private transactionService: TransactionService, private loginService: LoginService, private alertService: AlertService){}
+  constructor(private transactionService: TransactionService, private loginService: LoginService, private alertService: AlertService,
+    private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.loadTransactions(1);
+    this.route.queryParams
+      //.filter(params => params.order)
+      .subscribe(params => {
+        this.page = params['page'] || 1;
+        this.loadTransactions(this.page);
+      }
+    );
   }
 
   searchTable(): void{
@@ -42,6 +50,7 @@ export class AllTransactionsComponent  implements OnInit {
   }
 
   pageChanged(event: PageChangedEvent): void {
+    this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
     this.page = event.page;
     while(this.transactions.length > 0) {
       this.transactions.pop();
@@ -65,7 +74,7 @@ export class AllTransactionsComponent  implements OnInit {
     this.transactionService.getTransactions(pageNumber, this.search).subscribe (
       (response: any) => this.assignTransactions(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standards......')
+      () => this.currentPage = parseInt(pageNumber.toString())
     );
   }
 

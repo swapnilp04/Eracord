@@ -17,16 +17,16 @@
           <a class="nav-link" [ngClass]="{'active': activeLink('/students')}" href="/students?page=1">Students</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': activeLink('/comments')}" href="/comments">Comments</a>
+          <a class="nav-link" [ngClass]="{'active': activeLink('/comments')}" href="/comments?page=1">Comments</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': activeLink('/exams')}" href="/exams">Exams</a>
+          <a class="nav-link" [ngClass]="{'active': activeLink('/exams')}" href="/exams?page=1">Exams</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [ngClass]="{'active': activeLink('/teachers')}" href="/teachers">Teachers</a>
         </li>
         <li class="nav-item" *ngIf=isAdminAccountant()>
-          <a class="nav-link" [ngClass]="{'active': activeLink('/transactions')}" href="/transactions">Transactions</a>
+          <a class="nav-link" [ngClass]="{'active': activeLink('/transactions')}" href="/transactions?page=1">Transactions</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [ngClass]="{'active': activeLink('/hostels')}" href="/hostels">Hostel</a>
@@ -41,7 +41,7 @@
           <a class="nav-link" [ngClass]="{'active': activeLink('/users')}" href="/users">Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': activeLink('/logs')}" href="/logs">Logs</a>
+          <a class="nav-link" [ngClass]="{'active': activeLink('/logs')}" href="/logs?page=1">Logs</a>
         </li>
       </ul>
       <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">

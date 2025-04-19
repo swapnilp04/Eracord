@@ -5,6 +5,7 @@ import { Comment } from './../../interface/comment';
 import { Student } from './../../interface/student';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { AlertService } from '../../service/alert.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-comments',
@@ -19,13 +20,19 @@ export class CommentsComponent implements OnInit {
   totalItems: number = 10;
   search = "";
 
-  constructor(private commentService: CommentService, private loginService: LoginService, private alertService: AlertService){}
+  constructor(private commentService: CommentService, private loginService: LoginService, private alertService: AlertService,
+    private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.loadComments(this.page);
+    this.route.queryParams
+      //.filter(params => params.order)
+      .subscribe(params => {
+        this.page = params['page'] || 1;
+        this.loadComments(this.page);
+      }
+    );
   }
 
-  
   errorHandle(error: any): void {  
     if(error.status == 401) {
       this.loginService.toLogin();
@@ -38,6 +45,7 @@ export class CommentsComponent implements OnInit {
   }
 
   pageChanged(event: PageChangedEvent): void {
+    this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
     this.page = event.page;
     while(this.comments.length > 0) {
       this.comments.pop();
@@ -59,7 +67,7 @@ export class CommentsComponent implements OnInit {
     this.commentService.getComments(pageNumber, this.search).subscribe (
       (response: any) => this.assignComments(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standards......')
+      () => this.currentPage = parseInt(pageNumber.toString())
     );
   }
 
