@@ -22,10 +22,11 @@
       <p><strong>({{student.Standard.name}}) &nbsp;</strong>
         <fa-icon [icon]="faBed" [ngClass]="student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
       </p>
-      <p>{{student.town}}<p>
-      <p [ngClass]="{'bg-warning': student.balance < 0}">Balance = {{student.balance}}</p>
-      <p *ngIf="student.has_left">Left Academy</p>
-      <p *ngIf="!student.has_left">Last Pay on {{student.last_payment_on | date:'dd MMM yyyy'}} &nbsp;</p>
+      <p>{{student.town}} <br />
+      <span [ngClass]="{'bg-warning': student.balance < 0}">Balance = {{student.balance  | number: '1.'}}</span> <br />
+      <span *ngIf="student.has_left">Left Academy <br /></span> 
+      <span *ngIf="!student.has_left">Last Pay on {{student.last_payment_on | date:'dd MMM yyyy'}} &nbsp;</span>
+      </p>
       <div>
         <a href='/students/{{student.id}}' class="marginRight15" tooltip="Show">
           <fa-icon [icon]="faFolderOpen"></fa-icon>

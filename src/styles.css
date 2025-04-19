@@ -638,6 +638,7 @@ position: absolute;
     float: left;
     border: 1px solid;
     padding: 10px;
+    height: 260px;
 
     transform:
         perspective(750px)
@@ -655,7 +656,6 @@ position: absolute;
 }
 
 .Students.student > .name {
-    height: 20px;
     font-size: 17px;
 }
 
