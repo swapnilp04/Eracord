@@ -3,6 +3,7 @@ import {StudentService} from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
 import {Student} from './../../interface/student';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBed, faUserPen, faFolderOpen, faMoneyBill, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +17,7 @@ import { faBed, faUserPen, faFolderOpen, faMoneyBill, faSquarePlus } from '@fort
 
 export class StudentsComponent  implements OnInit {
   currentPage = 1;
-  page= 1;
+  page = 1;
   totalItems: number = 10;
   search = "";
   faBed = faBed;
@@ -26,18 +27,28 @@ export class StudentsComponent  implements OnInit {
   faSquarePlus = faSquarePlus;
 
   public students: Student[] = [];
-  constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService){}
+  constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService,
+    private router: Router, private route: ActivatedRoute){}
 
 
   ngOnInit(): void {
-    this.loadStudents(1);
+    this.route.queryParams
+      //.filter(params => params.order)
+      .subscribe(params => {
+        this.page = params['page'] || 1;
+        this.loadStudents(this.page);
+      }
+    );
+
+    
   }
 
   pageChanged(event: PageChangedEvent): void {
-    this.page = event.page;
+    this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
     while(this.students.length > 0) {
       this.students.pop();
-    } 
+    }
+    this.page = event.page;
     this.loadStudents(this.page);
   }
 
@@ -52,27 +63,18 @@ export class StudentsComponent  implements OnInit {
   changed(e: any) {
     this.page = 1;
     this.currentPage = 1;
-    this.loadStudents(this.page);  
+    this.loadStudents(this.page);
   }
 
   loadStudents(pageNumber: number): void {
     this.studentService.getStudents(pageNumber, this.search).subscribe (
       (response: any) => this.assignStudents(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Students......')
+      () => this.currentPage = parseInt(pageNumber.toString())
     );
   }
 
-  loadStudent(studentID: number): void {
-    this.studentService.getStudent(studentID).subscribe (
-      (response: any) => console.log(response),
-      (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
-    );
-  }
-
-  errorHandle(error: any): void {
-    
+  errorHandle(error: any): void {    
     if(error.status == 401) {
       this.loginService.toLogin();
     } else if (error.status == 403) {

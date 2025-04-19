@@ -8,5 +8,6 @@ export interface BatchStandard {
 	Batch: Batch;
 	Standard: Standard;
 	fee: number;
+	is_active: boolean;
 	students_count: number;
 }

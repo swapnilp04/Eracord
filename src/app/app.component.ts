@@ -54,7 +54,7 @@ export class AppComponent {
   }
 
   public activeLink(str: string) {
-    return this.router.url == str;
+    return this.router.url.split('?')[0]  == str;
   }
 
   public loginLink(): string {
