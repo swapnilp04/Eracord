@@ -662,6 +662,7 @@ position: absolute;
 .Students.actions {
     position: absolute;
     bottom: 15px;
+    font-size: 20px;
 }
 
 .bg-warning {
