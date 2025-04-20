@@ -633,13 +633,11 @@ position: absolute;
 position: absolute;
 }
 
-.Students.student {
-    width: 25%;
+
+.indexBox {
     float: left;
     border: 1px solid;
     padding: 10px;
-    height: 260px;
-
     transform:
         perspective(750px)
         translate3d(0px, 0px, -250px)
@@ -653,6 +651,11 @@ position: absolute;
     &:hover {
         transform: translate3d(0px, 0px, -250px);
     }
+}
+
+.Students.student {
+    width: 25%;
+    height: 260px;
 }
 
 .Students.student > .name {
@@ -686,24 +689,7 @@ pagination {
 
 .Exams-exam {
     width: 25%;
-    float: left;
-    border: 1px solid;
-    padding: 10px;
     height: 260px;
-
-    transform:
-        perspective(750px)
-        translate3d(0px, 0px, -250px)
-        
-        scale(1.2, 1.2);
-    border-radius: 20px;
-    border: 5px solid #e6e6e6;
-    box-shadow: 0 70px 40px -20px rgba(0, 0, 0, 0.2);
-    transition: 0.4s ease-in-out transform;
-
-    &:hover {
-        transform: translate3d(0px, 0px, -250px);
-    }
 }
 
 .Exams-exam > .name {
@@ -718,24 +704,7 @@ pagination {
 
 .Teachers-teacher {
     width: 25%;
-    float: left;
-    border: 1px solid;
-    padding: 10px;
     height: 200px;
-
-    transform:
-        perspective(750px)
-        translate3d(0px, 0px, -250px)
-        
-        scale(1.2, 1.2);
-    border-radius: 20px;
-    border: 5px solid #e6e6e6;
-    box-shadow: 0 70px 40px -20px rgba(0, 0, 0, 0.2);
-    transition: 0.4s ease-in-out transform;
-
-    &:hover {
-        transform: translate3d(0px, 0px, -250px);
-    }
 }
 
 .Teachers-teacher > .name {
@@ -750,24 +719,7 @@ pagination {
 
 .Hostels-hostel {
     width: 25%;
-    float: left;
-    border: 1px solid;
-    padding: 10px;
     height: 200px;
-
-    transform:
-        perspective(750px)
-        translate3d(0px, 0px, -250px)
-        
-        scale(1.2, 1.2);
-    border-radius: 20px;
-    border: 5px solid #e6e6e6;
-    box-shadow: 0 70px 40px -20px rgba(0, 0, 0, 0.2);
-    transition: 0.4s ease-in-out transform;
-
-    &:hover {
-        transform: translate3d(0px, 0px, -250px);
-    }
 }
 
 .Hostels-hostel > .name {

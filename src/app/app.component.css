@@ -38,10 +38,18 @@
     .Students.student {
         width: 25%;
     }
+
+    .Exams-exam {
+        width: 25%;
+    }
 }
 
 .Medium {
     .Students.student {
+        width: 33%;
+    }
+
+    .Exams-exam {
         width: 33%;
     }
 }
@@ -50,10 +58,18 @@
     .Students.student {
         width: 50%;
     }
+
+    .Exams-exam {
+        width: 50%;
+    }
 }
 
 .XSmall {
     .Students.student {
+        width: 100%;
+    }
+
+    .Exams-exam {
         width: 100%;
     }
 }

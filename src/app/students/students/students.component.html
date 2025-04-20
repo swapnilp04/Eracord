@@ -12,7 +12,7 @@
 <div class="studentTable">
   
   <div>
-    <div *ngFor="let student of students; index as i" [ngClass]="{'bg-warning': student.has_left}" class="Students student">
+    <div *ngFor="let student of students; index as i" [ngClass]="{'bg-warning': student.has_left}" class="Students student indexBox">
       <p class="name">{{((page - 1) *10) + i + 1 }} - <strong>{{name(student)}}</strong></p>
       <p><strong>({{student.Standard.name}}) &nbsp;</strong>
         <fa-icon [icon]="faBed" [ngClass]="student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
