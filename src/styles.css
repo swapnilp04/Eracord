@@ -656,6 +656,7 @@ position: absolute;
 
 .indexBox > .name {
     font-size: 17px;
+    font-family: "Gill Sans", sans-serif;
 }
 
 .indexBox > .actions {
@@ -721,6 +722,14 @@ pagination {
 }
 
 .Logs-log {
+    height: 300px;
+}
+
+.Dashboard-birthday {
+    height: 150px;
+}
+
+.Dashboard-comment {
     height: 300px;
 }
 
