@@ -1,25 +1,14 @@
 <a class="btn btn-secondary marginBottom15" href="students/{{student.id}}/batch-standards/new" tooltip="Assign Class">
   <fa-icon [icon]="faUsersViewfinder"></fa-icon>
 </a>
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-    <tr>
-    <th class="col-md-1"> Sr No</th>
-    <th>batch</th>
-    <th>Standard</th>
-    <th>Remove</th>
-  </tr>
-  </thead>
-  <tbody>
-  	<tr *ngFor="let batchStandardStudent of batchStandardStudents; index as i">
-    <td>{{i+1}}</td> 
-    <td>{{batchStandardStudent.Batch.name}}</td>
-    <td>{{batchStandardStudent.Standard.name}}</td>
-    <td>
+<div>
+	<div *ngFor="let batchStandardStudent of batchStandardStudents; index as i" class="Student-batchStandard indexBox">
+    <p class="name">{{i+1}}. <strong>{{batchStandardStudent.Batch.name}}</strong></p>
+    <p>{{batchStandardStudent.Standard.name}}</p>
+    <div class="actions">
       <button class="btn btn-link" (click)="removeFromClass(batchStandardStudent)">
-        <fa-icon [icon]="faTrashArrowUp"></fa-icon>
+        <fa-icon [icon]="faTrashArrowUp" class="font20"></fa-icon>
       </button>
-    </td>
-  	</tr>
-  </tbody>
-</table>
+    </div>
+	</div>
+</div>

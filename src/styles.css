@@ -633,6 +633,10 @@ position: absolute;
 position: absolute;
 }
 
+.font20 {
+    font-size: 20px;
+}
+
 
 .indexBox {
     width: 25%;
@@ -731,6 +735,22 @@ pagination {
 
 .Dashboard-comment {
     height: 300px;
+}
+
+.Student-transactions {
+    height: 260px;
+}
+
+.Students-account {
+    height: 260px;
+}
+
+.Student-comments {
+    height: 260px;
+}
+
+.Student-batchStandard {
+    height: 160px;
 }
 
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
