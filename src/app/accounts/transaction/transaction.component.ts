@@ -56,7 +56,7 @@ export class TransactionComponent {
   }
 
   back(): void {
-    this.router.navigate(['/transactions']);
+    this.location.back();
   }
 
   numberComma(amount: number): string {

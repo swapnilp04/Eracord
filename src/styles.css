@@ -716,6 +716,14 @@ pagination {
     height: 300px;
 }
 
+.Transactions-transaction {
+    height: 300px;
+}
+
+.Logs-log {
+    height: 300px;
+}
+
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';

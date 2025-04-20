@@ -10,35 +10,24 @@
   <div class="row">
     <div class="col-xs-12 col-12">
       <a class="btn btn-primary text-white" href="/transactions/get_reports" tooltip="Get Report"><fa-icon [icon]="faFileExport"></fa-icon></a>
-      <pagination class="pullRight" [totalItems]="totalItems" [ngModel]="currentPage" (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
+      
     </div>
   </div>
-	<table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-      <th class="col-md-1"> Receipt ID
-      </th>
-      <th>Date</th>
-      <th>Student</th>
-      <th>Reason</th>
-      <th>Mode</th>
-      <th>Paid By</th>
-      <th>Amount</th>
-    </tr>
-    </thead>
-    <tbody>
-    	<tr *ngFor="let transaction of transactions; index as i">
-      <td>
-        <a href='/transactions/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type =='cridit'"> {{transaction.receipt_id}}</a>
-      </td> 
-      <td>{{transaction.CreatedAt | date:'dd MMM yyyy @ h:mma'}}</td>
-      <td><a href='/students/{{transaction.Student.id}}'>{{name(transaction.Student)}}</a></td>
-      <td>{{transaction.transaction_type}}</td>
-      <td>{{transaction.payment_mode}}</td>
-      <td>{{transaction.paid_by}}</td>
-      <td [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</td>
-    	</tr>
-    </tbody>
-	</table>	
+  <div>
+  	<div *ngFor="let transaction of transactions; index as i" class="Transactions-transaction indexBox">
+      
+      <p>{{transaction.CreatedAt | date:'dd MMM yyyy @ h:mma'}}</p>
+      <p class="name"><a href='/students/{{transaction.Student.id}}'>{{name(transaction.Student)}}</a></p>
+      <p>Transaction Type - {{transaction.transaction_type}}</p>
+      <span *ngIf="transaction.payment_mode != ''">Payment Mode  - {{transaction.payment_mode}}<br /></span>
+      <span *ngIf="transaction.paid_by != ''">Paid By - {{transaction.paid_by}}</span>
+      <p [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount}}</p>
+      <div class="actions"> <a href='/transactions/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type =='cridit'"> #{{transaction.receipt_id}}</a>
+      </div> 
+  	</div>
+  </div>
+  <div class="pagination">
+	 <pagination [totalItems]="totalItems" [ngModel]="currentPage" (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
+  </div>
 	
 </div>
