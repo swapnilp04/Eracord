@@ -40,17 +40,20 @@
     }
 }
 
+
 .Medium {
     .indexBox {
         width: 33%;
     }
 }
 
+
 .Small {
     .indexBox {
         width: 50%;
     }
 }
+
 
 .XSmall {
     .indexBox {
