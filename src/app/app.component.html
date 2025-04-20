@@ -42,7 +42,7 @@
           <a class="nav-link" [ngClass]="{'active': activeLink('/logs')}" href="/logs?page=1">Logs</a>
         </li>
       </ul>
-      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
         <li class="nav-item">
           <a *ngIf=!isLogin class="logout" href="/login">Login</a>
           <div *ngIf=isLogin class="btn-group" dropdown>
