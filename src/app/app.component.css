@@ -35,41 +35,25 @@
 }
 
 .Large {
-    .Students.student {
-        width: 25%;
-    }
-
-    .Exams-exam {
+    .indexBox {
         width: 25%;
     }
 }
 
 .Medium {
-    .Students.student {
-        width: 33%;
-    }
-
-    .Exams-exam {
+    .indexBox {
         width: 33%;
     }
 }
 
 .Small {
-    .Students.student {
-        width: 50%;
-    }
-
-    .Exams-exam {
+    .indexBox {
         width: 50%;
     }
 }
 
 .XSmall {
-    .Students.student {
-        width: 100%;
-    }
-
-    .Exams-exam {
+    .indexBox {
         width: 100%;
     }
 }

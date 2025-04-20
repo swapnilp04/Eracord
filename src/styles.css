@@ -635,6 +635,7 @@ position: absolute;
 
 
 .indexBox {
+    width: 25%;
     float: left;
     border: 1px solid;
     padding: 10px;
@@ -653,19 +654,19 @@ position: absolute;
     }
 }
 
-.Students.student {
-    width: 25%;
-    height: 260px;
-}
-
-.Students.student > .name {
+.indexBox > .name {
     font-size: 17px;
 }
 
-.Students.actions {
+.indexBox > .actions {
     position: absolute;
     bottom: 15px;
     font-size: 20px;
+}
+
+.Students.student {
+    width: 25%;
+    height: 260px;
 }
 
 .bg-warning {
@@ -688,48 +689,31 @@ pagination {
 }
 
 .Exams-exam {
-    width: 25%;
     height: 260px;
 }
 
-.Exams-exam > .name {
-    font-size: 20px;
-}
-
-.Exams-exam > .actions {
-    position: absolute;
-    bottom: 15px;
-    font-size: 20px;
-}
-
 .Teachers-teacher {
-    width: 25%;
     height: 200px;
-}
-
-.Teachers-teacher > .name {
-    font-size: 20px;
-}
-
-.Teachers-teacher > .actions {
-    position: absolute;
-    bottom: 15px;
-    font-size: 20px;
 }
 
 .Hostels-hostel {
-    width: 25%;
     height: 200px;
 }
 
-.Hostels-hostel > .name {
-    font-size: 20px;
+.Batchs-batch {
+    height: 200px;
 }
 
-.Hostels-hostel > .actions {
-    position: absolute;
-    bottom: 15px;
-    font-size: 20px;
+.Standards-standard {
+    height: 150px;
+}
+
+.Users-user {
+    height: 220px;
+}
+
+.Comments-comment {
+    height: 300px;
 }
 
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';

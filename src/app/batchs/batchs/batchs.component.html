@@ -1,34 +1,22 @@
 <div class="row">
   <p class="clearfix">
       
-      <a href="/batchs/new" class="btn btn-primary" tooltip="New Batch"><fa-icon [icon]="faUsers"></fa-icon></a>
-    </p>
-	<table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-	      <th class="col-md-1"> Sr No
-	      </th>
-	      <th>Name</th>
-	      <th>Default?</th>
-	      <th>Action</th>
-	    </tr>
-    </thead>
-    <tbody>
-    	<tr *ngFor="let batch of batchs; index as i">
-	      <td>{{i+1}}</td> 
-	      <td>{{batch.name}}</td>
-	      <td>{{batch.is_default}}</td>
-	      <td>
-	        <a href='/batchs/{{batch.id}}' tooltip="Show"> 
-	        	<fa-icon [icon]="faFolderOpen"></fa-icon>
-	        </a>
-	        &nbsp;&nbsp;&nbsp;
-	        <a href='/batchs/{{batch.id}}/edit' tooltip="Edit">
-	        	<fa-icon [icon]="faFilePen"></fa-icon>
-	        </a>
-	      </td>
-	      
-    	</tr>
-    </tbody>
-	</table>	
+    <a href="/batchs/new" class="btn btn-primary" tooltip="New Batch"><fa-icon [icon]="faUsers"></fa-icon></a>
+  </p>
+  <div>
+  	<div *ngFor="let batch of batchs; index as i" class="Batchs-batch indexBox">
+      <p class="name">{{i+1}}. <strong> {{batch.name}}</strong></p>
+      <p> Is Default - {{batch.is_default}}</p>
+      <div class="actions">
+        <a href='/batchs/{{batch.id}}' tooltip="Show"> 
+        	<fa-icon [icon]="faFolderOpen"></fa-icon>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/batchs/{{batch.id}}/edit' tooltip="Edit">
+        	<fa-icon [icon]="faFilePen"></fa-icon>
+        </a>
+      </div>
+      
+  	</div>
+  </div>
 </div>
