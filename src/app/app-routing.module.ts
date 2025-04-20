@@ -49,6 +49,7 @@ import { HomeComponent } from './homes/home/home.component';
 import { ReportLogsComponent } from './reports/report-logs/report-logs.component';
 import { GroupResultComponent } from './exams/group-result/group-result.component';
 import { StudentAdmissionFormComponent } from './students/student-admission-form/student-admission-form.component';
+import { StudentExamsReportComponent } from './students/student-exams-report/student-exams-report.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -69,6 +70,7 @@ const routes: Routes = [
   {path: 'students/:student_id/student-accounts/withdraw' , component: WithdrawComponent},
   {path: 'students/:student_id/comments/new' , component: CommentAddEditComponent},
   {path: 'students/:student_id/admission-form' , component: StudentAdmissionFormComponent},
+  {path: 'students/:student_id/exams/report' , component: StudentExamsReportComponent},
 
   {path: 'comments' , component: CommentsComponent},
 

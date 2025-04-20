@@ -92,7 +92,6 @@ export class ExamComponent implements OnInit {
   }
 
   back(): void {
-    //this.location.back();
-    this.router.navigate(['/exams']);
+    this.location.back();
   }
 }

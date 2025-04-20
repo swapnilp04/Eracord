@@ -1,0 +1,36 @@
+<div class="mb-3" style="padding-bottom:50px;">
+  <button (click)=back() class="btn btn-primary marginRight15" tooltip="Back">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </button>
+  <button 
+      class="btn btn-primary marginRight15"
+      [useExistingCss]="true"
+      printSectionId="print-section"
+      ngxPrint><fa-icon [icon]="faPrint"></fa-icon></button>
+  <div id="print-section">
+    <h3>{{name()}}</h3>
+  	<table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+        <th class="col-md-1"> Sr No
+        </th>
+        <th>Exam Name</th>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Marks</th> 
+      </tr>
+      </thead>
+      <tbody>
+      	<tr *ngFor="let examStudent of examStudents; index as i" [ngClass]="{'published': examStudent.Exam.exam_status == 'Published'}">
+        <td>{{i + 1 }}</td>
+        <td><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></td>
+        <td>{{examStudent.Exam.Subject.name}}</td>
+        <td>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</td>
+        <td>{{examStudent.Exam.exam_status}}</td>
+        <td>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}</td>
+      	</tr>
+      </tbody>
+  	</table>
+  </div>
+</div>

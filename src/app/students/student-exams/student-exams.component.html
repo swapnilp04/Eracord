@@ -1,33 +1,12 @@
 <div class="mb-3" style="padding-bottom:50px;">
-  <button 
-      class="btn btn-primary marginRight15"
-      [useExistingCss]="true"
-      printSectionId="print-section"
-      ngxPrint><fa-icon [icon]="faPrint"></fa-icon></button>
-  <div id="print-section">
-    <h4>{{studentName}}</h4>
-  	<table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-        <th class="col-md-1"> Sr No
-        </th>
-        <th>Exam Name</th>
-        <th>Subject</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Marks</th> 
-      </tr>
-      </thead>
-      <tbody>
-      	<tr *ngFor="let examStudent of examStudents; index as i" [ngClass]="{'published': examStudent.Exam.exam_status == 'Published'}">
-        <td>{{i + 1 }}</td>
-        <td><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></td>
-        <td>{{examStudent.Exam.Subject.name}}</td>
-        <td>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</td>
-        <td>{{examStudent.Exam.exam_status}}</td>
-        <td>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}</td>
-      	</tr>
-      </tbody>
-  	</table>
+  <a class="btn btn-info" href="/students/{{studentId}}/exams/report">Get Report</a>
+  <div>
+  	<div *ngFor="let examStudent of examStudents; index as i" [ngClass]="{'published': examStudent.Exam.exam_status == 'Published'}" class="Student-exams indexBox">
+      <p class="name">{{i + 1 }}. <strong><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></strong></p>
+      <p>Subject - {{examStudent.Exam.Subject.name}}</p>
+      <span>Exam Date - <strong>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</strong></span><br />
+      <span>Status - {{examStudent.Exam.exam_status}}</span><br />
+      <span>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}</span>
+    </div>
   </div>
 </div>

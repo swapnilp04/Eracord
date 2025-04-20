@@ -83,6 +83,7 @@ import { GroupResultDisplayComponent } from './exams/group-result-display/group-
 import { TransactionReportsComponent } from './accounts/transaction-reports/transaction-reports.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StudentAdmissionFormComponent } from './students/student-admission-form/student-admission-form.component';
+import { StudentExamsReportComponent } from './students/student-exams-report/student-exams-report.component';
 
 
 
@@ -157,6 +158,7 @@ import { StudentAdmissionFormComponent } from './students/student-admission-form
     GroupResultDisplayComponent,
     TransactionReportsComponent,
     StudentAdmissionFormComponent,
+    StudentExamsReportComponent,
   ],
   imports: [
     BrowserModule,
