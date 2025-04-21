@@ -96,7 +96,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   }
 
   batchStandardStudentCreated(): void {
-    this.router.navigate(['/students', this.studentId]);
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
     this.alertService.success("Student has been assigned to Standard Successful");
   }
 

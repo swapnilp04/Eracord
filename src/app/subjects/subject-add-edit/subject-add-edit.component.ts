@@ -77,13 +77,8 @@ export class SubjectAddEditComponent {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/standards/${this.standardId}`;
-      this.alertService.success("Hostel Room Created Successful");
-    } else {
-      window.location.href = `/standards/${this.standardId}`;
-      this.alertService.success("Hostel Room updated Successful");
-    }
+    this.router.navigate(['/standards', this.standardId], { replaceUrl: true });
+    this.alertService.success("Success");
   }
  
   isLoadingFalse(): void {

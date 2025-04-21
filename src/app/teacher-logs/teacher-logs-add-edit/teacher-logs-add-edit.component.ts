@@ -205,13 +205,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/logs`;
-      this.alertService.success("Log Created Successful");
-    } else {
-      window.location.href = `/logs`;
-      this.alertService.success("Log updated Successful");
-    }
+    this.router.navigate(['/logs'], { replaceUrl: true });
   }
 
   getError(error: any): void {

@@ -100,13 +100,7 @@ export class TeacherAddEditComponent {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/teachers/${response['teacher']['id']}`;
-      this.alertService.success("Teacher Created Successful");
-    } else {
-      window.location.href = `/teachers/${response['teacher']['id']}`;
-      this.alertService.success("Teacher updated Successful");
-    }
+    this.router.navigate(['/teachers', response['teacher']['id']], { replaceUrl: true });
   }
 
   getError(error: any): void {

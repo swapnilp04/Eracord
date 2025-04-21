@@ -60,7 +60,7 @@ export class TransactionsAddEditComponent implements OnInit {
   }
 
   successSubmitPayment(response: any): void {
-    this.back();
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
     this.alertService.success("Payment has been added Successful");
   }
 

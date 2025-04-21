@@ -77,13 +77,8 @@ export class StandardAddEditComponent {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/standards/${response['standard']['id']}?success=true`;
-      this.alertService.success("Standard Created Successful");
-    } else {
-      window.location.href = `/standards/${response['standard']['id']}?isUpdate=true`;
-      this.alertService.success("Standard updated Successful");
-    }
+    this.router.navigate(['/standards', response['standard']['id']], { replaceUrl: true });
+    this.alertService.success("Success");
   }
 
   getError(error: any): void {

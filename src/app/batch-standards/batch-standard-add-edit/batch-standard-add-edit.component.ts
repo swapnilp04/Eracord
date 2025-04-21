@@ -135,13 +135,8 @@ export class BatchStandardAddEditComponent implements OnInit {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/batchs/${response['batch_standard']['batch_id']}?success=true`;
-      this.alertService.success("Standard has been assigned to Batch Successful");
-    } else {
-      window.location.href = `/batchs/${response['batch_standard']['batch_id']}?isUpdate=true`;
-      this.alertService.success("Standard has been assigned to Batch Successful");
-    }
+    this.router.navigate(['/batchs', response['batch_standard']['batch_id']], { replaceUrl: true });
+    this.alertService.success("Success");
   }
 
   isLoadingFalse(): void {

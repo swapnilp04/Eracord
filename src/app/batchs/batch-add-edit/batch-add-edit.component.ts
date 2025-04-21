@@ -77,13 +77,8 @@ export class BatchAddEditComponent {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/batchs/${response['batch']['id']}?success=true`;
-      this.alertService.success("New Batch has been Created Successful");
-    } else {
-      window.location.href = `/batchs/${response['batch']['id']}?isUpdate=true`;
-      this.alertService.success("Batch has been updated Successful");
-    }
+    this.router.navigate(['/batchs', response['batch']['id']], { replaceUrl: true });
+    this.alertService.success("Success");
   }
 
   getError(error: any): void {

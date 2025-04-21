@@ -77,13 +77,7 @@ export class HostelAddEditComponent {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/hostels/${response['hostel']['id']}?success=true`;
-      this.alertService.success("Hostel Created Successful");
-    } else {
-      window.location.href = `/hostels/${response['hostel']['id']}?isUpdate=true`;
-      this.alertService.success("Hostel updated Successful");
-    }
+    this.router.navigate(['/hostels', response['hostel']['id']], { replaceUrl: true });
   }
 
   getError(error: any): void {

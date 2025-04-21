@@ -108,13 +108,7 @@ export class CommentAddEditComponent {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      this.router.navigate([`/students/${this.student.id}`]);
-      this.alertService.success("Comment Created Successful");
-    } else {
-      window.location.href = `/comments/${response['comment']['id']}?isUpdate=true`;
-      this.alertService.success("Comment updated Successful");
-    }
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
   }
 
   back(): void {

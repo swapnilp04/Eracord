@@ -91,13 +91,7 @@ export class StudentAddEditComponent implements OnInit {
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/students/${response['student']['id']}?success=true`;
-      this.alertService.success("Student Created Successful");
-    } else {
-      window.location.href = `/students/${response['student']['id']}?isUpdate=true`;
-      this.alertService.success("Student Updated Successful");
-    }
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
   }
 
   hasError(field: string): any {

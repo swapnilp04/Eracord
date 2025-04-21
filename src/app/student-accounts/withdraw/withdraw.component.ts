@@ -48,7 +48,7 @@ export class WithdrawComponent implements OnInit{
   }
 
   SuccessSubmitWithdraw(response: any): void {
-    this.back();
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
     this.alertService.success("Withdraw has been Successful");
   }
 

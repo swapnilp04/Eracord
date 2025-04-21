@@ -47,7 +47,7 @@ export class DepositComponent implements OnInit{
   }
 
   SuccessSubmitDeposit(response: any):void {
-    this.back();
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
     this.alertService.success("Deposit hass been Successful");
   }
 

@@ -137,13 +137,7 @@ export class ExamAddEditComponent implements OnInit{
   }
 
   getSuccess(response: any): void {
-    if(this.isNew) {
-      window.location.href = `/exams/${response['exam']['id']}?success=true`;
-      this.alertService.success("Exam Created Successful");
-    } else {
-      window.location.href = `/exams/${response['exam']['id']}?isUpdate=true`;
-      this.alertService.success("Exam updated Successful");
-    }
+    this.router.navigate(['/exams', response['exam']['id']], { replaceUrl: true });
   }
 
   getError(error: any): void {

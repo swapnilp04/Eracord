@@ -56,7 +56,7 @@ export class DiscountsAddEditComponent implements OnInit {
   }
 
   successSubmitDiscount(response: any): void {
-    this.back();
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
     this.alertService.success("Discount has been added Successful");
   }
 

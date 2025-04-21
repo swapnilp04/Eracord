@@ -50,7 +50,7 @@ export class AddEditUserComponent implements OnInit{
   }
 
   successCreateUser(response: any): void {
-    this.back();
+    this.router.navigate(['/users'], { replaceUrl: true });
     this.alertService.success("New User has been created Successful");
   }
 

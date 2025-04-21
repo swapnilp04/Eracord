@@ -89,7 +89,7 @@ export class AssignHostelComponent implements OnInit {
   }
 
   onSuccessAssignHostel(response: any): void {
-    this.back();
+    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
     this.alertService.success("Hostel Has been assigned Successful");
   }
 
