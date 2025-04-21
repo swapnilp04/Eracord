@@ -14,7 +14,6 @@ import { faFilePen, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 export class BatchStandardsComponent implements OnInit{
 
   @Input() batchId: any;
-  public selectedBatchStandard: any;
   public batchStandards: BatchStandard[] = [];
   public isLoading: boolean = true
   faFilePen = faFilePen;
@@ -45,10 +44,6 @@ export class BatchStandardsComponent implements OnInit{
   assignBatchStandards(response: any) {
     this.batchStandards = response;
     this.isLoading = false;
-  }
-
-  selectBatchStandard(batchStandardId: any): void {
-    this.selectedBatchStandard = batchStandardId;
   }
 
   deactivateBatchStandard(batchStandard: any):void {

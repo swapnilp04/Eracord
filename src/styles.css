@@ -674,6 +674,9 @@ position: absolute;
     height: 260px;
 }
 
+.bg-success {
+    background-color: #32a06d87 !important;
+}
 .bg-warning {
     background-color: #f5de98 !important;
 }
@@ -755,6 +758,14 @@ pagination {
 
 .Student-exams {
     height: 220px;
+}
+
+.Teacher-logs {
+    height: 220px;
+}
+
+.Batch-batchStandard {
+    height: 260px;
 }
 
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';

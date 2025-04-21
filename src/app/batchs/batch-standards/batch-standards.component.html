@@ -1,23 +1,23 @@
 <div *ngIf=!isLoading>
 	<div class="mb-3">
 		<div class="row row-cols-4">
-			<div *ngFor="let batchStandard of batchStandards" class="marginTop15 borderBox border" [ngClass]="{selected: selectedBatchStandard ==  batchStandard.id}"  (click)="selectBatchStandard(batchStandard.id)" >
-				<div [ngClass]="{active: batchStandard.is_active, deactive: !batchStandard.is_active}">
+			<div *ngFor="let batchStandard of batchStandards" class="marginTop15 Batch-batchStandard indexBox">
+
 					<p>Name - {{batchStandard.Standard.name}}</p>
 					<p>Student Count - {{batchStandard.students_count}}</p>
 					<p>Fee - {{batchStandard.fee}}</p>
-					<p>
+					<p [ngClass]="batchStandard.is_active ? 'bg-success' : 'bg-danger'">
 						IsActive - {{batchStandard.is_active}}
 						<button *ngIf="batchStandard.is_active" class="btn btn-link" (click)=deactivateBatchStandard(batchStandard)>Deactivete</button>
 						<button *ngIf="!batchStandard.is_active" class="btn btn-link" (click)=activateBatchStandard(batchStandard)>Activete</button>
 					</p>
-
-					<a class="btn btn-secondary marginBottom15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}" tooltip="Show">
-						<fa-icon [icon]="faFolderOpen"></fa-icon>
-					</a>
-					<a class="btn btn-secondary marginBottom15 marginLeft15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}/edit"  tooltip="Edit">
-						<fa-icon [icon]="faFilePen"></fa-icon>
-					</a>
+					<div class="actions"> 
+						<a class="btn btn-secondary marginBottom15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}" tooltip="Show">
+							<fa-icon [icon]="faFolderOpen"></fa-icon>
+						</a>
+						<a class="btn btn-secondary marginBottom15 marginLeft15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}/edit"  tooltip="Edit">
+							<fa-icon [icon]="faFilePen"></fa-icon>
+						</a>
 				</div>
 			</div>
 		</div>

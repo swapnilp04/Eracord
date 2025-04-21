@@ -28,7 +28,12 @@
         <td>{{examStudent.Exam.Subject.name}}</td>
         <td>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</td>
         <td>{{examStudent.Exam.exam_status}}</td>
-        <td>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}</td>
+        <td>
+          {{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}
+          <span class="name" *ngIf="examStudent.is_present">
+            <strong>&nbsp; - &nbsp;{{(examStudent.marks / examStudent.Exam.exam_marks) * 100 | number: '1.0'}} %</strong>
+          </span>
+        </td>
       	</tr>
       </tbody>
   	</table>
