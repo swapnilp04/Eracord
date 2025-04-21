@@ -12,7 +12,7 @@
 	<div>
 		<div *ngFor="let exam of exams; index as i" [ngClass]="{'published': exam.exam_status == 'Published'}" class="Exams-exam indexBox">
 	    <p class="name">{{((page - 1) *10) + i + 1 }}. <strong>{{exam.name}}</strong></p>
-	    <p><strong>{{exam.Subject.name}}</strong> - Class <strong>{{exam.Standard.name}} </strong></p>
+	    <p><strong>{{exam.Subject.name}}</strong> - Class <strong>{{exam.Standard.name}}-{{exam.Batch.name}} </strong></p>
 	    <p><span>Exam Date - {{exam.exam_date | date:'dd MMM yyyy'}}</span><br />
 	    <span>Exam Status - {{exam.exam_status}}</span></p>
 	    <div class="actions">

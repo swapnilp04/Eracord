@@ -98,7 +98,7 @@ export class ExamAddEditComponent implements OnInit{
   }
 
   loadDefaultBatchStandards(): void {
-    this.batchStandardService.getDefaultBatchStandards().subscribe (
+    this.batchStandardService.getActiveBatchStandards().subscribe (
       (response: any) => this.assignBatchStandards(response),
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting exams......')
