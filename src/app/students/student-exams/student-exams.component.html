@@ -1,5 +1,6 @@
 <div class="mb-3" style="padding-bottom:50px;">
   <a class="btn btn-info" href="/students/{{studentId}}/exams/report">Get Report</a>
+  <a class="btn btn-info marginLeft15" href="/students/{{studentId}}/exams/graph-reports">Get Graphical Report</a>
   <div>
   	<div *ngFor="let examStudent of examStudents; index as i" [ngClass]="{'published': examStudent.Exam.exam_status == 'Published'}" class="Student-exams indexBox">
       <p class="name">{{((page - 1) *10) + i + 1 }}. <strong><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></strong></p>
@@ -9,7 +10,7 @@
       <span>Status - {{examStudent.Exam.exam_status}}</span><br />
       <span>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}} </span>
       <span class="name" *ngIf="examStudent.is_present">
-        <strong>&nbsp; - &nbsp;{{(examStudent.marks / examStudent.Exam.exam_marks) * 100 | number: '1.0'}} %</strong>
+        <strong>&nbsp; - &nbsp;{{examStudent.percentage | number: '1.0'}} %</strong>
       </span>
     </div>
   </div>

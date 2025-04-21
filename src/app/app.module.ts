@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToWords } from 'to-words';
+import { NgChartsModule } from 'ng2-charts';
 import { StudentComponent } from './students/student/student.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -84,6 +85,7 @@ import { TransactionReportsComponent } from './accounts/transaction-reports/tran
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StudentAdmissionFormComponent } from './students/student-admission-form/student-admission-form.component';
 import { StudentExamsReportComponent } from './students/student-exams-report/student-exams-report.component';
+import { StudentExamGraphReportsComponent } from './students/student-exam-graph-reports/student-exam-graph-reports.component';
 
 
 
@@ -159,6 +161,7 @@ import { StudentExamsReportComponent } from './students/student-exams-report/stu
     TransactionReportsComponent,
     StudentAdmissionFormComponent,
     StudentExamsReportComponent,
+    StudentExamGraphReportsComponent,
   ],
   imports: [
     BrowserModule,
@@ -175,7 +178,8 @@ import { StudentExamsReportComponent } from './students/student-exams-report/stu
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     TimepickerModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgChartsModule
   ],
   providers: [CookieService, ToWords],
   bootstrap: [AppComponent]

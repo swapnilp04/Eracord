@@ -26,6 +26,7 @@
     "bootstrap": "^5.3.5",
     "forever-mac": "^0.10.9",
     "jquery": "^3.7.1",
+    "ng2-charts": "^4.1.1",
     "ngx-auth-firebaseui": "^0.1.2",
     "ngx-bootstrap": "10.2.0",
     "ngx-cookie-service": "^15.0.0",

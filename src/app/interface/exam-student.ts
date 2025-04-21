@@ -9,6 +9,7 @@ export interface ExamStudent {
 	Exam: Exam;
 	marks: number;
 	rank: number;
+	percentage: number;
 	is_present: boolean;
 }
 
