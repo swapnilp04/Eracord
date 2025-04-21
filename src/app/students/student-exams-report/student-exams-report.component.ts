@@ -44,7 +44,7 @@ export class StudentExamsReportComponent  implements OnInit {
   }
 
   loadExamStudents(studentId: number): void {
-    this.studentService.getStudentExams(studentId).subscribe (
+    this.studentService.getStudentAllExams(studentId).subscribe (
       (response: any) => this.assignExamStudents(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoading =false

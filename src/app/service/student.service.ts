@@ -103,9 +103,14 @@ export class StudentService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Student[]>(`${this.loginService.URL}/students/get-upcomming-birthdays`, {headers: myHeaders});
   }
-  getStudentExams(studentId: number): Observable<ExamStudent[]> {
+  getStudentExams(studentId: number, page: number): Observable<ExamStudent[]> {
     const myHeaders = this.loginService.getHeaders();
-    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/get_exams`, {headers: myHeaders});
+    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/get_exams?page=${page}`, {headers: myHeaders});
+  }
+
+  getStudentAllExams(studentId: number, ): Observable<ExamStudent[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/get_all_exams`, {headers: myHeaders});
   }
 
   leftAcademy(studentId: number): Observable<Student> {

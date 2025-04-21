@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Student } from './../../interface/student';
 import { ExamStudent } from './../../interface/exam-student';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { StudentService } from './../../service/student.service';
 import { LoginService } from './../../service/login.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -18,6 +19,9 @@ export class StudentExamsComponent implements OnInit{
 
   @Input() studentId: any;
   @Input() studentName: any;
+  currentPage = 1;
+  page = 1;
+  totalItems: number = 10;
   public isLoading = true;
   public examStudents: ExamStudent[] = [];
   faPrint = faPrint;
@@ -26,19 +30,29 @@ export class StudentExamsComponent implements OnInit{
     private router: Router, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
-    this.loadExamStudents(this.studentId);
+    this.loadExamStudents(this.studentId, 1);
   }
 
-  loadExamStudents(studentId: number): void {
-    this.studentService.getStudentExams(studentId).subscribe (
+  loadExamStudents(studentId: number, page: number): void {
+    this.studentService.getStudentExams(studentId, page).subscribe (
       (response: any) => this.assignExamStudents(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoading =false
     );
   }
 
+  pageChanged(event: PageChangedEvent): void {
+    while(this.examStudents.length > 0) {
+      this.examStudents.pop();
+    }
+    this.page = event.page;
+    console.log(this.page)
+    this.loadExamStudents(this.studentId, this.page);
+  }
+
   assignExamStudents(response: any) {
-    this.examStudents = response;
+    this.examStudents = response.exams;
+    this.totalItems = response.total;
     this.isLoading =false;
   }
 

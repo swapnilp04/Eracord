@@ -2,11 +2,15 @@
   <a class="btn btn-info" href="/students/{{studentId}}/exams/report">Get Report</a>
   <div>
   	<div *ngFor="let examStudent of examStudents; index as i" [ngClass]="{'published': examStudent.Exam.exam_status == 'Published'}" class="Student-exams indexBox">
-      <p class="name">{{i + 1 }}. <strong><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></strong></p>
+      <p class="name">{{((page - 1) *10) + i + 1 }}. <strong><a href="exams/{{examStudent.exam_id}}">{{examStudent.Exam.name}}</a></strong></p>
       <p>Subject - {{examStudent.Exam.Subject.name}}</p>
       <span>Exam Date - <strong>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</strong></span><br />
       <span>Status - {{examStudent.Exam.exam_status}}</span><br />
       <span>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}}</span>
     </div>
+  </div>
+  <div class="pagination">
+    <pagination [totalItems]="totalItems" [ngModel]="currentPage" 
+      (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
   </div>
 </div>
