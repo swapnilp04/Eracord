@@ -19,33 +19,19 @@
 			<tabset>
 				<tab heading="Students" class="mt-2" (selectTab)="onSelect($event)">
 					<h4>Students</h4>
-					<table class="table table-striped table-bordered table-hover">
-				    <thead>
-				      <tr>
-				      <th class="col-md-1"> Sr No
-				      </th>
-				      <th>Name</th>
-				      <th>Address</th>
-				      <th>Balance</th>
-				      <th>Last Payent on</th>
-				      <th>Action</th>
-				    </tr>
-				    </thead>
-				    <tbody>
-				    	<tr *ngFor="let batchStandardStudent of batchStandardStudents; index as i">
-				    		<td>{{i+1}}</td>
-				      	<td>
-				      		<a href='/students/{{batchStandardStudent.Student.id}}'>{{studentName(batchStandardStudent.Student)}}</a>
-				      		&nbsp;<fa-icon [icon]="faBed" [ngClass]="batchStandardStudent.Student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
-				      	</td>
-				      	<td>{{batchStandardStudent.Student.town}}</td>
-				      	<td>{{batchStandardStudent.Student.balance}}</td>
-				      	<td>{{batchStandardStudent.Student.last_payment_on | date:'dd MMM yy'}}</td>
-				      	<td>
-				      	</td>
-				    	</tr>
-				    </tbody>
-					</table>	
+			    <div>
+			    	<div *ngFor="let batchStandardStudent of batchStandardStudents; index as i" class="Batch-Stabdard-Students indexBox">
+			    		<p>{{i+1}}. 
+			      		<a href='/students/{{batchStandardStudent.Student.id}}'>{{studentName(batchStandardStudent.Student)}}</a>
+			      		&nbsp;<fa-icon [icon]="faBed" [ngClass]="batchStandardStudent.Student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
+			      	</p>
+			      	<p><strong>Town</strong>- {{batchStandardStudent.Student.town}}</p>
+			      	<span [ngClass]="{'bg-warning': batchStandardStudent.Student.balance < 0}">
+			      		<strong>Balance</strong> - {{batchStandardStudent.Student.balance | number:'1.'}}
+			      	</span><br />
+			      	<span><strong>Last Paid On</strong>- {{batchStandardStudent.Student.last_payment_on | date:'dd MMM yy'}}</span>
+			    	</div>
+			    </div>
 				</tab>
 				<tab heading="Logs" class="mt-2" (selectTab)="onSelect($event)">
 					<h4>Logs</h4>

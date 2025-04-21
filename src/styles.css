@@ -768,6 +768,18 @@ pagination {
     height: 260px;
 }
 
+.Batch-Stabdard-Students {
+    height: 220px;
+}
+
+.Batch-Standard-logs {
+    height: 260px;
+}
+
+.Standard-subjects {
+    height: 120px;
+}
+
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
