@@ -96,7 +96,7 @@ export class TeacherAddEditComponent {
   }
 
   back(): void {
-    this.router.navigate(['/teachers']);
+    this.location.back();
   }
 
   getSuccess(response: any): void {

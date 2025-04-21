@@ -83,11 +83,7 @@ export class StudentAddEditComponent implements OnInit {
   }
 
   back(): void {
-    if(this.isNew) {
-      this.router.navigate(['/students']);
-    } else {
-      this.router.navigate(['/students', this.student.id]);
-    }
+    this.location.back();
   }
 
   assignErrors(error: any): void {

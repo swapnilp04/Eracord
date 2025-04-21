@@ -73,11 +73,7 @@ export class HostelAddEditComponent {
   }
 
   back(): void {
-    if(this.isNew) {
-      this.router.navigate(['/hostels']);
-    }else {
-      this.router.navigate(['/hostels', this.hostel.id]);
-    }
+    this.location.back();
   }
 
   getSuccess(response: any): void {

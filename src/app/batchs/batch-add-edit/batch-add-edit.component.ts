@@ -73,7 +73,7 @@ export class BatchAddEditComponent {
   }
 
   back(): void {
-    this.router.navigate(['/batchs']);
+    this.location.back();
   }
 
   getSuccess(response: any): void {

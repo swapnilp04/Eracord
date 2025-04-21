@@ -92,7 +92,7 @@ export class BatchStandardStudentAddEditComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigate(['/students', this.studentId]);
+    this.location.back();
   }
 
   batchStandardStudentCreated(): void {

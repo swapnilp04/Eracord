@@ -73,7 +73,7 @@ export class StandardAddEditComponent {
   }
 
   back(): void {
-    this.router.navigate(['/standards']);
+    this.location.back();
   }
 
   getSuccess(response: any): void {

@@ -74,7 +74,7 @@ export class HostelRoomAddEditComponent {
   }
 
   back(): void {
-    this.router.navigate(['/hostels', this.hostelId]);
+    this.location.back();
   }
 
   getSuccess(response: any): void {

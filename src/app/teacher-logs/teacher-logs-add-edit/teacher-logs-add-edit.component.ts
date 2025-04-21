@@ -201,7 +201,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigate(['/logs']);
+    this.location.back();
   }
 
   getSuccess(response: any): void {

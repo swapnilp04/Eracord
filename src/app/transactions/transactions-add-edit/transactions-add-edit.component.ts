@@ -89,7 +89,7 @@ export class TransactionsAddEditComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigate(['/students', this.studentId]);
+    this.location.back();
   }
 
   isLoadingFalse(): void {

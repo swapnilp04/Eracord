@@ -73,7 +73,7 @@ export class SubjectAddEditComponent {
   }
 
   back(): void {
-    this.router.navigate(['/standards', this.standardId]);
+    this.location.back();
   }
 
   getSuccess(response: any): void {

@@ -83,7 +83,7 @@ export class AddEditUserComponent implements OnInit{
   }
 
   back(): void {
-    this.router.navigate(['/users']);
+    this.location.back();
   }
 
   isLoadingFalse(): void {

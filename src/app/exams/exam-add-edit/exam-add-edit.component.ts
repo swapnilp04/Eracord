@@ -133,7 +133,7 @@ export class ExamAddEditComponent implements OnInit{
   }
 
   back(): void {
-    this.router.navigate(['/exams']);
+    this.location.back();
   }
 
   getSuccess(response: any): void {

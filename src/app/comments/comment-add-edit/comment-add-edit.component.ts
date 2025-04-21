@@ -118,11 +118,7 @@ export class CommentAddEditComponent {
   }
 
   back(): void {
-    if(this.isNew) {
-      this.router.navigate([`/students/${this.student.id}`]);
-    }else {
-      this.router.navigate(['/comments', this.comment.id]);
-    }
+    this.location.back();
   }
 
   name(): string {

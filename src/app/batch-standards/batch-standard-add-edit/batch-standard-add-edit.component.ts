@@ -103,7 +103,7 @@ export class BatchStandardAddEditComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigate(['/batchs', this.batch.id]);
+    this.location.back();
   }
 
   name(): string {
