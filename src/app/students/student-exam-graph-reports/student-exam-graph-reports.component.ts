@@ -50,7 +50,6 @@ export class StudentExamGraphReportsComponent implements OnInit {
     this.route.paramMap.subscribe((param) => {
       this.studentId = Number(param.get('student_id'));
       this.loadStudent(this.studentId);
-      this.loadExamStudents(this.studentId);
       this.loadStudentBatchStandards(this.studentId);
     });
   }
@@ -64,9 +63,10 @@ export class StudentExamGraphReportsComponent implements OnInit {
 
   onCheckChangeSubjects(value: any, subject: any):void {
     if(value.target.checked){
-      subject.labels = this.labels;
-      subject.data = this.data;
-      this.selectedSubjects.push(subject);  
+      subject.labels = [];//this.labels;
+      subject.data = [];//this.data;
+      this.loadSubjectGraphData(this.studentId, subject.id, subject);
+      //this.selectedSubjects.push(subject);  
     } else {
       var index = this.selectedSubjects.indexOf(subject);
       if (index > -1) {
@@ -98,15 +98,15 @@ export class StudentExamGraphReportsComponent implements OnInit {
       () => this.isLoading = false
     );
   }
-  
-  loadExamStudents(studentId: number): void {
-    this.studentService.getStudentAllExams(studentId).subscribe (
-      (response: any) => this.assignExamStudents(response),
+
+  loadSubjectGraphData(studentId: number, subjectId: number, subject: any): void {
+    this.studentService.getStudentExamsGraphData(studentId, subjectId).subscribe (
+      (response: any) => this.successSubjectGraphData(response, subject),
       (error: any) => this.errorHandle(error),
       () => this.isLoading = false
     );
   }
-
+  
   assignStudent(response: any) {
     this.student = response;
     this.isLoading = false;
@@ -120,9 +120,18 @@ export class StudentExamGraphReportsComponent implements OnInit {
     this.batchStandardStudents = response;
   }
 
-  assignExamStudents(response: any) {
-    this.examStudents = response;
-    this.isLoading = false;
+  
+  successSubjectGraphData(response: any, subject: any) {
+    if(response['data']) {
+      for (var i = 0; i < response['data'].length; i++) { 
+        subject.labels.push(response['data'][i]['exam_date']);
+        subject.data.push(response['data'][i]['percentage']);
+      }
+      this.selectedSubjects.push(subject);
+    } else {
+      this.alertService.error("No Data For Graph for " + subject.name + " Subject");
+    }
+
   }
 
   name(): string {

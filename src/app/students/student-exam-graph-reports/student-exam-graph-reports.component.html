@@ -5,7 +5,7 @@
   <div class="borderBox marginTop15 marginBottom25">
     <h4>Standards</h4>
     <div class="form-check" *ngFor="let batchStandardStudent of batchStandardStudents">
-      <input class="form-check-input" [value]="batchStandardStudent.standard_id" type="radio" name="flexRadioDefault" id="batchStandardStudent_{{batchStandardStudent.id}}" [(ngModel)]="selectedStatndard" (change)="getStandardSubjects()">
+      <input class="form-check-input" [value]="batchStandardStudent.batch_standard_id" type="radio" name="flexRadioDefault" id="batchStandardStudent_{{batchStandardStudent.id}}" [(ngModel)]="selectedStatndard" (change)="getStandardSubjects()">
       <label class="form-check-label" for="batchStandardStudent_{{batchStandardStudent.id}}">
         <h6>{{batchStandardStudent.Standard.name}}</h6>
       </label>
