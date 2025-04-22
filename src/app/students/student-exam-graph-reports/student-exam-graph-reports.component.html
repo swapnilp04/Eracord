@@ -23,6 +23,7 @@
   </div>
   
   <div *ngFor="let subject of selectedSubjects" class="floatLeft">
+    <h4>{{subject.name}}</h4>
     <app-graphs-line-graph [labels]="subject.labels" [graphData]="subject.data"></app-graphs-line-graph>
   </div>
 </div>
