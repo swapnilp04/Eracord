@@ -6,4 +6,6 @@ export interface Subject {
 	name: string;
 	standard_id: number;
 	Standard: Standard;
+	labels?: string[];
+	data?: any[];
 }

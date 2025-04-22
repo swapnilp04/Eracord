@@ -86,6 +86,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StudentAdmissionFormComponent } from './students/student-admission-form/student-admission-form.component';
 import { StudentExamsReportComponent } from './students/student-exams-report/student-exams-report.component';
 import { StudentExamGraphReportsComponent } from './students/student-exam-graph-reports/student-exam-graph-reports.component';
+import { GraphsLineGraphComponent } from './graphs/graphs-line-graph/graphs-line-graph.component';
 
 
 
@@ -162,6 +163,7 @@ import { StudentExamGraphReportsComponent } from './students/student-exam-graph-
     StudentAdmissionFormComponent,
     StudentExamsReportComponent,
     StudentExamGraphReportsComponent,
+    GraphsLineGraphComponent,
   ],
   imports: [
     BrowserModule,

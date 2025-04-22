@@ -22,6 +22,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .marginBottom15 {
 	margin-bottom:15px;	
 }
+
+.marginBottom25 {
+    margin-bottom:25px; 
+}
 .marginTop15 {
 	margin-top:15px;		
 }
@@ -635,6 +639,17 @@ position: absolute;
 
 .font20 {
     font-size: 20px;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.borderBox {
+    border-radius: 20px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 70px 40px -20px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 

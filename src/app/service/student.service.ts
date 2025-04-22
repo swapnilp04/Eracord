@@ -108,13 +108,23 @@ export class StudentService {
     return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/get_exams?page=${page}`, {headers: myHeaders});
   }
 
-  getStudentAllExams(studentId: number, ): Observable<ExamStudent[]> {
+  getStudentAllExams(studentId: number): Observable<ExamStudent[]> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/get_all_exams`, {headers: myHeaders});
+  }
+
+  getStudentExamsGraphData(studentId: number, subjectId: number): Observable<ExamStudent[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/exams/subject/${subjectId}/get_graph_data`, {headers: myHeaders});
   }
 
   leftAcademy(studentId: number): Observable<Student> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<Student>(`${this.loginService.URL}/students/${studentId}/left_academy`, {}, {headers: myHeaders});
+  }
+
+  rejoinAcademy(studentId: number): Observable<Student> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Student>(`${this.loginService.URL}/students/${studentId}/rejoin_academy`, {}, {headers: myHeaders});
   }
 }

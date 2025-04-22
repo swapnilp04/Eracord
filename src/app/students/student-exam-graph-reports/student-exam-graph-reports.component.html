@@ -1,8 +1,28 @@
-<div style="display: block;">
-  <canvas baseChart width="400" height="400"
-    [type]="'line'"
-    [data]="lineChartData"
-    [options]="lineChartOptions"
-    [legend]="lineChartLegend">
-  </canvas>
+<div class="mb-3" style="padding-bottom:50px;">
+  <button (click)=back() class="btn btn-primary marginRight15" tooltip="Back">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </button>
+  <div class="borderBox marginTop15 marginBottom25">
+    <h4>Standards</h4>
+    <div class="form-check" *ngFor="let batchStandardStudent of batchStandardStudents">
+      <input class="form-check-input" [value]="batchStandardStudent.standard_id" type="radio" name="flexRadioDefault" id="batchStandardStudent_{{batchStandardStudent.id}}" [(ngModel)]="selectedStatndard" (change)="getStandardSubjects()">
+      <label class="form-check-label" for="batchStandardStudent_{{batchStandardStudent.id}}">
+        <h6>{{batchStandardStudent.Standard.name}}</h6>
+      </label>
+    </div>
+  </div>
+
+  <div class="borderBox marginTop15 marginBottom25">
+    <h4>Subjects</h4>
+    <div class="form-check" *ngFor="let subject of subjects">
+      <input class="form-check-input" [value]="subject" type="checkbox" name="selectedSubjects" id="subject_{{subject.id}}" (change)="onCheckChangeSubjects($event, subject)">
+      <label class="form-check-label" for="subject_{{subject.id}}">
+        <h6>{{subject.name}}</h6>
+      </label>
+    </div>
+  </div>
+  
+  <div *ngFor="let subject of selectedSubjects" class="floatLeft">
+    <app-graphs-line-graph [labels]="subject.labels" [graphData]="subject.data"></app-graphs-line-graph>
+  </div>
 </div>

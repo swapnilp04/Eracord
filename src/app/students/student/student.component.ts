@@ -8,7 +8,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { TabDirective } from 'ngx-bootstrap/tabs';
 import { AlertService } from '../../service/alert.service';
-import { faBed, faUserPen, faFolderOpen, faMoneyBill, faChevronLeft, faComment , faPersonWalkingArrowRight, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons';
+import { faBed, faUserPen, faFolderOpen, faMoneyBill, faChevronLeft, faComment , faPersonWalkingArrowRight, faPersonWalkingArrowLoopLeft, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -31,6 +31,7 @@ export class StudentComponent  implements OnInit {
   faComment = faComment;
   faPersonWalkingArrowRight = faPersonWalkingArrowRight;
   faEnvelopeOpenText = faEnvelopeOpenText;
+  faPersonWalkingArrowLoopLeft = faPersonWalkingArrowLoopLeft;
 
   value?: string;
   public hasHostel: boolean = false;
@@ -96,9 +97,24 @@ export class StudentComponent  implements OnInit {
     }
   }
 
+  rejoinAcademy(studentID: any): void {
+    if(confirm("Are you sure to rejoin student into Academy?")) {
+      this.studentService.rejoinAcademy(studentID).subscribe (
+        (response: any) => this.rejoinAcademySuccess(response),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done getting Student......')
+      );
+    }
+  }
+
   leftAcademySuccess(response: any): void {
     window.location.reload();
     this.alertService.success("Student Left Successful");
+  }
+
+  rejoinAcademySuccess(response: any): void {
+    window.location.reload();
+    this.alertService.success("Student rejoin Successful");
   }
 
   assignStudent(response: any) {

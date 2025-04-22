@@ -30,6 +30,9 @@
 		<button (click)=leftAcademy(student.id) class="btn btn-info text-white marginRight15" *ngIf="!isLeft()" tooltip="Exit From Academy">
 			<fa-icon [icon]="faPersonWalkingArrowRight" class="text-danger"></fa-icon>
 		</button>
+		<button (click)=rejoinAcademy(student.id) class="btn btn-info text-white marginRight15" *ngIf="isLeft()" tooltip="Rejoin Academy">
+			<fa-icon [icon]="faPersonWalkingArrowLoopLeft" class="text-success"></fa-icon>
+		</button>
 	</div>
 	<div>	
 		<tabset>
