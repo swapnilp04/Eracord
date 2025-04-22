@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav" *ngIf=isLogin>
+      <ul class="navbar-nav padding010" *ngIf=isLogin>
         <li class="nav-item active">
           <a class="nav-link" [ngClass]="{'active': activeLink('/dashboard')}" href="/dashboard">Dashboard</a>
         </li>
@@ -42,7 +42,7 @@
           <a class="nav-link" [ngClass]="{'active': activeLink('/logs')}" href="/logs?page=1">Logs</a>
         </li>
       </ul>
-      <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
+      <ul class="navbar-nav flex-row ml-md-auto d-md-flex padding020">
         <li class="nav-item">
           <a *ngIf=!isLogin class="logout" href="/login">Login</a>
           <div *ngIf=isLogin class="btn-group" dropdown>

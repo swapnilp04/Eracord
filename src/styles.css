@@ -38,6 +38,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-bottom: 30px;
 }
 
+.padding020 {
+    padding: 0 20px;
+}
+
+.padding010 {
+    padding: 0 10px;
+}
+
 .theme-green .bs-datepicker-head {
     background-color: #5cb85c
 }
