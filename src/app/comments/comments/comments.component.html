@@ -1,4 +1,5 @@
-<div class="row">
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div class="row" *ngIf="!isLoading">
   <div class="col-md-3 offset-md-9">
     <div class="input-group">
       <input type="text" class="form-control" (change)="changed($event)" [(ngModel)]="search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
@@ -7,8 +8,6 @@
       </div>
     </div>
   </div>
-</div>
-<div class="marginTop15">
   
   <div class="row marginTop15">
   	<div *ngFor="let comment of comments; index as i" class="Comments-comment indexBox">

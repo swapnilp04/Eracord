@@ -1,4 +1,5 @@
-<div class="">
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div class="" *ngIf="!isLoading">
 	<div class="form-group mb-3 fullWidth">
     <select class="form-select width30 marginRight15" [disabled]="isLoading" [ngModel]="searchBatchStandard" (ngModelChange)="onChangeBatchStandard($event)" aria-label="Selecte Standard">
     	<option value="0" selected>----</option>

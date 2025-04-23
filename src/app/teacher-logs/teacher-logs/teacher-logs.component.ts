@@ -26,7 +26,7 @@ export class TeacherLogsComponent implements OnInit {
   public batchStandards: BatchStandard[] = [];
   public subjects: Subject[] = [];
   public teachers: Teacher[] = [];
-  public isLoading = false;  
+  public isLoading = true;  
   public searchBatchStandard = 0;
   public searchSubject= 0;
   public searchTeacher = 0 ;
@@ -61,11 +61,6 @@ export class TeacherLogsComponent implements OnInit {
 
   pageChanged(event: PageChangedEvent): void {
     this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
-    this.page = event.page;
-    while(this.teacherLogs.length > 0) {
-      this.teacherLogs.pop();
-    } 
-    this.loadTeacherLogs(this.page, this.searchStr);
   }
 
   changed(e: any) {
@@ -83,6 +78,7 @@ export class TeacherLogsComponent implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   hasEdit(logUserID: number, logDate: Date) {
@@ -92,11 +88,19 @@ export class TeacherLogsComponent implements OnInit {
   }
 
   loadTeacherLogs(pageNumber: number, searchStr: string): void {
+    this.isLoading = true;
     this.teacherLogService.getTeacherLogs(pageNumber, searchStr).subscribe (
       (response: any) => this.assignTeacherLogs(response),
       (error: any) => this.errorHandle(error),
-      () => this.currentPage = parseInt(pageNumber.toString())
+      () => this.disableLoading(pageNumber)
     );
+  }
+
+  disableLoading(pageNumber: number) {
+    setTimeout(() => {
+      this.currentPage = parseInt(pageNumber.toString())
+      this.isLoading = false;
+    }, 200);
   }
 
   assignTeacherLogs(response: any) {
@@ -108,7 +112,7 @@ export class TeacherLogsComponent implements OnInit {
     this.teacherLogService.getLogCategories().subscribe (
       (response: any) => this.assignLogCategories(response),
       (error: any) => this.errorHandle(error),
-      () => this.isLoadingFalse()
+      () => console.log('Done getting categories......')
     );
   }
 

@@ -1,4 +1,5 @@
-<div>
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div *ngIf="!isLoading">
   <div class="clearfix marginBottom15"> 
     <a href="/standards/new" class="btn btn-primary" tooltip="New Standard">
     	<fa-icon [icon]="faBookOpenReader"></fa-icon>

@@ -1,4 +1,5 @@
-<div class="row">
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div class="row" *ngIf="!isLoading">
   <p class="clearfix">
       
     <a href="/batchs/new" class="btn btn-primary" tooltip="New Batch"><fa-icon [icon]="faUsers"></fa-icon></a>

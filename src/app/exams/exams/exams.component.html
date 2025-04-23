@@ -1,4 +1,5 @@
-<div class="">
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div class="" *ngIf="!isLoading">
   <p class="clearfix">
     
     <a href="/exams/new" class="btn btn-primary marginRight15" tooltip="New Exam">

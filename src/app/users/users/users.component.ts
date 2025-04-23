@@ -16,8 +16,9 @@ export class UsersComponent  implements OnInit {
   faUserPlus = faUserPlus;
   faUserCheck = faUserCheck;
   faUserXmark = faUserXmark;
-  constructor(private userService: UserService, private loginService: LoginService, private alertService: AlertService){}
+  isLoading = true;
 
+  constructor(private userService: UserService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -34,14 +35,21 @@ export class UsersComponent  implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   loadUsers(): void {
     this.userService.getUsers().subscribe (
       (response: any) => this.assignUsers(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Users......')
+      () => this.disableLoading()
     );
+  }
+
+  disableLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 
   deactiveUser(user: any): void {

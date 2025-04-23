@@ -17,7 +17,7 @@ export class StandardsComponent  implements OnInit {
   faFilePen = faFilePen;
   faFolderOpen = faFolderOpen;
   faBookOpenReader = faBookOpenReader;
-  
+  isLoading = true;
 
   constructor(private standardService: StandardService, private loginService: LoginService, private alertService: AlertService){}
 
@@ -34,14 +34,22 @@ export class StandardsComponent  implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   loadStandards(): void {
+    this.isLoading = true;
     this.standardService.getStandards().subscribe (
       (response: any) => this.assignStandard(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Standards......')
+      () => this.disableLoading()
     );
+  }
+
+  disableLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 
   assignStandard(response: any) {

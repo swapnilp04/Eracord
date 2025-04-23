@@ -23,6 +23,8 @@ export class ExamsComponent implements OnInit {
   faFolderOpen = faFolderOpen;
   faSquarePlus = faSquarePlus;
   faFileLines = faFileLines;
+  isLoading = true;
+
   constructor(private examService: ExamService, private loginService: LoginService, private alertService: AlertService,
     private router: Router, private route: ActivatedRoute){}
 
@@ -40,11 +42,6 @@ export class ExamsComponent implements OnInit {
 
   pageChanged(event: PageChangedEvent): void {
     this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
-    this.page = event.page;
-    while(this.exams.length > 0) {
-      this.exams.pop();
-    } 
-    this.loadExams(this.page);
   }
 
   changed(e: any) {
@@ -62,16 +59,24 @@ export class ExamsComponent implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   loadExams(pageNumber: number): void {
+    this.isLoading = true;
     this.examService.getExams(pageNumber).subscribe (
       (response: any) => this.assignExam(response),
       (error: any) => this.errorHandle(error),
-      () => this.currentPage = parseInt(pageNumber.toString())
+      () => this.disableLoading(pageNumber)
     );
   }
 
+  disableLoading(pageNumber: number) {
+    setTimeout(() => {
+      this.currentPage = parseInt(pageNumber.toString())
+      this.isLoading = false;
+    }, 200);
+  }
 
   assignExam(response: any) {
     this.exams = response.exams

@@ -19,6 +19,8 @@ export class BatchsComponent  implements OnInit {
   faFolderOpen = faFolderOpen;
   faSquarePlus = faSquarePlus;
   faUsers = faUsers;
+  isLoading = true;
+
   constructor(private batchService: BatchService, private loginService: LoginService, private alertService: AlertService){}
 
 
@@ -35,14 +37,22 @@ export class BatchsComponent  implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   loadBatchs(): void {
+    this.isLoading = true;
     this.batchService.getBatchs().subscribe (
       (response: any) => this.assignBatch(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Batchs......')
+      () => this.disableLoading()
     );
+  }
+
+  disableLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 
   loadBatch(batchID: number): void {

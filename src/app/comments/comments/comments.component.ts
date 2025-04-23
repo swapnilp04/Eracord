@@ -19,6 +19,8 @@ export class CommentsComponent implements OnInit {
   page= 1;
   totalItems: number = 10;
   search = "";
+  isLoading = true;
+
 
   constructor(private commentService: CommentService, private loginService: LoginService, private alertService: AlertService,
     private router: Router, private route: ActivatedRoute){}
@@ -42,15 +44,11 @@ export class CommentsComponent implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   pageChanged(event: PageChangedEvent): void {
     this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
-    this.page = event.page;
-    while(this.comments.length > 0) {
-      this.comments.pop();
-    } 
-    this.loadComments(this.page);
   }
 
   searchTable(): void{
@@ -64,11 +62,19 @@ export class CommentsComponent implements OnInit {
   }
 
   loadComments(pageNumber: number): void {
+    this.isLoading = true;
     this.commentService.getComments(pageNumber, this.search).subscribe (
       (response: any) => this.assignComments(response),
       (error: any) => this.errorHandle(error),
-      () => this.currentPage = parseInt(pageNumber.toString())
+      () => this.disableLoading(pageNumber)
     );
+  }
+
+  disableLoading(pageNumber: number) {
+    setTimeout(() => {
+      this.currentPage = parseInt(pageNumber.toString())
+      this.isLoading = false;
+    }, 200);
   }
 
   completeComment(comment: Comment): void {

@@ -1,5 +1,5 @@
 <app-loading-image *ngIf="isLoading"> </app-loading-image>
-<div class="row" >
+<div class="row" *ngIf="!isLoading">
   <div class="col-8">
     <a href="/students/new" class="btn btn-primary" tooltip="New Student"><span><fa-icon [icon]="faSquarePlus"></fa-icon> </span></a>
   </div>
@@ -8,10 +8,7 @@
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)=searchTable()>Search</button>
     </div>
-  </div>
-</div>
-<div class="studentTable">
-  
+  </div>  
   <div>
     <div *ngFor="let student of students; index as i" [ngClass]="{'bg-warning': student.has_left}" class="Students student indexBox">
       <p class="name">{{((page - 1) *10) + i + 1 }}. <strong>{{name(student)}}</strong></p>

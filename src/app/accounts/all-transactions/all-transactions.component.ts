@@ -21,6 +21,7 @@ export class AllTransactionsComponent  implements OnInit {
   totalItems: number = 10;
   search = "";
   faFileExport = faFileExport;
+  isLoading = true;
 
   constructor(private transactionService: TransactionService, private loginService: LoginService, private alertService: AlertService,
     private router: Router, private route: ActivatedRoute){}
@@ -51,11 +52,6 @@ export class AllTransactionsComponent  implements OnInit {
 
   pageChanged(event: PageChangedEvent): void {
     this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
-    this.page = event.page;
-    while(this.transactions.length > 0) {
-      this.transactions.pop();
-    } 
-    this.loadTransactions(this.page);
   }
 
   errorHandle(error: any): void {
@@ -68,14 +64,23 @@ export class AllTransactionsComponent  implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   loadTransactions(pageNumber: number): void {
+    this.isLoading = true;
     this.transactionService.getTransactions(pageNumber, this.search).subscribe (
       (response: any) => this.assignTransactions(response),
       (error: any) => this.errorHandle(error),
-      () => this.currentPage = parseInt(pageNumber.toString())
+      () => this.disableLoading(pageNumber)
     );
+  }
+
+  disableLoading(pageNumber: number) {
+    setTimeout(() => {
+      this.currentPage = parseInt(pageNumber.toString())
+      this.isLoading = false;
+    }, 200);
   }
 
   assignTransactions(response: any) {

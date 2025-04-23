@@ -17,6 +17,8 @@ export class HostelsComponent  implements OnInit {
   faFolderOpen = faFolderOpen;
   faFilePen = faFilePen;
   faPrint = faPrint;
+  isLoading = true;
+
   constructor(private hostelService: HostelService, private loginService: LoginService, private alertService: AlertService){}
 
   ngOnInit(): void {
@@ -32,14 +34,22 @@ export class HostelsComponent  implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   loadHostels(): void {
+    this.isLoading = true;
     this.hostelService.getHostels().subscribe (
       (response: any) => this.assignHostel(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostels......')
+      () => this.disableLoading()
     );
+  }
+
+  disableLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 
   assignHostel(response: any) {
