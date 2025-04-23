@@ -18,7 +18,7 @@ import { faPrint, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 export class StudentExamsReportComponent  implements OnInit {
   
   public studentId: any;
-  public isLoading = true;
+  isLoading = true;
   public student = {} as Student;
   public examStudents: ExamStudent[] = [];
   faPrint = faPrint;
@@ -31,11 +31,12 @@ export class StudentExamsReportComponent  implements OnInit {
     this.route.paramMap.subscribe((param) => {
       this.studentId = Number(param.get('student_id'));
       this.loadStudent(this.studentId);
-      this.loadExamStudents(this.studentId);
+      
     });
   }
 
   loadStudent(studentID: number): void {
+    this.isLoading = true;
     this.studentService.getStudent(studentID).subscribe (
       (response: any) => this.assignStudent(response),
       (error: any) => this.errorHandle(error),
@@ -44,15 +45,23 @@ export class StudentExamsReportComponent  implements OnInit {
   }
 
   loadExamStudents(studentId: number): void {
+    this.isLoading = true;
     this.studentService.getStudentAllExams(studentId).subscribe (
       (response: any) => this.assignExamStudents(response),
       (error: any) => this.errorHandle(error),
-      () => this.isLoading =false
+      () => this.disableLoading()
     );
+  }
+
+  disableLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 
   assignStudent(response: any) {
     this.student = response;
+    this.loadExamStudents(this.studentId);
     this.isLoading = false;
   }
 
@@ -76,5 +85,6 @@ export class StudentExamsReportComponent  implements OnInit {
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
     }
+    this.isLoading = false;
   }
 }

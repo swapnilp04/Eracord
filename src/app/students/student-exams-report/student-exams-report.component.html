@@ -1,4 +1,5 @@
-<div class="mb-3" style="padding-bottom:50px;">
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div class="mb-3" style="padding-bottom:50px;" *ngIf="!isLoading">
   <button (click)=back() class="btn btn-primary marginRight15" tooltip="Back">
     <fa-icon [icon]="faChevronLeft"></fa-icon>
   </button>

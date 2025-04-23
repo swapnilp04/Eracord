@@ -91,7 +91,7 @@ export class StudentAddEditComponent implements OnInit {
   }
 
   getSuccess(response: any): void {
-    this.router.navigate(['/students', this.student.id], { replaceUrl: true });
+    this.router.navigate(['/students', response['student']['id']], { replaceUrl: true });
   }
 
   hasError(field: string): any {
@@ -116,6 +116,8 @@ export class StudentAddEditComponent implements OnInit {
   }
 
   isLoadingFalse(): void {
-    this.isLoading = false;    
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 }
