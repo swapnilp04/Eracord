@@ -25,6 +25,7 @@ export class StudentsComponent  implements OnInit {
   faFolderOpen = faFolderOpen;
   faMoneyBill = faMoneyBill;
   faSquarePlus = faSquarePlus;
+  isLoading = true;
 
   public students: Student[] = [];
   constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService,
@@ -43,11 +44,6 @@ export class StudentsComponent  implements OnInit {
 
   pageChanged(event: PageChangedEvent): void {
     this.router.navigateByUrl(this.router.url.replace(this.page.toString(), event.page.toString()));
-    while(this.students.length > 0) {
-      this.students.pop();
-    }
-    this.page = event.page;
-    this.loadStudents(this.page);
   }
 
   searchTable(): void{
@@ -65,11 +61,19 @@ export class StudentsComponent  implements OnInit {
   }
 
   loadStudents(pageNumber: number): void {
+    this.isLoading = true;
     this.studentService.getStudents(pageNumber, this.search).subscribe (
       (response: any) => this.assignStudents(response),
       (error: any) => this.errorHandle(error),
-      () => this.currentPage = parseInt(pageNumber.toString())
+      () => this.disableLoading(pageNumber)
     );
+  }
+
+  disableLoading(pageNumber: number) {
+    setTimeout(() => {
+      this.currentPage = parseInt(pageNumber.toString())
+      this.isLoading = false;
+    }, 200);
   }
 
   errorHandle(error: any): void {    
@@ -81,6 +85,7 @@ export class StudentsComponent  implements OnInit {
     if(error.status == 0) {
       this.loginService.toLogin();
     }
+    this.isLoading = false;
   }
 
   createStudent(student: Student): void {

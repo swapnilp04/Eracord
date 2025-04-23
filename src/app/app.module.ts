@@ -87,6 +87,7 @@ import { StudentAdmissionFormComponent } from './students/student-admission-form
 import { StudentExamsReportComponent } from './students/student-exams-report/student-exams-report.component';
 import { StudentExamGraphReportsComponent } from './students/student-exam-graph-reports/student-exam-graph-reports.component';
 import { GraphsLineGraphComponent } from './graphs/graphs-line-graph/graphs-line-graph.component';
+import { LoadingImageComponent } from './graphs/loading-image/loading-image.component';
 
 
 
@@ -164,6 +165,7 @@ import { GraphsLineGraphComponent } from './graphs/graphs-line-graph/graphs-line
     StudentExamsReportComponent,
     StudentExamGraphReportsComponent,
     GraphsLineGraphComponent,
+    LoadingImageComponent,
   ],
   imports: [
     BrowserModule,
