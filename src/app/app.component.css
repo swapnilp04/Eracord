@@ -52,11 +52,19 @@
     .indexBox {
         width: 50%;
     }
+
+    .searchBox > .fullWidthMobile {
+        width: 100% !important;
+    }
 }
 
 
 .XSmall {
     .indexBox {
         width: 100%;
+    }
+
+    .searchBox > .fullWidthMobile {
+        width: 100% !important;
     }
 }

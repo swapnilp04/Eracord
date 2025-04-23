@@ -1,9 +1,9 @@
 <app-loading-image *ngIf="isLoading"> </app-loading-image>
-<div class="row" *ngIf="!isLoading">
-  <div class="col-8">
+<div class="row searchBox" *ngIf="!isLoading">
+  <div class="col-8 fullWidthMobile">
     <a href="/students/new" class="btn btn-primary" tooltip="New Student"><span><fa-icon [icon]="faSquarePlus"></fa-icon> </span></a>
   </div>
-  <div class="input-group mb-3 col">
+  <div class="input-group mb-3 col fullWidthMobile">
     <input type="text" class="form-control" (change)="changed($event)" [(ngModel)]="search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)=searchTable()>Search</button>
