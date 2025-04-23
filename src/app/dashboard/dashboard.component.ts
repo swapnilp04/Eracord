@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   public hostelStudents: HostelStudent[] = [];
   public students: Student[] = [];
   public comments: Comment[] = [];
+  isLoading = true;
 
   constructor(private hostelService: HostelService, private studentService: StudentService, private commentService: CommentService,
     private loginService: LoginService, private alertService: AlertService){}
@@ -35,18 +36,21 @@ export class DashboardComponent implements OnInit {
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
     }
+    this.isLoading = false;
   }
 
   loadHostelStudent(): void {
+    this.isLoading = true;
     this.hostelService.getHostelEarlyExpireStudents().subscribe (
       (response: any) => this.assignHostelStudent(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostels......')
+      () => this.isLoading = false
     );
   }
 
   assignHostelStudent(response: any) {
     this.hostelStudents = response;
+    this.disableLoading();
   }
 
   name(student: Student): string {
@@ -54,27 +58,37 @@ export class DashboardComponent implements OnInit {
   }
 
   loadUpcommingBirdays(): void {
+    this.isLoading = true;
     this.studentService.getUpcommingBirthdays().subscribe (
       (response: any) => this.assignStudents(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostels......')
+      () => this.isLoading = false
     );
   }
 
   loadUpcommingComments(): void {
+    this.isLoading = true;
     this.commentService.getUpcommingComments().subscribe (
       (response: any) => this.assignComments(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Hostels......')
+      () => this.isLoading = false
     );
+  }
+
+  disableLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 
   assignComments(response: any) {
     this.comments = response;
+    this.disableLoading();
   }
 
   assignStudents(response: any) {
     this.students = response;
+    this.disableLoading();
   }
 
 }

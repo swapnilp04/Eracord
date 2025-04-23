@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit{
   public user :User = {username: "", password: ""};
   
   dismissible = true;
+
+  isLoading = false;
   
   constructor(private cookies: CookieService, private loginService: LoginService, 
     private _router: Router,
@@ -27,6 +29,7 @@ export class LoginComponent implements OnInit{
   }
 
   login() {
+    this.isLoading = true;
     this.loginService.loginUser(this.user).subscribe(
       (response: any) => this.successResponse(response),
       (error: any) => this.errorResponse(error),
@@ -51,15 +54,24 @@ export class LoginComponent implements OnInit{
     this.loginService.username = response['username'];
     //this._router.navigateByUrl('/dashboard');  // open welcome component
     this.alertService.success("Login Successful");
+    this.disableLoading()
+  }
+
+  disableLoading() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200);
   }
 
   reloadPage() {
     window.location.reload(); 
+    this.disableLoading();
   }
 
   errorResponse(error: any): void {
     if(error.status == 400) {
       this.alertService.error(error.error.error);
-    } 
+    }
+    this.isLoading = false;    
   }  
 }
