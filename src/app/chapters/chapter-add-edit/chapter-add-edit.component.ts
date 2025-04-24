@@ -1,40 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { SubjectService } from './../../service/subject.service';
+import { ChapterService } from './../../service/chapter.service';
 import { LoginService } from './../../service/login.service';
-import { Subject } from './../../interface/subject';
+import { Chapter } from './../../interface/chapter';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
 import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-subject-add-edit',
-  templateUrl: './subject-add-edit.component.html',
-  styleUrls: ['./subject-add-edit.component.css']
+  selector: 'app-chapter-add-edit',
+  templateUrl: './chapter-add-edit.component.html',
+  styleUrls: ['./chapter-add-edit.component.css']
 })
-export class SubjectAddEditComponent implements OnInit {
-  public subject = {} as Subject;
-  public standardId: number;
+export class ChapterAddEditComponent implements OnInit {
+
+  public chapter = {} as Chapter;
+  public id: any;
+  public standardId: any;
+  public subjectId: any;
   public isNew = true;
   public isLoading = false;
   faChevronLeft = faChevronLeft;
   faCircleCheck = faCircleCheck;
 
-  constructor(private subjectService: SubjectService, private location: Location, private router: Router, private route: ActivatedRoute, 
-    private loginService: LoginService, private alertService: AlertService){}
+  constructor(private chapterService: ChapterService, private route: ActivatedRoute, private location: Location, private router: Router,
+   private loginService: LoginService, private alertService: AlertService){}
 
-  createSubject(subject: Subject): void {
+  createChapter(chapter: Chapter): void {
     this.isLoading = true;
-    this.subjectService.createSubject(this.standardId, subject).subscribe (
+    this.chapterService.createChapter(this.standardId, this.subjectId, chapter).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
   }
 
-  updateSubject(subject: Subject): void {
+  updateChapter(chapter: Chapter): void {
     this.isLoading = true;
-    this.subjectService.updateSubject(this.standardId, subject).subscribe (
+    this.chapterService.updateChapter(this.standardId, this.subjectId, chapter).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
@@ -49,8 +52,9 @@ export class SubjectAddEditComponent implements OnInit {
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
       this.standardId = Number(param.get('standard_id'));
+      this.subjectId = Number(param.get('subject_id'));
       if(!this.isNew) {
-        this.loadSubject(id);
+        this.loadChapter(this.standardId, this.subjectId, id);
       }
     });
   }
@@ -63,10 +67,10 @@ export class SubjectAddEditComponent implements OnInit {
     }
   }
 
-  loadSubject(subjectId: number): void {
+  loadChapter(standardId: number, subjectId: number, chapterId: number): void {
     this.isLoading = true;
-    this.subjectService.getSubject(this.standardId, subjectId).subscribe (
-      (response: any) => this.assignSubject(response),
+    this.chapterService.getChapter(standardId, subjectId, chapterId).subscribe (
+      (response: any) => this.assignChapter(response),
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
@@ -77,7 +81,7 @@ export class SubjectAddEditComponent implements OnInit {
   }
 
   getSuccess(response: any): void {
-    this.router.navigate(['/standards', this.standardId], { replaceUrl: true });
+    this.router.navigate(['/standards', this.standardId, 'subjects', this.subjectId], { replaceUrl: true });
     this.alertService.success("Success");
   }
  
@@ -85,7 +89,7 @@ export class SubjectAddEditComponent implements OnInit {
     this.isLoading = false;    
   }
 
-  assignSubject(response: any) {
-    this.subject = response;
+  assignChapter(response: any) {
+    this.chapter = response;
   }
 }

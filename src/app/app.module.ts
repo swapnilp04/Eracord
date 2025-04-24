@@ -66,6 +66,7 @@ import { StudentExamsComponent } from './students/student-exams/student-exams.co
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { AlertComponent } from './alert/alert.component';
 import { SubjectsComponent } from './subjects/subjects/subjects.component';
+import { ChaptersComponent } from './chapters/chapters/chapters.component';
 import { SubjectComponent } from './subjects/subject/subject.component';
 import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add-edit.component';
 import { TeachersComponent } from './teachers/teachers/teachers.component';
@@ -88,9 +89,7 @@ import { StudentExamsReportComponent } from './students/student-exams-report/stu
 import { StudentExamGraphReportsComponent } from './students/student-exam-graph-reports/student-exam-graph-reports.component';
 import { GraphsLineGraphComponent } from './graphs/graphs-line-graph/graphs-line-graph.component';
 import { LoadingImageComponent } from './graphs/loading-image/loading-image.component';
-
-
-
+import { ChapterAddEditComponent } from './chapters/chapter-add-edit/chapter-add-edit.component';
 
 
 @NgModule({
@@ -166,6 +165,8 @@ import { LoadingImageComponent } from './graphs/loading-image/loading-image.comp
     StudentExamGraphReportsComponent,
     GraphsLineGraphComponent,
     LoadingImageComponent,
+    ChaptersComponent,
+    ChapterAddEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import { SubjectService } from './../../service/subject.service';
 import { LoginService } from './../../service/login.service';
 import { Subject } from './../../interface/subject';
 import { AlertService } from '../../service/alert.service';
-import { faFilePen, faBook } from '@fortawesome/free-solid-svg-icons';
+import { faFilePen, faBook, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-subjects',
@@ -16,6 +16,7 @@ export class SubjectsComponent implements OnInit {
   public subjects: Subject[] = [];
   faFilePen = faFilePen;
   faBook = faBook;
+  faFolderOpen = faFolderOpen;
   
   constructor(private subjectService: SubjectService, private loginService: LoginService, private alertService: AlertService){}
 

@@ -1,0 +1,18 @@
+<form>
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="chapter.name" [ngModelOptions]="{standalone: true}"/>
+  </div>
+  <div class="form-group mb-3">
+  <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createChapter(chapter) tooltip="Submit">
+    <fa-icon [icon]="faCircleCheck"></fa-icon>
+  </button>
+  <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateChapter(chapter) tooltip="Submit">
+    <fa-icon [icon]="faCircleCheck"></fa-icon>
+  </button>
+  <button type="submit" class="btn btn-primary marginLeft15" (click)=back() tooltip="Back">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </button>
+</div>
+</form>
+

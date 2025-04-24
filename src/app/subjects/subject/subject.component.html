@@ -1,1 +1,10 @@
-<p>subject works!</p>
+<div *ngIf=!isLoading>
+	<div class="mb-3">
+		<h2>Name - {{subject.name}} ({{subject.Standard.name}})</h2>
+		<button (click)=back() class="btn btn-primary" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
+		</button>
+	</div>
+	<h4>Chapters</h4>
+	<app-chapters [standardId]="standardId" [subjectId]="subject.id"></app-chapters>
+</div>

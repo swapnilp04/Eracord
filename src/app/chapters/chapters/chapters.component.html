@@ -1,0 +1,17 @@
+<div class="row">
+  <p class="clearfix">
+    <a href='standards/{{standardId}}/subjects/{{subjectId}}/chapters/new' class="btn btn-primary" tooltip="New Chapter">
+    	<fa-icon [icon]="faSquarePlus"></fa-icon>
+    </a>
+  </p>
+  <div>
+  	<div *ngFor="let chapter of chapters; index as i" class="Subject-chapters indexBox">
+      <p calss="name">{{i+1}}. <strong>{{chapter.name}}</strong></p>
+	    <div class="actions">
+        <a href='standards/{{standardId}}/subjects/{{subjectId}}/chapters/{{chapter.id}}/edit' tooltip="Edit">
+        	<fa-icon [icon]="faFilePen"></fa-icon>
+      	</a>
+      </div>
+  	</div>
+  </div>	
+</div>

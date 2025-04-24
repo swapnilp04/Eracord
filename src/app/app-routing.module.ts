@@ -40,6 +40,8 @@ import { ExamsComponent } from './exams/exams/exams.component';
 import { ExamComponent } from './exams/exam/exam.component';
 import { ExamAddEditComponent } from './exams/exam-add-edit/exam-add-edit.component';
 import { SubjectAddEditComponent } from './subjects/subject-add-edit/subject-add-edit.component';
+import { SubjectComponent } from './subjects/subject/subject.component';
+import { ChapterAddEditComponent } from './chapters/chapter-add-edit/chapter-add-edit.component';
 import { TeachersComponent } from './teachers/teachers/teachers.component';
 import { TeacherComponent } from './teachers/teacher/teacher.component';
 import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add-edit.component';
@@ -88,7 +90,11 @@ const routes: Routes = [
   {path: 'standards/:id' , component: StandardComponent},
   {path: 'standards/:id/edit' , component: StandardAddEditComponent},
   {path: 'standards/:standard_id/subjects/new' , component: SubjectAddEditComponent},
+  {path: 'standards/:standard_id/subjects/:id' , component: SubjectComponent},
   {path: 'standards/:standard_id/subjects/:id/edit' , component: SubjectAddEditComponent},
+
+  {path: 'standards/:standard_id/subjects/:subject_id/chapters/new' , component: ChapterAddEditComponent},
+  {path: 'standards/:standard_id/subjects/:subject_id/chapters/:id/edit' , component: ChapterAddEditComponent},
 
   {path: 'teachers' , component: TeachersComponent},
   {path: 'teachers/new' , component: TeacherAddEditComponent},

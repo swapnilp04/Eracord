@@ -9,6 +9,9 @@
   	<div *ngFor="let subject of subjects; index as i" class="Standard-subjects indexBox">
       <p calss="name">{{i+1}}. <strong>{{subject.name}}</strong></p>
 	    <div class="actions">
+        <a href='standards/{{standardId}}/subjects/{{subject.id}}' class="marginRight15" tooltip="Show">
+          <fa-icon [icon]="faFolderOpen"></fa-icon>
+        </a>
         <a href='standards/{{standardId}}/subjects/{{subject.id}}/edit' tooltip="Edit">
         	<fa-icon [icon]="faFilePen"></fa-icon>
       	</a>

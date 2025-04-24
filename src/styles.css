@@ -803,6 +803,10 @@ pagination {
     height: 120px;
 }
 
+.Subject-chapters {
+    height: 120px;
+}
+
 .loadingImage {
     filter: blur(8px);
     -webkit-filter: blur(8px);
