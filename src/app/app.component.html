@@ -29,8 +29,11 @@
         <li class="nav-item">
           <a class="nav-link" [ngClass]="{'active': activeLink('/hostels')}" href="/hostels">Hostel</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf=isAdminAccountant()>
           <a class="nav-link" [ngClass]="{'active': activeLink('/batchs')}" href="/batchs">Batch</a>
+        </li>
+        <li class="nav-item" *ngIf=isTeacher()>
+          <a class="nav-link" [ngClass]="{'active': activeLink('/active-standards')}" href="/active-standards">Standards</a>
         </li>
         <li class="nav-item" *ngIf=isAdmin()>
           <a class="nav-link" [ngClass]="{'active': activeLink('/standards')}" href="/standards">Standard</a>

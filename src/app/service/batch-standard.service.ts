@@ -5,6 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BatchStandard } from './../interface/batch-standard'
 import { Subject } from './../interface/subject'
+import { Chapter } from './../interface/chapter'
 import { BatchStandardStudent } from './../interface/batch-standard-student'
 
 @Injectable({
@@ -74,6 +75,11 @@ URL = "http://localhost:8080"
   getBatchStandardSubjects(batchStandardId: number): Observable<Subject[]> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Subject[]>(`${this.loginService.URL}/batch-standards/${batchStandardId}/subjects`, {headers: myHeaders});
+  }
+
+  getBatchStandardSubjectChapters(batchStandardId: number, subjectId: number): Observable<Chapter[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Chapter[]>(`${this.loginService.URL}/batch-standards/${batchStandardId}/subjects/${subjectId}/chapters`, {headers: myHeaders});
   }
 
   deleteBatchStandardStudent(batchStandardId: number, batchStandardStudentID: number): Observable<BatchStandardStudent>{

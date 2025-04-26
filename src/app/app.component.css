@@ -38,6 +38,10 @@
     .indexBox {
         width: 25%;
     }
+
+    .ActiveStandards-standard {
+        width: 25%;
+    }
 }
 
 
@@ -45,11 +49,19 @@
     .indexBox {
         width: 33%;
     }
+
+    .ActiveStandards-standard {
+        width: 33%;
+    }
 }
 
 
 .Small {
     .indexBox {
+        width: 50%;
+    }
+
+    .ActiveStandards-standard {
         width: 50%;
     }
 
@@ -66,5 +78,9 @@
 
     .searchBox > .fullWidthMobile {
         width: 100% !important;
+    }
+
+    .ActiveStandards-standard {
+        width: 100%;
     }
 }

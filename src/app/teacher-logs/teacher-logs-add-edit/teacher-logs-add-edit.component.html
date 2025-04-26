@@ -29,6 +29,18 @@
       <p *ngFor="let err of getErrorValue('SubjectID')">{{err}}</p>
     </div>
   </div>
+
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Chapter</label>
+    <select class="form-select" [disabled]="isLoading" [ngClass]="{'is-invalid': hasError('ChapterID')}" [ngModel]="teacherLog.chapter_id" (ngModelChange)="onChangeSubject($event)" aria-label="Selecte Chapter" [ngModelOptions]="{standalone: true}">
+        <option value="0">----</option>
+        <option *ngFor="let chapter of chapters" [ngValue]="chapter.id">{{chapter.name}}</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="hasError('ChapterID')">
+      <p *ngFor="let err of getErrorValue('ChapterID')">{{err}}</p>
+    </div>
+  </div>
+
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Category</label>
     <select class="form-select" [disabled]="isLoading" [ngClass]="{'is-invalid': hasError('LogCategoryID')}" [ngModel]="teacherLog.log_category_id" (ngModelChange)="onChangeCategory($event)" aria-label="Selecte Category" [ngModelOptions]="{standalone: true}">

@@ -1,0 +1,27 @@
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div *ngIf="!isLoading">
+  <div class="clearfix marginBottom15"> 
+    <a href="/standards/new" class="btn btn-primary" tooltip="New Standard">
+    	<fa-icon [icon]="faBookOpenReader"></fa-icon>
+    </a>
+  </div>
+  <div>
+  <div *ngFor="let batchStandard of batchStandards" class="marginTop15 ActiveStandards-standard">
+    <div class="ActiveStandards-standardInner" >
+      <p>Name - <strong>{{batchStandard.Standard.name}}-{{batchStandard.Batch.name}}</strong></p>
+      <div class="actions"> 
+        <a class="marginRight15" href="batchs/{{batchStandard.batch_id}}/standards/{{batchStandard.id}}" tooltip="Show">
+          <fa-icon [icon]="faFolderOpen"></fa-icon>
+        </a>
+        <div class="dropdown floatInline">
+          <button class="btn btn-link dropdown-toggle padding0" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Fill Logs
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a *ngFor="let subject of batchStandard.Standard.Subjects" class="dropdown-item" href="/logs/new?batch_standard_id={{batchStandard.id}}&subject_id={{subject.id}}" type="button">{{subject.name}} - {{batchStandard.Standard.name}}-{{batchStandard.Batch.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

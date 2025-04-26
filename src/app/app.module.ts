@@ -90,6 +90,7 @@ import { StudentExamGraphReportsComponent } from './students/student-exam-graph-
 import { GraphsLineGraphComponent } from './graphs/graphs-line-graph/graphs-line-graph.component';
 import { LoadingImageComponent } from './graphs/loading-image/loading-image.component';
 import { ChapterAddEditComponent } from './chapters/chapter-add-edit/chapter-add-edit.component';
+import { ActiveStandardsComponent } from './standards/active-standards/active-standards.component';
 
 
 @NgModule({
@@ -167,6 +168,7 @@ import { ChapterAddEditComponent } from './chapters/chapter-add-edit/chapter-add
     LoadingImageComponent,
     ChaptersComponent,
     ChapterAddEditComponent,
+    ActiveStandardsComponent,
   ],
   imports: [
     BrowserModule,

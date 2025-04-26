@@ -24,6 +24,7 @@ export class CombinedClassAddEditComponent {
 
   onChangeBatchStandard(newObj: number): void {
     this.combinedClass.batch_standard_id = newObj;
+    this.combinedClass.subject_id = 0;
     if(newObj != 0) {
       this.loadSubjects(newObj);
     } else {

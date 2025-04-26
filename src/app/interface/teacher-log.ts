@@ -1,6 +1,7 @@
 import { LogCategory } from './log-category';
 import { Teacher } from './teacher';
 import { Subject } from './subject';
+import { Chapter } from './chapter';
 import { BatchStandard } from './batch-standard';
 import { CombinedClass } from './combined-class';
 
@@ -15,6 +16,8 @@ export interface TeacherLog {
 	Teacher: Teacher;
 	subject_id: number;
 	Subject: Subject;
+	chapter_id: number;
+	Chapter: Chapter;
 	batch_standard_id: number;
 	BatchStandard: BatchStandard;
 	comment: string;

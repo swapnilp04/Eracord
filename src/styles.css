@@ -653,6 +653,18 @@ position: absolute;
     float: left;
 }
 
+.floatRight {
+    float: right;
+}
+
+.floatInline{
+    float: inline-end;
+}
+
+.padding0 {
+    padding: 0;
+}
+
 .borderBox {
     border-radius: 20px;
     border: 1px solid #e6e6e6;
@@ -669,7 +681,6 @@ position: absolute;
     transform:
         perspective(750px)
         translate3d(0px, 0px, -250px)
-        
         scale(1.2, 1.2);
     border-radius: 20px;
     border: 5px solid #e6e6e6;
@@ -805,6 +816,28 @@ pagination {
 
 .Subject-chapters {
     height: 120px;
+}
+
+.ActiveStandards-standard {
+    width: 25%;
+    float: left;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.ActiveStandards-standardInner {
+    border-radius: 20px;
+    height: 120px;
+    border: 5px solid #e6e6e6;
+    box-shadow: 0 70px 40px -20px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    position: relative;
+}
+
+.ActiveStandards-standardInner > .actions {
+    position: absolute;
+    bottom: 15px;
+    font-size: 20px;
 }
 
 .loadingImage {

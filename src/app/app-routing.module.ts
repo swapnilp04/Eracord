@@ -8,6 +8,7 @@ import { StudentAddEditComponent } from './students/student-add-edit/student-add
 import { AssignHostelComponent } from './students/assign-hostel/assign-hostel.component';
 import { SwapRoomComponent } from './students/swap-room/swap-room.component';
 import { StandardsComponent } from './standards/standards/standards.component';
+import { ActiveStandardsComponent } from './standards/active-standards/active-standards.component';
 import { StandardComponent } from './standards/standard/standard.component';
 import { StandardAddEditComponent } from './standards/standard-add-edit/standard-add-edit.component';
 import { BatchsComponent } from './batchs/batchs/batchs.component';
@@ -86,6 +87,7 @@ const routes: Routes = [
   
 
   {path: 'standards' , component: StandardsComponent},
+  {path: 'active-standards' , component: ActiveStandardsComponent},
   {path: 'standards/new' , component: StandardAddEditComponent},
   {path: 'standards/:id' , component: StandardComponent},
   {path: 'standards/:id/edit' , component: StandardAddEditComponent},

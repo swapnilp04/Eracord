@@ -6,6 +6,7 @@ import { LoginService } from './../../service/login.service';
 import { TeacherLog } from './../../interface/teacher-log';
 import { BatchStandard } from './../../interface/batch-standard';
 import { Subject } from './../../interface/subject';
+import { Chapter } from './../../interface/chapter';
 import { LogCategory } from './../../interface/log-category';
 import { CombinedClass } from './../../interface/combined-class';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -26,6 +27,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
   public logCategories: LogCategory[] = [];
   public batchStandards: BatchStandard[] = [];
   public subjects: Subject[] = [];
+  public chapters: Chapter[] = [];
   public currentTime = new Date()
   public formErr: any;
   public startTime: Date;//= new Date(2024, 11, 17, 9, 30)
@@ -85,6 +87,14 @@ export class TeacherLogsAddEditComponent implements OnInit {
     );
   }
 
+  loadChapters(batchStandardId: number, subjectId: number): void {
+    this.batchStandardService.getBatchStandardSubjectChapters(batchStandardId, subjectId).subscribe (
+      (response: any) => this.assignChapters(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Chapters......')
+    );
+  }
+
   updateTeacherLog(teacherLog: TeacherLog): void {
     this.isLoading = true;
     this.teacherLog.start_hour = this.startTime.getHours();
@@ -114,17 +124,37 @@ export class TeacherLogsAddEditComponent implements OnInit {
         this.loadTeacherLog(id);
       }
     });
+
+    this.route.queryParams
+      //.filter(params => params.order)
+      .subscribe(params => {
+        var batchStandardId = params['batch_standard_id'];
+        var subjectId = params['subject_id'];
+        if(batchStandardId != undefined) {
+          this.loadSubjects(batchStandardId);
+          this.teacherLog.batch_standard_id = Number(batchStandardId);
+        }
+        if(subjectId != undefined) {
+          this.teacherLog.subject_id = Number(subjectId);
+          this.loadSubjects(batchStandardId);
+        }
+
+        if(subjectId != undefined && batchStandardId != undefined) { 
+          this.loadChapters(batchStandardId, subjectId);
+        }
+      }
+    );
     this.loadLogCategory();
     this.loadDefaultBatchStandards();
   }
 
   addCombinedClass():void {
     let combinedClass = {} as CombinedClass;
-    this.combinedClasses.push(combinedClass)
+    this.combinedClasses.push(combinedClass);
   }
   
   removeCombinedClass(combinedClass: CombinedClass): void {
-    this.combinedClasses = this.combinedClasses.filter(item => item !== combinedClass)
+    this.combinedClasses = this.combinedClasses.filter(item => item !== combinedClass);
   }
 
   checkCombinedClasses(): boolean {
@@ -171,6 +201,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
 
   onChangeBatchStandard(newObj: number): void {
     this.teacherLog.batch_standard_id = newObj;
+    this.teacherLog.subject_id = 0;
     this.removeError("BatchStandardID");
     if(newObj != 0) {
       this.loadSubjects(newObj);
@@ -183,7 +214,16 @@ export class TeacherLogsAddEditComponent implements OnInit {
 
   onChangeSubject(newObj: number): void {
     this.teacherLog.subject_id = newObj;
+    this.teacherLog.chapter_id = 0;
     this.removeError("SubjectID");
+    if(newObj != 0) {
+      this.loadChapters(this.teacherLog.batch_standard_id, newObj);
+    } else {
+      while(this.chapters.length > 0) {
+        this.chapters.pop();
+      }
+    }
+    //
   }
 
   onChangeCategory(newObj: number): void {
@@ -229,6 +269,10 @@ export class TeacherLogsAddEditComponent implements OnInit {
 
   assignSubjects(response: any) {
     this.subjects = response;
+  }
+
+  assignChapters(response: any) {
+    this.chapters = response;
   }
 
   isLoadingFalse(): void {
