@@ -29,6 +29,13 @@
     </div>
   </div>
 
+  <h5>Chapters</h5>
+  <app-multi-select
+    [items]="chapters"
+    (selectionChange)="onSelectionChange($event)" *ngIf="chapters.length > 0"
+    >
+  </app-multi-select>
+
   <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Exam Type</label>
     <select class="form-select" [(ngModel)]="exam.exam_type" (ngModelChange)="onChangeExamType($event)" aria-label="Exam Type" [ngModelOptions]="{standalone: true}" [ngClass]="{'is-invalid': hasError('FirstName')}">

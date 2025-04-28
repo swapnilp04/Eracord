@@ -4,6 +4,7 @@ import { LoginService } from './../service/login.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Subject } from './../interface/subject'
+import { Chapter } from './../interface/chapter'
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,10 @@ export class SubjectService {
   updateSubject(standardId: number, subject: Subject): Observable<Subject> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.put<Subject>(`${this.loginService.URL}/standards/${standardId}/subjects/${subject.id}`, subject, {headers: myHeaders});
+  }
+
+  getChapters(subjectID: number): Observable<Chapter> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Chapter>(`${this.loginService.URL}/subjects/${subjectID}/chapters`, {headers: myHeaders});
   }  
 }

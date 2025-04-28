@@ -9,4 +9,5 @@ export interface Chapter {
 	Standard: Standard;
 	subject_id: number;
 	Subject: Subject;
+	Selected?: boolean;
 }

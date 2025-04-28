@@ -1,6 +1,7 @@
 import { Standard } from './standard';
 import { Subject } from './subject';
 import { Batch } from './batch';
+import { ExamChapter } from './exam-chapter';
 
 export interface Exam {
 	id?: number;
@@ -18,5 +19,6 @@ export interface Exam {
 	exam_status: string;
 	subject_id: number;
 	Subject: Subject;
+	exam_chapters: ExamChapter[];
 	selected?: boolean;
 }

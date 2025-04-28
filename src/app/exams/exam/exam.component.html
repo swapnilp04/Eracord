@@ -18,6 +18,9 @@
 			<h2>{{exam.name}}</h2>
 			<h5>Exam Date - {{exam.exam_date | date:'dd MMM yyyy'}}</h5>
 			<h5>Subject - {{exam.Subject.name}} - {{exam.Standard.name}}-{{exam.Batch.name}}</h5>
+			<h5>Chapters - 
+				<span *ngFor="let examChapter of exam.exam_chapters"><strong>{{examChapter.Chapter.name}}, </strong> </span>
+			</h5>
 			<h5>Status - {{exam.exam_status}}</h5>
 			<h5>Marks - {{exam.exam_marks}} marks</h5>
 			

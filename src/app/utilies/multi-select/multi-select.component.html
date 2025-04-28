@@ -1,0 +1,27 @@
+<div class="multi-select-dropdown">
+  <div class="input-container">
+  	<div *ngFor="let item of findSelecteditems(items)"> 
+      <span *ngIf="item.Selected">
+        <div class="selected-item" >
+          {{ item.name}}
+          <button (click)="removeItem(item, $event)">x</button>
+        </div>
+      </span>
+  	</div>
+    <input
+      type="text"
+      (focus)="showDropdown()"
+      (input)="filterItems($event)"
+      >
+  </div>
+  <div class="dropdown-list" *ngIf="isDropdownVisible">
+  	<div *ngFor="let item of filteredItems">
+      <div class="dropdown-item" (click)="toggleItem(item, $event)">
+        <span class="checkbox" [ngClass]="{'checked': item.Selected}">
+        	<span class="checkmark" *ngIf="item.Selected">✓</span>
+        </span>
+        <span>{{item.name}}</span>
+      </div>
+    </div>
+	</div>
+</div>

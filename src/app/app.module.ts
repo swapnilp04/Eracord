@@ -91,6 +91,7 @@ import { GraphsLineGraphComponent } from './graphs/graphs-line-graph/graphs-line
 import { LoadingImageComponent } from './graphs/loading-image/loading-image.component';
 import { ChapterAddEditComponent } from './chapters/chapter-add-edit/chapter-add-edit.component';
 import { ActiveStandardsComponent } from './standards/active-standards/active-standards.component';
+import { MultiSelectComponent } from './utilies/multi-select/multi-select.component';
 
 
 @NgModule({
@@ -169,6 +170,7 @@ import { ActiveStandardsComponent } from './standards/active-standards/active-st
     ChaptersComponent,
     ChapterAddEditComponent,
     ActiveStandardsComponent,
+    MultiSelectComponent,
   ],
   imports: [
     BrowserModule,

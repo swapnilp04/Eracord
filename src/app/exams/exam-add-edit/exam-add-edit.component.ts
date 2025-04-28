@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ExamService } from './../../service/exam.service';
 import { BatchStandardService } from './../../service/batch-standard.service';
+import { SubjectService } from './../../service/subject.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
 import { BatchStandard } from './../../interface/batch-standard';
 import { Subject } from './../../interface/subject';
+import { Chapter } from './../../interface/chapter';
+import { ExamChapter } from './../../interface/exam-chapter';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
 import {  faChevronLeft, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
+import { MultiSelectComponent } from './../../utilies/multi-select/multi-select.component';
+
 
 @Component({
   selector: 'app-exam-add-edit',
@@ -19,18 +24,37 @@ export class ExamAddEditComponent implements OnInit{
   public exam = {} as Exam;
   public defaultBatchStandards: BatchStandard[] = [];
   public subjects: Subject[] = [];
+  public chapters: Chapter[] = [];
+  public selectedChapters: Chapter[] = [];
   public isNew = true;
   public isLoading = false;
   public formErr: any;
   faChevronLeft = faChevronLeft;
   faCircleCheck = faCircleCheck;
+
+  onSelectionChange(selectedItems: any[]) {
+    this.selectedChapters = selectedItems;
+  }
   
   constructor(private examService: ExamService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private batchStandardService: BatchStandardService,
-    private alertService: AlertService) {}
+    private alertService: AlertService, private subjectService: SubjectService) {}
 
   createExam(exam: Exam): void {
     this.isLoading = true;
+    this.exam.exam_chapters = [];
+    //this.exam.exam_chapters.push(ExamChapter{exam_id: })
+    this.selectedChapters.forEach((selectedChapter) => {
+      //console.log(selectedChapter);
+      let examChapter = {} as ExamChapter;
+      if(this.exam.id != undefined){
+        examChapter.exam_id = this.exam.id;
+      }
+      if(selectedChapter.id != undefined) {
+      examChapter.chapter_id = selectedChapter.id;
+      }
+      this.exam.exam_chapters.push(examChapter);
+    })
     this.examService.createExam(exam).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
@@ -101,7 +125,7 @@ export class ExamAddEditComponent implements OnInit{
     this.batchStandardService.getActiveBatchStandards().subscribe (
       (response: any) => this.assignBatchStandards(response),
       (error: any) => this.errorHandle(error),
-      () => console.log('Done getting exams......')
+      () => console.log('Done getting Batch Standards......')
     );
   }
 
@@ -122,6 +146,14 @@ export class ExamAddEditComponent implements OnInit{
     );
   }
 
+  loadChapters(subjectId: number): void {
+    this.subjectService.getChapters(subjectId).subscribe (
+      (response: any) => this.assignChapters(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Chapters......')
+    );
+  }
+
   onChangeBatchStandard(newObj: number): void {
     this.exam.batch_standard_id = newObj;
     this.loadSubjects(newObj);
@@ -130,6 +162,7 @@ export class ExamAddEditComponent implements OnInit{
   onChangeSubject(newObj: number): void {
     this.exam.subject_id = newObj;
     this.removeError("SubjectID")
+    this.loadChapters(this.exam.subject_id);
   }
 
   back(): void {
@@ -146,10 +179,26 @@ export class ExamAddEditComponent implements OnInit{
 
   assignBatchStandards(response: any) {
     this.defaultBatchStandards = response;
+    while(this.chapters.length > 0) {
+      this.chapters.pop();
+    }
+    while(this.selectedChapters.length > 0) {
+      this.selectedChapters.pop();
+    }
   }
   
   assignSubjects(response: any) {
     this.subjects = response;
+    while(this.chapters.length > 0) {
+      this.chapters.pop();
+    } 
+    while(this.selectedChapters.length > 0) {
+      this.selectedChapters.pop();
+    }
+  }
+
+  assignChapters(response: any) {
+    this.chapters = response;
   }
 
   assignExam(response: any) {
