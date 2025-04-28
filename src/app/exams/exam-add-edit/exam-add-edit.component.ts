@@ -64,6 +64,18 @@ export class ExamAddEditComponent implements OnInit{
 
   updateExam(exam: Exam): void {
     this.isLoading = true;
+    this.exam.exam_chapters = [];
+    this.selectedChapters.forEach((selectedChapter) => {
+      //console.log(selectedChapter);
+      let examChapter = {} as ExamChapter;
+      if(this.exam.id != undefined){
+        examChapter.exam_id = this.exam.id;
+      }
+      if(selectedChapter.id != undefined) {
+      examChapter.chapter_id = selectedChapter.id;
+      }
+      this.exam.exam_chapters.push(examChapter);
+    })
     this.examService.updateExam(exam).subscribe (
       (response: any) => this.getSuccess(response),
       (error: any) => this.errorHandle(error),
@@ -198,7 +210,18 @@ export class ExamAddEditComponent implements OnInit{
   }
 
   assignChapters(response: any) {
-    this.chapters = response;
+    setTimeout(() => {
+      this.chapters = response;
+      if(!this.isNew) {
+        const arrayOfChapter = this.exam.exam_chapters.map(object => object.chapter_id);
+        this.chapters.forEach((chapter) => {
+          if(chapter.id != undefined && arrayOfChapter.includes(chapter.id)) {
+            chapter.Selected = true;
+            this.selectedChapters.push(chapter);
+          }
+        })
+      }
+    }, 200);
   }
 
   assignExam(response: any) {
@@ -206,6 +229,7 @@ export class ExamAddEditComponent implements OnInit{
     if(!this.isNew) {
       this.exam.exam_date = new Date(this.exam.exam_date)
       this.loadSubjects(this.exam.batch_standard_id);
+      this.loadChapters(this.exam.subject_id);
     }
   }
 
