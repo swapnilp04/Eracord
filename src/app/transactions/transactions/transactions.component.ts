@@ -59,4 +59,12 @@ export class TransactionsComponent  implements OnInit {
   assignTransactions(response: any) {
     this.transactions = response
   }
+
+  isAccounthandle(): boolean { 
+    return this.loginService.isAdminAccountant();
+  }
+
+  isAdmin(): boolean { 
+    return this.loginService.isAdmin();
+  }
 }

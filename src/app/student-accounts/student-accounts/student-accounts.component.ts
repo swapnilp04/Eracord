@@ -62,4 +62,8 @@ export class StudentAccountsComponent implements OnInit {
     this.studentAccounts = response.studentAccounts;
     this.totalItems = response.total;
   }
+
+  isAccounthandle(): boolean { 
+    return this.loginService.isAdminAccountant();
+  }
 }

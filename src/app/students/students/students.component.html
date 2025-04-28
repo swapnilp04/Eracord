@@ -1,6 +1,6 @@
 <app-loading-image *ngIf="isLoading"> </app-loading-image>
 <div class="row searchBox" *ngIf="!isLoading">
-  <div class="col-8 fullWidthMobile">
+  <div class="col-8 fullWidthMobile" *ngIf="isNew()">
     <a href="/students/new" class="btn btn-primary" tooltip="New Student"><span><fa-icon [icon]="faSquarePlus"></fa-icon> </span></a>
   </div>
   <div class="input-group mb-3 col fullWidthMobile">

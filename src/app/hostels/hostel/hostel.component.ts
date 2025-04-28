@@ -63,4 +63,8 @@ export class HostelComponent implements OnInit {
   name(): string {
     return `${this.hostel.name}`
   }
+
+  isEdit(): boolean { 
+    return this.loginService.isAdmin();
+  }
 }

@@ -63,4 +63,8 @@ export class BatchStandardStudentsComponent implements OnInit {
   isLoadingFalse() {
     this.isLoading = false;
   }
+
+  isAssignClass(): boolean { 
+    return this.loginService.isAdminAccountant();
+  }
 }

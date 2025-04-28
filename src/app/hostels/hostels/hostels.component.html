@@ -1,6 +1,6 @@
 <app-loading-image *ngIf="isLoading"> </app-loading-image>
 <div class="row" *ngIf="!isLoading">
-  <p class="clearfix">      
+  <p class="clearfix" *ngIf="isEdit()">      
      <a href="/hostels/new" class="btn btn-primary" tooltip="New Hostel"><fa-icon [icon]="faHotel"></fa-icon></a>
    </p>
   <div>

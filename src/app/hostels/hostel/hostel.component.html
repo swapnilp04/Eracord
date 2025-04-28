@@ -3,10 +3,10 @@
 		<h2>{{name()}} Hostel</h2>
 		<h5>Rooms - {{hostel.hostel_rooms_count}}</h5>
 		<h5>Total Students - {{hostel.hostel_students_count}}</h5>
-		<a class="btn btn-secondary" href="/hostels/{{hostel.id}}/edit" tooltip="Edit">
+		<a class="btn btn-secondary marginRight15" href="/hostels/{{hostel.id}}/edit" tooltip="Edit" *ngIf="isEdit()">
 			<fa-icon [icon]="faFilePen"></fa-icon>
 		</a>
-		<button (click)=back() class="btn btn-primary marginLeft15" tooltip="Back">
+		<button (click)=back() class="btn btn-primary" tooltip="Back">
 			<fa-icon [icon]="faChevronLeft"></fa-icon>
 		</button>
 	</div>

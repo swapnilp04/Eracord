@@ -158,4 +158,8 @@ export class StudentComponent  implements OnInit {
   isEdit(student: any): boolean { 
     return this.loginService.isAdminAccountant() && !student.has_left;
   }
+
+  isAssignHostel(): boolean { 
+    return this.loginService.isAdmin() && !this.hasHostel;
+  }
 }

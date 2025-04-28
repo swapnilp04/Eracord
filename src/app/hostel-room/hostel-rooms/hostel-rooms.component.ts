@@ -39,4 +39,8 @@ export class HostelRoomsComponent implements OnInit{
   assignHostel(response: any) {
     this.hostelRooms = response
   }
+
+  isEdit(): boolean { 
+    return this.loginService.isAdmin();
+  }
 }

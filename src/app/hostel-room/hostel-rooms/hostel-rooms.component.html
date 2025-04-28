@@ -1,4 +1,4 @@
-<p class="clearfix">  
+<p class="clearfix" *ngIf="isEdit()">  
   <a href="/hostels/{{hostelId}}/hostel-rooms/new" class="btn btn-primary" tooltip="New Hostel Room"><fa-icon [icon]="faPeopleRoof"> </fa-icon></a>
 </p>
 <table class="table table-striped table-bordered table-hover">
@@ -17,9 +17,13 @@
       <td>{{hostelRoom.name}}</td>
       <td>{{hostelRoom.hostel_students_count}}</td>
       <td>
-        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}' tooltip="Show"><fa-icon [icon]="faFolderOpen"></fa-icon></a>
+        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}' tooltip="Show">
+          <fa-icon [icon]="faFolderOpen"></fa-icon>
+        </a>
         &nbsp;&nbsp;&nbsp;
-        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}/edit' tooltip="Edit"><fa-icon [icon]="faFilePen"></fa-icon></a>
+        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}/edit' tooltip="Edit" *ngIf="isEdit()">
+          <fa-icon [icon]="faFilePen"></fa-icon>
+        </a>
       </td>
   	</tr>
   </tbody>

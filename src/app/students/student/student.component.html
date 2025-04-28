@@ -50,7 +50,7 @@
 			    <app-hostel-students [hostelId]="hostelStudent.hostel_id" [hostelRoomId]="hostelStudent.hostel_room_id" [hostelRoom]="hostelStudent.HostelRoom"></app-hostel-students>
 		  	</span>
 		  	<h3 *ngIf=!hasHostel>No hostel Assigned</h3>
-		  	<a *ngIf=!hasHostel href="/students/{{student.id}}/assign-hostel"><span>Assign Hostel</span></a>
+		  	<a *ngIf="isAssignHostel()" href="/students/{{student.id}}/assign-hostel"><span>Assign Hostel</span></a>
 		  </tab>
 		  <tab heading="Class" class="mt-2" (selectTab)="onSelect($event)" *ngIf="!student.has_absconded && !isLeft()">
 		  	<h4>Class</h4>

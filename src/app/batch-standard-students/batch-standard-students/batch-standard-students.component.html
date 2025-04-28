@@ -1,4 +1,4 @@
-<a class="btn btn-secondary marginBottom15" href="students/{{student.id}}/batch-standards/new" tooltip="Assign Class">
+<a class="btn btn-secondary marginBottom15" href="students/{{student.id}}/batch-standards/new" tooltip="Assign Class" *ngIf="isAssignClass()">
   <fa-icon [icon]="faUsersViewfinder"></fa-icon>
 </a>
 <div>
