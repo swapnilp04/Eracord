@@ -54,4 +54,8 @@ export class TeachersComponent {
   assignTeacher(response: any) {
     this.teachers = response
   }
+
+  isEdit(): boolean { 
+    return this.loginService.isAdmin();
+  }
 }

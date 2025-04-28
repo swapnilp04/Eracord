@@ -21,6 +21,14 @@
             <a *ngFor="let subject of batchStandard.Standard.Subjects" class="dropdown-item" href="/logs/new?batch_standard_id={{batchStandard.id}}&subject_id={{subject.id}}" type="button">{{subject.name}} - {{batchStandard.Standard.name}}-{{batchStandard.Batch.name}}</a>
           </div>
         </div>
+        <div class="dropdown floatInline">
+          <button class="btn btn-link dropdown-toggle padding0" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Create Exam
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a *ngFor="let subject of batchStandard.Standard.Subjects" class="dropdown-item" href="/exams/new?batch_standard_id={{batchStandard.id}}&subject_id={{subject.id}}" type="button">{{subject.name}} - {{batchStandard.Standard.name}}-{{batchStandard.Batch.name}}</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -9,14 +9,14 @@
       <p>Rooms - {{hostel.hostel_rooms_count}}</p>
       <p>Students - {{hostel.hostel_students_count}}</p>
       <div class="actions">
-        <a href='/hostels/{{hostel.id}}'>
+        <a href='/hostels/{{hostel.id}}' class="marginRight15">
         	<fa-icon [icon]="faFolderOpen" tooltip="Show"></fa-icon>
         </a>
-        &nbsp;&nbsp;&nbsp;
-        <a href='/hostels/{{hostel.id}}/edit' tooltip="Edit">
+        
+        <a href='/hostels/{{hostel.id}}/edit' tooltip="Edit" *ngIf="isEdit()" class="marginRight15">
         	<fa-icon [icon]="faFilePen"></fa-icon>
         </a>
-        &nbsp;&nbsp;&nbsp;
+        
         <a href='/hostels/{{hostel.id}}/students-list' tooltip="Print List">
         	<fa-icon [icon]="faPrint"></fa-icon>
         </a>

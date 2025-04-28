@@ -96,6 +96,25 @@ export class ExamAddEditComponent implements OnInit{
         this.loadExam(id);
       }
     });
+    this.route.queryParams
+      //.filter(params => params.order)
+      .subscribe(params => {
+        var batchStandardId = params['batch_standard_id'];
+        var subjectId = params['subject_id'];
+        if(batchStandardId != undefined) {
+          this.loadSubjects(batchStandardId);
+          this.exam.batch_standard_id = Number(batchStandardId);
+        }
+        if(subjectId != undefined) {
+          this.exam.subject_id = Number(subjectId);
+          this.loadSubjects(batchStandardId);
+        }
+
+        if(subjectId != undefined && batchStandardId != undefined) { 
+          this.loadChapters(subjectId);
+        }
+      }
+    );
   }
 
   errorHandle(error: any): void {

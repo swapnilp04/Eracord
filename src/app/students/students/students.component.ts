@@ -100,4 +100,12 @@ export class StudentsComponent  implements OnInit {
       this.students = response.students;
       this.totalItems = response.total;
     }
+
+  isPay(student: any): boolean { 
+    return this.loginService.isAdminAccountant() && !student.has_left;
+  }
+
+  isEdit(student: any): boolean { 
+    return this.loginService.isAdminAccountant() && !student.has_left;
+  }
 }

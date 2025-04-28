@@ -50,6 +50,10 @@ export class StudentExamsComponent implements OnInit{
     this.loadExamStudents(this.studentId, this.page);
   }
 
+  showMarks(examStudent: any): boolean {
+    return examStudent.is_present && examStudent.Exam.exam_status == "Published"
+  }
+
   assignExamStudents(response: any) {
     this.examStudents = response.exams;
     this.totalItems = response.total;

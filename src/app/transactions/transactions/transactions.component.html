@@ -15,10 +15,10 @@
     <div>
     	<div *ngFor="let transaction of transactions; index as i" class="Student-transactions indexBox">
         <p class="name">{{i+1}}. {{transaction.name == 'Dues' ? transaction.reason :  transaction.name }}</p>
-        <p>{{transaction.CreatedAt| date:'dd MMM yyyy'}}</p>
-        <span>{{transaction.transaction_type | titlecase}}</span><br />
-        <span [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount | number: '1.'}}</span><br />
-        <span>{{transaction.paid_by}}</span>
+        <p><strong>Date</strong> - {{transaction.CreatedAt| date:'dd MMM yyyy'}}</p>
+        <span><strong>Type</strong> - {{transaction.transaction_type | titlecase}}</span><br />
+        <span [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'"><strong>Amount</strong> {{transaction.amount | number: '1.'}}</span><br />
+        <span><strong>Paid By</strong> {{transaction.paid_by}}</span>
         <div class="actions">
           <a href='/transactions/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type == 'cridit'">#{{transaction.receipt_id}}</a>
         </div>

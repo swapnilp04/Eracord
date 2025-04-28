@@ -53,6 +53,18 @@ export class LoginService {
     this.router.navigate(['/login']);
   }
 
+  isTeacher() {
+    return this.cookies.get('role') == "Teacher";
+  }
+
+  isAdmin() {
+    return this.cookies.get('role') == "Admin";
+  }
+
+  isAdminAccountant() { 
+    return this.role == "Admin" || this.role == "Accountant";
+  }
+
   getHeaders(): any {
     const token = this.getToken();
     return new HttpHeaders({

@@ -15,7 +15,7 @@
 	        	<fa-icon [icon]="faFolderOpen"></fa-icon>
 	      	</a>
 	        &nbsp;&nbsp;&nbsp;
-	        <a href='/teachers/{{teacher.id}}/edit' tooltip="Edit">
+	        <a href='/teachers/{{teacher.id}}/edit' tooltip="Edit" *ngIf="isEdit()">
 	        	<fa-icon [icon]="faFilePen"></fa-icon>
 	        </a>
 	      </div>

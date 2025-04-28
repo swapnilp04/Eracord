@@ -150,4 +150,12 @@ export class StudentComponent  implements OnInit {
   adharCard(): string {
     return `${this.student.adhar_card.slice(0,4)} - ${this.student.adhar_card.slice(4,8)} - ${this.student.adhar_card.slice(8,12)}`
   }
+
+  isPay(student: any): boolean { 
+    return this.loginService.isAdminAccountant() && !student.has_left;
+  }
+
+  isEdit(student: any): boolean { 
+    return this.loginService.isAdminAccountant() && !student.has_left;
+  }
 }

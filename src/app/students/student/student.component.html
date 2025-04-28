@@ -15,7 +15,7 @@
 		<h5 class="text-danger" *ngIf="student.has_left">Left On - {{student.left_at | date:'dd MMM YYYY'}}</h5>
 	</div>
 	<div class="mb-3">
-		<a *ngIf="!student.has_absconded && !isLeft()" class="btn btn-secondary marginRight15" href='/students/{{student.id}}/edit' tooltip="Edit">
+		<a *ngIf="isEdit(student)" class="btn btn-secondary marginRight15" href='/students/{{student.id}}/edit' tooltip="Edit">
 			<fa-icon [icon]="faUserPen"></fa-icon>
 		</a>
 		<button (click)=back() class="btn btn-primary marginRight15" tooltip="Back">

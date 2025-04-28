@@ -226,6 +226,10 @@ export class TeacherLogsAddEditComponent implements OnInit {
     //
   }
 
+  onChangeChapter(newObj: number): void {
+    this.teacherLog.chapter_id = newObj;
+  }
+
   onChangeCategory(newObj: number): void {
     this.teacherLog.log_category_id = newObj;
     this.removeError("LogCategoryID");
@@ -257,6 +261,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
     this.startTime = new Date(2024, 11, 17, this.teacherLog.start_hour, this.teacherLog.start_minuit)
     this.endTime = new Date(2024, 11, 17, this.teacherLog.end_hour, this.teacherLog.end_minuit)
     this.loadSubjects(this.teacherLog.batch_standard_id); 
+    this.loadChapters(this.teacherLog.batch_standard_id, this.teacherLog.subject_id);
   }
 
   assignLogCategories(response: any) {

@@ -8,8 +8,8 @@
       <span>Standard - {{examStudent.Exam.Standard.name}}-{{examStudent.Exam.Batch.name}}</span> <br />
       <span>Exam Date - <strong>{{examStudent.Exam.exam_date | date:'dd MMM yyyy'}}</strong></span><br />
       <span>Status - {{examStudent.Exam.exam_status}}</span><br />
-      <span>{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of {{examStudent.Exam.exam_marks}} </span>
-      <span class="name" *ngIf="examStudent.is_present">
+      <span><span *ngIf="showMarks(examStudent)">{{examStudent.is_present ? examStudent.marks : "Absent"}} Out of </span>{{examStudent.Exam.exam_marks}} Marks</span>
+      <span class="name" *ngIf="showMarks(examStudent)">
         <strong>&nbsp; - &nbsp;{{examStudent.percentage | number: '1.0'}} %</strong>
       </span>
     </div>

@@ -24,10 +24,10 @@
         <a href='/students/{{student.id}}' class="marginRight15" tooltip="Show">
           <fa-icon [icon]="faFolderOpen"></fa-icon>
         </a>
-        <a href='/students/{{student.id}}/edit' *ngIf="!student.has_left" class="marginRight15" tooltip="Edit">
+        <a href='/students/{{student.id}}/edit' *ngIf="isEdit(student)" class="marginRight15" tooltip="Edit">
           <fa-icon [icon]="faUserPen"></fa-icon>
         </a> 
-        <a class="btn-primary" href="/students/{{student.id}}/transactions/new" *ngIf="!student.has_left" tooltip="Pay"> 
+        <a class="btn-primary" href="/students/{{student.id}}/transactions/new" *ngIf="isPay(student)" tooltip="Pay"> 
           <fa-icon [icon]="faMoneyBill"></fa-icon>
         </a>
       </div>
