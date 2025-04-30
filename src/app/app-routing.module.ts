@@ -47,6 +47,7 @@ import { TeachersComponent } from './teachers/teachers/teachers.component';
 import { TeacherComponent } from './teachers/teacher/teacher.component';
 import { TeacherAddEditComponent } from './teachers/teacher-add-edit/teacher-add-edit.component';
 import { TeacherLogsComponent } from './teacher-logs/teacher-logs/teacher-logs.component';
+import { TeacherLogComponent } from './teacher-logs/teacher-log/teacher-log.component';
 import { TeacherLogsAddEditComponent } from './teacher-logs/teacher-logs-add-edit/teacher-logs-add-edit.component';
 import { HomeComponent } from './homes/home/home.component';
 import { ReportLogsComponent } from './reports/report-logs/report-logs.component';
@@ -132,6 +133,7 @@ const routes: Routes = [
   {path: 'users/edit' , component: AddEditUserComponent},
   {path: 'logs' , component: TeacherLogsComponent},
   {path: 'logs/new' , component: TeacherLogsAddEditComponent},
+  {path: 'logs/:id' , component: TeacherLogComponent},
   {path: 'logs/:id/edit' , component: TeacherLogsAddEditComponent},
   {path: 'reports/logs' , component: ReportLogsComponent},
   ];

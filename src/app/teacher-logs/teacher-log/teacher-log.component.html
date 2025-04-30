@@ -1,0 +1,15 @@
+<div *ngIf=!isLoading>
+	<div class="mb-3">
+		<h2>Teacher Name - {{teacherLog.Teacher.name}}</h2>
+		<h5>Subject - {{teacherLog.Subject.name}} {{teacherLog.BatchStandard.Standard.name}}-{{teacherLog.BatchStandard.Batch.name}}</h5>
+		<h5>Chapter - {{teacherLog.Chapter.name}}</h5>
+		<h5>Category - {{teacherLog.LogCategory.name}}</h5>
+    <h5>Comment - {{teacherLog.comment}}</h5>
+		<button (click)=back() class="btn btn-primary" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
+		</button>
+	</div>
+	<h4>Students</h4>
+	<app-log-attendance-students [teacherLogId]="teacherLog.id"></app-log-attendance-students>
+</div>
+

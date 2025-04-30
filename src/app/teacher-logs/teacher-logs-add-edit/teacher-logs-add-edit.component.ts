@@ -60,6 +60,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
       (error: any) => this.errorHandle(error),
       () => this.isLoadingFalse()
     );
+
   }
 
   loadLogCategory(): void {
@@ -249,7 +250,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
   }
 
   getSuccess(response: any): void {
-    this.router.navigate(['/logs'], { replaceUrl: true });
+    this.router.navigate(['/logs', response['teacherLog']['id']], { replaceUrl: true });
   }
 
   getError(error: any): void {

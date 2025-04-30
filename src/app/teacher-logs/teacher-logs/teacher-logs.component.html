@@ -50,6 +50,9 @@
         <button class="btn btn-link text-danger" (click)="deleteTeacherLog(teacherLog.id)" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)" tooltip="Delet">
         <fa-icon [icon]="faTrashCan"></fa-icon>
         </button>
+        <a href="/logs/{{teacherLog.id}}" tooltip="Attendance" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)">
+          <fa-icon [icon]="faUsersBetweenLines"></fa-icon>
+        </a>
       </div>
   	</div>
   </div>

@@ -825,6 +825,10 @@ pagination {
     margin: 5px 0;
 }
 
+.Log-logAttendances {
+    height: 120px;
+}
+
 .ActiveStandards-standardInner {
     border-radius: 20px;
     height: 120px;
@@ -878,6 +882,11 @@ pagination {
     text-align: center;
 
 }
+
+.redBorder {
+    border-color: #f56b79;
+}
+
 
 /*@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';

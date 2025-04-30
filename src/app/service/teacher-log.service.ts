@@ -4,6 +4,7 @@ import { LoginService } from './../service/login.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TeacherLog } from './../interface/teacher-log'
+import { LogAttendance } from './../interface/log-attendance'
 import { LogCategory } from './../interface/log-category'
 
 @Injectable({
@@ -60,5 +61,15 @@ export class TeacherLogService {
   deleteTeacherLogs(teacherLogID: number): Observable<{}> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.delete<{}>(`${this.loginService.URL}/logs/${teacherLogID}`, {headers: myHeaders});
+  }
+
+  getLogAttendances(teacherLogID: number): Observable<LogAttendance[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<LogAttendance[]>(`${this.loginService.URL}/logs/${teacherLogID}/get_attendances`, {headers: myHeaders});
+  }
+
+  toggleLogAttendance(teacherLogID: number, logAttendanceId: number): Observable<{}> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.put<{}>(`${this.loginService.URL}/logs/${teacherLogID}/log_attendances/${logAttendanceId}/toggle`, {}, {headers: myHeaders});
   }
 }

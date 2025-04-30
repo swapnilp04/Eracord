@@ -92,6 +92,8 @@ import { LoadingImageComponent } from './graphs/loading-image/loading-image.comp
 import { ChapterAddEditComponent } from './chapters/chapter-add-edit/chapter-add-edit.component';
 import { ActiveStandardsComponent } from './standards/active-standards/active-standards.component';
 import { MultiSelectComponent } from './utilies/multi-select/multi-select.component';
+import { TeacherLogComponent } from './teacher-logs/teacher-log/teacher-log.component';
+import { LogAttendanceStudentsComponent } from './teacher-logs/log-attendance-students/log-attendance-students.component';
 
 
 @NgModule({
@@ -171,6 +173,8 @@ import { MultiSelectComponent } from './utilies/multi-select/multi-select.compon
     ChapterAddEditComponent,
     ActiveStandardsComponent,
     MultiSelectComponent,
+    TeacherLogComponent,
+    LogAttendanceStudentsComponent,
   ],
   imports: [
     BrowserModule,
