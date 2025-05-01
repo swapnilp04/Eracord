@@ -7,7 +7,7 @@
   </div>
   <div>
   	<div *ngFor="let user of users; index as i" [ngClass]="{'bg-warning': !user.active}" class="Users-user indexBox">
-      <p class="name">{{i+1}}. <strong>{{user.username}}</strong></p>
+      <p class="name">{{i+1}}. <strong>{{user.username}} ({{user.display_name}})</strong></p>
       <p>Role - {{user.role}}</p>
       <p> Is Active {{user.active}}</p>
       <p class="actions">
