@@ -95,6 +95,7 @@ import { MultiSelectComponent } from './utilies/multi-select/multi-select.compon
 import { TeacherLogComponent } from './teacher-logs/teacher-log/teacher-log.component';
 import { LogAttendanceStudentsComponent } from './teacher-logs/log-attendance-students/log-attendance-students.component';
 import { StudentLogAttendanceComponent } from './students/student-log-attendance/student-log-attendance.component';
+import { ReportsComponent } from './reports/reports/reports.component';
 
 
 @NgModule({
@@ -177,6 +178,7 @@ import { StudentLogAttendanceComponent } from './students/student-log-attendance
     TeacherLogComponent,
     LogAttendanceStudentsComponent,
     StudentLogAttendanceComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,

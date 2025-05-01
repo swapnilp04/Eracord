@@ -55,6 +55,7 @@ import { GroupResultComponent } from './exams/group-result/group-result.componen
 import { StudentAdmissionFormComponent } from './students/student-admission-form/student-admission-form.component';
 import { StudentExamsReportComponent } from './students/student-exams-report/student-exams-report.component';
 import { StudentExamGraphReportsComponent } from './students/student-exam-graph-reports/student-exam-graph-reports.component';
+import { ReportsComponent } from './reports/reports/reports.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -136,6 +137,8 @@ const routes: Routes = [
   {path: 'logs/:id' , component: TeacherLogComponent},
   {path: 'logs/:id/edit' , component: TeacherLogsAddEditComponent},
   {path: 'reports/logs' , component: ReportLogsComponent},
+  
+  {path: 'reports' , component: ReportsComponent},
   ];
 
 

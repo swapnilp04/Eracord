@@ -8,8 +8,8 @@
   <div>
   	<div *ngFor="let user of users; index as i" [ngClass]="{'bg-warning': !user.active}" class="Users-user indexBox">
       <p class="name">{{i+1}}. <strong>{{user.username}} ({{user.display_name}})</strong></p>
-      <p>Role - {{user.role}}</p>
-      <p> Is Active {{user.active}}</p>
+      <span>Role - {{user.role}}</span><br />
+      <span> Is Active {{user.active}}</span>
       <p class="actions">
       	<span *ngIf="user.role != 'Admin'">
 	      	<button *ngIf=user.active class="btn btn-danger" (click)=deactiveUser(user) tooltip="Deactivate User">

@@ -5,3 +5,7 @@
 a{
     color: #717171;
 }
+
+.Student-exams.absent {
+    border-color: #f56b79 !important;
+}

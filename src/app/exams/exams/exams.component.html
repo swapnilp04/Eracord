@@ -15,7 +15,10 @@
 	    <p class="name">{{((page - 1) *10) + i + 1 }}. <strong>{{exam.name}}</strong></p>
 	    <p><strong>{{exam.Subject.name}}</strong> - Class <strong>{{exam.Standard.name}}-{{exam.Batch.name}} </strong></p>
 	    <p><span>Exam Date - {{exam.exam_date | date:'dd MMM yyyy'}}</span><br />
-	    <span>Exam Status - {{exam.exam_status}}</span></p>
+	    	<span>Exam Status - {{exam.exam_status}}</span><br />
+	    	<span *ngIf="exam.exam_status == 'Published'">Topper - {{exam.topper}}, Average Marks - {{exam.average_marks}}</span>
+	  	</p>
+	    
 	    <div class="actions">
 	      <a href='/exams/{{exam.id}}' tooltip="Show"><fa-icon [icon]="faFolderOpen"></fa-icon></a>
 	      &nbsp;&nbsp;&nbsp;

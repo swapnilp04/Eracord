@@ -91,6 +91,10 @@ export class ExamComponent implements OnInit {
     this.alertService.success("Exam Published Successful");
   }
 
+  published(): boolean{
+    return this.exam.exam_status == 'Published'
+  } 
+
   back(): void {
     this.location.back();
   }

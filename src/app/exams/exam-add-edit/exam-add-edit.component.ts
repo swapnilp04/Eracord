@@ -3,9 +3,11 @@ import { Location } from '@angular/common';
 import { ExamService } from './../../service/exam.service';
 import { BatchStandardService } from './../../service/batch-standard.service';
 import { SubjectService } from './../../service/subject.service';
+import { TeacherService } from './../../service/teacher.service';
 import { LoginService } from './../../service/login.service';
 import { Exam } from './../../interface/exam';
 import { BatchStandard } from './../../interface/batch-standard';
+import { Teacher } from './../../interface/teacher';
 import { Subject } from './../../interface/subject';
 import { Chapter } from './../../interface/chapter';
 import { ExamChapter } from './../../interface/exam-chapter';
@@ -23,6 +25,7 @@ import { MultiSelectComponent } from './../../utilies/multi-select/multi-select.
 export class ExamAddEditComponent implements OnInit{
   public exam = {} as Exam;
   public defaultBatchStandards: BatchStandard[] = [];
+  public teachers: Teacher[] = [];
   public subjects: Subject[] = [];
   public chapters: Chapter[] = [];
   public selectedChapters: Chapter[] = [];
@@ -38,7 +41,7 @@ export class ExamAddEditComponent implements OnInit{
   
   constructor(private examService: ExamService, private location: Location, private router: Router, private route: ActivatedRoute, 
     private loginService: LoginService, private batchStandardService: BatchStandardService,
-    private alertService: AlertService, private subjectService: SubjectService) {}
+    private alertService: AlertService, private subjectService: SubjectService, private teacherService: TeacherService) {}
 
   createExam(exam: Exam): void {
     this.isLoading = true;
@@ -89,6 +92,7 @@ export class ExamAddEditComponent implements OnInit{
     }
     this.exam.exam_type = "Objective"
     this.loadDefaultBatchStandards();
+    this.loadTeachers();
 
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
@@ -157,6 +161,14 @@ export class ExamAddEditComponent implements OnInit{
       (response: any) => this.assignBatchStandards(response),
       (error: any) => this.errorHandle(error),
       () => console.log('Done getting Batch Standards......')
+    );
+  }
+
+  loadTeachers(): void {
+    this.teacherService.getTeachers().subscribe (
+      (response: any) => this.assignTeacher(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Teachers......')
     );
   }
 
@@ -252,12 +264,21 @@ export class ExamAddEditComponent implements OnInit{
     }
   }
 
+  assignTeacher(response: any) {
+    this.teachers = response
+  }
+
   isLoadingFalse(): void {
     this.isLoading = false;    
   }
 
   onChangeExamType(newObj: any): void {
     this.exam.exam_type = newObj.toString();
+  }
+
+  onChangeTeacher(newObj: any): void {
+    this.exam.teacher_id = newObj;
+    this.removeError("TeacherID")
   }
 
 }

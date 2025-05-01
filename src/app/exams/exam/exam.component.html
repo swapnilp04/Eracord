@@ -21,8 +21,10 @@
 			<h5>Chapters - 
 				<span *ngFor="let examChapter of exam.exam_chapters"><strong>{{examChapter.Chapter.name}}, </strong> </span>
 			</h5>
+			<h5>Teacher - {{exam.Teacher.name}}</h5>
 			<h5>Status - {{exam.exam_status}}</h5>
 			<h5>Marks - {{exam.exam_marks}} marks</h5>
+			<h5 *ngIf="published()">Topper - {{exam.topper}}, Average Marks - {{exam.average_marks}}</h5>
 			
 			<a *ngIf="exam.exam_status == 'Created'" class="btn btn-secondary marginRight15" href='/exams/{{exam.id}}/edit' tooltip="Edit">
 				<fa-icon [icon]="faFilePen"></fa-icon>
