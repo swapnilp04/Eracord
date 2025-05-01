@@ -94,6 +94,7 @@ import { ActiveStandardsComponent } from './standards/active-standards/active-st
 import { MultiSelectComponent } from './utilies/multi-select/multi-select.component';
 import { TeacherLogComponent } from './teacher-logs/teacher-log/teacher-log.component';
 import { LogAttendanceStudentsComponent } from './teacher-logs/log-attendance-students/log-attendance-students.component';
+import { StudentLogAttendanceComponent } from './students/student-log-attendance/student-log-attendance.component';
 
 
 @NgModule({
@@ -175,6 +176,7 @@ import { LogAttendanceStudentsComponent } from './teacher-logs/log-attendance-st
     MultiSelectComponent,
     TeacherLogComponent,
     LogAttendanceStudentsComponent,
+    StudentLogAttendanceComponent,
   ],
   imports: [
     BrowserModule,

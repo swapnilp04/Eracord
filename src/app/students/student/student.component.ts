@@ -26,6 +26,7 @@ export class StudentComponent  implements OnInit {
   public studentId: any;
   public classLoaded: boolean = false;
   public isLoading = true;
+  showStudentLogs = false;
   faUserPen = faUserPen;
   faChevronLeft = faChevronLeft;
   faComment = faComment;

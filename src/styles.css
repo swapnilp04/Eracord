@@ -763,7 +763,7 @@ pagination {
 }
 
 .Logs-log {
-    height: 300px;
+    height: 340px;
 }
 
 .Dashboard-birthday {
@@ -827,6 +827,10 @@ pagination {
 
 .Log-logAttendances {
     height: 120px;
+}
+
+.Student-logAttendances {
+    height: 220px;
 }
 
 .ActiveStandards-standardInner {

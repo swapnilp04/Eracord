@@ -72,6 +72,10 @@
 		    <h4>Exams</h4>
 		    <app-student-exams [studentId]="student.id" [studentName]="name()"></app-student-exams>
 		  </tab>
+		  <tab heading="Log Attendances" class="mt-2" (selectTab)="onSelect($event)" *ngIf="!student.has_absconded && !isLeft()">
+		    <h4>Log Attendances</h4>
+		    <app-student-log-attendance [studentId]="student.id" [studentName]="name()"></app-student-log-attendance>
+		  </tab>
 		</tabset>
 	</div>
 </div>

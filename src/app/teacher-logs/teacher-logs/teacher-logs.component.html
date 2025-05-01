@@ -42,7 +42,8 @@
       <span>{{teacherLog.Subject.name}}  - <strong>{{teacherLog.BatchStandard.Standard.name}}-{{teacherLog.BatchStandard.Batch.name}}</strong></span><br />
       <span>Chapter - <strong>{{teacherLog.Chapter.name}}</strong></span><br />
       <span>Category - {{teacherLog.LogCategory.name}}</span><br />
-      <span>Comment - {{teacherLog.comment}}</span>
+      <span>Comment - {{teacherLog.comment}}</span><br />
+      <span>Absent  - {{teacherLog.absent_count}} of {{teacherLog.students_count}} Students</span>
       <div class="actions">
         <a href="/logs/{{teacherLog.id}}/edit" *ngIf="hasEdit(teacherLog.user_id, teacherLog.log_date)" tooltip="Edit">
           <fa-icon [icon]="faFilePen"></fa-icon>

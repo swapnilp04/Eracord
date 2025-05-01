@@ -32,7 +32,8 @@
     <p class="name">{{((page - 1) *10) + i + 1 }}. {{teacherLog.log_date | date:"dd MMM yyyy"}} <strong> At </strong>
     {{teacherLog.start_hour}}.{{teacherLog.start_minuit}} <strong>TO</strong> {{teacherLog.end_hour}}.{{teacherLog.end_minuit}}</p>
     <span>Category - {{teacherLog.LogCategory.name}}</span><br />
-    <span>Comment - {{teacherLog.comment}}</span>
+    <span>Comment - {{teacherLog.comment}}</span><br />
+    <span>Absent  - {{teacherLog.absent_count}} of {{teacherLog.students_count}} Students</span>
     <div class="actions">{{teacherLog.Subject.name}} - {{teacherLog.BatchStandard.Standard.name}}-{{teacherLog.BatchStandard.Batch.name}}</div>
 	</div>
 </div>

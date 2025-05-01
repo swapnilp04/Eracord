@@ -10,6 +10,7 @@ import { BatchStandardStudent } from '../interface/batch-standard-student'
 import { Transaction } from '../interface/transaction'
 import { ExamStudent } from '../interface/exam-student'
 import { Balance } from '../interface/balance'
+import { LogAttendance } from '../interface/log-attendance'
 
 
 @Injectable({
@@ -116,6 +117,11 @@ export class StudentService {
   getStudentExamsGraphData(studentId: number, subjectId: number): Observable<ExamStudent[]> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentId}/exams/subject/${subjectId}/get_graph_data`, {headers: myHeaders});
+  }
+
+  getStudentLogAttendances(studentId: number, page: number): Observable<LogAttendance[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<LogAttendance[]>(`${this.loginService.URL}/students/${studentId}/get_log_attendances?page=${page}`, {headers: myHeaders});
   }
 
   leftAcademy(studentId: number): Observable<Student> {

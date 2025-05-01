@@ -1,0 +1,14 @@
+<div class="mb-3" style="padding-bottom:50px;">
+	<div *ngFor="let logAttendance of logAttendances; index as i" [ngClass]="{'absent': !logAttendance.is_present}" class="Student-logAttendances indexBox">
+    <p class="name">{{((page - 1) *10) + i + 1 }} . <strong>{{logAttendance.TeacherLog.Subject.name}} -{{logAttendance.TeacherLog.BatchStandard.Standard.name}} ({{logAttendance.TeacherLog.BatchStandard.Batch.name}})</strong></p>
+    <span>Chapter name - <strong>{{logAttendance.TeacherLog.Chapter.name}}</strong> </span><br />
+    <span>{{logAttendance.TeacherLog.log_date| date:"dd MMM yyyy"}} <strong>AT</strong>
+         {{logAttendance.TeacherLog.start_hour}}.{{logAttendance.TeacherLog.start_minuit}} <strong>TO</strong> {{logAttendance.TeacherLog.end_hour}}.{{logAttendance.TeacherLog.end_minuit}}</span><br />
+    <div class="actions">{{logAttendance.is_present ? 'Present' : 'Absent'}}</div>
+    
+  </div>
+  <div class="pagination">
+    <pagination [totalItems]="totalItems" [ngModel]="currentPage" 
+      (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
+  </div>
+</div>
