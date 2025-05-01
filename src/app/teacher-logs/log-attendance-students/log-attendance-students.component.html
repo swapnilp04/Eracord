@@ -1,5 +1,5 @@
 <div *ngFor="let logAttendance of logAttendances" class="Log-logAttendances indexBox" [ngClass]="{'redBorder': !logAttendance.is_present}">
-	<span>{{name(logAttendance.Student)}}</span>
+	<a class="name" href="/students/{{logAttendance.student_id}}">{{name(logAttendance.Student)}}</a>
 	<div class="actions">
 		<button class="btn btn-link" (click)="togglePresentee(logAttendance)">Make {{logAttendance.is_present ? 'Absent' : 'Present'}}</button>
 	</div>
