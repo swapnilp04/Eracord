@@ -85,7 +85,7 @@ export class TeacherLogsComponent implements OnInit {
   hasEdit(logUserID: number, logDate: Date) {
     let da = new Date(logDate);
     let current = new Date();
-    return (logUserID == this.userID && da.toDateString() == current.toDateString());
+    return (logUserID == this.userID && da.toDateString() == current.toDateString()) || (this.loginService.isAdminAccountant() && da.toDateString() == current.toDateString());
   }
 
   loadTeacherLogs(pageNumber: number, searchStr: string): void {
