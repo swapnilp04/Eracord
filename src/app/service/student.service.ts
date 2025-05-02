@@ -27,6 +27,11 @@ export class StudentService {
     return this.http.get<Student[]>(`${this.loginService.URL}/students?page=${page}&search=${search}`, {headers: myHeaders});
   }
 
+  getOnlyStudents(): Observable<Student[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Student[]>(`${this.loginService.URL}/report-students`, {headers: myHeaders});
+  }
+
   getStudent(userID: number): Observable<Student> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Student>(`${this.loginService.URL}/students/${userID}`, {headers: myHeaders});

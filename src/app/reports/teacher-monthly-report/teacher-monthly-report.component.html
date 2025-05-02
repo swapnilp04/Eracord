@@ -1,0 +1,37 @@
+<div class="container" style="float:left;">
+ 	<p>
+ 		<button class="btn btn-secondary" (click)="back()"> Back</button>
+		<button 
+			class="btn btn-primary marginLeft15"
+			[useExistingCss]="true"
+			printSectionId="print-section"
+			ngxPrint>print</button>
+	</p>
+</div>
+<div id="print-section">
+	<div>
+		<h2>{{name()}} &nbsp;&nbsp;&nbsp;({{teacher.mobile}})</h2>
+		<h3>{{monthNames[ this.month - 1 ]}} - {{this.year}} Report</h3>
+	</div>
+	<h4>Exams</h4>
+	<div *ngFor="let exam of exams; index as i" class="marginBottom15">
+		<span class="marginRight15">{{i+1}}. {{exam.name}} <strong>({{exam.exam_date | date:'EEEE -- dd MMM yyyy'}})</strong></span> <br />
+		<span class="marginRight15"><strong>{{exam.Subject.name}} - {{exam.Standard.name}}-{{exam.Batch.name}}</strong></span>
+		<span class="marginRight15">Marks - {{exam.exam_marks}} marks</span>
+		<span class="marginRight15"><strong>Status - {{exam.exam_status}}</strong></span><br />
+		<span class="marginRight15">Chapters - 
+			<span *ngFor="let examChapter of exam.exam_chapters"><strong>{{examChapter.Chapter.name}}, </strong> </span>
+		</span>
+		<span class="marginRight15">Average Marks - {{exam.average_marks}} marks</span>
+		<span class="marginRight15"><strong>Topper - {{exam.topper}} marks</strong></span>
+	</div>
+	<h4>Logs</h4>
+	<div *ngFor="let log of teacherLogs; index as i" class="marginBottom15">
+		<span class="marginRight15">{{log.Subject.name}} - {{log.BatchStandard.Standard.name}}-{{log.BatchStandard.Batch.name}} </span>
+		<span><strong>({{log.log_date | date:'EEEE dd MMM yyyy'}}) @ </strong></span>
+		<span>{{log.start_hour}}:{{log.start_minuit}} TO {{log.end_hour}}:{{log.end_minuit}}</span><br />
+		<span class="marginRight15">Chapter - {{log.Chapter.name}}</span>
+		<span class="marginRight15"><strong>{{log.absent_count}} absent out of {{log.students_count}} students</strong></span>
+		<span class="marginRight15">Category - {{log.LogCategory.name}}</span>
+	</div>
+</div>

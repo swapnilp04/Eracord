@@ -56,6 +56,7 @@ import { StudentAdmissionFormComponent } from './students/student-admission-form
 import { StudentExamsReportComponent } from './students/student-exams-report/student-exams-report.component';
 import { StudentExamGraphReportsComponent } from './students/student-exam-graph-reports/student-exam-graph-reports.component';
 import { ReportsComponent } from './reports/reports/reports.component';
+import { TeacherMonthlyReportComponent } from './reports/teacher-monthly-report/teacher-monthly-report.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -139,6 +140,7 @@ const routes: Routes = [
   {path: 'reports/logs' , component: ReportLogsComponent},
   
   {path: 'reports' , component: ReportsComponent},
+  {path: 'reports/teachers/:id/get-monthly-reports' , component: TeacherMonthlyReportComponent},
   ];
 
 

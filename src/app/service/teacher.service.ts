@@ -4,6 +4,8 @@ import { LoginService } from './../service/login.service'
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Teacher } from './../interface/teacher'
+import { Exam } from './../interface/exam'
+import { TeacherLog } from './../interface/teacher-log'
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +33,14 @@ export class TeacherService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.put<Teacher>(`${this.loginService.URL}/teachers/${teacher.id}`, teacher, {headers: myHeaders});
   }
+
+  getTeacherReportsExams(teacherID: number, month: number, year: number): Observable<Exam[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Exam[]>(`${this.loginService.URL}/teachers/${teacherID}/get_monthly_exams_report?month=${month}&year=${year}`, {headers: myHeaders});
+  } 
+
+  getTeacherReportsTeacherLogs(teacherID: number, month: number, year: number): Observable<TeacherLog[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<TeacherLog[]>(`${this.loginService.URL}/teachers/${teacherID}/get_monthly_logs_report?month=${month}&year=${year}`, {headers: myHeaders});
+  } 
 }

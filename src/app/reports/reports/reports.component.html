@@ -1,21 +1,58 @@
 <div>
-	<div class="paddingBottom30">
-		<h5 class="marginTop15 marginBottom15">Eracord helps students, teachers, institutions / organizations
-		and administrative departments to <small class="changeColor">transform the management</small> of
-		the organization maintaining a hierarchical level in order to provide
-		the next generation with new learning experiences that opens door
-		to academic <small class="changeColor">achievements</small> and opportunities.
-		Maintaining a hierarchical connectivity, students are
-		connected to teachers and institutions/organizations by keeping a
-		record of personal as well as <small class="changeColor">academic</small> data of students. It also
-		helps <small class="changeColor">maintaining</small> daily teaching records of teachers, which would
-		be taken care by administrative desk.
-		It also helps maintain a common dialogue between students
-		and <small class="changeColor">parents</small> by letting parents know their child's personal daily /
-		weekly / monthly academic <small class="changeColor">reports </small>with graphical visualizations.</h5>
+	<div class="paddingBottom30 fullWidth">
+		<div class="form-group width30 marginRight15">
+			<label for="exampleInputPassword1" class="form-label">Month</label>
+	    <select class="form-select " [ngModel]="selectedMonth" (ngModelChange)="onChangeMonth($event)" aria-label="Selecte Month" [ngClass]="{'is-invalid': hasError('Month')}">
+	    	<option value="0" selected>----</option>
+	        <option *ngFor="let month of months" [ngValue]="month.id">{{month.name}}</option>
+	    </select>
+	    <div class="invalid-feedback" *ngIf="hasError('Month')">
+      	<p *ngFor="let err of getErrorValue('Month')">{{err}}</p>
+    	</div>
+  	</div>
+		<div class="form-group width30 marginRight15">
+			<label for="exampleInputPassword1" class="form-label">Year</label>
+	    <select class="form-select " [ngModel]="selectedYear" (ngModelChange)="onChangeYear($event)" aria-label="Selecte Month" [ngClass]="{'is-invalid': hasError('Year')}">
+	    	<option value="0" selected>----</option>
+	        <option *ngFor="let year of years" [ngValue]="year">{{year}}</option>
+	    </select>
+	    <div class="invalid-feedback" *ngIf="hasError('Year')">
+      	<p *ngFor="let err of getErrorValue('Year')">{{err}}</p>
+    	</div>
+    </div>	
 	</div>
-	<a href="">Teacher Reports</a>
+	<div class="paddingBottom30 marginTop15 fullWidth">
+		<div class="form-group width30 marginRight15">
+			<label for="exampleInputPassword1" class="form-label">Teacher</label>
+			<select class="form-select" [ngModel]="searchTeacher" (ngModelChange)="onChangeTeacher($event)" aria-label="Selecte Teacher" [ngClass]="{'is-invalid': hasError('Teacher')}">
+		  	<option value="0" selected>----</option>
+		      <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">{{teacher.name}}</option>
+		  </select>
+		  <div class="invalid-feedback" *ngIf="hasError('Teacher')">
+      	<p *ngFor="let err of getErrorValue('Teacher')">{{err}}</p>
+    	</div>
+		</div>
+	</div>
+	<div class="paddingBottom30 marginTop15 fullWidth">
+		<button class="btn btn-primary marginRight15" (click)="getTeacherReport()">Teacher Reports</button>
+	</div>
+
+	<div class="form-group fullWidth marginTop15">
+		<div class="form-group width30 marginRight15">
+			<label for="exampleInputPassword1" class="form-label">Student</label>
+			<select class="form-select" [ngModel]="searchStudent" (ngModelChange)="onChangeStudent($event)" aria-label="Selecte Student" [ngClass]="{'is-invalid': hasError('Student')}">
+		  	<option value="0" selected>----</option>
+		      <option *ngFor="let student of students" [ngValue]="student.id">{{name(student)}}</option>
+		  </select>
+		  <div class="invalid-feedback" *ngIf="hasError('Student')">
+      	<p *ngFor="let err of getErrorValue('Student')">{{err}}</p>
+    	</div>
+		</div>
+	</div>
+	<div class="paddingBottom30 marginTop15 fullWidth">
+		<button class="btn btn-primary" (click)="getStudentReport()">Student Reports</button>
+	</div>
 </div>
-<div>
-	<a href="">Student Reports</a>
-</div>
+
+	
+

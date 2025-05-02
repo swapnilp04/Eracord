@@ -53,7 +53,7 @@ export class TeacherComponent {
   }
 
   back(): void {
-    this.router.navigate(['/teachers']);
+    this.location.back();
   }
 
   name(): string {

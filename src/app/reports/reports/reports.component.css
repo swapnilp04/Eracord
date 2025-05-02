@@ -2,3 +2,16 @@
   color: #c1c1c1;
   font-size: 35px;
 }
+
+.pull-right {
+  float:right;
+}
+
+.width30 {
+  width: 30%;
+  float: left;
+}
+
+.marginRight15 {
+  margin-right: 15px;
+}
