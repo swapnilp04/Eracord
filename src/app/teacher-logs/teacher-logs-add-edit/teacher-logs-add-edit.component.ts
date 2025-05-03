@@ -251,6 +251,7 @@ export class TeacherLogsAddEditComponent implements OnInit {
 
   getSuccess(response: any): void {
     this.router.navigate(['/logs', response['teacherLog']['id']], { replaceUrl: true });
+    this.alertService.success("Log has been added Successful");
   }
 
   getError(error: any): void {
