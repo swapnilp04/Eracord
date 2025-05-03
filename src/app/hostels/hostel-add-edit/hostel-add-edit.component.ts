@@ -78,6 +78,7 @@ export class HostelAddEditComponent {
 
   getSuccess(response: any): void {
     this.router.navigate(['/hostels', response['hostel']['id']], { replaceUrl: true });
+    this.alertService.success("Hostel has been added Successful");
   }
 
   getError(error: any): void {

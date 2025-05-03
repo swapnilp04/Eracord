@@ -214,6 +214,7 @@ export class ExamAddEditComponent implements OnInit{
 
   getSuccess(response: any): void {
     this.router.navigate(['/exams', response['exam']['id']], { replaceUrl: true });
+    this.alertService.success("Exam has been added Successful");
   }
 
   getError(error: any): void {

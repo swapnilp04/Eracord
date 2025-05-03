@@ -16,9 +16,10 @@
       
       <p>{{transaction.CreatedAt | date:'dd MMM yyyy @ h:mma'}}</p>
       <p class="name"><a href='/students/{{transaction.Student.id}}'>{{name(transaction.Student)}}</a></p>
-      <p>Transaction Type - {{transaction.transaction_type}}</p>
+      <span>Transaction Type - {{transaction.transaction_type}}</span><br />
       <span *ngIf="transaction.payment_mode != ''">Payment Mode  - {{transaction.payment_mode}}<br /></span>
-      <span *ngIf="transaction.paid_by != ''">Paid By - {{transaction.paid_by}}</span>
+      <span *ngIf="transaction.paid_by != ''">Paid By - {{transaction.paid_by}}<br/></span>
+      <span>{{transaction.name}}</span>
       <p [ngClass]="transaction.transaction_type == 'debit' ? 'colorRed' : 'colorGreen'">{{transaction.amount | number:'1.'}}</p>
       <div class="actions"> <a href='/transactions/students/{{transaction.student_id}}/receipt/{{transaction.id}}' *ngIf="transaction.transaction_type =='cridit'"> #{{transaction.receipt_id}}</a>
       </div> 
