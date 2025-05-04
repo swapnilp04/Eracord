@@ -34,4 +34,10 @@
 		<span class="marginRight15"><strong>{{log.absent_count}} absent out of {{log.students_count}} students</strong></span>
 		<span class="marginRight15">Category - {{log.LogCategory.name}}</span>
 	</div>
+	<h4>Daily Durations</h4>
+	<div *ngFor="let duration of durations; index as i" class="marginBottom15">
+			
+			<span class="marginRight15">{{duration.log_date | date:'EEEE -- dd MMM yyyy'}}</span>
+			<span><strong>{{calculateMinutestoHours(duration.duration)}}</strong></span>
+	</div>
 </div>

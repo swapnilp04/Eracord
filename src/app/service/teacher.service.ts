@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Teacher } from './../interface/teacher'
 import { Exam } from './../interface/exam'
 import { TeacherLog } from './../interface/teacher-log'
+import { Duration } from './../interface/duration'
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,10 @@ export class TeacherService {
   getTeacherReportsTeacherLogs(teacherID: number, month: number, year: number): Observable<TeacherLog[]> {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<TeacherLog[]>(`${this.loginService.URL}/teachers/${teacherID}/get_monthly_logs_report?month=${month}&year=${year}`, {headers: myHeaders});
+  } 
+
+  getTeacherReportsLogsDurations(teacherID: number, month: number, year: number): Observable<Duration[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<Duration[]>(`${this.loginService.URL}/teachers/${teacherID}/get_monthly_logs_durations?month=${month}&year=${year}`, {headers: myHeaders});
   } 
 }

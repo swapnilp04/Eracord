@@ -3,6 +3,7 @@ import { TeacherService } from './../../service/teacher.service';
 import { LoginService } from './../../service/login.service';
 import { TeacherLog } from './../../interface/teacher-log';
 import { Teacher } from './../../interface/teacher';
+import { Duration } from './../../interface/duration';
 import { Exam } from './../../interface/exam';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
@@ -19,6 +20,7 @@ export class TeacherMonthlyReportComponent implements OnInit {
   public teacher = {} as Teacher;
   public exams:  Exam[] = [];
   public teacherLogs:  TeacherLog[] = [];
+  public durations:  Duration[] = [];
   public id: any;  
   isLoading = true;
   public month: number;
@@ -44,6 +46,7 @@ export class TeacherMonthlyReportComponent implements OnInit {
         this.year = params['year'];
         this.loadTeacherExams(this.id,this.month, this.year);
         this.loadTeacherLogs(this.id,this.month, this.year);
+        this.loadTeacherLogsDurations(this.id,this.month, this.year);
       }
     );
   }
@@ -83,9 +86,21 @@ export class TeacherMonthlyReportComponent implements OnInit {
       () => console.log('Done getting Teacher Exams......')
     );
   }
+  
+  loadTeacherLogsDurations(teacherID: number, month: number, year: number): void {
+    this.teacherService.getTeacherReportsLogsDurations(teacherID, month, year).subscribe (
+      (response: any) => this.assignTeacherLogsDurations(response),
+      (error: any) => this.errorHandle(error),
+      () => console.log('Done getting Teacher Durations......')
+    );
+  }
 
   assignTeacherLogs(response: any) {
     this.teacherLogs = response;
+  }
+
+  assignTeacherLogsDurations(response: any) {
+    this.durations = response;
   }
  
   assignTeacher(response: any) {
@@ -99,5 +114,12 @@ export class TeacherMonthlyReportComponent implements OnInit {
 
   back(): void {
     this.location.back();
+  }
+
+  calculateMinutestoHours(duration: any): string {
+    duration = Number(duration)
+    var hours = duration / 60
+    var minuites = duration % 60
+    return "" + hours + " Hours and " + minuites + " Minuites."
   }
 }
