@@ -3,6 +3,7 @@
 		<h2>Teacher Name - {{teacherLog.Teacher.name}}</h2>
 		<h5>{{teacherLog.log_date | date:"dd MMM yyyy"}} <strong>AT</strong>
          {{teacherLog.start_hour}}.{{teacherLog.start_minuit}} <strong>TO</strong> {{teacherLog.end_hour}}.{{teacherLog.end_minuit}}</h5>
+    <h5>Duration - {{teacherLog.duration}} Minuites</h5>
 		<h5>Subject - {{teacherLog.Subject.name}} {{teacherLog.BatchStandard.Standard.name}}-{{teacherLog.BatchStandard.Batch.name}}</h5>
 		<h5>Chapter - {{teacherLog.Chapter.name}}</h5>
 		<h5>Category - {{teacherLog.LogCategory.name}}</h5>

@@ -29,4 +29,5 @@ export interface TeacherLog {
 	combined_classes?: CombinedClass[];
 	students_count?: number;
 	absent_count?: number;
+	duration?: number;
 }

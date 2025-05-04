@@ -38,7 +38,8 @@
   	<div *ngFor="let teacherLog of teacherLogs; index as i" [ngClass]="{'bg-success': teacherLog.has_combined_class}" class="Logs-log indexBox">
       <p>{{((page - 1) *10) + i + 1 }}.   {{teacherLog.log_date | date:"dd MMM yyyy"}} <strong>AT</strong>
          {{teacherLog.start_hour}}.{{teacherLog.start_minuit}} <strong>TO</strong> {{teacherLog.end_hour}}.{{teacherLog.end_minuit}}</p>
-      <p class="name">{{teacherLog.Teacher.name}}</p>
+      <span class="name">Duration - <strong>{{teacherLog.duration}} Minuites</strong></span><br/>
+      <span class="name">Teacher - {{teacherLog.Teacher.name}}</span><br />
       <span>{{teacherLog.Subject.name}}  - <strong>{{teacherLog.BatchStandard.Standard.name}}-{{teacherLog.BatchStandard.Batch.name}}</strong></span><br />
       <span>Chapter - <strong>{{teacherLog.Chapter.name}}</strong></span><br />
       <span>Category - {{teacherLog.LogCategory.name}}</span><br />
