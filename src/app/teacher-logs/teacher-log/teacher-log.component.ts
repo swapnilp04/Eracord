@@ -18,6 +18,7 @@ export class TeacherLogComponent {
   public teacherLog = {} as TeacherLog;
   public id: any;
   public isLoading = true;
+  public userID: number;
   faChevronLeft = faChevronLeft;
 
   constructor(private teacherLogService: TeacherLogService, private route: ActivatedRoute, private location: Location, private router: Router,
@@ -30,6 +31,7 @@ export class TeacherLogComponent {
       this.loadTeacherLog(id);
       });
     });
+    this.userID = this.loginService.getUserID();
   }
 
   errorHandle(error: any): void {
@@ -62,6 +64,12 @@ export class TeacherLogComponent {
     setTimeout(() => {
       this.isLoading = false;
     }, 200);
+  }
+
+  hasEdit(): boolean {
+    let da = new Date(this.teacherLog.log_date);
+    let current = new Date();
+    return (this.teacherLog.user_id == this.userID && da.toDateString() == current.toDateString()) || (this.loginService.isAdminAccountant() && da.toDateString() == current.toDateString());
   }
 
 }

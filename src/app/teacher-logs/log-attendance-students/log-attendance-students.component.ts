@@ -16,6 +16,7 @@ import { faMoneyBill, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-ic
 export class LogAttendanceStudentsComponent implements OnInit {
 
   @Input() teacherLogId: any;
+  @Input() hasEdit: any;
   public logAttendances: LogAttendance[] = [];
   faMoneyBill = faMoneyBill;
   faMoneyBillTransfer = faMoneyBillTransfer;
