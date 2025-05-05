@@ -4,7 +4,7 @@ import { LoginService } from './../../service/login.service';
 import { HostelStudent } from './../../interface/hostel-student';
 import { HostelRoom } from './../../interface/hostel-room';
 import { AlertService } from '../../service/alert.service';
-
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-hostel-students',
   templateUrl: './hostel-students.component.html',
@@ -17,6 +17,7 @@ export class HostelStudentsComponent implements OnInit{
   @Input() hostelRoom: HostelRoom;
   @Input() showAmount: any;
   public hostelStudents: HostelStudent[] = [];
+  faTrashCan = faTrashCan;
 
   constructor(private hostelRoomService: HostelRoomService, private loginService: LoginService, private alertService: AlertService){}
 
@@ -42,5 +43,19 @@ export class HostelStudentsComponent implements OnInit{
 
   assignHostelStudent(response: any) {
     this.hostelStudents = response;
+  }
+
+  removeStudent(studentId: any): void {
+    if(confirm("Are you sure to Conduct this exam")) {
+      this.hostelRoomService.removeHostelRoomStudents(this.hostelId, this.hostelRoomId, studentId).subscribe (
+        (response: any) => this.deleteRemoveStudent(response),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done to Remove Hostel Students......')
+      );
+    }
+  }
+
+  deleteRemoveStudent(response: any) {
+    this.hostelStudents = this.hostelStudents.filter((value) => value.id != response['id']);
   }
 }

@@ -41,4 +41,9 @@ export class HostelRoomService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<HostelStudent>(`${this.loginService.URL}/hostels/${hostelId}/hostel_rooms/${hostelRoomId}/students`, {headers: myHeaders});
   }
+
+  removeHostelRoomStudents(hostelId: number, hostelRoomId: number, studentId: number): Observable<{}> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.delete<{}>(`${this.loginService.URL}/hostels/${hostelId}/hostel_rooms/${hostelRoomId}/students/${studentId}`, {headers: myHeaders});
+  }
 }
