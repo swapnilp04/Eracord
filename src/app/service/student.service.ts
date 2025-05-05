@@ -12,7 +12,6 @@ import { ExamStudent } from '../interface/exam-student'
 import { Balance } from '../interface/balance'
 import { LogAttendance } from '../interface/log-attendance'
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -138,4 +137,14 @@ export class StudentService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.post<Student>(`${this.loginService.URL}/students/${studentId}/rejoin_academy`, {}, {headers: myHeaders});
   }
+
+  getStudentMonthlyExamsReport(studentID: number, month: number, year: number): Observable<ExamStudent[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<ExamStudent[]>(`${this.loginService.URL}/students/${studentID}/get_monthly_exams_report?month=${month}&year=${year}`, {headers: myHeaders});
+  } 
+  
+  getStudentReportsTeacherLogs(studentID: number, month: number, year: number): Observable<LogAttendance[]> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.get<LogAttendance[]>(`${this.loginService.URL}/students/${studentID}/get_monthly_logs_report?month=${month}&year=${year}`, {headers: myHeaders});
+  } 
 }

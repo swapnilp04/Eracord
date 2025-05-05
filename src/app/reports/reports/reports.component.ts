@@ -122,7 +122,8 @@ export class ReportsComponent {
       this.formErr["Student"] = ["Student can't be Blank"];
     }
     if(Object.keys(this.formErr).length == 0) {
-      this.router.navigate(['/students']);
+      this.router.navigate(['/reports/students/', this.searchStudent , 'get-monthly-reports'], 
+        { queryParams: { month: this.selectedMonth, year: this.selectedYear }});
     }
   }
 

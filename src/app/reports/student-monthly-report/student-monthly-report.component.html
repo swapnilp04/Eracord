@@ -1,0 +1,36 @@
+<div class="container" style="float:left;">
+ 	<p>
+ 		<button class="btn btn-secondary" (click)="back()"> Back</button>
+		<button 
+			class="btn btn-primary marginLeft15"
+			[useExistingCss]="true"
+			printSectionId="print-section"
+			ngxPrint>print</button>
+	</p>
+</div>
+<div id="print-section">
+	<div>
+		<h2>{{name()}}</h2>
+		<h3>{{monthNames[ this.month - 1 ]}} - {{this.year}} Report</h3>
+	</div>
+	<h4>Exams</h4>
+	<div *ngFor="let examStudent of examStudents; index as i" class="marginBottom15">
+		<span class="marginRight15">{{i+1}}. {{examStudent.Exam.name}} <strong>({{examStudent.Exam.exam_date | date:'EEEE -- dd MMM yyyy'}}) 
+			<span class="marginLeft15 bigFont">{{examStudent.percentage | number}} %</span></strong></span> <br />
+		<span class="marginRight15"><strong>{{examStudent.Exam.Subject.name}} - {{examStudent.Exam.Standard.name}}-{{examStudent.Exam.Batch.name}}</strong></span>
+		<span class="marginRight15">Marks - {{examStudent.marks}} out of {{examStudent.Exam.exam_marks}} marks</span>
+		<span class="marginRight15"><strong>Status - {{examStudent.Exam.exam_status}}</strong></span><br />
+		<span class="marginRight15">Chapters - 
+			<span *ngFor="let examChapter of examStudent.Exam.exam_chapters"><strong>{{examChapter.Chapter.name}}, </strong> </span>
+		</span>
+	</div>
+	<h4>Logs</h4>
+	<div *ngFor="let log of logAttendances; index as i" class="marginBottom15" [ngClass]="{'text-danger': !log.is_present}" >
+		<span class="marginRight15">{{log.TeacherLog.Subject.name}} - {{log.TeacherLog.BatchStandard.Standard.name}}-{{log.TeacherLog.BatchStandard.Batch.name}} </span>
+		<span><strong>({{log.TeacherLog.log_date | date:'EEEE dd MMM yyyy'}}) @ </strong></span>
+		<span>{{log.TeacherLog.start_hour}}:{{log.TeacherLog.start_minuit}} TO {{log.TeacherLog.end_hour}}:{{log.TeacherLog.end_minuit}}</span><br />
+		<span class="marginRight15">Chapter - {{log.TeacherLog.Chapter.name}}</span>
+		<span class="marginRight15"><strong>{{log.is_present ? 'Present' : 'Absent'}}</strong></span>
+		<span class="marginRight15">Category - {{log.TeacherLog.LogCategory.name}}</span>
+	</div>
+</div>

@@ -97,6 +97,7 @@ import { LogAttendanceStudentsComponent } from './teacher-logs/log-attendance-st
 import { StudentLogAttendanceComponent } from './students/student-log-attendance/student-log-attendance.component';
 import { ReportsComponent } from './reports/reports/reports.component';
 import { TeacherMonthlyReportComponent } from './reports/teacher-monthly-report/teacher-monthly-report.component';
+import { StudentMonthlyReportComponent } from './reports/student-monthly-report/student-monthly-report.component';
 
 
 @NgModule({
@@ -181,6 +182,7 @@ import { TeacherMonthlyReportComponent } from './reports/teacher-monthly-report/
     StudentLogAttendanceComponent,
     ReportsComponent,
     TeacherMonthlyReportComponent,
+    StudentMonthlyReportComponent,
   ],
   imports: [
     BrowserModule,
