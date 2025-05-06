@@ -8,7 +8,7 @@
       </th>
       <th>Name</th>
       <th>Address</th>
-      <th>Delete</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,9 +18,11 @@
      		{{hostelStudent.Student.first_name}} {{hostelStudent.Student.last_name}} <strong>({{hostelStudent.Student.Standard.name}})</strong>
       </td>
       <td>{{hostelStudent.Student.town}}</td>
-      <td><button class="btn btn-link text-danger" (click)="removeStudent(hostelStudent.id)" tooltip="Delet">
-        <fa-icon [icon]="faTrashCan"></fa-icon>
-      </button></td>
+      <td>
+        <button class="btn btn-link text-danger" (click)="removeStudent(hostelStudent.id)" tooltip="Delet">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+        </button>
+      </td>
   	</tr>
   </tbody>
 </table>	

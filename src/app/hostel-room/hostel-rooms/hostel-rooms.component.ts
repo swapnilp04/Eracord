@@ -3,7 +3,7 @@ import { HostelRoomService } from './../../service/hostel-room.service';
 import { LoginService } from './../../service/login.service';
 import { HostelRoom } from './../../interface/hostel-room';
 import { AlertService } from '../../service/alert.service';
-import { faPeopleRoof, faFilePen, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faPeopleRoof, faFilePen, faFolderOpen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hostel-rooms',
@@ -15,6 +15,7 @@ export class HostelRoomsComponent implements OnInit{
   faPeopleRoof = faPeopleRoof;
   faFilePen = faFilePen; 
   faFolderOpen = faFolderOpen;
+  faTrashCan = faTrashCan;
   ngOnInit(): void {
     this.loadHostelRooms();
   }
@@ -33,11 +34,28 @@ export class HostelRoomsComponent implements OnInit{
       this.loginService.toLogin();
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
+    } else if (error.status == 500) {
+      this.alertService.error(error.error.message);
     }
   }
 
   assignHostel(response: any) {
     this.hostelRooms = response
+  }
+
+  deleteHostelRoom(hostelRoomId: any): void {
+    if(confirm("Are you sure to remove room from hostel")) {
+      this.hostelRoomService.deleteHostelRoom(this.hostelId, hostelRoomId).subscribe (
+        (response: any) => this.removeHostelRoom(response),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done removing Hostel Room......')
+      );
+    }
+  }
+
+  removeHostelRoom(response: any) {
+    this.hostelRooms = this.hostelRooms.filter((value) => value.id != response['id']);
+    this.alertService.success("Hostel Room Deleted");
   }
 
   isEdit(): boolean { 

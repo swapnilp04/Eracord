@@ -46,7 +46,7 @@ export class HostelStudentsComponent implements OnInit{
   }
 
   removeStudent(studentId: any): void {
-    if(confirm("Are you sure to Conduct this exam")) {
+    if(confirm("Are you sure to remove student from hostel")) {
       this.hostelRoomService.removeHostelRoomStudents(this.hostelId, this.hostelRoomId, studentId).subscribe (
         (response: any) => this.deleteRemoveStudent(response),
         (error: any) => this.errorHandle(error),

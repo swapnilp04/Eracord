@@ -17,13 +17,15 @@
       <td>{{hostelRoom.name}}</td>
       <td>{{hostelRoom.hostel_students_count}}</td>
       <td>
-        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}' tooltip="Show">
+        <a class="marginRight15" href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}' tooltip="Show">
           <fa-icon [icon]="faFolderOpen"></fa-icon>
         </a>
-        &nbsp;&nbsp;&nbsp;
-        <a href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}/edit' tooltip="Edit" *ngIf="isEdit()">
+        <a class="marginRight15" href='/hostels/{{hostelId}}/hostel-rooms/{{hostelRoom.id}}/edit' tooltip="Edit" *ngIf="isEdit()">
           <fa-icon [icon]="faFilePen"></fa-icon>
         </a>
+        <button class="btn btn-link text-danger" (click)="deleteHostelRoom(hostelRoom.id)" tooltip="Delet">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+        </button>
       </td>
   	</tr>
   </tbody>
