@@ -98,6 +98,9 @@ import { StudentLogAttendanceComponent } from './students/student-log-attendance
 import { ReportsComponent } from './reports/reports/reports.component';
 import { TeacherMonthlyReportComponent } from './reports/teacher-monthly-report/teacher-monthly-report.component';
 import { StudentMonthlyReportComponent } from './reports/student-monthly-report/student-monthly-report.component';
+import { ParentsComponent } from './parents/parents/parents.component';
+import { ParentComponent } from './parents/parent/parent.component';
+import { ParentAddEditComponent } from './parents/parent-add-edit/parent-add-edit.component';
 
 
 @NgModule({
@@ -183,6 +186,9 @@ import { StudentMonthlyReportComponent } from './reports/student-monthly-report/
     ReportsComponent,
     TeacherMonthlyReportComponent,
     StudentMonthlyReportComponent,
+    ParentsComponent,
+    ParentComponent,
+    ParentAddEditComponent,
   ],
   imports: [
     BrowserModule,

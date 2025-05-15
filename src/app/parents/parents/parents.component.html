@@ -1,0 +1,27 @@
+<app-loading-image *ngIf="isLoading"> </app-loading-image>
+<div class="row searchBox" *ngIf="!isLoading">
+  <div class="col-8 fullWidthMobile" *ngIf="isNew()">
+    <a href="/parents/new" class="btn btn-primary" tooltip="New Student"><span><fa-icon [icon]="faSquarePlus"></fa-icon> </span></a>
+  </div>
+  
+  <div>
+    <div *ngFor="let parent of parents; index as i" class="Parents-parents indexBox">
+      <p class="name">{{((page - 1) *10) + i + 1 }}. <strong>{{parent.parent_name}}</strong></p>
+      <p><strong>({{parent.mobile}}) &nbsp;</strong>
+      </p>
+      
+      <div class="actions">
+        <a href='/parents/{{parent.id}}' class="marginRight15" tooltip="Show">
+          <fa-icon [icon]="faFolderOpen"></fa-icon>
+        </a>
+        <a href='/parents/{{parent.id}}/edit' *ngIf="isEdit()" class="marginRight15" tooltip="Edit">
+          <fa-icon [icon]="faUserPen"></fa-icon>
+        </a> 
+      </div>
+    </div>
+  </div>
+  <div class="pagination">
+    <pagination [totalItems]="totalItems" [ngModel]="currentPage" 
+      (pageChanged)="pageChanged($event)" [rotate]="true" [maxSize]="8"></pagination>
+  </div>
+</div>

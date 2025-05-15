@@ -833,6 +833,10 @@ pagination {
     height: 220px;
 }
 
+.Parents-parents {
+    height: 200px;
+}
+
 .ActiveStandards-standardInner {
     border-radius: 20px;
     height: 120px;

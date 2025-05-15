@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {StudentService} from './../../service/student.service';
+import { ParentService } from './../../service/parent.service';
 import { LoginService } from './../../service/login.service';
-import {Student} from './../../interface/student';
+import { Parent } from './../../interface/parent';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBed, faUserPen, faFolderOpen, faMoneyBill, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
-  selector: 'app-student',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  selector: 'app-parents',
+  templateUrl: './parents.component.html',
+  styleUrls: ['./parents.component.css']
 })
+export class ParentsComponent implements OnInit {
 
-export class StudentsComponent  implements OnInit {
   currentPage = 1;
   page = 1;
   totalItems: number = 10;
@@ -27,8 +26,8 @@ export class StudentsComponent  implements OnInit {
   faSquarePlus = faSquarePlus;
   isLoading = true;
 
-  public students: Student[] = [];
-  constructor(private studentService: StudentService, private loginService: LoginService, private alertService: AlertService,
+  public parents: Parent[] = [];
+  constructor(private parentService: ParentService, private loginService: LoginService, private alertService: AlertService,
     private router: Router, private route: ActivatedRoute){}
 
 
@@ -37,7 +36,7 @@ export class StudentsComponent  implements OnInit {
       //.filter(params => params.order)
       .subscribe(params => {
         this.page = params['page'] || 1;
-        this.loadStudents(this.page);
+        this.loadParents(this.page);
       }
     );
   }
@@ -47,23 +46,13 @@ export class StudentsComponent  implements OnInit {
   }
 
   searchTable(): void{
-   this.loadStudents(this.page); 
+   this.loadParents(this.page);
   }
 
-  name(student: Student): string {
-    return `${student.first_name} ${student.middle_name} ${student.last_name}`
-  }
-
-  changed(e: any) {
-    this.page = 1;
-    this.currentPage = 1;
-    this.loadStudents(this.page);
-  }
-
-  loadStudents(pageNumber: number): void {
+  loadParents(pageNumber: number): void {
     this.isLoading = true;
-    this.studentService.getStudents(pageNumber, this.search).subscribe (
-      (response: any) => this.assignStudents(response),
+    this.parentService.getParents(pageNumber, this.search).subscribe (
+      (response: any) => this.assignParents(response),
       (error: any) => this.errorHandle(error),
       () => this.disableLoading(pageNumber)
     );
@@ -88,25 +77,13 @@ export class StudentsComponent  implements OnInit {
     this.isLoading = false;
   }
 
-  createStudent(student: Student): void {
-    this.studentService.createStudent(student).subscribe (
-      (response: any) => console.log(response),
-      (error: any) => this.errorHandle(error),
-      () => console.log('Done getting Student......')
-    );
-  }
-
-  assignStudents(response: any) {
-    this.students = response.students;
+  assignParents(response: any) {
+    this.parents = response.parents;
     this.totalItems = response.total;
   }
 
-  isPay(student: any): boolean { 
-    return this.loginService.isAdminAccountant() && !student.has_left;
-  }
-
-  isEdit(student: any): boolean { 
-    return this.loginService.isAdminAccountant() && !student.has_left;
+  isEdit(): boolean { 
+    return this.loginService.isAdminAccountant();
   }
 
   isNew(): boolean { 

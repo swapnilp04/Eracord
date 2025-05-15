@@ -51,23 +51,9 @@
     </div>
   </div>
 
-  
-   <div class="form-group mb-3">
+  <div class="form-group mb-3">
     <label for="exampleInputPassword1" class="form-label">Comment</label>
     <input type="text" class="form-control" placeholder="Comment" [(ngModel)]="teacherLog.comment" [ngModelOptions]="{standalone: true}"/>
-   </div>
-
-   <div class="combinedClasses" *ngIf=isNew>
-    <div *ngFor="let combinedClass of combinedClasses">
-      <app-combined-class-add-edit [combinedClass]="combinedClass" [batchStandards]="batchStandards"></app-combined-class-add-edit>
-      <button class="btn btn-secondary bg-danger" (click)="removeCombinedClass(combinedClass)" tooltip="Remove">
-        <fa-icon [icon]="faTrashCan"></fa-icon>
-      </button>
-    </div>
-
-    <button class="btn btn-primary marginTop15" (click)="addCombinedClass()" tooltip="Add Combined Class">
-      <fa-icon [icon]="faPersonChalkboard"></fa-icon>
-    </button>
   </div>
 
   <!-- <div class="form-group mb-3">

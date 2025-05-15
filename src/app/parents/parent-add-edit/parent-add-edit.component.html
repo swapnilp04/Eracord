@@ -1,0 +1,36 @@
+<form>
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('ParentName')}" placeholder="Name" [(ngModel)]="parent.parent_name" [ngModelOptions]="{standalone: true}"/>
+    <div class="invalid-feedback" *ngIf="hasError('ParentName')">
+      <p *ngFor="let err of getErrorValue('ParentName')">{{err}}</p>
+    </div>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="exampleInputEmail1" class="form-label">Display Name</label>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('DisplayName')}" placeholder="Name" [(ngModel)]="parent.display_name" [ngModelOptions]="{standalone: true}"/>
+    <div class="invalid-feedback" *ngIf="hasError('DisplayName')">
+      <p *ngFor="let err of getErrorValue('DisplayName')">{{err}}</p>
+    </div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('Mobile')}" placeholder="Mobile" [(ngModel)]="parent.mobile" [ngModelOptions]="{standalone: true}"/>
+    <div class="invalid-feedback" *ngIf="hasError('Mobile')">
+      <p *ngFor="let err of getErrorValue('Mobile')">{{err}}</p>
+    </div>
+  </div>
+  
+  <div class="form-group mb-3">
+  <button type="submit" [disabled]="isLoading" *ngIf=isNew class="btn btn-primary" (click)=createParent(parent) tooltip="Submit">
+    <fa-icon [icon]="faCircleCheck"></fa-icon>
+  </button>
+  <button type="submit" [disabled]="isLoading" *ngIf=!isNew class="btn btn-primary" (click)=updateParent(parent) tooltip="Submit">
+    <fa-icon [icon]="faCircleCheck"></fa-icon>
+  </button>
+  <button type="submit" class="btn btn-primary marginLeft15" (click)=back() tooltip="Back">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </button>
+</div>
+</form>

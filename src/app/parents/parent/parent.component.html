@@ -1,0 +1,10 @@
+<div *ngIf=!isLoading>
+	<div class="mb-3">
+		<h2>Name - {{parent.parent_name}}</h2>
+		<h2>Display Name - {{parent.display_name}}</h2>
+		<h5>Mobile - {{parent.mobile}}</h5>
+		<button (click)=back() class="btn btn-primary" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
+		</button>
+	</div>
+</div>

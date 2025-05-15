@@ -58,6 +58,9 @@ import { StudentExamGraphReportsComponent } from './students/student-exam-graph-
 import { ReportsComponent } from './reports/reports/reports.component';
 import { TeacherMonthlyReportComponent } from './reports/teacher-monthly-report/teacher-monthly-report.component';
 import { StudentMonthlyReportComponent } from './reports/student-monthly-report/student-monthly-report.component';
+import { ParentsComponent } from './parents/parents/parents.component';
+import { ParentComponent } from './parents/parent/parent.component';
+import { ParentAddEditComponent } from './parents/parent-add-edit/parent-add-edit.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -143,6 +146,10 @@ const routes: Routes = [
   {path: 'reports' , component: ReportsComponent},
   {path: 'reports/teachers/:id/get-monthly-reports' , component: TeacherMonthlyReportComponent},
   {path: 'reports/students/:id/get-monthly-reports' , component: StudentMonthlyReportComponent},
+
+  {path: 'parents' , component: ParentsComponent},
+  {path: 'parents/new' , component: ParentAddEditComponent},
+  {path: 'parents/:id' , component: ParentComponent},
   ];
 
 
