@@ -55,14 +55,14 @@
         <p *ngFor="let err of getErrorValue('ParentOccupation')">{{err}}</p>
       </div>
     </div>
-    <div class="form-group mb-3">
+    <div class="form-group mb-3" *ngIf="isAdminAccountant()">
       <label for="exampleInputPassword1" class="form-label">Contact Number</label>
       <input type="text" class="form-control is-invalid" [ngClass]="{'is-invalid': hasError('ContactNumber')}" placeholder="Contact Number" [(ngModel)]="student.contact_number" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('ContactNumber')"/>
       <div class="invalid-feedback" *ngIf="hasError('ContactNumber')">
         <p *ngFor="let err of getErrorValue('ContactNumber')">{{err}}</p>
       </div>
     </div>
-    <div class="form-group mb-3">
+    <div class="form-group mb-3" *ngIf="isAdminAccountant()">
       <label for="exampleInputPassword1" class="form-label">What's app Number</label>
       <input type="text" class="form-control" [ngClass]="{'is-invalid': hasError('WhNumber')}" placeholder="What's app number" [(ngModel)]="student.wh_number" [ngModelOptions]="{standalone: true}" (ngModelChange)="removeError('WhNumber')"/>
       <div class="invalid-feedback" *ngIf="hasError('WhNumber')">

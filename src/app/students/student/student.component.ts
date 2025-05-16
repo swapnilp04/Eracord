@@ -160,6 +160,10 @@ export class StudentComponent  implements OnInit {
     return this.loginService.isAdminAccountant() && !student.has_left;
   }
 
+  isAdminAccountant() {
+    this.loginService.isAdminAccountant()
+  }
+
   isAssignHostel(): boolean { 
     return this.loginService.isAdmin() && !this.hasHostel;
   }

@@ -91,11 +91,18 @@ export class ParentAddEditComponent {
 
   assignErrors(error: any): void {
     this.formErr = error.error.error
+    console.log(error.error.error);
     this.isLoadingFalse()
   }
 
   back(): void {
     this.location.back();
+  }
+
+  removeError(field: string): void {
+    if(this.formErr != undefined && this.formErr[field] != undefined) {
+      delete(this.formErr[field]);
+    }
   }
 
   getSuccess(response: any): void {

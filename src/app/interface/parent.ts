@@ -4,4 +4,5 @@ export interface Parent {
 	display_name: string;
 	mobile: string;
 	active?: boolean;
+	student_count?: number;
 }

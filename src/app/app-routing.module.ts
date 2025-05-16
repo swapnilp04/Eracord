@@ -150,6 +150,7 @@ const routes: Routes = [
   {path: 'parents' , component: ParentsComponent},
   {path: 'parents/new' , component: ParentAddEditComponent},
   {path: 'parents/:id' , component: ParentComponent},
+  {path: 'parents/:id/edit' , component: ParentAddEditComponent},
   ];
 
 

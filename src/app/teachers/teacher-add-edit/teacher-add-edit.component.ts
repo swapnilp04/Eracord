@@ -92,6 +92,7 @@ export class TeacherAddEditComponent {
 
   assignErrors(error: any): void {
     this.formErr = error.error.error
+    console.log(error.error.error);
     this.isLoadingFalse()
   }
 

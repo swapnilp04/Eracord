@@ -5,7 +5,7 @@ import { Parent } from './../../interface/parent';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faUserPen } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class ParentComponent {
   public id: any;
   public isLoading = true;
   faChevronLeft = faChevronLeft;
+  faUserPen = faUserPen;
 
   constructor(private parentService: ParentService, private route: ActivatedRoute, private location: Location, private router: Router,
    private loginService: LoginService, private alertService: AlertService){}
@@ -56,6 +57,10 @@ export class ParentComponent {
 
   back(): void {
     this.location.back();
+  }
+
+  isEdit(): boolean { 
+    return this.loginService.isAdminAccountant();
   }
 
 }

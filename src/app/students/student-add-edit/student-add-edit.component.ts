@@ -120,4 +120,8 @@ export class StudentAddEditComponent implements OnInit {
       this.isLoading = false;
     }, 200);
   }
+
+  isAdminAccountant() {
+    this.loginService.isAdminAccountant()
+  }
 }

@@ -8,8 +8,8 @@
 		<h5>Birth Date - {{student.birth_date | date:'dd MMM yyyy'}}</h5>
 		<h5>Adhar Card number Number - {{adharCard()}}</h5>
 		<h5>Parent Name - {{student.parent_name}}</h5>
-		<h5>Contact Number - {{student.contact_number}}</h5>
-		<h5>What's app Number - {{student.wh_number}}</h5>
+		<h5 *ngIf="isAdminAccountant()">Contact Number - {{student.contact_number}}</h5>
+		<h5 *ngIf="isAdminAccountant()">What's app Number - {{student.wh_number}}</h5>
 		<h5>Address - {{student.town}}</h5>
 		<h5>Standard - {{student.Standard.name}}</h5>
 		<h5 class="text-danger" *ngIf="student.has_left">Left On - {{student.left_at | date:'dd MMM YYYY'}}</h5>
