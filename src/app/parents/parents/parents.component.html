@@ -3,13 +3,11 @@
   <div class="col-8 fullWidthMobile" *ngIf="isNew()">
     <a href="/parents/new" class="btn btn-primary" tooltip="New Student"><span><fa-icon [icon]="faSquarePlus"></fa-icon> </span></a>
   </div>
-  
   <div>
     <div *ngFor="let parent of parents; index as i" class="Parents-parents indexBox">
       <p class="name">{{((page - 1) *10) + i + 1 }}. <strong>{{parent.parent_name}}</strong></p>
-      <p><strong>({{parent.mobile}}) &nbsp;</strong>
-      </p>
-      
+      <p><strong>Mobile - {{parent.mobile}} &nbsp;</strong></p>
+      <p>Students Connected - {{parent.student_count}} &nbsp;</p>
       <div class="actions">
         <a href='/parents/{{parent.id}}' class="marginRight15" tooltip="Show">
           <fa-icon [icon]="faFolderOpen"></fa-icon>

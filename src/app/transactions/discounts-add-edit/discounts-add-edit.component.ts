@@ -92,7 +92,7 @@ export class DiscountsAddEditComponent implements OnInit {
     this.isLoading = false;    
   }
 
-  isAdminAccountant() {
-    this.loginService.isAdminAccountant()
+  isAdminAccountant(): boolean {
+    return this.loginService.isAdminAccountant()
   }
 }

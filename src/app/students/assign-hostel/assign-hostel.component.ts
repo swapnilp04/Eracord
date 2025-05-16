@@ -134,4 +134,8 @@ export class AssignHostelComponent implements OnInit {
   isLoadingFalse(): void {
     this.isLoading = false;    
   }
+
+  isAdminAccountant(): boolean {
+    return this.loginService.isAdminAccountant()
+  }
 }

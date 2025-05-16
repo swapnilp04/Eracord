@@ -121,7 +121,7 @@ export class StudentAddEditComponent implements OnInit {
     }, 200);
   }
 
-  isAdminAccountant() {
-    this.loginService.isAdminAccountant()
+  isAdminAccountant(): boolean {
+    return this.loginService.isAdminAccountant()
   }
 }
