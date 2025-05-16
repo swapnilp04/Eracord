@@ -95,4 +95,8 @@ export class TransactionsAddEditComponent implements OnInit {
   isLoadingFalse(): void {
     this.isLoading = false;    
   }
+
+  isAdminAccountant() {
+    this.loginService.isAdminAccountant()
+  }
 }
