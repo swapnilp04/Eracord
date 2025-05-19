@@ -101,6 +101,7 @@ import { StudentMonthlyReportComponent } from './reports/student-monthly-report/
 import { ParentsComponent } from './parents/parents/parents.component';
 import { ParentComponent } from './parents/parent/parent.component';
 import { ParentAddEditComponent } from './parents/parent-add-edit/parent-add-edit.component';
+import { AssignParentStudentComponent } from './parents/assign-parent-student/assign-parent-student.component';
 
 
 @NgModule({
@@ -189,6 +190,7 @@ import { ParentAddEditComponent } from './parents/parent-add-edit/parent-add-edi
     ParentsComponent,
     ParentComponent,
     ParentAddEditComponent,
+    AssignParentStudentComponent,
   ],
   imports: [
     BrowserModule,

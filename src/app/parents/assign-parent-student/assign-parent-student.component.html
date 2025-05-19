@@ -1,0 +1,33 @@
+<div *ngIf=!isLoading>
+	<div class="mb-3">
+		<h2>Name - {{parent.parent_name}}</h2>
+		<h2>Display Name - {{parent.display_name}}</h2>
+		<h5>Mobile - {{parent.mobile}}</h5>
+		<button (click)=back() class="btn btn-primary marginRight15" tooltip="Back">
+			<fa-icon [icon]="faChevronLeft"></fa-icon>
+		</button>
+
+		<h3>Search Student</h3>
+		<div class="input-group">
+    	<input type="text" class="form-control" (change)="changed($event)" [(ngModel)]="search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
+    	<div class="input-group-append">
+      	<button class="btn btn-outline-secondary" type="button" (click)=searchStudent()>Search</button>
+    	</div>
+  	</div>  
+
+  	<div class="paddingBottom30 fullWidth">
+	    <div *ngFor="let student of students; index as i" [ngClass]="{'bg-warning': student.has_left, 'selected': student.id == selectedStudent}" class="ParentAssignStudent-Students indexBox" (click)=selectStudent(student)>
+	      <p class="name">{{ i + 1 }}. <strong>{{name(student)}}</strong></p>
+	      <p><strong>({{student.Standard.name}}) &nbsp;</strong>
+	        <fa-icon [icon]="faBed" [ngClass]="student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
+	      </p>
+	      <p>{{student.town}} </p>
+	    </div>
+  	</div>
+
+  	<div class="paddingBottom30 fullWidth" *ngIf="selectedStudent > 0">
+  		<button class="btn btn-primary" (click)="assignStudentToParent()">Allocate Student To Parent</button>
+  	</div>
+
+	</div>
+</div>

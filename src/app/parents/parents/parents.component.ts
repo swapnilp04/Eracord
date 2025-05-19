@@ -6,7 +6,7 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AlertService } from '../../service/alert.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBed, faUserPen, faFolderOpen, faMoneyBill, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faUserPen, faFolderOpen, faMoneyBill, faSquarePlus, faHandsHoldingChild } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-parents',
@@ -24,6 +24,7 @@ export class ParentsComponent implements OnInit {
   faFolderOpen = faFolderOpen;
   faMoneyBill = faMoneyBill;
   faSquarePlus = faSquarePlus;
+  faHandsHoldingChild = faHandsHoldingChild;
   isLoading = true;
 
   public parents: Parent[] = [];

@@ -61,6 +61,7 @@ import { StudentMonthlyReportComponent } from './reports/student-monthly-report/
 import { ParentsComponent } from './parents/parents/parents.component';
 import { ParentComponent } from './parents/parent/parent.component';
 import { ParentAddEditComponent } from './parents/parent-add-edit/parent-add-edit.component';
+import { AssignParentStudentComponent } from './parents/assign-parent-student/assign-parent-student.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -151,6 +152,7 @@ const routes: Routes = [
   {path: 'parents/new' , component: ParentAddEditComponent},
   {path: 'parents/:id' , component: ParentComponent},
   {path: 'parents/:id/edit' , component: ParentAddEditComponent},
+  {path: 'parents/:id/assign-student' , component: AssignParentStudentComponent},
   ];
 
 

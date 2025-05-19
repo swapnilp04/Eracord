@@ -837,6 +837,10 @@ pagination {
     height: 200px;
 }
 
+.ParentAssignStudent-Students{
+    height: 150px;
+}
+
 .ActiveStandards-standardInner {
     border-radius: 20px;
     height: 120px;

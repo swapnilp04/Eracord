@@ -15,6 +15,9 @@
         <a href='/parents/{{parent.id}}/edit' *ngIf="isEdit()" class="marginRight15" tooltip="Edit">
           <fa-icon [icon]="faUserPen"></fa-icon>
         </a> 
+        <a href='/parents/{{parent.id}}/assign-student' *ngIf="isEdit()" class="marginRight15" tooltip="Assign Student">
+          <fa-icon [icon]="faHandsHoldingChild"></fa-icon>
+        </a> 
       </div>
     </div>
   </div>
