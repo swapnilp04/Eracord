@@ -1,7 +1,8 @@
 <div *ngIf=!isLoading>
 	<div class="mb-3">
 		<h2>Name - {{parent.parent_name}}</h2>
-		<h2>Display Name - {{parent.display_name}}</h2>
+		<h5>Display Name - {{parent.display_name}}</h5>
+		<h5>Allocated Students count - {{parent.student_count}}</h5>
 		<h5>Mobile - {{parent.mobile}}</h5>
 		<a href='/parents/{{parent.id}}/edit' *ngIf="isEdit()" class="marginRight15 btn btn-secondary" tooltip="Edit">
       <fa-icon [icon]="faUserPen"></fa-icon>
@@ -14,13 +15,18 @@
     </a> 
 	</div>
 	<div>
-		<h3>Allocated Students</h3>
-		<div *ngFor="let parentStudent of parentStudents; index as i" [ngClass]="{'bg-warning': parentStudent.Student.has_left}" class="ParentAssignStudent-Students indexBox">
+		<div><strong>Allocated Students</strong></div>
+		<div *ngFor="let parentStudent of parentStudents; index as i" [ngClass]="{'bg-warning': parentStudent.Student.has_left}" class="ParentAssignStudent-allocatedStudents indexBox">
 	      <p class="name">{{ i + 1 }}. <strong>{{name(parentStudent.Student)}}</strong></p>
 	      <p><strong>({{parentStudent.Student.Standard.name}}) &nbsp;</strong>
 	        <fa-icon [icon]="faBed" [ngClass]="parentStudent.Student.has_hostel ? 'text-success' : 'text-danger'"></fa-icon>
 	      </p>
 	      <p>{{parentStudent.Student.town}} </p>
+	      <div class="actions">
+	      	<button (click)="removeParentStudent(parent.id, parentStudent.id)" class="btn btn-link text-danger">
+	      		<fa-icon [icon]="faTrashCan"></fa-icon>
+	      	</button>
+	      </div>
 	    </div>
 	</div>
 </div>

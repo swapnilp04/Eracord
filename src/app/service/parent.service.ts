@@ -44,4 +44,9 @@ export class ParentService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<ParentStudent>(`${this.loginService.URL}/parents/${parentId}/parent-students`, {headers: myHeaders});
   }
+
+  deleteParentStudents(parentId: number, parentStudentID: number): Observable<{}> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.delete<{}>(`${this.loginService.URL}/parents/${parentId}/parent-students/${parentStudentID}`, {headers: myHeaders});
+  }
 }

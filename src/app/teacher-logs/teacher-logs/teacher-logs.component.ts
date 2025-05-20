@@ -191,7 +191,6 @@ export class TeacherLogsComponent implements OnInit {
   }
 
   deleteTeacherLogSuccess(response: any) {
-    console.log(response['id']);
     this.teacherLogs = this.teacherLogs.filter((value) => value.id != response['id']);
   }
 

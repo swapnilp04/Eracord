@@ -7,7 +7,7 @@ import { ParentStudent } from './../../interface/parent-student';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlertService } from '../../service/alert.service';
-import { faChevronLeft, faUserPen, faHandsHoldingChild, faBed } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faUserPen, faHandsHoldingChild, faBed, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -24,6 +24,7 @@ export class ParentComponent {
   faUserPen = faUserPen;
   faHandsHoldingChild = faHandsHoldingChild;
   faBed = faBed;
+  faTrashCan = faTrashCan;
   public parentStudents: ParentStudent[] = [];
 
   constructor(private parentService: ParentService, private route: ActivatedRoute, private location: Location, private router: Router,
@@ -87,6 +88,20 @@ export class ParentComponent {
 
   name(student: Student): string {
     return `${student.first_name} ${student.middle_name} ${student.last_name}`
+  }
+
+  removeParentStudent(parentId: any, parentStudentId: any): void {
+    if(confirm("Are you sure to Remove student from Parent?")) {
+      this.parentService.deleteParentStudents(parentId, parentStudentId).subscribe (
+        (response: any) => this.removeParentStudentSuccess(response),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done Deleting Parent Student......')
+      );
+    }
+  }
+
+  removeParentStudentSuccess(response: any) {
+    this.parentStudents = this.parentStudents.filter((value) => value.id != response['id']);
   }
 
 }
