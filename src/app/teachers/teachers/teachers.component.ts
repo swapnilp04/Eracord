@@ -3,7 +3,7 @@ import { TeacherService } from './../../service/teacher.service';
 import { LoginService } from './../../service/login.service';
 import { Teacher } from './../../interface/teacher';
 import { AlertService } from '../../service/alert.service';
-import { faFilePen, faChevronLeft, faFolderOpen, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faFilePen, faChevronLeft, faFolderOpen, faUserTie, faUserCheck, faUserXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-teachers',
@@ -17,6 +17,8 @@ export class TeachersComponent {
   faFolderOpen = faFolderOpen;
   faUserTie = faUserTie;
   isLoading = true;
+  faUserCheck = faUserCheck;
+  faUserXmark = faUserXmark;
 
   constructor(private teacherService: TeacherService, private loginService: LoginService, private alertService: AlertService){}
 
@@ -57,5 +59,35 @@ export class TeachersComponent {
 
   isEdit(): boolean { 
     return this.loginService.isAdmin();
+  }
+
+  deactiveTeacher(teacher: any): void {
+    if(confirm("Are you sure to Deactivate Teacher")) {
+      this.teacherService.deactiveTeacher(teacher.id).subscribe (
+        (response: any) => this.successDeactiveTeacher(teacher),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done getting Teachers......')
+      );
+    }
+  }
+
+  activeTeacher(teacher: any): void {
+    if(confirm("Are you sure to Activate Teacher")) {
+      this.teacherService.activeTeacher(teacher.id).subscribe (
+        (response: any) => this.successActiveTeacher(teacher),
+        (error: any) => this.errorHandle(error),
+        () => console.log('Done getting Users......')
+      );
+    }
+  }
+
+  successDeactiveTeacher(teacher: any): void {
+    this.alertService.success("Teacher Deactiveted");
+    teacher.active = false;
+  }
+
+  successActiveTeacher(teacher: any): void {
+    this.alertService.success("Teacher Activeted");
+    teacher.active = true;
   }
 }

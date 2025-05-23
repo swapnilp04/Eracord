@@ -49,4 +49,14 @@ export class TeacherService {
     const myHeaders = this.loginService.getHeaders();
     return this.http.get<Duration[]>(`${this.loginService.URL}/teachers/${teacherID}/get_monthly_logs_durations?month=${month}&year=${year}`, {headers: myHeaders});
   } 
+
+  deactiveTeacher(teacherID: number): Observable<Teacher> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Teacher>(`${this.loginService.URL}/teachers/${teacherID}/deactive_teacher`, {}, {headers: myHeaders});
+  }
+
+  activeTeacher(teacherID: number): Observable<Teacher> {
+    const myHeaders = this.loginService.getHeaders();
+    return this.http.post<Teacher>(`${this.loginService.URL}/teachers/${teacherID}/active_teacher`, {}, {headers: myHeaders});
+  }
 }

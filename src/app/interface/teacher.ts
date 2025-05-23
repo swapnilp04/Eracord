@@ -4,5 +4,6 @@ export interface Teacher {
 	mobile: number;
 	adhar_card: string;
 	joining_date: Date;
-	last_date: Date
+	last_date: Date;
+	active: boolean;
 }

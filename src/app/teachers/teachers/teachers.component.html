@@ -7,17 +7,27 @@
       </a>
     </p>
     <div>
-    	<div *ngFor="let teacher of teachers; index as i" class="Teachers-teacher indexBox">
+    	<div *ngFor="let teacher of teachers; index as i" class="Teachers-teacher indexBox" [ngClass]="{'bg-warning': !teacher.active}">
 	      <p class="name">{{i+1}}. <strong>{{teacher.name}}</strong></p>
-	      <p>Mobile - {{teacher.mobile}}</p>
+	      <span>Mobile - {{teacher.mobile}}</span><br />
+	      <span>Is Active - {{teacher.active}}</span>
 	      <div class="actions">
-	        <a href='/teachers/{{teacher.id}}' tooltip="Show">
+	        <a href='/teachers/{{teacher.id}}' tooltip="Show" class="marginRight15">
 	        	<fa-icon [icon]="faFolderOpen"></fa-icon>
 	      	</a>
-	        &nbsp;&nbsp;&nbsp;
-	        <a href='/teachers/{{teacher.id}}/edit' tooltip="Edit" *ngIf="isEdit()">
+	        
+	        <a href='/teachers/{{teacher.id}}/edit' tooltip="Edit" *ngIf="isEdit()" class="marginRight15">
 	        	<fa-icon [icon]="faFilePen"></fa-icon>
 	        </a>
+
+	        <span *ngIf="isEdit()">
+		      	<button *ngIf=teacher.active class="btn btn-link text-danger" (click)=deactiveTeacher(teacher) tooltip="Deactivate Teacher">
+		      		<fa-icon [icon]="faUserXmark"></fa-icon>
+		      	</button>
+		      	<button *ngIf=!teacher.active class="btn btn-link" (click)=activeTeacher(teacher) tooltip="Activate Teacher">
+		      		<fa-icon [icon]="faUserCheck"></fa-icon>
+		      	</button>
+      		</span>
 	      </div>
     	</div>
     </div>
