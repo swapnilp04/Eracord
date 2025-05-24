@@ -18,7 +18,9 @@
       <p>{{student.town}} <br />
       <span [ngClass]="{'bg-warning': student.balance < 0}">Balance = {{student.balance  | number: '1.'}}</span> <br />
       <span *ngIf="student.has_left">Left Academy <br /></span> 
-      <span *ngIf="!student.has_left">Last Pay on {{student.last_payment_on | date:'dd MMM yyyy'}} &nbsp;</span>
+      <span *ngIf="!student.has_left ">
+        <span *ngIf="isEdit(student)">Last Pay on {{student.last_payment_on | date:'dd MMM yyyy'}} &nbsp;</span>
+      </span>
       </p>
       <div class="Students actions">
         <a href='/students/{{student.id}}' class="marginRight15" tooltip="Show">

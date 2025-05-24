@@ -35,7 +35,7 @@
 	    <div>
 	    	<div *ngFor="let student of students; index as i" class="Dashboard-birthday indexBox">
 		      <p>{{i+1}}.  
-		      <strong>{{name(student)}}</strong></p>
+		      <strong><a href='/students/{{student.id}}'>{{name(student)}}</a></strong></p>
 					<p class="name">{{student.birth_date | date:'dd MMMM yyyy'}}</p>
 	    	</div>
 	    </div>
