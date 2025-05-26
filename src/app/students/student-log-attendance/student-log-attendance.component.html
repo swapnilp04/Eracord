@@ -4,6 +4,8 @@
     <span>Chapter name - <strong>{{logAttendance.TeacherLog.Chapter.name}}</strong> </span><br />
     <span>{{logAttendance.TeacherLog.log_date| date:"dd MMM yyyy"}} <strong>AT</strong>
          {{logAttendance.TeacherLog.start_hour}}.{{logAttendance.TeacherLog.start_minuit}} <strong>TO</strong> {{logAttendance.TeacherLog.end_hour}}.{{logAttendance.TeacherLog.end_minuit}}</span><br />
+    <span>Duration - <strong>{{logAttendance.TeacherLog.duration}} Min.</strong> </span><br />
+    <span>Teacher - <strong>{{logAttendance.TeacherLog.Teacher.name}}</strong> </span><br />
     <div class="actions">{{logAttendance.is_present ? 'Present' : 'Absent'}}</div>
     
   </div>
