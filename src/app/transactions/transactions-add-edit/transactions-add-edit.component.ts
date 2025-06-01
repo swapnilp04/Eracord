@@ -40,11 +40,14 @@ export class TransactionsAddEditComponent implements OnInit {
   }
 
   errorHandle(error: any): void {
-    if(error.status == 401) {
+    if(error.status == 400) {
+      this.alertService.error("Bad Rerqest");
+    } else if(error.status == 401) {
       this.loginService.toLogin();
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
     }
+    this.isLoadingFalse();
   }
 
   submitPayment(): void {
@@ -93,7 +96,9 @@ export class TransactionsAddEditComponent implements OnInit {
   }
 
   isLoadingFalse(): void {
-    this.isLoading = false;    
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 300);
   }
 
   isAdminAccountant(): boolean {

@@ -57,14 +57,16 @@ export class StudentAddEditComponent implements OnInit {
   }
 
   errorHandle(error: any): void {
-    if(error.status == 401) {
+    if(error.status == 400) {
+      this.alertService.error("Bad Request");
+    } else if(error.status == 401) {
       this.loginService.toLogin();
     } else if (error.status == 403) {
       this.alertService.error("Unauthorized");
     } else {
       this.assignErrors(error);
     }
-    this.isLoading = false;
+    this.isLoadingFalse();
   }
 
   removeError(field: string): void {
