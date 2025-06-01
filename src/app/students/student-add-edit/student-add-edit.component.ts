@@ -118,7 +118,7 @@ export class StudentAddEditComponent implements OnInit {
   isLoadingFalse(): void {
     setTimeout(() => {
       this.isLoading = false;
-    }, 200);
+    }, 300);
   }
 
   isAdminAccountant(): boolean {
